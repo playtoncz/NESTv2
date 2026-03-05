@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="NestBase">
+</Property><Property Name="Solution File" Value="D:\vlada\Projekty\NEST\NestBase\NestBase.sln">
+</Property><Property Name="Date" Value="23. března 2011">
+</Property><Property Name="Time" Value="9:13">
+</Property><Property Name="Log Number" Value="2">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="NestBase.sln" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\NestBase.sln">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="NestBase.vbproj" Description="Project file successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\NestBase.vbproj">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="NestBase.vbproj.user" Description="Project user file successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\NestBase.vbproj.user">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="AssemblyInfo.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\AssemblyInfo.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\Atribut.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\Atribut.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\AtributBinary.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\AtributBinary.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\AtributMultiple.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\AtributMultiple.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\AtributNumeric.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\AtributNumeric.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\AtributSingle.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\AtributSingle.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\BazeZnalosti.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\BazeZnalosti.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\cbrUsuzovani.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\cbrUsuzovani.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\cbrUsuzovaniCompositional.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\cbrUsuzovaniCompositional.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\Enums.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\Enums.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\Environment.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\Environment.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\GeneralError.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\GeneralError.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\GeneralObject.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\GeneralObject.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\Helper.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\Helper.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\IntegritniOmezeni.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\IntegritniOmezeni.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\Interval.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\Interval.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\Konjunkce.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\Konjunkce.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\Kontext.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\Kontext.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\Literal.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\Literal.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\Neurcitost.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\Neurcitost.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\NeurcitostLogical.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\NeurcitostLogical.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\NeurcitostStandard.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\NeurcitostStandard.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\Pravidlo.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\Pravidlo.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\PravidloApriori.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\PravidloApriori.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\PravidloKompozicionalni.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\PravidloKompozicionalni.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\PravidloLogicke.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\PravidloLogicke.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\Predpoklad.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\Predpoklad.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\Pripad.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\Pripad.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\Texty_cz.Designer.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\Texty_cz.Designer.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\Texty_en.Designer.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\Texty_en.Designer.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\Vyraz.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\Vyraz.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\Vyrok.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\Vyrok.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\VyrokNumeric.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\VyrokNumeric.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\Zaver.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\Zaver.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\Zdroj.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\Zdroj.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\ZdrojCBR.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\ZdrojCBR.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\ZdrojDotaz.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\ZdrojDotaz.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\ZdrojImplicitniVaha.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\ZdrojImplicitniVaha.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\ZdrojOdvozovani.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\ZdrojOdvozovani.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\ZdrojVypocet.vb" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\ZdrojVypocet.vb">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\Texty_cz.resx" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\Texty_cz.resx">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="Classes\Texty_en.resx" Description="File successfully backed up as D:\vlada\Projekty\NEST\NestBase\Backup\Classes\Texty_en.resx">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="NestBase.vbproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="NestBase" Source="NestBase.vbproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="NestBase.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="NestBase.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="NestBase" Source="NestBase.vbproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

@@ -1,0 +1,10 @@
+E:\vlada\Projekty\Nest\NestBase\bin\NestBase.dll
+E:\vlada\Projekty\Nest\NestBase\bin\NestBase.pdb
+E:\vlada\Projekty\Nest\NestBase\bin\NestBase.xml
+E:\vlada\Projekty\Nest\NestBase\obj\Debug\ResolveAssemblyReference.cache
+E:\vlada\Projekty\Nest\NestBase\obj\Debug\NestBase.Texty_cz.resources
+E:\vlada\Projekty\Nest\NestBase\obj\Debug\NestBase.Texty_en.resources
+E:\vlada\Projekty\Nest\NestBase\obj\Debug\NestBase.vbproj.GenerateResource.Cache
+E:\vlada\Projekty\Nest\NestBase\obj\Debug\NestBase.dll
+E:\vlada\Projekty\Nest\NestBase\obj\Debug\NestBase.xml
+E:\vlada\Projekty\Nest\NestBase\obj\Debug\NestBase.pdb

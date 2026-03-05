@@ -1,0 +1,16 @@
+bin\NestBase.dll
+bin\NestBase.xml
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\NestBase.dll
+obj\Debug\NestBase.xml
+obj\Debug\NestBase.pdb
+obj\Release\ResolveAssemblyReference.cache
+obj\Release\NestBase.dll
+obj\Release\NestBase.xml
+obj\Release\NestBase.Texty_cz.resources
+obj\Release\NestBase.Texty_en.resources
+obj\Release\NestBase.vbproj.GenerateResource.Cache
+obj\Debug\NestBase.Texty_cz.resources
+obj\Debug\NestBase.Texty_en.resources
+obj\Debug\NestBase.vbproj.GenerateResource.Cache
+bin\NestBase.pdb

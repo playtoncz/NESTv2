@@ -1,0 +1,16 @@
+D:\vlada\Projekty\NEST\NestBase\bin\NestBase.dll
+D:\vlada\Projekty\NEST\NestBase\bin\NestBase.xml
+D:\vlada\Projekty\NEST\NestBase\obj\Release\ResolveAssemblyReference.cache
+D:\vlada\Projekty\NEST\NestBase\obj\Release\NestBase.Texty_cz.resources
+D:\vlada\Projekty\NEST\NestBase\obj\Release\NestBase.Texty_en.resources
+D:\vlada\Projekty\NEST\NestBase\obj\Release\NestBase.vbproj.GenerateResource.Cache
+D:\vlada\Projekty\NEST\NestBase\obj\Release\NestBase.dll
+D:\vlada\Projekty\NEST\NestBase\obj\Release\NestBase.xml
+c:\Vlada\Projekty\NEST\NestBase\bin\NestBase.dll
+c:\Vlada\Projekty\NEST\NestBase\bin\NestBase.xml
+c:\Vlada\Projekty\NEST\NestBase\obj\Release\ResolveAssemblyReference.cache
+c:\Vlada\Projekty\NEST\NestBase\obj\Release\NestBase.Texty_cz.resources
+c:\Vlada\Projekty\NEST\NestBase\obj\Release\NestBase.Texty_en.resources
+c:\Vlada\Projekty\NEST\NestBase\obj\Release\NestBase.vbproj.GenerateResource.Cache
+c:\Vlada\Projekty\NEST\NestBase\obj\Release\NestBase.dll
+c:\Vlada\Projekty\NEST\NestBase\obj\Release\NestBase.xml
