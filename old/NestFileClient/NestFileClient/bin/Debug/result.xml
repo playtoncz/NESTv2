@@ -1,0 +1,13 @@
+<error>Klient zjistil pole Content-type odpovědi text/html; charset=UTF-8, ale bylo očekáváno pole text/xml.
+Požadavek se nezdařil s chybovou zprávou:
+--
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN"
+   "http://www.w3.org/TR/html4/frameset.dtd">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>Doména je zaregistrovaná</TITLE>
+</HEAD>
+Doména je zaregistrovaná, jej obsah sa pripravuje.
+</HTML>
+--.</error>

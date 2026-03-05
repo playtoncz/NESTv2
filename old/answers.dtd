@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="windows-1250"?>
+<!ELEMENT answers (case_description?, attribute*)>
+ <!ELEMENT attribute (id, type, answer*)>
+  <!ELEMENT answer (value?, weight?)>
+  
+<!ELEMENT case_description (#PCDATA)> <!-- string -->
+<!ELEMENT id (#PCDATA)> <!-- string -->
+<!ELEMENT type (#PCDATA)> <!-- binary | single | multiple | numeric -->
+<!ELEMENT value (#PCDATA)> <!-- string or number (numeric) -->
+<!ELEMENT weight  (#PCDATA)> <!-- number or "unknown"-->

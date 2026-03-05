@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "NestWS", "http://localhost/NestWS/NestWS.vbproj", "{9F2F3FE0-E748-4A66-8019-D89B8141D379}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{9F2F3FE0-E748-4A66-8019-D89B8141D379}.Debug.ActiveCfg = Debug|.NET
+		{9F2F3FE0-E748-4A66-8019-D89B8141D379}.Debug.Build.0 = Debug|.NET
+		{9F2F3FE0-E748-4A66-8019-D89B8141D379}.Release.ActiveCfg = Release|.NET
+		{9F2F3FE0-E748-4A66-8019-D89B8141D379}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

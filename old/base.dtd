@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="windows-1250"?>
+<!ELEMENT base (global, attributes, contexts?, rules?, integrity_constraints?, system_info?)>
+<!ELEMENT global (description?, expert?, knowledge_engineer?, date?, inference_mechanism, weight_range, 
+                 default_weight, global_priority, context_global_threshold, condition_global_threshold)>
+<!ELEMENT attributes (attribute*)>
+  <!ELEMENT attribute (id, name?, type, scope?, id_context?, context_threshold?, legal_values?, sources?,
+                      comment?, actions?, propositions?)>
+    <!ELEMENT legal_values ((lower_bound?, upper_bound?)|(value+))>
+    <!ELEMENT sources (source+)>
+     <!ELEMENT source (source_type, source_file?, source_file_delete?, function?, parameters?, calculation?, default_weight?)>
+      <!ELEMENT calculation (expression+)>
+       <!ELEMENT expression (entry1, entry2, operand)>
+    <!ELEMENT actions (action+)>
+      <!ELEMENT action (function, parameters?, action_threshold?)>
+    <!ELEMENT propositions (proposition+)>
+      <!ELEMENT proposition (id, name?, weight_function?, comment?, actions?)>
+        <!ELEMENT weight_function ((weight_value+)|(fuzzy_lower_bound, crisp_lower_bound, crisp_upper_bound, fuzzy_upper_bound))>
+          <!ELEMENT weight_value (name, weight)>
+<!ELEMENT contexts (context*)>
+  <!ELEMENT context (id, comment?, condition)>
+    <!ELEMENT condition (conjunction+)>
+      <!ELEMENT conjunction (literal+)>
+        <!ELEMENT literal (id_attribute, id_proposition?, negation)>
+<!ELEMENT rules (apriori_rules?, logical_rules?, compositional_rules?)>
+  <!ELEMENT apriori_rules (apriori_rule*)>
+    <!ELEMENT apriori_rule (id, priority?, conclusions, comment?, actions?)>
+      <!ELEMENT conclusions (conclusion+)>
+        <!ELEMENT conclusion (id_attribute, id_proposition?, negation, weight?)>
+  <!ELEMENT logical_rules (logical_rule*)>
+    <!ELEMENT logical_rule (id, priority?, id_context?, context_threshold?, condition_threshold?, condition, conclusions, comment?, actions?)>
+  <!ELEMENT compositional_rules (compositional_rule*)>
+    <!ELEMENT compositional_rule (id, priority?, id_context?, context_threshold?, condition_threshold?, condition, conclusions, comment?, actions?)>
+  <!ELEMENT integrity_constraints (integrity_constraint*)>
+    <!ELEMENT integrity_constraint (id, name?, id_context?, context_threshold?, condition, conclusions, comment?)>
+  
+<!ELEMENT action_threshold (#PCDATA)> <!-- number -->
+<!ELEMENT comment (#PCDATA)> <!-- string -->
+<!ELEMENT condition_global_threshold (#PCDATA)> <!-- number -->
+<!ELEMENT condition_threshold (#PCDATA)> <!-- number -->
+<!ELEMENT context_global_threshold (#PCDATA)> <!-- number -->
+<!ELEMENT context_threshold (#PCDATA)> <!-- number -->
+<!ELEMENT crisp_lower_bound (#PCDATA)> <!-- number -->
+<!ELEMENT crisp_upper_bound (#PCDATA)> <!-- number -->
+<!ELEMENT date (#PCDATA)>  <!-- date -->
+<!ELEMENT default_weight (#PCDATA)> <!-- unknown | irrelevant -->
+<!ELEMENT description (#PCDATA)> <!-- string -->
+<!ELEMENT entry1 (#PCDATA)> <!-- string -->
+<!ELEMENT entry2 (#PCDATA)> <!-- string -->
+<!ELEMENT expert (#PCDATA)> <!-- string -->
+<!ELEMENT function (#PCDATA)> <!-- exe file with function -->
+<!ELEMENT fuzzy_lower_bound (#PCDATA)> <!-- number -->
+<!ELEMENT fuzzy_upper_bound (#PCDATA)> <!--number -->
+<!ELEMENT global_priority (#PCDATA)> <!-- first | last | minlength | maxlength | user -->
+<!ELEMENT id (#PCDATA)> <!-- string -->
+<!ELEMENT id_attribute (#PCDATA)> <!-- string -->
+<!ELEMENT id_context (#PCDATA)> <!-- string -->
+<!ELEMENT id_proposition (#PCDATA)> <!-- string -->
+<!ELEMENT inference_mechanism (#PCDATA)> <!-- standard | logical | neuronal | hybrid -->
+<!ELEMENT knowledge_engineer (#PCDATA)> <!-- string -->
+<!ELEMENT lower_bound (#PCDATA)> <!-- number -->
+<!ELEMENT name (#PCDATA)> <!-- string -->
+<!ELEMENT negation (#PCDATA)> <!-- -1 : true, 0 : false -->
+<!ELEMENT operand (#PCDATA)> <!-- 1 | 2 | 3| 4 -->
+<!ELEMENT parameters (#PCDATA)> <!-- string -->
+<!ELEMENT priority (#PCDATA)> <!-- number from <0;1> -->
+<!ELEMENT scope (#PCDATA)> <!-- case | environment -->
+<!ELEMENT source_file (#PCDATA)> <!-- string -->
+<!ELEMENT source_file_delete (#PCDATA)> <!-- boolean (0;1) -->
+<!ELEMENT source_type (#PCDATA)> <!-- infer | user | external_file | external_function | calc | default_weight -->
+<!ELEMENT source_weight (#PCDATA)> <!-- weight -->
+<!ELEMENT type (#PCDATA)> <!-- binary | single | multiple | numeric -->
+<!ELEMENT upper_bound (#PCDATA)> <!-- number -->
+<!ELEMENT value (#PCDATA)> <!-- string -->
+<!ELEMENT weight (#PCDATA)> <!-- number -->
+<!ELEMENT weight_range (#PCDATA)> <!-- number -->
+
+
+
+<!ELEMENT system_info (nest:options?)> 
+<!ELEMENT nest:options (nest:version?)>
+  <!ATTLIST nest:options xmlns:nest CDATA #FIXED "http://lisp.vse.cz/NEST">
+<!ELEMENT nest:version (#PCDATA)> <!-- string -->
+
+<!-- version: 1.3.0 -->

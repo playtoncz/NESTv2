@@ -1,0 +1,1312 @@
+<?xml version="1.0" encoding="windows-1250"?>
+<!DOCTYPE base SYSTEM "base.dtd">
+<base>
+
+<!--******************** Global properties ********************-->
+
+ <global>
+  <expert>Veronika Skočdopolová</expert>
+  <date>10.11.2006</date>
+  <inference_mechanism>standard</inference_mechanism>
+  <weight_range>1</weight_range>
+  <default_weight>irrelevant</default_weight>
+  <global_priority>first</global_priority>
+  <context_global_threshold>0,000</context_global_threshold>
+  <condition_global_threshold>0,900</condition_global_threshold>
+ </global>
+
+<!--******************** Attributes and propositions ********************-->
+
+ <attributes>
+
+  <attribute>
+   <id>zadatel</id>
+   <name>Žadatel</name>
+   <type>multiple</type>
+   <comment>Vyberte typ žadatele</comment>
+   <propositions>
+    <proposition>
+     <id>jednotlivec</id>
+     <name>Jednotlivec</name>
+    </proposition>
+    <proposition>
+     <id>neziskovka</id>
+     <name>Nezisková organizace</name>
+    </proposition>
+    <proposition>
+     <id>VPA</id>
+     <name>Veřejně prospěšná akce</name>
+     <comment>Obchodní organizace pořádající veřejně prospěšnou akci</comment>
+    </proposition>
+    <proposition>
+     <id>nic</id>
+     <name>Žádná z možností</name>
+     <comment>Ani jedna z nabízených možností</comment>
+    </proposition>
+   </propositions>
+  </attribute>
+
+  <attribute>
+   <id>zdrav_post</id>
+   <name>Zdravotně postižený</name>
+   <type>binary</type>
+   <comment>Je žadatel zdravotně postižený?</comment>
+  </attribute>
+
+  <attribute>
+   <id>opr_zad</id>
+   <name>Oprávněný žadatel</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>pred_spol</id>
+   <name>Předchozí spolupráce</name>
+   <type>binary</type>
+   <comment>Spolupracovalo již někdy HP s žadatelem?</comment>
+  </attribute>
+
+  <attribute>
+   <id>PA1</id>
+   <name>Pomocný1</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>pul_rok</id>
+   <name>Během půl roku</name>
+   <type>binary</type>
+   <comment>Proběhla spolupráce během posledního půl roku?</comment>
+  </attribute>
+
+  <attribute>
+   <id>posl_rok</id>
+   <name>Během roku</name>
+   <type>binary</type>
+   <comment>Proběhla spolupráce během posledního roku?</comment>
+  </attribute>
+
+  <attribute>
+   <id>PA5</id>
+   <name>Pomocný5</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>kolik</id>
+   <name>Kolik?</name>
+   <type>binary</type>
+   <comment>Byl předchozí dar v hodnotě do 5000,-Kč?</comment>
+  </attribute>
+
+  <attribute>
+   <id>PA3</id>
+   <name>Pomocný3</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>pozadavek2</id>
+   <name>Požadavek</name>
+   <type>multiple</type>
+   <comment>Má žadatel zájem o hmotný nebo finanční dar2?</comment>
+   <propositions>
+    <proposition>
+     <id>hmotny2</id>
+     <name>Hmotný</name>
+    </proposition>
+    <proposition>
+     <id>financni2</id>
+     <name>Finanční</name>
+    </proposition>
+   </propositions>
+  </attribute>
+
+  <attribute>
+   <id>do5_2</id>
+   <name>Do 5000,-</name>
+   <type>binary</type>
+   <comment>Je požadavek na finanční dar do 5 000,- Kč</comment>
+  </attribute>
+
+  <attribute>
+   <id>obor_cin</id>
+   <name>Obor činnosti</name>
+   <type>binary</type>
+   <comment>Působí žadatel v oblasti práce s dětmi, mládeží, zdravotně postiženými, s menšinami, se sociálně slabými, ve sportu nebo v obalsti zlepšení životního prostředí?</comment>
+  </attribute>
+
+  <attribute>
+   <id>PA4</id>
+   <name>Pomocný4</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>pozadavek1</id>
+   <name>Požadavek</name>
+   <type>multiple</type>
+   <comment>Má žadatel zájem o hmotný nebo finanční dar1?</comment>
+   <propositions>
+    <proposition>
+     <id>hmotny1</id>
+     <name>Hmotný</name>
+    </proposition>
+    <proposition>
+     <id>financni1</id>
+     <name>Finanční</name>
+    </proposition>
+   </propositions>
+  </attribute>
+
+  <attribute>
+   <id>do5_1</id>
+   <name>Do 5000,-</name>
+   <type>binary</type>
+   <comment>Je požadavek na finanční dar do 5 000,- Kč</comment>
+  </attribute>
+
+  <attribute>
+   <id>do10</id>
+   <name>Do 10000,-</name>
+   <type>binary</type>
+   <comment>Je požadavek na finanční dar do 10 000,- Kč</comment>
+  </attribute>
+
+  <attribute>
+   <id>fin_dar</id>
+   <name>Finanční dar</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>hmot_dar</id>
+   <name>Hmotný dar</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>indiv_pos</id>
+   <name>Individuální posouzení</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>zamitnout</id>
+   <name>Zamítnout</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>tiskarna</id>
+   <name>Tiskárna</name>
+   <type>multiple</type>
+   <comment>O jaký typ tiskárny má žadatel zájem?</comment>
+   <propositions>
+    <proposition>
+     <id>multif</id>
+     <name>multifunkční zařízení</name>
+    </proposition>
+    <proposition>
+     <id>foto</id>
+     <name>fototiskárna</name>
+    </proposition>
+    <proposition>
+     <id>laser</id>
+     <name>černobílá laserová</name>
+    </proposition>
+    <proposition>
+     <id>ink</id>
+     <name>inkoustová</name>
+    </proposition>
+   </propositions>
+  </attribute>
+
+  <attribute>
+   <id>HD</id>
+   <name>Hmotný dar</name>
+   <type>multiple</type>
+   <comment>O jaký hmotný dar má žadatel zájem?</comment>
+   <propositions>
+    <proposition>
+     <id>printer</id>
+     <name>Tiskárna</name>
+    </proposition>
+    <proposition>
+     <id>PC</id>
+     <name>PC, notebook</name>
+    </proposition>
+    <proposition>
+     <id>photo</id>
+     <name>fotoaparát</name>
+    </proposition>
+   </propositions>
+  </attribute>
+
+  <attribute>
+   <id>DJ_F380</id>
+   <name>DeskJet F380</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>OJ5610</id>
+   <name>OfficeJet 5610</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>LJ1020</id>
+   <name>LaserJet 1020</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>PS385</id>
+   <name>Photosmart 385</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>DJ5940</id>
+   <name>DeskJet 5940</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>PS_M525</id>
+   <name>Photosmart M525</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>PA6</id>
+   <name>Pomocný 6</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>fax</id>
+   <type>binary</type>
+   <comment>Má žadatel zájem o multifunkční zařízení s faxem?</comment>
+  </attribute>
+
+  <attribute>
+   <id>fin_pris</id>
+   <name>Finanční příspěvek</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>PA7</id>
+   <name>Pomocný</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>PA2</id>
+   <name>Pomocný 2</name>
+   <type>binary</type>
+  </attribute>
+ </attributes>
+
+<!--******************** Contexts ********************-->
+
+ <contexts>
+
+  <context>
+   <id>K_ZP_jednotlivec</id>
+   <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>zadatel</id_attribute>
+      <id_proposition>jednotlivec</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+   </condition>
+  </context>
+
+  <context>
+   <id>K_opr_zad</id>
+   <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>opr_zad</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+   </condition>
+  </context>
+
+  <context>
+   <id>K_not_pred_spol</id>
+   <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>pred_spol</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+   </condition>
+  </context>
+
+  <context>
+   <id>K_PA1</id>
+   <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>PA1</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+   </condition>
+  </context>
+
+  <context>
+   <id>K_PA5</id>
+   <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>PA5</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+   </condition>
+  </context>
+
+  <context>
+   <id>K_PA4</id>
+   <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>PA4</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+   </condition>
+  </context>
+
+  <context>
+   <id>K_PA3</id>
+   <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>PA3</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+   </condition>
+  </context>
+
+  <context>
+   <id>K_PA3&amp;poz2</id>
+   <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>PA3</id_attribute>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>pozadavek2</id_attribute>
+      <id_proposition>financni2</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+   </condition>
+  </context>
+
+  <context>
+   <id>K_multif</id>
+   <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>hmot_dar</id_attribute>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>tiskarna</id_attribute>
+      <id_proposition>multif</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+   </condition>
+  </context>
+
+  <context>
+   <id>K_hmot_dar</id>
+   <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>hmot_dar</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+   </condition>
+  </context>
+
+  <context>
+   <id>K_PA1&amp;posl_rok</id>
+   <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>PA1</id_attribute>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>posl_rok</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+   </condition>
+  </context>
+
+  <context>
+   <id>K_PA7</id>
+   <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>PA7</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+   </condition>
+  </context>
+
+  <context>
+   <id>K_PA2</id>
+   <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>PA2</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+   </condition>
+  </context>
+ </contexts>
+
+<!--******************** Rules ********************-->
+
+ <rules>
+
+<!--******************** Apriori rules ********************-->
+
+  <apriori_rules>
+  </apriori_rules>
+
+<!--******************** Logical rules ********************-->
+
+  <logical_rules>
+
+   <logical_rule>
+    <id>zamit_nic</id>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>zadatel</id_attribute>
+      <id_proposition>nic</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>zamitnout</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>P_opr_zad</id>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>zadatel</id_attribute>
+      <id_proposition>jednotlivec</id_proposition>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>zdrav_post</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>zadatel</id_attribute>
+      <id_proposition>neziskovka</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>zadatel</id_attribute>
+      <id_proposition>VPA</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>opr_zad</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>not_zdr_pos</id>
+    <id_context>K_ZP_jednotlivec</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>zdrav_post</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>zamitnout</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>not_opr_zad</id>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>opr_zad</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>zamitnout</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>PA_1</id>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>opr_zad</id_attribute>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>pred_spol</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>PA1</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>pul_roku</id>
+    <id_context>K_PA1</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>pul_rok</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>zamitnout</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>PA_5</id>
+    <id_context>K_PA1</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>PA1</id_attribute>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>pul_rok</id_attribute>
+      <negation>1</negation>
+     </literal>
+     <literal>
+      <id_attribute>posl_rok</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>PA5</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>PA_3</id>
+    <id_context>K_PA1&amp;posl_rok</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>kolik</id_attribute>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>PA2</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>PA3</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>not_kolik</id>
+    <id_context>K_PA2</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>kolik</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>zamitnout</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>PA_4</id>
+    <id_context>K_opr_zad</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>pred_spol</id_attribute>
+      <negation>1</negation>
+     </literal>
+     <literal>
+      <id_attribute>obor_cin</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>PA4</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>not_obor_cin</id>
+    <id_context>K_not_pred_spol</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>obor_cin</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>zamitnout</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>financni_1</id>
+    <id_context>K_PA5</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>pozadavek1</id_attribute>
+      <id_proposition>financni1</id_proposition>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>do5_1</id_attribute>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>PA5</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>fin_dar</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>financni_2</id>
+    <id_context>K_PA4</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>PA4</id_attribute>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>pozadavek1</id_attribute>
+      <id_proposition>financni1</id_proposition>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>do5_1</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>fin_dar</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>indiv_pos1</id>
+    <id_context>K_PA3</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>pozadavek2</id_attribute>
+      <id_proposition>financni2</id_proposition>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>do5_2</id_attribute>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>PA3</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>indiv_pos</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>indiv_pos2</id>
+    <id_context>K_PA7</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>do10</id_attribute>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>PA7</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>indiv_pos</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>indiv_pos3</id>
+    <id_context>K_PA4</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>PA4</id_attribute>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>pozadavek1</id_attribute>
+      <id_proposition>financni1</id_proposition>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>do5_1</id_attribute>
+      <negation>1</negation>
+     </literal>
+     <literal>
+      <id_attribute>do10</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>indiv_pos</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>not_do10</id>
+    <id_context>K_PA7</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>do10</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>zamitnout</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>P_hmotny1</id>
+    <id_context>K_PA3</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>pozadavek2</id_attribute>
+      <id_proposition>hmotny2</id_proposition>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>PA3</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>hmot_dar</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>P_hmotny2</id>
+    <id_context>K_PA5</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>pozadavek1</id_attribute>
+      <id_proposition>hmotny1</id_proposition>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>PA5</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>hmot_dar</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>P_hmotny3</id>
+    <id_context>K_PA4</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>pozadavek1</id_attribute>
+      <id_proposition>hmotny1</id_proposition>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>PA4</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>hmot_dar</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>not_do5_2</id>
+    <id_context>K_PA3&amp;poz2</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>do5_2</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>zamitnout</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>P_fotak</id>
+    <id_context>K_hmot_dar</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>HD</id_attribute>
+      <id_proposition>photo</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>PS_M525</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>P_laser</id>
+    <id_context>K_hmot_dar</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>HD</id_attribute>
+      <id_proposition>printer</id_proposition>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>tiskarna</id_attribute>
+      <id_proposition>laser</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>LJ1020</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>P_foto</id>
+    <id_context>K_hmot_dar</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>HD</id_attribute>
+      <id_proposition>printer</id_proposition>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>tiskarna</id_attribute>
+      <id_proposition>foto</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>PS385</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>P_ink</id>
+    <id_context>K_hmot_dar</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>HD</id_attribute>
+      <id_proposition>printer</id_proposition>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>tiskarna</id_attribute>
+      <id_proposition>ink</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>DJ5940</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>P_multif</id>
+    <id_context>K_hmot_dar</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>HD</id_attribute>
+      <id_proposition>printer</id_proposition>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>tiskarna</id_attribute>
+      <id_proposition>multif</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>PA6</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>P_fax</id>
+    <id_context>K_multif</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>PA6</id_attribute>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>fax</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>OJ5610</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>P_not_fax</id>
+    <id_context>K_multif</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>PA6</id_attribute>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>fax</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>DJ_F380</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>P_zamit</id>
+    <id_context>K_hmot_dar</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>HD</id_attribute>
+      <id_proposition>PC</id_proposition>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>fin_pris</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>zamitnout</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>financni_3</id>
+    <id_context>K_hmot_dar</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>HD</id_attribute>
+      <id_proposition>PC</id_proposition>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>fin_pris</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>fin_dar</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>PA_7</id>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>PA5</id_attribute>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>pozadavek1</id_attribute>
+      <id_proposition>financni1</id_proposition>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>do5_1</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>PA7</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>PA_2</id>
+    <id_context>K_PA2</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>PA1</id_attribute>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>pul_rok</id_attribute>
+      <negation>1</negation>
+     </literal>
+     <literal>
+      <id_attribute>posl_rok</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>PA2</id_attribute>
+      <negation>0</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+  </logical_rules>
+
+<!--******************** Compositional rules ********************-->
+
+  <compositional_rules>
+  </compositional_rules>
+ </rules>
+
+<!--******************** Integrity constraints ********************-->
+
+ <integrity_constraints>
+ </integrity_constraints>
+ <system_info>
+  <nest:options xmlns:nest="http://lisp.vse.cz/NEST">
+   <nest:version>2.0.3</nest:version>
+  </nest:options>
+ </system_info>
+</base>

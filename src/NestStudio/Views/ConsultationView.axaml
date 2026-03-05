@@ -1,0 +1,22 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="NestStudio.Views.ConsultationView">
+  <Grid RowDefinitions="Auto,Auto,*" ColumnDefinitions="*">
+    <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="12" Margin="0,0,0,12">
+      <Button x:Name="BackButton" Content="← Zpět" />
+      <TextBlock x:Name="TitleText" Text="Konzultace" VerticalAlignment="Center" FontWeight="SemiBold" />
+    </StackPanel>
+    <ScrollViewer Grid.Row="1" MaxHeight="280" Margin="0,0,0,12">
+      <StackPanel x:Name="QuestionnairePanel" Spacing="8" />
+    </ScrollViewer>
+    <Grid Grid.Row="2" RowDefinitions="Auto,*">
+      <StackPanel Orientation="Horizontal" Spacing="8" Margin="0,0,0,8">
+        <Button x:Name="RunButton" Content="Spustit inference" Classes="primary" />
+        <Button x:Name="ExportResultButton" Content="Export výsledku (XML)" IsEnabled="False" />
+      </StackPanel>
+      <ScrollViewer Grid.Row="1">
+        <StackPanel x:Name="ResultsPanel" Spacing="4" />
+      </ScrollViewer>
+    </Grid>
+  </Grid>
+</UserControl>

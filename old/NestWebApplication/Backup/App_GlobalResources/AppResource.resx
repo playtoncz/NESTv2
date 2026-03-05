@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Atributy" xml:space="preserve">
+    <value>Attributes</value>
+  </data>
+  <data name="bazeZnalostiDostupneNaServeru" xml:space="preserve">
+    <value>Knowladge bases on server</value>
+  </data>
+  <data name="dalsiNastaveni" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="datumVytvoreni" xml:space="preserve">
+    <value>date</value>
+  </data>
+  <data name="dialog" xml:space="preserve">
+    <value>dialog</value>
+  </data>
+  <data name="DolniMez" xml:space="preserve">
+    <value>Lower limit</value>
+  </data>
+  <data name="dotaznik" xml:space="preserve">
+    <value>questionnaire</value>
+  </data>
+  <data name="expert" xml:space="preserve">
+    <value>expert</value>
+  </data>
+  <data name="GlobalniParametry" xml:space="preserve">
+    <value>Global properties</value>
+  </data>
+  <data name="HodnotaJeMimoRozsah" xml:space="preserve">
+    <value>Value is out of range!</value>
+  </data>
+  <data name="HodnotaNeexistuje" xml:space="preserve">
+    <value>Value doesn`t exist!</value>
+  </data>
+  <data name="HodnotuSeNepodariloNacist" xml:space="preserve">
+    <value>Value cant`t be read!</value>
+  </data>
+  <data name="HorniMez" xml:space="preserve">
+    <value>Upper limit</value>
+  </data>
+  <data name="informaceOBaziZnalosti" xml:space="preserve">
+    <value>Information about knowladge base</value>
+  </data>
+  <data name="IntegritniOmezeni" xml:space="preserve">
+    <value>Integrity constraints</value>
+  </data>
+  <data name="Irelevantni" xml:space="preserve">
+    <value>Irrelevant</value>
+  </data>
+  <data name="jazyk" xml:space="preserve">
+    <value>Česky</value>
+  </data>
+  <data name="JisteAno" xml:space="preserve">
+    <value>Certainly yes</value>
+  </data>
+  <data name="JisteNe" xml:space="preserve">
+    <value>Certainly no</value>
+  </data>
+  <data name="Kontexty" xml:space="preserve">
+    <value>Contexts</value>
+  </data>
+  <data name="kontrolaBZ" xml:space="preserve">
+    <value>Check knowladge base</value>
+  </data>
+  <data name="Konzultuj" xml:space="preserve">
+    <value>Consult</value>
+  </data>
+  <data name="menu_kontrolaBZ" xml:space="preserve">
+    <value>Check KB</value>
+  </data>
+  <data name="menu_konzultace" xml:space="preserve">
+    <value>Consultation</value>
+  </data>
+  <data name="menu_novaKonzultace" xml:space="preserve">
+    <value>New consultation</value>
+  </data>
+  <data name="menu_odstranitNahranouBZ" xml:space="preserve">
+    <value>Remove actual base</value>
+  </data>
+  <data name="menu_pokracovatVKonzultaci" xml:space="preserve">
+    <value>Continue to consult</value>
+  </data>
+  <data name="menu_statistiky" xml:space="preserve">
+    <value>Statistics</value>
+  </data>
+  <data name="menu_vypisBZ" xml:space="preserve">
+    <value>Knowladge base</value>
+  </data>
+  <data name="menu_vypisZdrojovehoKodu" xml:space="preserve">
+    <value>Surce code</value>
+  </data>
+  <data name="NacistOdpovediZeSouboru" xml:space="preserve">
+    <value>Load answers from file:</value>
+  </data>
+  <data name="Nahraj" xml:space="preserve">
+    <value>Load</value>
+  </data>
+  <data name="Navigace" xml:space="preserve">
+    <value>Navigation</value>
+  </data>
+  <data name="Nevim" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="Odeslat" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="popis" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="PorusenaIntOm" xml:space="preserve">
+    <value>En - Byla porušena tato integritní omezení</value>
+  </data>
+  <data name="Pravidla" xml:space="preserve">
+    <value>Rules</value>
+  </data>
+  <data name="Pridej" xml:space="preserve">
+    <value>Add to loaded KB</value>
+  </data>
+  <data name="rezimKonzultace" xml:space="preserve">
+    <value>Answering mode</value>
+  </data>
+  <data name="RozsahVah" xml:space="preserve">
+    <value>Weight range</value>
+  </data>
+  <data name="SetriditDle" xml:space="preserve">
+    <value>Sort by</value>
+  </data>
+  <data name="SetriditDleJmena" xml:space="preserve">
+    <value>name</value>
+  </data>
+  <data name="SetriditDleMaximalniVahy" xml:space="preserve">
+    <value>maximal weight</value>
+  </data>
+  <data name="SetriditDleMinimalniVahy" xml:space="preserve">
+    <value>minimal weight</value>
+  </data>
+  <data name="upravit" xml:space="preserve">
+    <value>change</value>
+  </data>
+  <data name="UpravitOdpovedi" xml:space="preserve">
+    <value>Change answers</value>
+  </data>
+  <data name="VahaJeMimoRozsah" xml:space="preserve">
+    <value>Weight is out of range!</value>
+  </data>
+  <data name="VahuSeNepodariloNacist" xml:space="preserve">
+    <value>Weight cant`t be read!</value>
+  </data>
+  <data name="vlastniBazeZnalosti" xml:space="preserve">
+    <value>Your knowladge base</value>
+  </data>
+  <data name="VsechnyVyroky" xml:space="preserve">
+    <value>All propositions</value>
+  </data>
+  <data name="vyberteBaziZnalosti" xml:space="preserve">
+    <value>Choose knowladge base</value>
+  </data>
+  <data name="vyberteSkladPripadu" xml:space="preserve">
+    <value>vyberteSkladPripadu</value>
+  </data>
+  <data name="VypisBazeZnalosti" xml:space="preserve">
+    <value>List of knowladge base</value>
+  </data>
+  <data name="VypisZdrojovehoKodu" xml:space="preserve">
+    <value>Source code</value>
+  </data>
+  <data name="Vysledky" xml:space="preserve">
+    <value>Results</value>
+  </data>
+  <data name="Zkontroluj" xml:space="preserve">
+    <value>Check</value>
+  </data>
+  <data name="znalostniInzenyr" xml:space="preserve">
+    <value>Knowladge engineer</value>
+  </data>
+  <data name="PripadoveUsuzovani" xml:space="preserve">
+    <value>Case base reasoning</value>
+  </data>
+  <data name="SkladPripaduLoaded" xml:space="preserve">
+    <value>Storage of cases loaded</value>
+  </data>
+  <data name="Pripad" xml:space="preserve">
+    <value>Case</value>
+  </data>
+  <data name="Pripady" xml:space="preserve">
+    <value>Cases</value>
+  </data>
+  <data name="Vzdalenost" xml:space="preserve">
+    <value>Distance</value>
+  </data>
+  <data name="dotaznikSDialogem" xml:space="preserve">
+    <value>questionnaire with dialog</value>
+  </data>
+  <data name="menu_vypisCBR" xml:space="preserve">
+    <value>List of cases</value>
+  </data>
+</root>

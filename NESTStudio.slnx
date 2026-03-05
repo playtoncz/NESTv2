@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/NestCore/NestCore.csproj" />
+    <Project Path="src/NestFormat/NestFormat.csproj" />
+    <Project Path="src/NestStudio/NestStudio.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/NestCore.Tests/NestCore.Tests.csproj" />
+    <Project Path="tests/NestFormat.Tests/NestFormat.Tests.csproj" />
+  </Folder>
+</Solution>

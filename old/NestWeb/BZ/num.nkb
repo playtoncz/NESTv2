@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="windows-1250"?>
+<!DOCTYPE base SYSTEM "base.dtd">
+<base>
+
+<!--******************** Global properties ********************-->
+
+ <global>
+  <date>26.12.2006</date>
+  <inference_mechanism>standard</inference_mechanism>
+  <weight_range>1</weight_range>
+  <default_weight>irrelevant</default_weight>
+  <global_priority>first</global_priority>
+  <context_global_threshold>0,000</context_global_threshold>
+  <condition_global_threshold>0,900</condition_global_threshold>
+ </global>
+
+<!--******************** Attributes and propositions ********************-->
+
+ <attributes>
+
+  <attribute>
+   <id>A</id>
+   <name></name>
+   <type>numeric</type>
+  </attribute>
+
+  <attribute>
+   <id>B</id>
+   <name></name>
+   <type>numeric</type>
+  </attribute>
+
+  <attribute>
+   <id>C</id>
+   <name></name>
+   <type>numeric</type>
+   <sources>
+    <source>
+     <source_type>calculation</source_type>
+     <calculation>
+      <expression>
+       <entry1>aA</entry1>
+       <entry2>aB</entry2>
+       <operand>1</operand>
+      </expression>
+     </calculation>
+    </source>
+   </sources>
+   <propositions>
+    <proposition>
+     <id>cc</id>
+     <name></name>
+     <weight_function>
+      <fuzzy_lower_bound>0,000</fuzzy_lower_bound>
+      <crisp_lower_bound>0,000</crisp_lower_bound>
+      <crisp_upper_bound>100,000</crisp_upper_bound>
+      <fuzzy_upper_bound>100,000</fuzzy_upper_bound>
+     </weight_function>
+    </proposition>
+   </propositions>
+  </attribute>
+
+  <attribute>
+   <id>d</id>
+   <name></name>
+   <type>binary</type>
+  </attribute>
+ </attributes>
+
+<!--******************** Contexts ********************-->
+
+ <contexts>
+ </contexts>
+
+<!--******************** Rules ********************-->
+
+ <rules>
+
+<!--******************** Apriori rules ********************-->
+
+  <apriori_rules>
+  </apriori_rules>
+
+<!--******************** Logical rules ********************-->
+
+  <logical_rules>
+  </logical_rules>
+
+<!--******************** Compositional rules ********************-->
+
+  <compositional_rules>
+
+   <compositional_rule>
+    <id>New_rule</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>C</id_attribute>
+      <id_proposition>cc</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>d</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+  </compositional_rules>
+ </rules>
+
+<!--******************** Integrity constraints ********************-->
+
+ <integrity_constraints>
+ </integrity_constraints>
+ <system_info>
+  <nest:options xmlns:nest="http://lisp.vse.cz/NEST">
+   <nest:version>2.0.4</nest:version>
+  </nest:options>
+ </system_info>
+</base>

@@ -1,0 +1,240 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9BCE49BA-D6D0-43D5-9078-0394CCB8381D}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>NestBase</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyMode>None</AssemblyOriginatorKeyMode>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionStrict>Off</OptionStrict>
+    <RootNamespace>NestBase</RootNamespace>
+    <StartupObject>NestBase.%28None%29</StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <MyType>Windows</MyType>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>NestBase.xml</DocumentationFile>
+    <BaseAddress>285212672</BaseAddress>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>
+    </DefineConstants>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>1</WarningLevel>
+    <NoWarn>42016,42017,42018,42019,42032</NoWarn>
+    <DebugType>full</DebugType>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>NestBase.xml</DocumentationFile>
+    <BaseAddress>285212672</BaseAddress>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>
+    </DefineConstants>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>1</WarningLevel>
+    <NoWarn>42016,42017,42018,42019,42032</NoWarn>
+    <DebugType>none</DebugType>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Atribut.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\AtributBinary.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\AtributMultiple.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\AtributNumeric.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\AtributSingle.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\BazeZnalosti.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\cbrUsuzovani.vb" />
+    <Compile Include="Classes\cbrUsuzovaniCompositional.vb" />
+    <Compile Include="Classes\Enums.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Environment.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\GeneralError.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\GeneralObject.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Helper.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\IntegritniOmezeni.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Interval.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Konjunkce.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Kontext.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Literal.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Neurcitost.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\NeurcitostLogical.vb" />
+    <Compile Include="Classes\NeurcitostStandard.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Pravidlo.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\PravidloApriori.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\PravidloKompozicionalni.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\PravidloLogicke.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Predpoklad.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Pripad.vb" />
+    <Compile Include="Classes\Texty_cz.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Texty_cz.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Texty_en.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Texty_en.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Vyraz.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Vyrok.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\VyrokNumeric.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Zaver.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Zdroj.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\ZdrojCBR.vb" />
+    <Compile Include="Classes\ZdrojDotaz.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\ZdrojImplicitniVaha.vb" />
+    <Compile Include="Classes\ZdrojOdvozovani.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\ZdrojVypocet.vb">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Classes\Texty_cz.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Texty_cz.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Classes\Texty_en.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Texty_en.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="My Project\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

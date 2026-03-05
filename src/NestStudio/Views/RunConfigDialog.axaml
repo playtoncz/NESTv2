@@ -1,0 +1,30 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="NestStudio.Views.RunConfigDialog"
+        Title="Konfigurace konzultace"
+        Width="420" Height="260"
+        WindowStartupLocation="CenterOwner">
+  <StackPanel Margin="24" Spacing="16">
+    <TextBlock Text="Režim odpovědí" FontWeight="SemiBold" />
+    <ComboBox x:Name="AnsweringModeCombo" MinWidth="280"
+              SelectedIndex="0">
+      <ComboBoxItem Content="Dotazník (vyplnění v aplikaci)" />
+      <ComboBoxItem Content="Načíst odpovědi ze souboru" />
+    </ComboBox>
+    <Grid x:Name="PathRow" IsVisible="False" ColumnDefinitions="Auto,*" Margin="0,0,0,0">
+      <TextBlock Text="Soubor odpovědí (answers XML):" VerticalAlignment="Center" Margin="0,0,12,0" />
+      <TextBox x:Name="AnswersPathBox" Grid.Column="1" Watermark="Cesta k answers.xml" />
+    </Grid>
+    <Button x:Name="BrowseAnswersButton" Content="Procházet…" HorizontalAlignment="Left" IsVisible="False" />
+    <TextBlock Text="Režim odvozování" FontWeight="SemiBold" Margin="0,8,0,0" />
+    <ComboBox x:Name="ReasoningModeCombo" MinWidth="280"
+              SelectedIndex="0">
+      <ComboBoxItem Content="S odložením (Postpone)" />
+      <ComboBoxItem Content="Bez odložení" />
+    </ComboBox>
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="12" Margin="0,20,0,0">
+      <Button x:Name="CancelButton" Content="Zrušit" />
+      <Button x:Name="OkButton" Content="Spustit konzultaci" Classes="primary" />
+    </StackPanel>
+  </StackPanel>
+</Window>

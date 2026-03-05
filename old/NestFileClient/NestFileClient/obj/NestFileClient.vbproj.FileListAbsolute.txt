@@ -1,0 +1,4 @@
+E:\vlada\Projekty\Nest\NestFileClient\NestFileClient\bin\Debug\NestFileClient.exe.config
+E:\vlada\Projekty\Nest\NestFileClient\NestFileClient\obj\Debug\NestFileClient.exe
+E:\vlada\Projekty\Nest\NestFileClient\NestFileClient\obj\Debug\NestFileClient.xml
+E:\vlada\Projekty\Nest\NestFileClient\NestFileClient\obj\Debug\NestFileClient.pdb

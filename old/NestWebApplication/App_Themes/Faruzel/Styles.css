@@ -1,0 +1,225 @@
+/* Default CSS Stylesheet for a new Web Application project */
+
+BODY
+{
+    BACKGROUND-COLOR: #D5BFFF;
+    FONT-FAMILY: Arial, Helvetica, sans-serif;    
+    margin-top: 3%;
+	
+	margin-bottom: 9%;
+	
+}
+body, td
+{
+	FONT-SIZE: 10pt; 
+}
+
+.zahlavi
+{
+	background-image: url(zahlavi.jpg);
+	background-repeat: no-repeat;
+	height: 189px;
+	width: 750px;
+	aling: center;
+	margin: auto;
+	border-top: 1px solid black;
+	border-right: 1px solid black;
+	border-left: 1px solid black;
+}
+.zapati
+{
+	background-color: White;
+	text-align: left;
+	width: 720px;
+	/*_width: 750px;*/
+	aling: center;
+	margin: auto;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 10px;
+	
+}
+.error
+{
+	color: #DD0000;	
+}
+.obsah
+{
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	align: center;
+	margin: auto;
+	width: 720px;
+	/*_width: 750px;*/
+	padding: 15px;
+	background-color: #F5F5FF;
+	min-height: 300px;
+	_height: expression(this.scrollHeight < 300? "300px" : "auto" );
+	text-align: left;
+}
+h1
+{
+	text-align: center;
+	margin-top: 2px;
+}
+
+.menu
+{
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	background-color: #010028;
+	width: 750px;
+	border-top: 1px solid white;
+	height: 25px;	
+	text-align: left;
+	align: center;
+	margin: auto;
+}
+.menu a
+{
+	background-color: #010028;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-right: 0px;
+	color: White;
+	font-size: 10pt;
+	font-weight: bolder;
+	text-decoration: none;
+	border-left: 1px solid white;
+	height: 21px;	
+	_height: 25px;	
+	
+display: block;
+float: left;
+padding-top: 4px;
+}
+.menu a.first
+{
+	border-left: none;
+}
+.menu a:hover
+{
+	color: yellow;
+}
+.menu_odstranit
+{
+	display: none;
+}
+.menu_kontrola
+{
+	display: none;
+}
+.menu_vypis
+{
+	display: none;
+}
+.button
+{
+	BACKGROUND-COLOR: #010028; 
+	color: White;
+	font-weight: bold;
+	border: 1px solid black;
+	width: 120px;	
+}
+
+h2
+{
+	color: #010028; 
+	font-size: 12pt;
+	font-weight: bold;
+	margin: 6px 0px 0px 0px;
+	padding: 0px;
+}
+.panel
+{
+	border: 1px solid #000000; 	
+	margin-top: 6px;
+	margin-bottom: 6px;
+}
+.panelNadpis
+{
+	background-color:#010028; 
+	color: White;
+	font-size: 12pt;
+	font-weight: bold;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.panelObsah
+{
+	padding: 10px;
+}
+.komentar
+{
+	margin-bottom: 10px;	
+}
+.rozsah
+{
+	font-size: 8pt;
+}
+.panelOdpovedi
+{
+	float: right;
+	width: 130px;
+	height: 300px;
+}
+.odpovedButton
+{
+	margin-bottom: 2px;
+	
+}
+
+.result_komentar
+{
+	font-size: 8pt;
+	padding-left: 20px;
+}
+
+.table_statistiky
+{
+	width: 100%;
+}
+.table_statistiky td
+{
+	vertical-align: top;
+}
+.levy_sloupec
+{
+	border-right: 1px solid #1A5492; 
+}
+.pravy_sloupec .horni_bunka
+{
+	border-bottom: 1px solid #1A5492; 
+}
+.nadpis_sekce
+{
+	font-weight: bold;
+}
+
+.vypis_nadpis1
+{
+	color: #0A4482; 
+	font-size: 11pt;
+	font-weight: bold;
+	margin: 6px 0px 0px 0px;
+	padding: 0px;	
+}
+.vypis_nadpis2
+{
+	color: #0A4482; 
+	font-size: 10pt;
+	font-weight: bold;	
+}
+.vypis_nadpis3
+{
+	font-weight: bold;	
+}
+.vypis_odsazeni
+{
+	margin-left: 20px;	
+}

@@ -1,0 +1,1473 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+NestWebApplication
+</name>
+</assembly>
+<members>
+<member name="F:NestWebApplication.BasePage.menu_vypis_init">
+	<summary>
+menu_vypis_init control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.BasePage.form1">
+	<summary>
+form1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.BasePage.Literal1">
+	<summary>
+Literal1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.BasePage.menu_odstranit">
+	<summary>
+menu_odstranit control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.BasePage.Literal2">
+	<summary>
+Literal2 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.BasePage.menu_vypis">
+	<summary>
+menu_vypis control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.BasePage.Literal3">
+	<summary>
+Literal3 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.BasePage.menu_statistiky">
+	<summary>
+menu_statistiky control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.BasePage.Literal4">
+	<summary>
+Literal4 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.BasePage.Literal5">
+	<summary>
+Literal5 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.BasePage.cmdJazyk">
+	<summary>
+cmdJazyk control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.BasePage.Literal6">
+	<summary>
+Literal6 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.BasePage.pokracovatVKonzultaci_item">
+	<summary>
+pokracovatVKonzultaci_item control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.BasePage.Literal7">
+	<summary>
+Literal7 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.BasePage.menu_vypis_submenu">
+	<summary>
+menu_vypis_submenu control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.BasePage.Literal8">
+	<summary>
+Literal8 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.BasePage.Literal9">
+	<summary>
+Literal9 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.BasePage.Literal10">
+	<summary>
+Literal10 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.BasePage.obsah">
+	<summary>
+obsah control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.BasePage.lblError">
+	<summary>
+lblError control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="P:NestWebApplication.Resources.AppResource.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.Atributy">
+	<summary>
+  Looks up a localized string similar to Attributes.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.bazeZnalostiDostupneNaServeru">
+	<summary>
+  Looks up a localized string similar to Knowladge bases on server.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.dalsiNastaveni">
+	<summary>
+  Looks up a localized string similar to Options.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.datumVytvoreni">
+	<summary>
+  Looks up a localized string similar to date.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.dialog">
+	<summary>
+  Looks up a localized string similar to dialog.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.DolniMez">
+	<summary>
+  Looks up a localized string similar to Lower limit.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.dotaznik">
+	<summary>
+  Looks up a localized string similar to questionnaire.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.dotaznikSDialogem">
+	<summary>
+  Looks up a localized string similar to questionnaire with dialog.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.expert">
+	<summary>
+  Looks up a localized string similar to expert.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.GlobalniParametry">
+	<summary>
+  Looks up a localized string similar to Global properties.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.HodnotaJeMimoRozsah">
+	<summary>
+  Looks up a localized string similar to Value is out of range!.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.HodnotaNeexistuje">
+	<summary>
+  Looks up a localized string similar to Value doesn`t exist!.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.HodnotuSeNepodariloNacist">
+	<summary>
+  Looks up a localized string similar to Value cant`t be read!.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.HorniMez">
+	<summary>
+  Looks up a localized string similar to Upper limit.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.InferencniMechanismus">
+	<summary>
+  Looks up a localized string similar to Inference mechanism.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.InferencniMechanismusLogicky">
+	<summary>
+  Looks up a localized string similar to Logical.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.InferencniMechanismusStandardni">
+	<summary>
+  Looks up a localized string similar to Standard.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.informaceOBaziZnalosti">
+	<summary>
+  Looks up a localized string similar to Information about knowladge base.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.IntegritniOmezeni">
+	<summary>
+  Looks up a localized string similar to Integrity constraints.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.Irelevantni">
+	<summary>
+  Looks up a localized string similar to Irrelevant.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.jazyk">
+	<summary>
+  Looks up a localized string similar to Česky.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.JisteAno">
+	<summary>
+  Looks up a localized string similar to Certainly yes.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.JisteNe">
+	<summary>
+  Looks up a localized string similar to Certainly no.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.Kontexty">
+	<summary>
+  Looks up a localized string similar to Contexts.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.kontrolaBZ">
+	<summary>
+  Looks up a localized string similar to Check knowladge base.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.Konzultuj">
+	<summary>
+  Looks up a localized string similar to Consult.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.menu_kontrolaBZ">
+	<summary>
+  Looks up a localized string similar to Check KB.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.menu_konzultace">
+	<summary>
+  Looks up a localized string similar to Consultation.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.menu_novaKonzultace">
+	<summary>
+  Looks up a localized string similar to New consultation.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.menu_odstranitNahranouBZ">
+	<summary>
+  Looks up a localized string similar to Remove actual base.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.menu_pokracovatVKonzultaci">
+	<summary>
+  Looks up a localized string similar to Continue to consult.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.menu_statistiky">
+	<summary>
+  Looks up a localized string similar to Statistics.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.menu_vypisBZ">
+	<summary>
+  Looks up a localized string similar to Knowladge base.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.menu_vypisCBR">
+	<summary>
+  Looks up a localized string similar to List of cases.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.menu_vypisZdrojovehoKodu">
+	<summary>
+  Looks up a localized string similar to Surce code.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.NacistOdpovediZeSouboru">
+	<summary>
+  Looks up a localized string similar to Load answers from file:.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.Nahraj">
+	<summary>
+  Looks up a localized string similar to Load.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.Navigace">
+	<summary>
+  Looks up a localized string similar to Navigation.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.Nevim">
+	<summary>
+  Looks up a localized string similar to Unknown.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.Odeslat">
+	<summary>
+  Looks up a localized string similar to Send.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.popis">
+	<summary>
+  Looks up a localized string similar to Description.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.PorusenaIntOm">
+	<summary>
+  Looks up a localized string similar to En - Byla porušena tato integritní omezení.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.Pravidla">
+	<summary>
+  Looks up a localized string similar to Rules.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.Pridej">
+	<summary>
+  Looks up a localized string similar to Add to loaded KB.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.Pripad">
+	<summary>
+  Looks up a localized string similar to Case.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.PripadoveUsuzovani">
+	<summary>
+  Looks up a localized string similar to Case base reasoning.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.Pripady">
+	<summary>
+  Looks up a localized string similar to Cases.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.rezimKonzultace">
+	<summary>
+  Looks up a localized string similar to Answering mode.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.RozsahVah">
+	<summary>
+  Looks up a localized string similar to Weight range.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.SetriditDle">
+	<summary>
+  Looks up a localized string similar to Sort by.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.SetriditDleJmena">
+	<summary>
+  Looks up a localized string similar to name.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.SetriditDleMaximalniVahy">
+	<summary>
+  Looks up a localized string similar to maximal weight.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.SetriditDleMinimalniVahy">
+	<summary>
+  Looks up a localized string similar to minimal weight.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.SkladPripaduLoaded">
+	<summary>
+  Looks up a localized string similar to Storage of cases loaded.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.upravit">
+	<summary>
+  Looks up a localized string similar to change.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.UpravitOdpovedi">
+	<summary>
+  Looks up a localized string similar to Change answers.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.VahaJeMimoRozsah">
+	<summary>
+  Looks up a localized string similar to Weight is out of range!.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.VahuSeNepodariloNacist">
+	<summary>
+  Looks up a localized string similar to Weight cant`t be read!.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.vlastniBazeZnalosti">
+	<summary>
+  Looks up a localized string similar to Your knowladge base.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.VsechnyVyroky">
+	<summary>
+  Looks up a localized string similar to All propositions.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.vyberteBaziZnalosti">
+	<summary>
+  Looks up a localized string similar to Choose knowladge base.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.vyberteSkladPripadu">
+	<summary>
+  Looks up a localized string similar to vyberteSkladPripadu.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.VypisBazeZnalosti">
+	<summary>
+  Looks up a localized string similar to List of knowladge base.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.VypisZdrojovehoKodu">
+	<summary>
+  Looks up a localized string similar to Source code.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.Vysledky">
+	<summary>
+  Looks up a localized string similar to Results.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.Vzdalenost">
+	<summary>
+  Looks up a localized string similar to Distance.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.Zkontroluj">
+	<summary>
+  Looks up a localized string similar to Check.
+</summary>
+</member><member name="P:NestWebApplication.Resources.AppResource.znalostniInzenyr">
+	<summary>
+  Looks up a localized string similar to Knowladge engineer.
+</summary>
+</member><member name="T:NestWebApplication.Resources.AppResource">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="F:NestWebApplication.check.Div1">
+	<summary>
+Div1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.check.Literal1">
+	<summary>
+Literal1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.check.Literal2">
+	<summary>
+Literal2 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.check.efile">
+	<summary>
+efile control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.check.cmdNahraj">
+	<summary>
+cmdNahraj control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.check.lblMessage">
+	<summary>
+lblMessage control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.errorPage.lblerror">
+	<summary>
+lblerror control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.vypis.Literal1">
+	<summary>
+Literal1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.vypis.eVypis">
+	<summary>
+eVypis control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.wucOdpovedi.cmd1">
+	<summary>
+cmd1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.wucOdpovedi.cmd2">
+	<summary>
+cmd2 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.wucOdpovedi.cmd3">
+	<summary>
+cmd3 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.wucOdpovedi.cmd4">
+	<summary>
+cmd4 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.wucOdpovedi.cmd5">
+	<summary>
+cmd5 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.wucOdpovedi.cmd6">
+	<summary>
+cmd6 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.wucOdpovedi.cmd7">
+	<summary>
+cmd7 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.wucOdpovedi.cmd8">
+	<summary>
+cmd8 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.wucOdpovedi.cmd9">
+	<summary>
+cmd9 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.wucOdpovedi.cmd10">
+	<summary>
+cmd10 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.tableNahravaniBZ">
+	<summary>
+tableNahravaniBZ control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.Div1">
+	<summary>
+Div1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.Literal1">
+	<summary>
+Literal1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.Literal2">
+	<summary>
+Literal2 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.efile">
+	<summary>
+efile control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.Literal13">
+	<summary>
+Literal13 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.Literal3">
+	<summary>
+Literal3 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.nscfile">
+	<summary>
+nscfile control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.cmdNahraj">
+	<summary>
+cmdNahraj control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.ePridat">
+	<summary>
+ePridat control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.Div2">
+	<summary>
+Div2 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.Literal4">
+	<summary>
+Literal4 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.informaceOBazi">
+	<summary>
+informaceOBazi control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.Literal5">
+	<summary>
+Literal5 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.Literal6">
+	<summary>
+Literal6 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.expert">
+	<summary>
+expert control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.Literal7">
+	<summary>
+Literal7 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.inzenyr">
+	<summary>
+inzenyr control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.Literal8">
+	<summary>
+Literal8 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.datum">
+	<summary>
+datum control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.Literal9">
+	<summary>
+Literal9 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.popis">
+	<summary>
+popis control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.lblSkladPripaduLoaded">
+	<summary>
+lblSkladPripaduLoaded control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.cmdKonzultuj">
+	<summary>
+cmdKonzultuj control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.Literal10">
+	<summary>
+Literal10 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.Literal11">
+	<summary>
+Literal11 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.eRezimKonzultace">
+	<summary>
+eRezimKonzultace control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.odpovediInput">
+	<summary>
+odpovediInput control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.Literal12">
+	<summary>
+Literal12 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.odpovediFile">
+	<summary>
+odpovediFile control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.Literal14">
+	<summary>
+Literal14 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication._default.eInferencniMechanismus">
+	<summary>
+eInferencniMechanismus control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazMultiple.nadpis">
+	<summary>
+nadpis control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazMultiple.WucOdpovedi1">
+	<summary>
+WucOdpovedi1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazMultiple.lblKomentar">
+	<summary>
+lblKomentar control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazMultiple.hodnoty">
+	<summary>
+hodnoty control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazMultiple.Literal1">
+	<summary>
+Literal1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazMultiple.lblRozsah">
+	<summary>
+lblRozsah control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazMultiple.cmdOdeslat">
+	<summary>
+cmdOdeslat control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazMultiple.vyrovnatVysku">
+	<summary>
+vyrovnatVysku control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazMultiple.hodnota_text">
+	<summary>
+hodnota_text control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.vypisCBR.content">
+	<summary>
+content control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazBinary.Panel1">
+	<summary>
+Panel1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazBinary.nadpis">
+	<summary>
+nadpis control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazBinary.WucOdpovedi1">
+	<summary>
+WucOdpovedi1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazBinary.lblKomentar">
+	<summary>
+lblKomentar control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazBinary.insertWeight">
+	<summary>
+insertWeight control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazBinary.eHodnota">
+	<summary>
+eHodnota control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazBinary.cmdOdeslat">
+	<summary>
+cmdOdeslat control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazBinary.Literal1">
+	<summary>
+Literal1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazBinary.lblRozsah">
+	<summary>
+lblRozsah control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazBinary.vyrovnatVysku">
+	<summary>
+vyrovnatVysku control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazNumeric.Panel1">
+	<summary>
+Panel1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazNumeric.nadpis">
+	<summary>
+nadpis control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazNumeric.WucOdpovedi1">
+	<summary>
+WucOdpovedi1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazNumeric.lblKomentar">
+	<summary>
+lblKomentar control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazNumeric.eHodnota">
+	<summary>
+eHodnota control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazNumeric.cmdOdeslat">
+	<summary>
+cmdOdeslat control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazNumeric.Literal9">
+	<summary>
+Literal9 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazNumeric.lblDolniMez">
+	<summary>
+lblDolniMez control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazNumeric.Literal1">
+	<summary>
+Literal1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazNumeric.lblHorniMez">
+	<summary>
+lblHorniMez control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazNumeric.vyrovnatVysku">
+	<summary>
+vyrovnatVysku control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.Migrated_result.Literal1">
+	<summary>
+Literal1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.Migrated_result.vysledky">
+	<summary>
+vysledky control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.Migrated_result.Literal2">
+	<summary>
+Literal2 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.Migrated_result.panelIntegritniOmezeni">
+	<summary>
+panelIntegritniOmezeni control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.Migrated_result.Literal3">
+	<summary>
+Literal3 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.Migrated_result.IntegritniOmezeniObsah">
+	<summary>
+IntegritniOmezeniObsah control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.Migrated_result.Literal4">
+	<summary>
+Literal4 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.Migrated_result.Literal5">
+	<summary>
+Literal5 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.Migrated_result.cmdSortJmeno">
+	<summary>
+cmdSortJmeno control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.Migrated_result.cmdSortMinVaha">
+	<summary>
+cmdSortMinVaha control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.Migrated_result.cmdSortMaxVahy">
+	<summary>
+cmdSortMaxVahy control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.Migrated_result.vsechnyVyroky">
+	<summary>
+vsechnyVyroky control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.Migrated_result.panelPripady">
+	<summary>
+panelPripady control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.Migrated_result.Literal6">
+	<summary>
+Literal6 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.Migrated_result.pripadyVahy">
+	<summary>
+pripadyVahy control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.Migrated_result.VolatSrcipty">
+	<summary>
+VolatSrcipty control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.BZToServer.Div1">
+	<summary>
+Div1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.BZToServer.efile">
+	<summary>
+efile control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.BZToServer.cmdNahraj">
+	<summary>
+cmdNahraj control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazSingle.Panel1">
+	<summary>
+Panel1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazSingle.nadpis">
+	<summary>
+nadpis control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazSingle.WucOdpovedi1">
+	<summary>
+WucOdpovedi1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazSingle.lblKomentar">
+	<summary>
+lblKomentar control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazSingle.eVyber">
+	<summary>
+eVyber control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazSingle.eHodnota">
+	<summary>
+eHodnota control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazSingle.cmdOdeslat">
+	<summary>
+cmdOdeslat control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazSingle.Literal1">
+	<summary>
+Literal1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazSingle.lblRozsah">
+	<summary>
+lblRozsah control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotazSingle.vyrovnatVysku">
+	<summary>
+vyrovnatVysku control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotaznik.dotazy_div">
+	<summary>
+dotazy_div control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotaznik.cmdOdeslat">
+	<summary>
+cmdOdeslat control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.dotaznik.hodnota_text">
+	<summary>
+hodnota_text control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="P:NestWebApplication.My.MyWebExtension.Computer">
+	<summary>
+ Returns information about the host computer.
+ </summary>
+</member><member name="P:NestWebApplication.My.MyWebExtension.User">
+	<summary>
+ Returns information for the current Web user.
+ </summary>
+</member><member name="P:NestWebApplication.My.MyWebExtension.Request">
+	<summary>
+ Returns Request object.
+ </summary>
+</member><member name="P:NestWebApplication.My.MyWebExtension.Response">
+	<summary>
+ Returns Response object.
+ </summary>
+</member><member name="P:NestWebApplication.My.MyWebExtension.Log">
+	<summary>
+ Returns the Asp log object.
+ </summary>
+</member><member name="T:NestWebApplication.My.MyWebExtension">
+	<summary>
+ Module used to define the properties that are available in the My Namespace for Web projects.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:NestWebApplication.statistiky.Literal1">
+	<summary>
+Literal1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.statistiky.statistiky_div">
+	<summary>
+statistiky_div control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.vypisHTML.Literal4">
+	<summary>
+Literal4 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.vypisHTML.Literal1">
+	<summary>
+Literal1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.vypisHTML.Literal2">
+	<summary>
+Literal2 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.vypisHTML.Literal3">
+	<summary>
+Literal3 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.vypisHTML.Literal5">
+	<summary>
+Literal5 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.vypisHTML.Literal6">
+	<summary>
+Literal6 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.vypisHTML.Literal7">
+	<summary>
+Literal7 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:NestWebApplication.vypisHTML.vypis">
+	<summary>
+vypis control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+</members>
+</doc>

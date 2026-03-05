@@ -1,0 +1,407 @@
+﻿<?xml version="1.0" encoding="windows-1250"?>
+<base>
+
+<!--******************** Global properties ********************-->
+
+ <global>
+  <description>Princ</description>
+  <expert>PB</expert>
+  <date>4.6.2003</date>
+  <inference_mechanism>standard</inference_mechanism>
+  <weight_range>3</weight_range>
+  <default_weight>unknown</default_weight>
+  <global_priority>first</global_priority>
+  <context_global_threshold>1,500</context_global_threshold>
+  <condition_global_threshold>0,000</condition_global_threshold>
+ </global>
+
+<!--******************** Attributes and propositions ********************-->
+
+ <attributes>
+
+  <attribute>
+   <id>princ</id>
+   <name>Princ</name>
+   <type>binary</type>
+   <comment>Jedná se o prince?</comment>
+  </attribute>
+
+  <attribute>
+   <id>velikost_nohy</id>
+   <name>jakou ma adept velikost nohy</name>
+   <type>numeric</type>
+   <legal_values>
+    <lower_bound>0,000</lower_bound>
+    <upper_bound>50,000</upper_bound>
+   </legal_values>
+   <comment>princ musi mit malou nozku</comment>
+   <propositions>
+    <proposition>
+     <id>malá_noha</id>
+     <name>Malá noha</name>
+     <weight_function>
+      <fuzzy_lower_bound>0,000</fuzzy_lower_bound>
+      <crisp_lower_bound>0,000</crisp_lower_bound>
+      <crisp_upper_bound>39,000</crisp_upper_bound>
+      <fuzzy_upper_bound>41,000</fuzzy_upper_bound>
+     </weight_function>
+    </proposition>
+    <proposition>
+     <id>střední_noha</id>
+     <name>Střední noha</name>
+     <weight_function>
+      <fuzzy_lower_bound>39,000</fuzzy_lower_bound>
+      <crisp_lower_bound>41,000</crisp_lower_bound>
+      <crisp_upper_bound>42,000</crisp_upper_bound>
+      <fuzzy_upper_bound>44,000</fuzzy_upper_bound>
+     </weight_function>
+    </proposition>
+    <proposition>
+     <id>velká_noha</id>
+     <name>Velká noha</name>
+     <weight_function>
+      <fuzzy_lower_bound>42,000</fuzzy_lower_bound>
+      <crisp_lower_bound>44,000</crisp_lower_bound>
+      <crisp_upper_bound>50,000</crisp_upper_bound>
+      <fuzzy_upper_bound>50,000</fuzzy_upper_bound>
+     </weight_function>
+    </proposition>
+   </propositions>
+  </attribute>
+
+  <attribute>
+   <id>dobrá_rodina</id>
+   <name>dobrá rodina</name>
+   <type>binary</type>
+   <comment>Princ musí pocházet z dobré rodiny</comment>
+  </attribute>
+
+  <attribute>
+   <id>modrá_krev</id>
+   <name>Modrá krev</name>
+   <type>binary</type>
+   <comment>Šlechtici musí mít modrou krev</comment>
+  </attribute>
+
+  <attribute>
+   <id>bohatá_rodina</id>
+   <name>Bohatá rodina</name>
+   <type>binary</type>
+   <comment>Princ musí být z bohaté rodiny</comment>
+  </attribute>
+
+  <attribute>
+   <id>majetek</id>
+   <type>multiple</type>
+   <propositions>
+    <proposition>
+     <id>penize</id>
+     <name>majetek(penize)</name>
+    </proposition>
+    <proposition>
+     <id>pozemky</id>
+     <name>majetek(pozemky)</name>
+    </proposition>
+   </propositions>
+  </attribute>
+
+  <attribute>
+   <id>puvod</id>
+   <name>Jak je vázený rod uchazeče</name>
+   <type>single</type>
+   <propositions>
+    <proposition>
+     <id>velmi vazeny</id>
+     <name>Velmi vázený</name>
+    </proposition>
+    <proposition>
+     <id>vazeny</id>
+     <name>vázený</name>
+    </proposition>
+    <proposition>
+     <id>neznamy</id>
+     <name>neznámý</name>
+    </proposition>
+   </propositions>
+  </attribute>
+ </attributes>
+
+<!--******************** Contexts ********************-->
+
+ <contexts>
+
+  <context>
+   <id>CTX1</id>
+   <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>velikost_nohy</id_attribute>
+      <id_proposition>malá_noha</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+   </condition>
+  </context>
+ </contexts>
+
+<!--******************** Rules ********************-->
+
+ <rules>
+
+<!--******************** Apriori rules ********************-->
+
+  <apriori_rules>
+  </apriori_rules>
+
+<!--******************** Logical rules ********************-->
+
+  <logical_rules>
+
+   <logical_rule>
+    <id>l1</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>velikost_nohy</id_attribute>
+      <id_proposition>velká_noha</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>velikost_nohy</id_attribute>
+      <id_proposition>střední_noha</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>princ</id_attribute>
+      <negation>1</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>l2</id>
+    <id_context>CTX1</id_context>
+    <context_threshold>0,500</context_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>dobrá_rodina</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>princ</id_attribute>
+      <negation>1</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>l3</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>modrá_krev</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>bohatá_rodina</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>dobrá_rodina</id_attribute>
+      <negation>1</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>l4</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>majetek</id_attribute>
+      <id_proposition>penize</id_proposition>
+      <negation>1</negation>
+     </literal>
+     <literal>
+      <id_attribute>majetek</id_attribute>
+      <id_proposition>pozemky</id_proposition>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>bohatá_rodina</id_attribute>
+      <negation>1</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+  </logical_rules>
+
+<!--******************** Compositional rules ********************-->
+
+  <compositional_rules>
+
+   <compositional_rule>
+    <id>c1</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>velikost_nohy</id_attribute>
+      <id_proposition>malá_noha</id_proposition>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>dobrá_rodina</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>princ</id_attribute>
+      <negation>0</negation>
+      <weight>3,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c2</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>modrá_krev</id_attribute>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>bohatá_rodina</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>dobrá_rodina</id_attribute>
+      <negation>0</negation>
+      <weight>3,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c3</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>majetek</id_attribute>
+      <id_proposition>penize</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>majetek</id_attribute>
+      <id_proposition>pozemky</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>bohatá_rodina</id_attribute>
+      <negation>0</negation>
+      <weight>3,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c4</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>puvod</id_attribute>
+      <id_proposition>velmi vazeny</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>dobrá_rodina</id_attribute>
+      <negation>0</negation>
+      <weight>2,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c5</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>puvod</id_attribute>
+      <id_proposition>neznamy</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>dobrá_rodina</id_attribute>
+      <negation>0</negation>
+      <weight>-2,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+  </compositional_rules>
+ </rules>
+
+<!--******************** Integrity constraints ********************-->
+
+ <integrity_constraints>
+ </integrity_constraints>
+ <system_info>
+  <nest:options xmlns:nest="http://lisp.vse.cz/NEST">
+   <nest:version>2.0.4</nest:version>
+   <buttons>
+   <button>
+    <text>Jistě ano</text>
+    <value>3</value>
+    <typeofattributes>bs</typeofattributes>
+   </button>
+   <button>
+    <text>Jistě ne</text>
+    <value>-3</value>
+    <typeofattributes>b</typeofattributes>
+   </button>
+   <button>
+    <text>Nezáleží</text>
+    <value>irrelevant</value>
+    <typeofattributes>bns</typeofattributes>
+   </button>
+   <button>
+    <text>Nevím</text>
+    <value>unknown</value>
+    <typeofattributes>bnms</typeofattributes>
+   </button>
+  </buttons>
+  <insert_weights>m</insert_weights>
+  </nest:options>
+ </system_info>
+</base>

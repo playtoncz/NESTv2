@@ -1,0 +1,753 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Apriori" xml:space="preserve">
+    <value>Apriori</value>
+  </data>
+  <data name="Atribut" xml:space="preserve">
+    <value>Atribut</value>
+  </data>
+  <data name="Atribut_Chyba_pri_nacitani_atributu_z_XML" xml:space="preserve">
+    <value>Chyba při načítání atributu z XML</value>
+  </data>
+  <data name="Atribut_Chyba_pri_nacitani_id_atributu_z_xml" xml:space="preserve">
+    <value>Chyba při načítání id atributu z xml</value>
+  </data>
+  <data name="Atribut_Chyba_pri_nacitani_zdroje" xml:space="preserve">
+    <value>Chyba při načítání zdroje!</value>
+  </data>
+  <data name="Atribut_Chyba_pri_nacitani_zdroju_atributu_z_XML" xml:space="preserve">
+    <value>Chyba při načítání zdrojů atributu z XML</value>
+  </data>
+  <data name="Atribut_Chyba_pri_SaveToXML_v_atributu" xml:space="preserve">
+    <value>Chyba při SaveToXML v atributu </value>
+  </data>
+  <data name="Atribut_Chyba_pri_tvorbe_vypisu_atributu" xml:space="preserve">
+    <value>Chyba při tvorbě výpisu atributu </value>
+  </data>
+  <data name="Atribut_Chyba_pri_urcovani_pozice_atributu" xml:space="preserve">
+    <value>Chyba při určování pozice atributu </value>
+  </data>
+  <data name="Atribut_Vyroky_maji_ruzne_pozice_pro_atribut" xml:space="preserve">
+    <value>Výroky mají různé pozice pro atribut </value>
+  </data>
+  <data name="AtributBinary_Chyba_pri_nacitani_binarniho_atributu_z_xml" xml:space="preserve">
+    <value>Chyba při načítání binarniho atributu z xml</value>
+  </data>
+  <data name="AtributBinary_Chyba_pri_nacitani_odpovedi_z_xml_u_atributu" xml:space="preserve">
+    <value>Chyba při načítání odpovědi z xml u atributu: </value>
+  </data>
+  <data name="AtributBinary_Chyba_pri_pocitani_vahy_u_atributu" xml:space="preserve">
+    <value>Chyba při počítání váhy u atributu </value>
+  </data>
+  <data name="AtributBinary_Chyba_pri_SaveToXML_v_atributu_binary" xml:space="preserve">
+    <value>Chyba při SaveToXML v atributu binary </value>
+  </data>
+  <data name="AtributBinary_Chyba_pri_Vkladani_vahy_u_atributu" xml:space="preserve">
+    <value>Chyba při vkládání váhy u atributu: </value>
+  </data>
+  <data name="AtributMultiple_Chyba_pri_nacitani_multiple_atributu_z_xml" xml:space="preserve">
+    <value>Chyba při načítání multiple atributu z xml</value>
+  </data>
+  <data name="AtributMultiple_Chyba_pri_nacitani_odpovedi_z_xml_u_atributu" xml:space="preserve">
+    <value>Chyba při načítání odpovědi z xml u atributu: </value>
+  </data>
+  <data name="AtributMultiple_Chyba_pri_pocitani_vahy_u_atributu" xml:space="preserve">
+    <value>Chyba při počítání váhy u atributu </value>
+  </data>
+  <data name="AtributMultiple_Chyba_pri_SaveToXML_v_atributu_multiple" xml:space="preserve">
+    <value>Chyba při SaveToXML v atributu multiple </value>
+  </data>
+  <data name="AtributMultiple_Chyba_pri_vkladani_vahy" xml:space="preserve">
+    <value>Chyba při vkládání váhy </value>
+  </data>
+  <data name="AtributMultiple_Hodnota_odpovedi_neexistuje_pro_atribut" xml:space="preserve">
+    <value>Hodnota odpovědi neexistuje pro atribut: </value>
+  </data>
+  <data name="AtributMultiple_k_atributu" xml:space="preserve">
+    <value> k atributu </value>
+  </data>
+  <data name="AtributMultiple_Nepodarilo_se_nacist_hodnotu_odpovedi_pro_atribut" xml:space="preserve">
+    <value>Nepodařilo se načíst hodnotu odpovědi pro atribut: </value>
+  </data>
+  <data name="AtributMultiple_Zadane_vahy_nemaji_spravny_pocet" xml:space="preserve">
+    <value>Zadané váhy nemají správný počet!</value>
+  </data>
+  <data name="AtributNumeric_Chyba_pri_nacitani_numeric_atributu_z_xml" xml:space="preserve">
+    <value>Chyba při načítání numerického atributu z xml</value>
+  </data>
+  <data name="AtributNumeric_Chyba_pri_nacitani_odpovedi_z_xml_u_atributu" xml:space="preserve">
+    <value>Chyba při načítání odpovědí z xml u atributu: </value>
+  </data>
+  <data name="AtributNumeric_Chyba_pri_nacitani_zdroje" xml:space="preserve">
+    <value>Chyba při načítání zdroje!</value>
+  </data>
+  <data name="AtributNumeric_Chyba_pri_pocitani_vahy_u_atributu" xml:space="preserve">
+    <value>Chyba při počítání váhy u atributu </value>
+  </data>
+  <data name="AtributNumeric_Chyba_pri_SaveToXML_v_atributu" xml:space="preserve">
+    <value>Chyba při SaveToXML v atributu </value>
+  </data>
+  <data name="AtributNumeric_Chyba_pri_SaveToXML_v_atributu_binary" xml:space="preserve">
+    <value>Chyba při SaveToXML v atributu numeric </value>
+  </data>
+  <data name="AtributSingle_Chyba_pri_nacitani_odpovedi_z_xml_u_atributu" xml:space="preserve">
+    <value>Chyba při načítání odpovědi z xml u atributu: </value>
+  </data>
+  <data name="AtributSingle_Chyba_pri_nacitani_single_atributu_z_xml" xml:space="preserve">
+    <value>Chyba při načítání single atributu z xml</value>
+  </data>
+  <data name="AtributSingle_Chyba_pri_pocitani_vahy_u_atributu" xml:space="preserve">
+    <value>Chyba při počítání váhy u atributu </value>
+  </data>
+  <data name="AtributSingle_Chyba_pri_SaveToXML_v_atributu_single" xml:space="preserve">
+    <value>Chyba při SaveToXML v atributu single </value>
+  </data>
+  <data name="AtributSingle_Chyba_pri_Vkladani_vahy_u_atributu" xml:space="preserve">
+    <value>Chyba při vkládání váhy u atributu: </value>
+  </data>
+  <data name="AtributSingle_Hodnota_odpovedi_neexistuje_pro_atribut" xml:space="preserve">
+    <value>Hodnota odpovědi neexistuje pro atribut: </value>
+  </data>
+  <data name="AtributSingle_Nepodarilo_se_nacist_hodnotu_odpovedi_pro_atribut" xml:space="preserve">
+    <value>Nepodařilo se načíst hodnotu odpovědi pro atribut: </value>
+  </data>
+  <data name="Atributy" xml:space="preserve">
+    <value>Atributy</value>
+  </data>
+  <data name="BazeZnalosti_Chyba_pri_generovani_statistik" xml:space="preserve">
+    <value>Chyba při generování statistik</value>
+  </data>
+  <data name="BazeZnalosti_Chyba_pri_nacitani_atributu" xml:space="preserve">
+    <value>Chyba při načítání atributů</value>
+  </data>
+  <data name="BazeZnalosti_Chyba_pri_nacitani_globalnich_parametru" xml:space="preserve">
+    <value>Chyba při načítání globálních parametrů</value>
+  </data>
+  <data name="BazeZnalosti_Chyba_pri_nacitani_odpovedi_z_xml" xml:space="preserve">
+    <value>Chyba při načítání odpovědí z xml</value>
+  </data>
+  <data name="BazeZnalosti_Chyba_pri_propojovani_baze" xml:space="preserve">
+    <value>Chyba při propojování báze znalostí.</value>
+  </data>
+  <data name="BazeZnalosti_Chyba_pri_ukladani_apriori_pravidel" xml:space="preserve">
+    <value>Chyba při ukládání apriori pravidel</value>
+  </data>
+  <data name="BazeZnalosti_Chyba_pri_ukladani_atributu" xml:space="preserve">
+    <value>Chyba při ukládání atributů</value>
+  </data>
+  <data name="BazeZnalosti_Chyba_pri_ukladani_integritnich_omezeni" xml:space="preserve">
+    <value>Chyba při ukládání integritních omezení</value>
+  </data>
+  <data name="BazeZnalosti_Chyba_pri_ukladani_kompozicionalnich_pravidel" xml:space="preserve">
+    <value>Chyba při ukládání kompozicionálních pravidel</value>
+  </data>
+  <data name="BazeZnalosti_Chyba_pri_ukladani_kontextu" xml:space="preserve">
+    <value>Chyba při ukládání kontextů</value>
+  </data>
+  <data name="BazeZnalosti_Chyba_pri_ukladani_logickeho_pravidel" xml:space="preserve">
+    <value>Chyba při ukládání logických pravidel</value>
+  </data>
+  <data name="BazeZnalosti_Chyba_pri_uklani_globalnich_parametru" xml:space="preserve">
+    <value>Chyba při uklání globálních parametrů</value>
+  </data>
+  <data name="BazeZnalosti_Neocekavana_chyba" xml:space="preserve">
+    <value>Neočekávaná chyba</value>
+  </data>
+  <data name="BazeZnalosti_Nepodarilo_se_nacist_xml_dokument" xml:space="preserve">
+    <value>Nepodařilo se načíst xml dokument</value>
+  </data>
+  <data name="BazeZnalosti_Nepodarilo_se_nacist_xml_dokument_odpovedi" xml:space="preserve">
+    <value>Nepodařilo se načíst xml dokument odpovědí</value>
+  </data>
+  <data name="BazeZnalosti_Pokus_o_nacteni_druheho_atributu" xml:space="preserve">
+    <value>Pokus o načtení druhého atributu se stejným identifikátorem: </value>
+  </data>
+  <data name="BazeZnalosti_Pokus_o_nacteni_druheho_integritniho_omezeni" xml:space="preserve">
+    <value>Pokus o načtení druhého integritniho omezeni se stejným identifikátorem: </value>
+  </data>
+  <data name="BazeZnalosti_Pokus_o_nacteni_druheho_kontextu" xml:space="preserve">
+    <value>Pokus o načtení druhého kontextu se stejným identifikátorem: </value>
+  </data>
+  <data name="BazeZnalosti_Pokus_o_nacteni_druheho_pravidla" xml:space="preserve">
+    <value>Pokus o načtení druhého pravidla se stejným identifikátorem: </value>
+  </data>
+  <data name="BazeZnaloti_Baze_znalosti_obsahuje_cyklus" xml:space="preserve">
+    <value>Báze znalostí obsahuje cyklus - výrok v cyklu: </value>
+  </data>
+  <data name="CbrUsuzovaniCompositional_Chyba_pri_pocitani_vahy_zaveru_u_cbr_compositional" xml:space="preserve">
+    <value>Chyba při počítání váhy závěru u cbr compositional</value>
+  </data>
+  <data name="CbrUsuzovaniCompositional_Chyba_pri_vypoctu_vzdalenosti_dvou_vyroku" xml:space="preserve">
+    <value>Chyba při výpočtu vzdálenosti dvou výroků</value>
+  </data>
+  <data name="CbrUsuzovaniCompositional_Chyba_pri_vypoctu_vzdalenosti_pripadu" xml:space="preserve">
+    <value>Chyba při výpočtu vzdálenosti případů</value>
+  </data>
+  <data name="Celkem" xml:space="preserve">
+    <value>Celkem</value>
+  </data>
+  <data name="Cil" xml:space="preserve">
+    <value>Cíl</value>
+  </data>
+  <data name="CrispLower" xml:space="preserve">
+    <value>Crisp lower</value>
+  </data>
+  <data name="CrispUpper" xml:space="preserve">
+    <value>Crisp upper</value>
+  </data>
+  <data name="Dalsi" xml:space="preserve">
+    <value>Další</value>
+  </data>
+  <data name="Datum" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="DefaultVaha" xml:space="preserve">
+    <value>Implicitní váha</value>
+  </data>
+  <data name="Dotaz" xml:space="preserve">
+    <value>Dotaz</value>
+  </data>
+  <data name="Enums_apriori" xml:space="preserve">
+    <value>apriori</value>
+  </data>
+  <data name="Enums_binary" xml:space="preserve">
+    <value>binární</value>
+  </data>
+  <data name="Enums_final" xml:space="preserve">
+    <value>finální</value>
+  </data>
+  <data name="Enums_hybridni" xml:space="preserve">
+    <value>hybridní</value>
+  </data>
+  <data name="Enums_kompozicionalni" xml:space="preserve">
+    <value>kompozicionální</value>
+  </data>
+  <data name="Enums_logical" xml:space="preserve">
+    <value>logický</value>
+  </data>
+  <data name="Enums_logicke" xml:space="preserve">
+    <value>logické</value>
+  </data>
+  <data name="Enums_logicky" xml:space="preserve">
+    <value>logický</value>
+  </data>
+  <data name="Enums_maximalni_delka" xml:space="preserve">
+    <value>maximální délka</value>
+  </data>
+  <data name="Enums_minimalni_delka" xml:space="preserve">
+    <value>minimální délka</value>
+  </data>
+  <data name="Enums_multiple" xml:space="preserve">
+    <value>množinový nominální</value>
+  </data>
+  <data name="Enums_neuronovy" xml:space="preserve">
+    <value>neuronový</value>
+  </data>
+  <data name="Enums_numeric" xml:space="preserve">
+    <value>numerický</value>
+  </data>
+  <data name="Enums_od_konce" xml:space="preserve">
+    <value>od konce</value>
+  </data>
+  <data name="Enums_od_zacatku" xml:space="preserve">
+    <value>od začátku</value>
+  </data>
+  <data name="Enums_partial" xml:space="preserve">
+    <value>částečný</value>
+  </data>
+  <data name="Enums_provisional" xml:space="preserve">
+    <value>dočasný</value>
+  </data>
+  <data name="Enums_single" xml:space="preserve">
+    <value>jednoduchý nominální</value>
+  </data>
+  <data name="Enums_standardni" xml:space="preserve">
+    <value>standardní</value>
+  </data>
+  <data name="Enums_untouched" xml:space="preserve">
+    <value>nedotčený</value>
+  </data>
+  <data name="Enums_uzivatelska" xml:space="preserve">
+    <value>uživatelská</value>
+  </data>
+  <data name="Expert" xml:space="preserve">
+    <value>Expert</value>
+  </data>
+  <data name="FuzzyLower" xml:space="preserve">
+    <value>Fuzzy lower</value>
+  </data>
+  <data name="FuzzyUpper" xml:space="preserve">
+    <value>Fuzzy upper</value>
+  </data>
+  <data name="GlobalniParametry" xml:space="preserve">
+    <value>Globální parametry</value>
+  </data>
+  <data name="GlobalPriority" xml:space="preserve">
+    <value>Globální priorita</value>
+  </data>
+  <data name="id" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="InferencniMechanismus" xml:space="preserve">
+    <value>Inferenční mechanismus</value>
+  </data>
+  <data name="IntegritniOmezeni" xml:space="preserve">
+    <value>Integritní omezení</value>
+  </data>
+  <data name="IntegritniOmezeni_Chyba_pri_nacitani_id_integritniho_omezeni_z_xml" xml:space="preserve">
+    <value>Chyba při načítání id integritniho omezeni z xml</value>
+  </data>
+  <data name="IntegritniOmezeni_Chyba_pri_nacitani_integritniho_omezeni_z_XML" xml:space="preserve">
+    <value>Chyba při načítání integritního omezení z XML</value>
+  </data>
+  <data name="IntegritniOmezeni_Chyba_pri_SaveToXML_v_integritnim_omezeni" xml:space="preserve">
+    <value>Chyba při SaveToXML v integritním omezení </value>
+  </data>
+  <data name="IntegritniOmezeni_Chyba_pri_vyhodnocovani_integritniho_omezeni" xml:space="preserve">
+    <value>Chyba při vyhodnocování integritního omezení </value>
+  </data>
+  <data name="IntegritniOmezeni_integritni_omezeni" xml:space="preserve">
+    <value> : integritní omezení </value>
+  </data>
+  <data name="IntegritniOmezeni_pravidlo" xml:space="preserve">
+    <value> : pravidlo </value>
+  </data>
+  <data name="Inzenyr" xml:space="preserve">
+    <value>Znalostní inženýr</value>
+  </data>
+  <data name="Jmeno" xml:space="preserve">
+    <value>Jméno</value>
+  </data>
+  <data name="Komentar" xml:space="preserve">
+    <value>Komentář</value>
+  </data>
+  <data name="Konjunkce_Chyba_pri_nacitani_konjunkce_z_XML" xml:space="preserve">
+    <value>Chyba při načítání konjunkce z XML</value>
+  </data>
+  <data name="Konjunkce_Chyba_pri_propojovani_kontextu" xml:space="preserve">
+    <value>Chyba při propojování kontextu </value>
+  </data>
+  <data name="Konjunkce_Chyba_pri_propojovani_predpokladu_u_pravidla" xml:space="preserve">
+    <value>Chyba při propojování předpokladu u pravidla </value>
+  </data>
+  <data name="Konjunkce_Chyba_pri_SaveToXML_v_konjunkci" xml:space="preserve">
+    <value>Chyba při SaveToXML v konjunkci</value>
+  </data>
+  <data name="Konjunkce_Chyba_pri_tvorbe_vypisu_konjunkce" xml:space="preserve">
+    <value>Chyba při tvorbě výpisu konjunkce</value>
+  </data>
+  <data name="Konjunkce_Chyba_pri_vyhodnocovani_konjunkce_backward" xml:space="preserve">
+    <value>Chyba při vyhodnocování konjunkce backward</value>
+  </data>
+  <data name="Konjunkce_Prazdna_konjunkce" xml:space="preserve">
+    <value>Prázdná konjunkce</value>
+  </data>
+  <data name="Kontext_Chyba_pri_nacitani_id_kontextu_z_xml" xml:space="preserve">
+    <value>Chyba při načítání id kontextu z xml</value>
+  </data>
+  <data name="Kontext_Chyba_pri_nacitani_kontextu_z_XML" xml:space="preserve">
+    <value>Chyba při načítání kontextu z XML</value>
+  </data>
+  <data name="Kontext_Chyba_pri_propojovani_kontextu" xml:space="preserve">
+    <value>Chyba při propojování kontextu </value>
+  </data>
+  <data name="Kontext_Chyba_pri_SaveToXML_v_kontextu" xml:space="preserve">
+    <value>Chyba při SaveToXML v kontextu </value>
+  </data>
+  <data name="Kontext_Chyba_pri_tvorbe_vypisu_kontextu" xml:space="preserve">
+    <value>Chyba při tvorbě výpisu kontextu </value>
+  </data>
+  <data name="Kontext_Chyba_pri_vyhodnocovani_kontextu_backward" xml:space="preserve">
+    <value>Chyba při vyhodnocování kontextu backward</value>
+  </data>
+  <data name="Kontext_kontext" xml:space="preserve">
+    <value> : kontext </value>
+  </data>
+  <data name="Kontexty" xml:space="preserve">
+    <value>Kontexty</value>
+  </data>
+  <data name="Literal_Chyba_pri_propojovani_kontextu" xml:space="preserve">
+    <value>Chyba při propojování kontextu </value>
+  </data>
+  <data name="Literal_Chyba_pri_propojovani_predpokladu_u_pravidla" xml:space="preserve">
+    <value>Chyba při propojování předpokladu u pravidla </value>
+  </data>
+  <data name="Literal_Chyba_pri_tvorbe_vypisu_literalu" xml:space="preserve">
+    <value>Chyba při tvorbě výpisu literalu</value>
+  </data>
+  <data name="Literal_Chyba_pri_vyhodnocovani_literalu_backward" xml:space="preserve">
+    <value>Chyba při vyhodnocování literálu backward</value>
+  </data>
+  <data name="Mezilehly" xml:space="preserve">
+    <value>Mezilehlý</value>
+  </data>
+  <data name="Osamocený" xml:space="preserve">
+    <value>Osamocený</value>
+  </data>
+  <data name="Popis" xml:space="preserve">
+    <value>Popis</value>
+  </data>
+  <data name="PrahPlatnostiKontextu" xml:space="preserve">
+    <value>Práh platnosti kontextů</value>
+  </data>
+  <data name="PrahPlatnostiPredpokladu" xml:space="preserve">
+    <value>Práh platnosti předpokladů</value>
+  </data>
+  <data name="Pravidla" xml:space="preserve">
+    <value>Pravidla</value>
+  </data>
+  <data name="Pravidlo_Chyba_pri_hledani_zaveru_pro_vyrok" xml:space="preserve">
+    <value>Chyba při hledání závěru pro výrok </value>
+  </data>
+  <data name="Pravidlo_Chyba_pri_nacitani_id_pravidla_z_xml" xml:space="preserve">
+    <value>Chyba při načítání id pravidla z xml</value>
+  </data>
+  <data name="Pravidlo_Chyba_pri_nacitani_pravidla_z_XML" xml:space="preserve">
+    <value>Chyba při načítání pravidla z XML</value>
+  </data>
+  <data name="Pravidlo_Chyba_pri_propojovani_pravidla" xml:space="preserve">
+    <value>Chyba při propojování pravidla </value>
+  </data>
+  <data name="Pravidlo_Chyba_pri_tvorbe_vypisu_pravidla" xml:space="preserve">
+    <value>Chyba při tvorbě výpisu pravidla </value>
+  </data>
+  <data name="Pravidlo_pravidlo" xml:space="preserve">
+    <value> : pravidlo </value>
+  </data>
+  <data name="Pravidlo_Prazdny_zaver_pravidla" xml:space="preserve">
+    <value>Prázdný závěr pravidla </value>
+  </data>
+  <data name="Pravidlo_u_pravidla" xml:space="preserve">
+    <value> u pravidla </value>
+  </data>
+  <data name="PravidloApriori_Chyba_pri_aplikovani_apriori_pravidla_backward" xml:space="preserve">
+    <value>Chyba při aplikování apriori pravidla backward </value>
+  </data>
+  <data name="PravidloApriori_Chyba_pri_nacitani_apriori_pravidla_z_XML" xml:space="preserve">
+    <value>Chyba při načítání apriori pravidla z XML</value>
+  </data>
+  <data name="PravidloApriori_Chyba_pri_propojovani_apriori_pravidla" xml:space="preserve">
+    <value>Chyba při propojování apriori pravidla </value>
+  </data>
+  <data name="PravidloApriori_Chyba_při_SaveToXML_v_apriori_pravidlu" xml:space="preserve">
+    <value>Chyba při SaveToXML v apriori pravidlu </value>
+  </data>
+  <data name="PravidloApriori_Chyba_pri_tvorbe_vypisu_apriori_pravidla" xml:space="preserve">
+    <value>Chyba při tvorbě výpisu apriori pravidla </value>
+  </data>
+  <data name="pravidloKompozicionalni_Chyba_pri_aplikovani_kompozicionalniho_pravidla_backward" xml:space="preserve">
+    <value>Chyba při aplikování kompozicionálního pravidla backward </value>
+  </data>
+  <data name="PravidloKompozicionalni_Chyba_pri_nacitani_kompozicionalniho_pravidla_z_XML" xml:space="preserve">
+    <value>Chyba při načítání kompozicionálního pravidla z XML</value>
+  </data>
+  <data name="PravidloKompozicionalni_Chyba_pri_propojovani_kompozicionalniho_pravidla" xml:space="preserve">
+    <value>Chyba při propojování kompozicionálního pravidla </value>
+  </data>
+  <data name="PravidloKompozicionalni_Chyba_pri_SaveToXML_v_pravidlu" xml:space="preserve">
+    <value>Chyba při SaveToXML v pravidlu </value>
+  </data>
+  <data name="pravidloKompozicionalni_Chyba_pri_tvorbe_vypisu_kompozicionalniho_pravidla" xml:space="preserve">
+    <value>Chyba při tvorbě výpisu kompozicionálního pravidla </value>
+  </data>
+  <data name="PravidloKompozicionalni_pravidlo" xml:space="preserve">
+    <value> : pravidlo </value>
+  </data>
+  <data name="PravidloLogicke_Chyba_pri_nacitani_logickeho_pravidla_z_XML" xml:space="preserve">
+    <value>Chyba při načítání logickeho pravidla z XML</value>
+  </data>
+  <data name="PravidloLogicke_Chyba_pri_propojovani_logickeho_pravidla" xml:space="preserve">
+    <value>Chyba při propojování logického pravidla </value>
+  </data>
+  <data name="PravidloLogicke_Chyba_pri_SaveToXML_v_logickem_pravidle" xml:space="preserve">
+    <value>Chyba při SaveToXML v logickém pravidle </value>
+  </data>
+  <data name="PravidloLogicke_Chyba_pri_tvorbe_vypisu_logickeho_pravidla" xml:space="preserve">
+    <value>Chyba při tvorbě výpisu logického pravidla </value>
+  </data>
+  <data name="PravidloLogicke_pravidlo" xml:space="preserve">
+    <value> : pravidlo </value>
+  </data>
+  <data name="Predpoklad_Chyba_pri_nacitani_predpokladu_pravidla_z_XML" xml:space="preserve">
+    <value>Chyba při načítání předpokladu pravidla z XML</value>
+  </data>
+  <data name="Predpoklad_Chyba_pri_propojovani_kontextu" xml:space="preserve">
+    <value>Chyba při propojování kontextu </value>
+  </data>
+  <data name="Predpoklad_Chyba_pri_propojovani_predpokladu_u_pravidla" xml:space="preserve">
+    <value>Chyba při propojování předpokladu u pravidla </value>
+  </data>
+  <data name="Predpoklad_Chyba_pri_SaveToXML_v_predpokladu" xml:space="preserve">
+    <value>Chyba při SaveToXML v předpokladu</value>
+  </data>
+  <data name="Predpoklad_Chyba_pri_tvorbe_vypisu_predpokladu" xml:space="preserve">
+    <value>Chyba při tvorbě výpisu předpokladu</value>
+  </data>
+  <data name="Predpoklad_Chyba_pri_vyhodnocovani_predpokladu_backward" xml:space="preserve">
+    <value>Chyba při vyhodnocování předpokladu backward</value>
+  </data>
+  <data name="Predpoklad_Prazdny_predpoklad_pravidla" xml:space="preserve">
+    <value>Prázdný předpoklad pravidla</value>
+  </data>
+  <data name="Priorita" xml:space="preserve">
+    <value>Priorita</value>
+  </data>
+  <data name="Pripad_Chyba_pri_nacitani_hodnot_pripadu_z_atributu" xml:space="preserve">
+    <value>Chyba při načítání hodnot případu z atributu</value>
+  </data>
+  <data name="Pripad_Chyba_pri_nacitani_Pripadu_z_XML" xml:space="preserve">
+    <value>Chyba při načítání Pripadu z XML</value>
+  </data>
+  <data name="Pripad_Chyba_pri_SaveToXML_v_Pripadu" xml:space="preserve">
+    <value>Chyba při SaveToXML v Pripadu</value>
+  </data>
+  <data name="Pripad_Nepodarilo_se_nacist_xml_dokument_pro_Pripad" xml:space="preserve">
+    <value>Nepodařilo se načíst xml dokument pro Případ</value>
+  </data>
+  <data name="Rozsah" xml:space="preserve">
+    <value>Rozsah - případ</value>
+  </data>
+  <data name="RozsahVah" xml:space="preserve">
+    <value>Rozsah vah</value>
+  </data>
+  <data name="Slope" xml:space="preserve">
+    <value>Slope</value>
+  </data>
+  <data name="Typ" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="Vyrok" xml:space="preserve">
+    <value>Výrok</value>
+  </data>
+  <data name="Vyrok_Chyba_pri_nacitani_id_vyroku_z_xml" xml:space="preserve">
+    <value>Chyba při načítání id výroku z xml</value>
+  </data>
+  <data name="Vyrok_Chyba_pri_nacitani_vyroku_z_XML" xml:space="preserve">
+    <value>Chyba při načítání výroku z XML</value>
+  </data>
+  <data name="Vyrok_Chyba_pri_odvozovani_vyroku_backward" xml:space="preserve">
+    <value>Chyba při odvozování výroku backward: </value>
+  </data>
+  <data name="Vyrok_Chyba_pri_SaveToXML_ve_vyroku" xml:space="preserve">
+    <value>Chyba při SaveToXML ve výroku </value>
+  </data>
+  <data name="Vyrok_Chyba_pri_tvorbe_vypisu_vyroku" xml:space="preserve">
+    <value>Chyba při tvorbě výpisu výroku </value>
+  </data>
+  <data name="Vyrok_Chyba_pri_urcovani_pozice_vyroku" xml:space="preserve">
+    <value>Chyba při určování pozice výroku </value>
+  </data>
+  <data name="Vyrok_Chyba_pri_vyhodnocovani_vyroku_backward" xml:space="preserve">
+    <value>Chyba při vyhodnocování výroku backward </value>
+  </data>
+  <data name="Vyrok_Chyba_pri_vytvareni_defaultnich_zdroju_vyroku" xml:space="preserve">
+    <value>Chyba při vytváření implicitních zdrojů výroku </value>
+  </data>
+  <data name="Vyrok_Zadny_zdroj_nebyl_uspesne_vyhodnocen" xml:space="preserve">
+    <value>Žádný zdroj nebyl uspěšně vyhodnocen</value>
+  </data>
+  <data name="VyrokNumeric_Chyba_pri_nacitani_numeric_vyroku_z_XML" xml:space="preserve">
+    <value>Chyba při načítání numerického výroku z XML</value>
+  </data>
+  <data name="VyrokNumeric_Chyba_pri_SaveToXML_ve_vyroku" xml:space="preserve">
+    <value>Chyba při SaveToXML ve výroku </value>
+  </data>
+  <data name="VyrokNumeric_Chyba_pri_tvorbe_vypisu_vyroku" xml:space="preserve">
+    <value>Chyba při tvorbě výpisu výroku </value>
+  </data>
+  <data name="Vyroky" xml:space="preserve">
+    <value>Výroky</value>
+  </data>
+  <data name="Zaver_Chyba_pri_nacitani_zaveru_pravidla_z_XML" xml:space="preserve">
+    <value>Chyba při načítání závěru pravidla z XML</value>
+  </data>
+  <data name="Zaver_Chyba_pri_SaveToXML_v_zaveru" xml:space="preserve">
+    <value>Chyba při SaveToXML v závěru</value>
+  </data>
+  <data name="Zaver_Chyba_pri_tvorbe_vypisu_zaveru" xml:space="preserve">
+    <value>Chyba při tvorbě výpisu zaveru</value>
+  </data>
+  <data name="ZdrojCBR_Chyba_pri_nacitani_cilu_u_zdroje_CBR" xml:space="preserve">
+    <value>Chyba při načítání cílů u zdroje CBR</value>
+  </data>
+  <data name="ZdrojCBR_Chyba_pri_nacitani_vah_atributu_u_zdroje_CBR" xml:space="preserve">
+    <value>Chyba při načítání vah atributu u zdroje CBR</value>
+  </data>
+  <data name="ZdrojCBR_Chyba_pri_SaveToXML_ve_zdroji_CBR" xml:space="preserve">
+    <value>Chyba při SaveToXML ve zdroji CBR</value>
+  </data>
+  <data name="ZdrojCBR_Chyba_pri_vyhodnocovani_zdroje_CBR" xml:space="preserve">
+    <value>Chyba při vyhodnocování zdroje CBR</value>
+  </data>
+  <data name="ZdrojCBR_Nepodarilo_se_nacist_xml_dokument_pro_zdroj_CBR" xml:space="preserve">
+    <value>Nepodařilo se načíst xml dokument pro zdroj CBR</value>
+  </data>
+  <data name="Zdroje" xml:space="preserve">
+    <value>Zdroje</value>
+  </data>
+  <data name="ZdrojImplicitniVaha_Chyba_pri_nacitani_implicitni_vahy_z_XML" xml:space="preserve">
+    <value>Chyba při načítání implicitní váhy z XML</value>
+  </data>
+  <data name="ZdrojImplicitniVaha_Chyba_pri_SaveToXML_ve_zdroji_implicitni_vaha" xml:space="preserve">
+    <value>Chyba při SaveToXML ve zdroji implicitni vaha</value>
+  </data>
+  <data name="ZdrojImplicitniVaha_Chyba_pri_vyhodnocovani_zdroje_implicitni_vaha" xml:space="preserve">
+    <value>Chyba při vyhodnocování zdroje implicitní váha</value>
+  </data>
+  <data name="ZdrojOdvozovani_Chyba_ve_zdroji_odvozovani_pro_vyrok" xml:space="preserve">
+    <value>Chyba ve zdroji odvozování pro výrok </value>
+  </data>
+  <data name="ZdrojVypocet_Atribut_na_vstupu_clenu_vypoctu_neni_numericky" xml:space="preserve">
+    <value>Atribut na vstupu členu výpočtu není numerický</value>
+  </data>
+  <data name="ZdrojVypocet_Chyba_pri_nacitani_druheho_vstupu_vypoctu" xml:space="preserve">
+    <value>Chyba při načítání druhého vstupu výpočtu</value>
+  </data>
+  <data name="ZdrojVypocet_Chyba_pri_nacitani_operandu" xml:space="preserve">
+    <value>Chyba při načítání operandu</value>
+  </data>
+  <data name="ZdrojVypocet_Chyba_pri_nacitani_prvniho_vstupu_vypoctu" xml:space="preserve">
+    <value>Chyba při načítání prvního vstupu výpočtu</value>
+  </data>
+  <data name="ZdrojVypocet_Chyba_pri_nacitani_vypoctu_z_XML" xml:space="preserve">
+    <value>Chyba při načítání výpočtu z XML</value>
+  </data>
+  <data name="ZdrojVypocet_Chyba_pri_SaveToXML_v_clenu_vypoctu" xml:space="preserve">
+    <value>Chyba při SaveToXML v clenu vypoctu</value>
+  </data>
+  <data name="ZdrojVypocet_Chyba_pri_SaveToXML_ve_zdroji_vypocet" xml:space="preserve">
+    <value>Chyba při SaveToXML ve zdroji výpočet</value>
+  </data>
+  <data name="ZdrojVypocet_Chyba_pri_vypoctu_clenu" xml:space="preserve">
+    <value>Chyba při výpočtu členu</value>
+  </data>
+  <data name="ZdrojVypocet_vstup_1_neni_cislo" xml:space="preserve">
+    <value>vstup 1 není číslo!</value>
+  </data>
+  <data name="ZdrojVypocet_vstup_2_neni_cislo" xml:space="preserve">
+    <value>vstup 2 není číslo!</value>
+  </data>
+  <data name="ZdrojVypocet_zadana_vaha" xml:space="preserve">
+    <value>zadana vaha</value>
+  </data>
+  <data name="ZrojCBR_Chyba_pri_nacitani_CBR_z_XML" xml:space="preserve">
+    <value>Chyba při načítání CBR z XML</value>
+  </data>
+</root>

@@ -1,0 +1,1601 @@
+<?xml version="1.0" encoding="windows-1250"?>
+<!DOCTYPE base SYSTEM "base.dtd">
+<base>
+
+<!--******************** Global properties ********************-->
+
+ <global>
+  <description>Expertní systém určující, zda student splnil všechny podmínky pro absolvování předmětu 4IZ229. Zároveň BZ slouží jako ukázková pro semestrální práce z tohoto předmětu.</description>
+  <expert>Vladimír Laš</expert>
+  <knowledge_engineer>Vladimír Laš</knowledge_engineer>
+  <date>2.12.2006</date>
+  <inference_mechanism>standard</inference_mechanism>
+  <weight_range>1</weight_range>
+  <default_weight>irrelevant</default_weight>
+  <global_priority>first</global_priority>
+  <context_global_threshold>0,000</context_global_threshold>
+  <condition_global_threshold>0,900</condition_global_threshold>
+ </global>
+
+<!--******************** Attributes and propositions ********************-->
+
+ <attributes>
+
+  <attribute>
+   <id>absolvoval 4IZ229</id>
+   <name>Podařilo se Vám absolvovat předmět 4IZ229</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>test:uspesne_napsat_test</id>
+   <name>Napsal jste úspěšně test</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>test:poste_bodu_z_testu</id>
+   <name>Kolik bodů jste měl z testu?</name>
+   <type>numeric</type>
+   <legal_values>
+    <lower_bound>0,000</lower_bound>
+    <upper_bound>25,000</upper_bound>
+   </legal_values>
+   <comment>Systém předpokládá následující bodové hodnocení:&amp;lt;BR&amp;gt;0-9 bodů: neúspěch&amp;lt;BR&amp;gt;10-11 bodů: nutno přezkoušet&amp;lt;BR&amp;gt;12 a více bodů: úspěch</comment>
+   <propositions>
+    <proposition>
+     <id>test:0-9bodu</id>
+     <name>0 - 9 bodů</name>
+     <weight_function>
+      <fuzzy_lower_bound>0,000</fuzzy_lower_bound>
+      <crisp_lower_bound>0,000</crisp_lower_bound>
+      <crisp_upper_bound>9,500</crisp_upper_bound>
+      <fuzzy_upper_bound>9,500</fuzzy_upper_bound>
+     </weight_function>
+    </proposition>
+    <proposition>
+     <id>test:10-11bodu</id>
+     <name>10-11 bodů</name>
+     <weight_function>
+      <fuzzy_lower_bound>9,500</fuzzy_lower_bound>
+      <crisp_lower_bound>9,500</crisp_lower_bound>
+      <crisp_upper_bound>11,500</crisp_upper_bound>
+      <fuzzy_upper_bound>11,500</fuzzy_upper_bound>
+     </weight_function>
+    </proposition>
+    <proposition>
+     <id>test:12avicebodu</id>
+     <name>12 a více bodů</name>
+     <weight_function>
+      <fuzzy_lower_bound>11,500</fuzzy_lower_bound>
+      <crisp_lower_bound>11,500</crisp_lower_bound>
+      <crisp_upper_bound>25,000</crisp_upper_bound>
+      <fuzzy_upper_bound>25,000</fuzzy_upper_bound>
+     </weight_function>
+    </proposition>
+   </propositions>
+  </attribute>
+
+  <attribute>
+   <id>test:psal_test</id>
+   <name>Psal jste test?</name>
+   <type>binary</type>
+   <comment>Úspěšné absolvování předmětu 4IZ229 znamená splnění dvou věcí - úspěšně napsat test a vypracovat semestrální práci.</comment>
+  </attribute>
+
+  <attribute>
+   <id>test:prezkousen</id>
+   <name>Byl jste úspěšně přezkoušen po testu?</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>semestralka:udelana_semestralka</id>
+   <name>Udělal jste semestrálku</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>semestralka:udelane_vsechny_casti_semestralky</id>
+   <name>Udělal jste všechny části semestrálky</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>semestralka:odevzdana_vcas</id>
+   <name>Odevzdal jste semestrálku včas?</name>
+   <type>binary</type>
+   <comment>Vytvořenou práci je nutné odevzdat do daného termínu.</comment>
+  </attribute>
+
+  <attribute>
+   <id>semestralka:odsouhlasena_aplikacni_oblast</id>
+   <name>Máte odsouhlasenu aplikační oblast?</name>
+   <type>binary</type>
+   <comment>Semestrální práce se skládá ze tří částí (práce v systému NEST, CLIPS a společná dokumentace), které jsou vytvořeny nad jednou aplikační oblastí.</comment>
+  </attribute>
+
+  <attribute>
+   <id>nest:prace_NEST</id>
+   <name>Hotová práce v systému NEST</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>clips:prace_CLIPS</id>
+   <name>Hotová práce v systému CLIPS</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>dokumentace:napsana_dokumentace</id>
+   <name>Napsaná dokumentace</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>nest:vytvorena_BZ</id>
+   <name>Vytvořil jste bázi znalostí v NESTU</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>nest:napsana_BZ</id>
+   <name>Napsal jste bázi znalostí v NESTu?</name>
+   <type>binary</type>
+   <comment>Máte-li dobrý návrh BZ i dobré znalosti systému, samotné napsání báze znalostí by neměl být problém.</comment>
+  </attribute>
+
+  <attribute>
+   <id>nest:navrh_BZ</id>
+   <name>Udělal jste návrh báze znalostí v NESTu?</name>
+   <type>binary</type>
+   <comment>První část práce obnáší vytvoření báze znalostí v systému NEST. Před započetím práce v samotném systému je ovšem potřeba připravit si dobrý návrh celé báze znalostí.</comment>
+  </attribute>
+
+  <attribute>
+   <id>nest:znalosti_prace</id>
+   <name>Máte dostatečné znalosti s prací v NESTu?</name>
+   <type>binary</type>
+   <comment>Nutným předpokladem pro vytvoření BZ je samozřejmě znalost práce se systémem.</comment>
+  </attribute>
+
+  <attribute>
+   <id>nest:dostatecny_rozsah</id>
+   <name>BZ NESTu má dostatečný rozsah</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>nest:pocet_vyroku</id>
+   <name>Jaký je počet výroků v NESTu?</name>
+   <type>numeric</type>
+   <legal_values>
+    <lower_bound>0,000</lower_bound>
+    <upper_bound>5000,000</upper_bound>
+   </legal_values>
+   <comment>Vytvořená báze znalostí musí splňovat daný minimální rozsah.&amp;lt;BR&amp;gt;Systém předpokládá za dostatečný alespoň 40 výroků.</comment>
+   <propositions>
+    <proposition>
+     <id>nest:dostatek_vyroku</id>
+     <name>dostatečný počet výroků NESTu</name>
+     <weight_function>
+      <fuzzy_lower_bound>39,500</fuzzy_lower_bound>
+      <crisp_lower_bound>39,500</crisp_lower_bound>
+      <crisp_upper_bound>5000,000</crisp_upper_bound>
+      <fuzzy_upper_bound>5000,000</fuzzy_upper_bound>
+     </weight_function>
+    </proposition>
+    <proposition>
+     <id>nest:nedostatek_vyroku</id>
+     <name>Nedostatečný počet výroků v NESTu</name>
+     <weight_function>
+      <fuzzy_lower_bound>0,000</fuzzy_lower_bound>
+      <crisp_lower_bound>0,000</crisp_lower_bound>
+      <crisp_upper_bound>39,500</crisp_upper_bound>
+      <fuzzy_upper_bound>39,500</fuzzy_upper_bound>
+     </weight_function>
+    </proposition>
+   </propositions>
+  </attribute>
+
+  <attribute>
+   <id>nest:pocet_pravidel</id>
+   <name>Jaký je počet pravidel v NESTu?</name>
+   <type>numeric</type>
+   <legal_values>
+    <lower_bound>0,000</lower_bound>
+    <upper_bound>5000,000</upper_bound>
+   </legal_values>
+   <comment>Systém předpokládá za dostatečný alespoň 40 pravidel</comment>
+   <propositions>
+    <proposition>
+     <id>nest:dostatek_pravidel</id>
+     <name>Dostatečný počet pravidel v NESTu</name>
+     <weight_function>
+      <fuzzy_lower_bound>39,500</fuzzy_lower_bound>
+      <crisp_lower_bound>39,500</crisp_lower_bound>
+      <crisp_upper_bound>5000,000</crisp_upper_bound>
+      <fuzzy_upper_bound>5000,000</fuzzy_upper_bound>
+     </weight_function>
+    </proposition>
+    <proposition>
+     <id>nest:nedostatetek_pravidel</id>
+     <name>Nedostatečný počet pravidel v NESTu</name>
+     <weight_function>
+      <fuzzy_lower_bound>0,000</fuzzy_lower_bound>
+      <crisp_lower_bound>0,000</crisp_lower_bound>
+      <crisp_upper_bound>39,500</crisp_upper_bound>
+      <fuzzy_upper_bound>39,500</fuzzy_upper_bound>
+     </weight_function>
+    </proposition>
+   </propositions>
+  </attribute>
+
+  <attribute>
+   <id>nest:dalsi_vlastnosti_BZ</id>
+   <name>Další vlastnosti BZ NESTu</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>nest:pocet_kontextu</id>
+   <name>Jaký je počet kontextů v NESTu?</name>
+   <type>numeric</type>
+   <legal_values>
+    <lower_bound>0,000</lower_bound>
+    <upper_bound>5000,000</upper_bound>
+   </legal_values>
+   <comment>Systém považuje za dostatečný, pokud je součet kontextů a integritních omezení alespoň 2.</comment>
+   <propositions>
+    <proposition>
+     <id>nest:0_kontextu</id>
+     <name>Žádný kontext v NESTu</name>
+     <weight_function>
+      <fuzzy_lower_bound>0,000</fuzzy_lower_bound>
+      <crisp_lower_bound>0,000</crisp_lower_bound>
+      <crisp_upper_bound>0,500</crisp_upper_bound>
+      <fuzzy_upper_bound>0,500</fuzzy_upper_bound>
+     </weight_function>
+    </proposition>
+    <proposition>
+     <id>nest:1_kontext</id>
+     <name>Jeden kontext v NESTu</name>
+     <weight_function>
+      <fuzzy_lower_bound>0,500</fuzzy_lower_bound>
+      <crisp_lower_bound>0,500</crisp_lower_bound>
+      <crisp_upper_bound>1,500</crisp_upper_bound>
+      <fuzzy_upper_bound>1,500</fuzzy_upper_bound>
+     </weight_function>
+    </proposition>
+    <proposition>
+     <id>nest:2_a_vice_kontextu</id>
+     <name>2 a více kontextů v NESTu</name>
+     <weight_function>
+      <fuzzy_lower_bound>1,500</fuzzy_lower_bound>
+      <crisp_lower_bound>1,500</crisp_lower_bound>
+      <crisp_upper_bound>5000,000</crisp_upper_bound>
+      <fuzzy_upper_bound>5000,000</fuzzy_upper_bound>
+     </weight_function>
+    </proposition>
+   </propositions>
+  </attribute>
+
+  <attribute>
+   <id>nest:pocet_integritnich_omezeni</id>
+   <name>Jaký je počet integritních omezení v NESTu?</name>
+   <type>numeric</type>
+   <legal_values>
+    <lower_bound>0,000</lower_bound>
+    <upper_bound>5000,000</upper_bound>
+   </legal_values>
+   <comment>Systém považuje za dostatečný, pokud je součet kontextů a integritních omezení alespoň 2.</comment>
+   <propositions>
+    <proposition>
+     <id>nest:0_intom</id>
+     <name>Žádné integritní omezení v NESTu</name>
+     <weight_function>
+      <fuzzy_lower_bound>0,000</fuzzy_lower_bound>
+      <crisp_lower_bound>0,000</crisp_lower_bound>
+      <crisp_upper_bound>0,500</crisp_upper_bound>
+      <fuzzy_upper_bound>0,500</fuzzy_upper_bound>
+     </weight_function>
+    </proposition>
+    <proposition>
+     <id>nest:1_intom</id>
+     <name>Jedno integritní omezení v NESTu</name>
+     <weight_function>
+      <fuzzy_lower_bound>0,500</fuzzy_lower_bound>
+      <crisp_lower_bound>0,500</crisp_lower_bound>
+      <crisp_upper_bound>1,500</crisp_upper_bound>
+      <fuzzy_upper_bound>1,500</fuzzy_upper_bound>
+     </weight_function>
+    </proposition>
+    <proposition>
+     <id>nest:2_a_vice_intom</id>
+     <name>2 a více integritních omezení v NESTu</name>
+     <weight_function>
+      <fuzzy_lower_bound>1,500</fuzzy_lower_bound>
+      <crisp_lower_bound>1,500</crisp_lower_bound>
+      <crisp_upper_bound>5000,000</crisp_upper_bound>
+      <fuzzy_upper_bound>5000,000</fuzzy_upper_bound>
+     </weight_function>
+    </proposition>
+   </propositions>
+  </attribute>
+
+  <attribute>
+   <id>nest:overena_funkcnost</id>
+   <name>Ověřil jste funkčnost báze znalostí v NESTu?</name>
+   <type>binary</type>
+   <comment>I s dobrým návrhem a dobrými znalostmi systému se málokdy povede vytvořit BZ zcela správně. Proto je dobré několikrát celou konzultaci projít a ověřit tím všechny varianty, které mohou nastávat.</comment>
+  </attribute>
+
+  <attribute>
+   <id>clips:vytvorena_BZ</id>
+   <name>Vytvořil jste bázi znalostí v CLIPSu</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>clips:napsana_BZ</id>
+   <name>Napsal jste bázi znalostí v CLIPSu?</name>
+   <type>binary</type>
+   <comment>Máte-li dobrý návrh BZ i dobré znalosti systému, samotné napsání báze znalostí by neměl být problém.</comment>
+  </attribute>
+
+  <attribute>
+   <id>clips:navrh_BZ</id>
+   <name>Udělal jste návrh báze znalostí v CLIPSu?</name>
+   <type>binary</type>
+   <comment>Druhou část práce obnáší vytvoření báze znalostí v systému CLIPS. Před započetím práce v samotném systému je opět potřeba připravit návrh báze znalostí (může stačit i upravit návrh ze systému NEST, pokud ten již máte hotový).</comment>
+  </attribute>
+
+  <attribute>
+   <id>clips:znalosti_prace</id>
+   <name>Máte dostatečné znalosti s prací v CLIPSu?</name>
+   <type>binary</type>
+   <comment>Nutným předpokladem pro vytvoření BZ je samozřejmě znalost práce se systémem.</comment>
+  </attribute>
+
+  <attribute>
+   <id>clips:dostatecny_rozsah</id>
+   <name>BZ CLIPSu má dostatečný rozsah</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>clips:pocet_pravidel</id>
+   <name>Jaký je počet pravidel v CLIPSu?</name>
+   <type>numeric</type>
+   <legal_values>
+    <lower_bound>0,000</lower_bound>
+    <upper_bound>5000,000</upper_bound>
+   </legal_values>
+   <comment>Vytvořená báze znalostí musí splňovat daný minimální rozsah.&amp;lt;BR&amp;gt;Systém předpokládá za dostatečný alespoň 15 pravidel</comment>
+   <propositions>
+    <proposition>
+     <id>clips:dostatek_pravidel</id>
+     <name>Dostatečný počet pravidel v CLIPSu</name>
+     <weight_function>
+      <fuzzy_lower_bound>14,500</fuzzy_lower_bound>
+      <crisp_lower_bound>14,500</crisp_lower_bound>
+      <crisp_upper_bound>5000,000</crisp_upper_bound>
+      <fuzzy_upper_bound>5000,000</fuzzy_upper_bound>
+     </weight_function>
+    </proposition>
+    <proposition>
+     <id>clips:nedostatetek_pravidel</id>
+     <name>Nedostatečný počet pravidel v CLIPSu</name>
+     <weight_function>
+      <fuzzy_lower_bound>0,000</fuzzy_lower_bound>
+      <crisp_lower_bound>0,000</crisp_lower_bound>
+      <crisp_upper_bound>14,500</crisp_upper_bound>
+      <fuzzy_upper_bound>14,500</fuzzy_upper_bound>
+     </weight_function>
+    </proposition>
+   </propositions>
+  </attribute>
+
+  <attribute>
+   <id>clips:overena_funkcnost</id>
+   <name>Ověřil jste funkčnost báze znalostí v CLIPSu?</name>
+   <type>binary</type>
+   <comment>I s dobrým návrhem a dobrými znalostmi systému se málokdy povede vytvořit BZ zcela správně. Proto je dobré několikrát celou konzultaci projít a ověřit tím všechny varianty, které mohou nastávat.</comment>
+  </attribute>
+
+  <attribute>
+   <id>dokumentace:casti_dokumentace</id>
+   <name>Jaká části má dokumentace?</name>
+   <type>multiple</type>
+   <comment>Pro splnění práce je samozřejmě nutné odevzdat všechny čtyři části dokumentace.</comment>
+   <propositions>
+    <proposition>
+     <id>dokumentace:popsani_aplikacni_oblasti</id>
+     <name>Popsání aplikační oblasti</name>
+    </proposition>
+    <proposition>
+     <id>dokumentace:vypis_BZ_NESTu</id>
+     <name>Výpis BZ NESTu</name>
+    </proposition>
+    <proposition>
+     <id>dokumentace:vypis_BZ_CLIPSu</id>
+     <name>Výpis BZ CLIPSu</name>
+    </proposition>
+    <proposition>
+     <id>dokumentace:porovnani_systemu</id>
+     <name>Porovnání systémů</name>
+    </proposition>
+   </propositions>
+  </attribute>
+ </attributes>
+
+<!--******************** Contexts ********************-->
+
+ <contexts>
+
+  <context>
+   <id>test:k1</id>
+   <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>test:poste_bodu_z_testu</id_attribute>
+      <id_proposition>test:10-11bodu</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+   </condition>
+  </context>
+
+  <context>
+   <id>nest:k2</id>
+   <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>nest:navrh_BZ</id_attribute>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>nest:znalosti_prace</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+   </condition>
+  </context>
+
+  <context>
+   <id>nest:k3</id>
+   <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>nest:pocet_vyroku</id_attribute>
+      <id_proposition>nest:dostatek_vyroku</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+   </condition>
+  </context>
+
+  <context>
+   <id>nest:k4</id>
+   <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>nest:pocet_vyroku</id_attribute>
+      <id_proposition>nest:dostatek_vyroku</id_proposition>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>nest:pocet_pravidel</id_attribute>
+      <id_proposition>nest:dostatek_pravidel</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+   </condition>
+  </context>
+
+  <context>
+   <id>nest:k5</id>
+   <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>nest:vytvorena_BZ</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+   </condition>
+  </context>
+
+  <context>
+   <id>clips:k6</id>
+   <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>clips:navrh_BZ</id_attribute>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>clips:znalosti_prace</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+   </condition>
+  </context>
+
+  <context>
+   <id>clips:k7</id>
+   <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>clips:vytvorena_BZ</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+   </condition>
+  </context>
+
+  <context>
+   <id>semestralka:k8</id>
+   <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>nest:prace_NEST</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+   </condition>
+  </context>
+
+  <context>
+   <id>semestralka:k9</id>
+   <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>nest:prace_NEST</id_attribute>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>clips:prace_CLIPS</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+   </condition>
+  </context>
+
+  <context>
+   <id>semestralka:k10</id>
+   <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>semestralka:odsouhlasena_aplikacni_oblast</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>semestralka:odsouhlasena_aplikacni_oblast</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+   </condition>
+  </context>
+
+  <context>
+   <id>semestralka:k11</id>
+   <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>semestralka:udelane_vsechny_casti_semestralky</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+   </condition>
+  </context>
+
+  <context>
+   <id>cil:k12</id>
+   <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>test:uspesne_napsat_test</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+   </condition>
+  </context>
+ </contexts>
+
+<!--******************** Rules ********************-->
+
+ <rules>
+
+<!--******************** Apriori rules ********************-->
+
+  <apriori_rules>
+  </apriori_rules>
+
+<!--******************** Logical rules ********************-->
+
+  <logical_rules>
+
+   <logical_rule>
+    <id>l_cil:p3</id>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>test:psal_test</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>test:uspesne_napsat_test</id_attribute>
+      <negation>1</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>l_nest:p19</id>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>nest:vytvorena_BZ</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>nest:prace_NEST</id_attribute>
+      <negation>1</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>l_nest:p21</id>
+    <id_context>nest:k5</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>nest:dostatecny_rozsah</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>nest:prace_NEST</id_attribute>
+      <negation>1</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>l_nest:p26</id>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>nest:pocet_vyroku</id_attribute>
+      <id_proposition>nest:nedostatek_vyroku</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>nest:dostatecny_rozsah</id_attribute>
+      <negation>1</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>l_nest:p27</id>
+    <id_context>nest:k3</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>nest:pocet_pravidel</id_attribute>
+      <id_proposition>nest:nedostatetek_pravidel</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>nest:dostatecny_rozsah</id_attribute>
+      <negation>1</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>l_nest:p28</id>
+    <id_context>nest:k4</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>nest:dalsi_vlastnosti_BZ</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>nest:dostatecny_rozsah</id_attribute>
+      <negation>1</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>l_clips:p190</id>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>clips:vytvorena_BZ</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>clips:prace_CLIPS</id_attribute>
+      <negation>1</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>l_clips:p210</id>
+    <id_context>clips:k7</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>clips:dostatecny_rozsah</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>clips:prace_CLIPS</id_attribute>
+      <negation>1</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>l_clips:p270</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>clips:pocet_pravidel</id_attribute>
+      <id_proposition>clips:nedostatetek_pravidel</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>clips:dostatecny_rozsah</id_attribute>
+      <negation>1</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>l_cil:p2</id>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>test:uspesne_napsat_test</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>absolvoval 4IZ229</id_attribute>
+      <negation>1</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>l_cil:p8</id>
+    <id_context>cil:k12</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>semestralka:udelana_semestralka</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>absolvoval 4IZ229</id_attribute>
+      <negation>1</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>l_semestralka:p10</id>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>semestralka:udelane_vsechny_casti_semestralky</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>semestralka:udelana_semestralka</id_attribute>
+      <negation>1</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>l_semestralka:p11</id>
+    <id_context>semestralka:k11</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>semestralka:odevzdana_vcas</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>semestralka:udelana_semestralka</id_attribute>
+      <negation>1</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>l_semestralka:p15</id>
+    <id_context>semestralka:k10</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>nest:prace_NEST</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>semestralka:udelane_vsechny_casti_semestralky</id_attribute>
+      <negation>1</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>l_semestralka:p16</id>
+    <id_context>semestralka:k8</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>clips:prace_CLIPS</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>semestralka:udelane_vsechny_casti_semestralky</id_attribute>
+      <negation>1</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+
+   <logical_rule>
+    <id>l_semestralka:p17</id>
+    <id_context>semestralka:k9</id_context>
+    <condition_threshold>0,000</condition_threshold>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>dokumentace:napsana_dokumentace</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>semestralka:udelane_vsechny_casti_semestralky</id_attribute>
+      <negation>1</negation>
+     </conclusion>
+    </conclusions>
+   </logical_rule>
+  </logical_rules>
+
+<!--******************** Compositional rules ********************-->
+
+  <compositional_rules>
+
+   <compositional_rule>
+    <id>c_cil:p1</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>test:uspesne_napsat_test</id_attribute>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>semestralka:udelana_semestralka</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>absolvoval 4IZ229</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c_test:p4</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>test:poste_bodu_z_testu</id_attribute>
+      <id_proposition>test:0-9bodu</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>test:uspesne_napsat_test</id_attribute>
+      <negation>1</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c_test:p5</id>
+    <id_context>test:k1</id_context>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>test:prezkousen</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>test:uspesne_napsat_test</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c_test:p6</id>
+    <id_context>test:k1</id_context>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>test:prezkousen</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>test:uspesne_napsat_test</id_attribute>
+      <negation>1</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c_test:p7</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>test:poste_bodu_z_testu</id_attribute>
+      <id_proposition>test:12avicebodu</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>test:uspesne_napsat_test</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c_semestralka:p9</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>semestralka:udelane_vsechny_casti_semestralky</id_attribute>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>semestralka:odevzdana_vcas</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>semestralka:udelana_semestralka</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c_semestralka:p12</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>semestralka:odsouhlasena_aplikacni_oblast</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>semestralka:udelane_vsechny_casti_semestralky</id_attribute>
+      <negation>0</negation>
+      <weight>0,500</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c_semestralka:p13</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>semestralka:odsouhlasena_aplikacni_oblast</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>semestralka:udelane_vsechny_casti_semestralky</id_attribute>
+      <negation>1</negation>
+      <weight>0,500</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c_semestralka:p14</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>nest:prace_NEST</id_attribute>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>clips:prace_CLIPS</id_attribute>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>dokumentace:napsana_dokumentace</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>semestralka:udelane_vsechny_casti_semestralky</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c_nest:p18</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>nest:vytvorena_BZ</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>nest:prace_NEST</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c_nest:p22</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>nest:overena_funkcnost</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>nest:prace_NEST</id_attribute>
+      <negation>1</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c_nest:p23</id>
+    <id_context>nest:k2</id_context>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>nest:napsana_BZ</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>nest:vytvorena_BZ</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c_nest:p23_5</id>
+    <id_context>nest:k2</id_context>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>nest:napsana_BZ</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>nest:vytvorena_BZ</id_attribute>
+      <negation>1</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c_nest:p24</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>nest:navrh_BZ</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>nest:znalosti_prace</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>nest:vytvorena_BZ</id_attribute>
+      <negation>1</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c_nest:p25</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>nest:pocet_vyroku</id_attribute>
+      <id_proposition>nest:dostatek_vyroku</id_proposition>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>nest:pocet_pravidel</id_attribute>
+      <id_proposition>nest:dostatek_pravidel</id_proposition>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>nest:dalsi_vlastnosti_BZ</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>nest:dostatecny_rozsah</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c_nest:p29</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>nest:pocet_kontextu</id_attribute>
+      <id_proposition>nest:2_a_vice_kontextu</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>nest:pocet_integritnich_omezeni</id_attribute>
+      <id_proposition>nest:2_a_vice_intom</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>nest:pocet_kontextu</id_attribute>
+      <id_proposition>nest:1_kontext</id_proposition>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>nest:pocet_integritnich_omezeni</id_attribute>
+      <id_proposition>nest:1_intom</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>nest:dalsi_vlastnosti_BZ</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c_nest:p30</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>nest:pocet_kontextu</id_attribute>
+      <id_proposition>nest:0_kontextu</id_proposition>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>nest:pocet_integritnich_omezeni</id_attribute>
+      <id_proposition>nest:0_intom</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>nest:pocet_kontextu</id_attribute>
+      <id_proposition>nest:0_kontextu</id_proposition>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>nest:pocet_integritnich_omezeni</id_attribute>
+      <id_proposition>nest:1_intom</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>nest:pocet_kontextu</id_attribute>
+      <id_proposition>nest:1_kontext</id_proposition>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>nest:pocet_integritnich_omezeni</id_attribute>
+      <id_proposition>nest:0_intom</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>nest:dalsi_vlastnosti_BZ</id_attribute>
+      <negation>1</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c_clips:p180</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>clips:vytvorena_BZ</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>clips:prace_CLIPS</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c_clips:p220</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>clips:overena_funkcnost</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>clips:prace_CLIPS</id_attribute>
+      <negation>1</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c_clips:p230</id>
+    <id_context>clips:k6</id_context>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>clips:napsana_BZ</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>clips:vytvorena_BZ</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c_clips:p240</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>clips:navrh_BZ</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>clips:znalosti_prace</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>clips:vytvorena_BZ</id_attribute>
+      <negation>1</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c_clips:p250</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>clips:pocet_pravidel</id_attribute>
+      <id_proposition>clips:dostatek_pravidel</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>clips:dostatecny_rozsah</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c_clips:p230_5</id>
+    <id_context>clips:k6</id_context>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>clips:napsana_BZ</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>clips:vytvorena_BZ</id_attribute>
+      <negation>1</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c_dokumentace:p501</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>dokumentace:casti_dokumentace</id_attribute>
+      <id_proposition>dokumentace:popsani_aplikacni_oblasti</id_proposition>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>dokumentace:casti_dokumentace</id_attribute>
+      <id_proposition>dokumentace:vypis_BZ_NESTu</id_proposition>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>dokumentace:casti_dokumentace</id_attribute>
+      <id_proposition>dokumentace:vypis_BZ_CLIPSu</id_proposition>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>dokumentace:casti_dokumentace</id_attribute>
+      <id_proposition>dokumentace:porovnani_systemu</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>dokumentace:napsana_dokumentace</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c_dokumentace:p502</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>dokumentace:casti_dokumentace</id_attribute>
+      <id_proposition>dokumentace:popsani_aplikacni_oblasti</id_proposition>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>dokumentace:napsana_dokumentace</id_attribute>
+      <negation>1</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c_dokumentace:p503</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>dokumentace:casti_dokumentace</id_attribute>
+      <id_proposition>dokumentace:vypis_BZ_NESTu</id_proposition>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>dokumentace:napsana_dokumentace</id_attribute>
+      <negation>1</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c_dokumentace:p504</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>dokumentace:casti_dokumentace</id_attribute>
+      <id_proposition>dokumentace:vypis_BZ_CLIPSu</id_proposition>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>dokumentace:napsana_dokumentace</id_attribute>
+      <negation>1</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c_dokumentace:p505</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>dokumentace:casti_dokumentace</id_attribute>
+      <id_proposition>dokumentace:porovnani_systemu</id_proposition>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>dokumentace:napsana_dokumentace</id_attribute>
+      <negation>1</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+  </compositional_rules>
+ </rules>
+
+<!--******************** Integrity constraints ********************-->
+
+ <integrity_constraints>
+ </integrity_constraints>
+ <system_info>
+  <nest:options xmlns:nest="http://lisp.vse.cz/NEST">
+   <nest:version>2.0.3</nest:version>
+  </nest:options>
+ </system_info>
+</base>

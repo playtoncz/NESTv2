@@ -1,0 +1,34 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="NestStudio.Views.KbEditorView">
+  <Grid RowDefinitions="Auto,*" ColumnDefinitions="*">
+    <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="12" Margin="0,0,0,12">
+      <Button x:Name="BackButton" Content="← Zpět" />
+      <TextBlock x:Name="TitleText" Text="Editor znalostní báze" VerticalAlignment="Center" FontWeight="SemiBold" />
+      <Button x:Name="SaveButton" Content="Uložit XML" Classes="primary" />
+      <Button x:Name="ValidateButton" Content="Validace" />
+      <Button x:Name="GraphButton" Content="Graf pravidel" />
+      <Button x:Name="GlobalPropsButton" Content="Globální vlastnosti" />
+      <Button x:Name="StatisticsButton" Content="Statistiky" />
+      <TextBlock x:Name="StatusText" Text="" VerticalAlignment="Center" Opacity="0.8" Margin="8,0,0,0" />
+    </StackPanel>
+    <Grid Grid.Row="1" ColumnDefinitions="280,*" RowDefinitions="*">
+      <Grid Grid.Column="0" RowDefinitions="Auto,130,Auto,*,Auto,90,Auto,80" Margin="0,0,8,0">
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <TextBlock Text="Atributy" FontWeight="SemiBold" Margin="0,0,0,4" VerticalAlignment="Center" />
+          <Button x:Name="NewAttributeButton" Content="Nový atribut" Padding="6,2" />
+        </StackPanel>
+        <ListBox x:Name="AttributesList" Grid.Row="1" SelectionMode="Single" />
+        <TextBlock Text="Pravidla" FontWeight="SemiBold" Margin="0,12,0,4" Grid.Row="2" />
+        <ListBox x:Name="RulesList" Grid.Row="3" SelectionMode="Single" />
+        <TextBlock Text="Kontexty" FontWeight="SemiBold" Margin="0,12,0,4" Grid.Row="4" />
+        <ListBox x:Name="ContextsList" Grid.Row="5" SelectionMode="Single" />
+        <TextBlock Text="Integritní omezení" FontWeight="SemiBold" Margin="0,12,0,4" Grid.Row="6" />
+        <ListBox x:Name="IntegrityList" Grid.Row="7" SelectionMode="Single" />
+      </Grid>
+      <Border Grid.Column="1" BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="4" Padding="12">
+        <ContentControl x:Name="DetailContent" />
+      </Border>
+    </Grid>
+  </Grid>
+</UserControl>

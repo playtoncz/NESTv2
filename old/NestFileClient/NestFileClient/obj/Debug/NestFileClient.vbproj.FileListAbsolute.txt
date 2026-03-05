@@ -1,0 +1,16 @@
+C:\Users\konta\Documents\NESTv2\old\NestFileClient\NestFileClient\obj\Debug\NestFileClient.vbproj.AssemblyReference.cache
+C:\Users\konta\Documents\NESTv2\old\NestFileClient\NestFileClient\obj\Debug\NestFileClient.Form1.resources
+C:\Users\konta\Documents\NESTv2\old\NestFileClient\NestFileClient\obj\Debug\NestFileClient.Resources.resources
+C:\Users\konta\Documents\NESTv2\old\NestFileClient\NestFileClient\obj\Debug\NestFileClient.vbproj.GenerateResource.cache
+C:\Users\konta\Documents\NESTv2\old\NestFileClient\NestFileClient\obj\Debug\NestFileClient.vbproj.CoreCompileInputs.cache
+C:\Users\konta\Documents\NESTv2\old\NestFileClient\NestFileClient\obj\Debug\NestFileClient.exe
+C:\Users\konta\Documents\NESTv2\old\NestFileClient\NestFileClient\obj\Debug\NestFileClient.xml
+C:\Users\konta\Documents\NESTv2\old\NestFileClient\NestFileClient\obj\Debug\NestFileClient.pdb
+C:\Users\konta\Documents\NESTv2\old\NestFileClient\NestFileClient\bin\Debug\NestFileClient.exe.config
+C:\Users\konta\Documents\NESTv2\old\NestFileClient\NestFileClient\bin\Debug\NestFileClient.exe.manifest
+C:\Users\konta\Documents\NESTv2\old\NestFileClient\NestFileClient\bin\Debug\NestFileClient.application
+C:\Users\konta\Documents\NESTv2\old\NestFileClient\NestFileClient\bin\Debug\NestFileClient.exe
+C:\Users\konta\Documents\NESTv2\old\NestFileClient\NestFileClient\bin\Debug\NestFileClient.pdb
+C:\Users\konta\Documents\NESTv2\old\NestFileClient\NestFileClient\bin\Debug\NestFileClient.xml
+C:\Users\konta\Documents\NESTv2\old\NestFileClient\NestFileClient\obj\Debug\NestFileClient.exe.manifest
+C:\Users\konta\Documents\NESTv2\old\NestFileClient\NestFileClient\obj\Debug\NestFileClient.application

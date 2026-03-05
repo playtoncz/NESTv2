@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/NestWS/NestWS" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/NestWS/NestWS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/NestWS/NestWS">
+      <s:element name="RunConsultation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BazeZnalostiXML" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AnswersXML" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunConsultationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RunConsultationResult" type="tns:ConsultationResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ConsultationResult">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ResultXML" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BaseResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="isOK" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="errorMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="RunConsultationSoapIn">
+    <wsdl:part name="parameters" element="tns:RunConsultation" />
+  </wsdl:message>
+  <wsdl:message name="RunConsultationSoapOut">
+    <wsdl:part name="parameters" element="tns:RunConsultationResponse" />
+  </wsdl:message>
+  <wsdl:portType name="NestWSSoap">
+    <wsdl:operation name="RunConsultation">
+      <wsdl:input message="tns:RunConsultationSoapIn" />
+      <wsdl:output message="tns:RunConsultationSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NestWSSoap" type="tns:NestWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RunConsultation">
+      <soap:operation soapAction="http://tempuri.org/NestWS/NestWS/RunConsultation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NestWSSoap12" type="tns:NestWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+    <wsdl:operation name="RunConsultation">
+      <soap12:operation soapAction="http://tempuri.org/NestWS/NestWS/RunConsultation" style="document" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      <wsdl:input>
+        <soap12:body use="literal" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NestWS">
+    <wsdl:port name="NestWSSoap" binding="tns:NestWSSoap">
+      <soap:address location="http://nestws.aspweb.cz/nestws.asmx" />
+    </wsdl:port>
+    <wsdl:port name="NestWSSoap12" binding="tns:NestWSSoap12">
+      <soap12:address location="http://nestws.aspweb.cz/nestws.asmx" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,113 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+NestFileClient
+</name>
+</assembly>
+<members>
+<member name="T:NestFileClient.My.Resources.Resources">
+<summary>
+  Třída prostředků se silnými typy pro vyhledávání lokalizovaných řetězců atp.
+</summary>
+</member>
+<member name="P:NestFileClient.My.Resources.Resources.ResourceManager">
+<summary>
+  Vrací instanci ResourceManager uloženou v mezipaměti použitou touto třídou.
+</summary>
+</member>
+<member name="P:NestFileClient.My.Resources.Resources.Culture">
+<summary>
+  Potlačí vlastnost CurrentUICulture aktuálního vlákna pro všechna
+  vyhledání prostředků pomocí třídy prostředků se silnými typy.
+</summary>
+</member>
+<member name="T:NestFileClient.nestws.NestWS">
+<remarks/>
+</member>
+<member name="M:NestFileClient.nestws.NestWS.#ctor">
+<remarks/>
+</member>
+<member name="E:NestFileClient.nestws.NestWS.RunConsultationCompleted">
+<remarks/>
+</member>
+<member name="E:NestFileClient.nestws.NestWS.RunConsultationZipCompleted">
+<remarks/>
+</member>
+<member name="E:NestFileClient.nestws.NestWS.RunConsultationZip2Completed">
+<remarks/>
+</member>
+<member name="M:NestFileClient.nestws.NestWS.RunConsultation(System.String,System.String)">
+<remarks/>
+</member>
+<member name="M:NestFileClient.nestws.NestWS.RunConsultationAsync(System.String,System.String)">
+<remarks/>
+</member>
+<member name="M:NestFileClient.nestws.NestWS.RunConsultationAsync(System.String,System.String,System.Object)">
+<remarks/>
+</member>
+<member name="M:NestFileClient.nestws.NestWS.RunConsultationZip(System.Byte[])">
+<remarks/>
+</member>
+<member name="M:NestFileClient.nestws.NestWS.RunConsultationZipAsync(System.Byte[])">
+<remarks/>
+</member>
+<member name="M:NestFileClient.nestws.NestWS.RunConsultationZipAsync(System.Byte[],System.Object)">
+<remarks/>
+</member>
+<member name="M:NestFileClient.nestws.NestWS.RunConsultationZip2(System.Byte[],System.String)">
+<remarks/>
+</member>
+<member name="M:NestFileClient.nestws.NestWS.RunConsultationZip2Async(System.Byte[],System.String)">
+<remarks/>
+</member>
+<member name="M:NestFileClient.nestws.NestWS.RunConsultationZip2Async(System.Byte[],System.String,System.Object)">
+<remarks/>
+</member>
+<member name="M:NestFileClient.nestws.NestWS.CancelAsync(System.Object)">
+<remarks/>
+</member>
+<member name="T:NestFileClient.nestws.ConsultationResult">
+<remarks/>
+</member>
+<member name="P:NestFileClient.nestws.ConsultationResult.ResultXML">
+<remarks/>
+</member>
+<member name="T:NestFileClient.nestws.BaseResult">
+<remarks/>
+</member>
+<member name="P:NestFileClient.nestws.BaseResult.isOK">
+<remarks/>
+</member>
+<member name="P:NestFileClient.nestws.BaseResult.errorMessage">
+<remarks/>
+</member>
+<member name="T:NestFileClient.nestws.RunConsultationCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:NestFileClient.nestws.RunConsultationCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:NestFileClient.nestws.RunConsultationCompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:NestFileClient.nestws.RunConsultationZipCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:NestFileClient.nestws.RunConsultationZipCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:NestFileClient.nestws.RunConsultationZipCompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:NestFileClient.nestws.RunConsultationZip2CompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:NestFileClient.nestws.RunConsultationZip2CompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:NestFileClient.nestws.RunConsultationZip2CompletedEventArgs.Result">
+<remarks/>
+</member>
+</members>
+</doc>

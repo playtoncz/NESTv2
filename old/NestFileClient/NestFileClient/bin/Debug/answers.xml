@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<answers>
+  <attribute>
+    <id>velikost_nohy</id>
+    <type>numeric</type>
+    <answer>
+      <value>35,000</value>
+    </answer>
+  </attribute>
+  <attribute>
+    <id>modrá_krev</id>
+    <type>binary</type>
+    <answer>
+      <weight>1,000</weight>
+    </answer>
+  </attribute>
+  <attribute>
+    <id>majetek</id>
+    <type>multiple</type>
+    <answer>
+      <value>penize</value>
+      <weight>1,000</weight>
+    </answer>
+    <answer>
+      <value>pozemky</value>
+      <weight>0,000</weight>
+    </answer>
+  </attribute>
+  
+</answers>

@@ -1,0 +1,96 @@
+<%@ Master Language="VB" Inherits="NestWebApplication.BasePage" Codebehind="BasePage.master.vb" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>NEST - New Expert SysTem</title>
+    <!--<LINK href="Styles.css" type="text/css" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="menu/transmenu.css">-->
+	<script type="text/javascript" language="javascript" src="menu/packed.js"></script>
+    <script type="text/javascript" language="javascript">
+    
+//<![CDATA[
+	function init() {
+	  if (TransMenu.isSupported()) {
+			TransMenu.initialize();
+
+menu1.onactivate = function() { document.getElementById("mtm_konzultace").className = "hover"; };
+menu1.ondeactivate = function() { document.getElementById("mtm_konzultace").className = ""; };
+
+/*<span id="menu_vypis_init" runat="server">*/
+menu2.onactivate = function() { document.getElementById("mtm_vypis").className = "hover"; };
+menu2.ondeactivate = function() { document.getElementById("mtm_vypis").className = ""; };
+/*</span>*/
+	 	}
+  }
+//]]>
+</script>
+    
+    
+    <script language="javascript">
+      <!--
+        function ShowSubmenu(id){
+            div = document.getElementById(id);
+            div.style.visibility = '';
+        };
+        function HideSubmenu(id){
+            div = document.getElementById(id);
+            div.style.visibility = 'hidden';
+        }
+        function Hide(){
+            HideSubmenu("konzultace");
+            HideSubmenu("vypis");
+        }
+      //-->
+    </script>
+</head>
+<body <%=GetBodyScript()%> onload="init()">
+
+    
+    <form id="form1" runat="server">
+        &nbsp;<div class="zahlavi">
+    </div>
+    <div class="menu">
+	 <a href="default.aspx" class="first"  id="mtm_konzultace" ><asp:literal ID="Literal1" runat="server" Text="<%$ Resources:AppResource, menu_konzultace %>"></asp:literal></a>	 
+	 <span class="menu_odstranit"><a href="default.aspx?clear=true" id="menu_odstranit" runat="server"><asp:literal ID="Literal2" runat="server" Text="<%$ Resources:AppResource, menu_odstranitNahranouBZ %>"></asp:literal></a></span>
+	 <span class="menu_vypis" id="menu_vypis" runat="server"><a href="vypisHTML.aspx"  id="mtm_vypis"><asp:literal ID="Literal3" runat="server" Text="<%$ Resources:AppResource, menu_vypisBZ %>"></asp:literal></a></span>
+	 <a href="statistiky.aspx" id="menu_statistiky" runat="server"><asp:literal ID="Literal4" runat="server" Text="<%$ Resources:AppResource, menu_statistiky %>"></asp:literal></a>
+	 <span class="menu_kontrola"><a href="check.aspx"><asp:literal ID="Literal5" runat="server" Text="<%$ Resources:AppResource, menu_kontrolaBZ %>"></asp:literal></a></span>
+	 <span class="menu_jazyk"><asp:LinkButton ID="cmdJazyk" runat="server" Text="<%$ Resources:AppResource, jazyk %>">LinkButton</asp:LinkButton></span>
+        </div>
+  
+	<script type="text/javascript" language="javascript">
+//<![CDATA[
+  if (TransMenu.isSupported()) {
+	  var ms = new TransMenuSet(TransMenu.direction.down, 1, 0, TransMenu.reference.bottomLeft);
+
+var menu1 = ms.addMenu(document.getElementById("mtm_konzultace"));
+menu1.addItem("<asp:literal ID="Literal6" runat="server" Text="<%$ Resources:AppResource, menu_novaKonzultace %>"></asp:literal>", "default.aspx");
+/*<span id="pokracovatVKonzultaci_item" runat="server">*/
+menu1.addItem("<asp:literal ID="Literal7" runat="server" Text="<%$ Resources:AppResource, menu_pokracovatVKonzultaci %>"></asp:literal>", "default.aspx?pokracovatvkonzultaci=1");
+/*</span>*/
+
+/*<span id="menu_vypis_submenu" runat="server">*/
+var menu2 = ms.addMenu(document.getElementById("mtm_vypis"));
+menu2.addItem("<asp:literal ID="Literal8" runat="server" Text="<%$ Resources:AppResource, menu_vypisBZ %>"></asp:literal>", "vypisHTML.aspx");
+menu2.addItem("<asp:literal ID="Literal9" runat="server" Text="<%$ Resources:AppResource, menu_vypisZdrojovehoKodu %>"></asp:literal>", "vypis.aspx");
+menu2.addItem("<asp:literal ID="Literal10" runat="server" Text="<%$ Resources:AppResource, menu_vypisCBR %>"></asp:literal>", "vypisCBR.aspx");
+/*</span>*/
+
+	  TransMenu.renderAll();	
+  }
+//]]>
+</script>
+    <div class="obsah">
+    
+        <asp:contentplaceholder id="obsah" runat="server">
+        </asp:contentplaceholder>
+    </div>
+    
+    <div class="zapati">
+     <asp:Label id="lblError" runat="server" CssClass="error"></asp:Label>
+    </div>
+    </form>
+</body>
+</html>

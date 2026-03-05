@@ -1,0 +1,1 @@
+<%@ Application Inherits="NestWS.Global" Language="VB" %>

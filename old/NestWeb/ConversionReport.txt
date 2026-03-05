@@ -1,0 +1,104 @@
+﻿This report shows the steps taken to convert your Web application from ASP.NET 1.1 to ASP.NET 2.0. 
+There may be some unresolved conversion issues you will need to manually fix. 
+For more information, please refer to http://go.microsoft.com/fwlink/?LinkId=46995 or search for the help topic "Converting from Visual Studio .NET 2002 or 2003".
+Conversion Started on project file NestWeb.vbproj at únor 10 2007, 10:41:42.
+
+=========================ERRORS===================
+ERROR: The following files were not migrated because they were not found in the project file or the associated 'BuildAction' is set to 'None'.
+You may need to exclude these files from the project after the conversion process in order to compile your web site: 
+File List == classes\environment.vb.
+
+=========================WARNINGS=================
+Warning: 'Referencepath' settings have not been converted.
+
+=========================COMMENTS=================
+Web.Config: Added 'xhtmlConformance' attribute.
+Web.Config: added a reference for assembly System.Design.
+Added folder Web References\NestWeb\nestws.
+Moved file Web References\nestws\nestws.disco to the Web References\NestWeb\nestws\ directory.
+Moved file Web References\nestws\nestws.wsdl to the Web References\NestWeb\nestws\ directory.
+Warning: Renamed file Web References\nestws\Reference.map to file nestws.discomap.
+Moved file Web References\nestws\nestws.discomap to the Web References\NestWeb\nestws\ directory.
+Removed attribute Codebehind from file BZToServer.aspx.
+Warning: Access level of 'NestWeb.BZToServer' changed to 'Partial' in file BZToServer.aspx.vb (Line 3).
+Updated the attribute 'CodeFileBaseClass' with value 'NestWeb.cBasePage' in the file 'BZToServer.aspx'.
+Warning: Removed comment lines before designplaceholder declaration from file BZToServer.aspx.vb.    BZToServer.aspx.vb (Line 13)
+Removed attribute Codebehind from file default.aspx.
+Warning: Access level of 'NestWeb._default' changed to 'Partial' in file default.aspx.vb (Line 3).
+Updated the attribute 'CodeFileBaseClass' with value 'NestWeb.cBasePage' in the file 'default.aspx'.
+Warning: Removed comment lines before designplaceholder declaration from file default.aspx.vb.    default.aspx.vb (Line 13)
+'Reference' tag with reference to '~/wucZapati.ascx' added to file default.aspx.
+'Reference' tag with reference to '~/result.aspx' added to file default.aspx.
+Removed attribute Codebehind from file dotazBinary.aspx.
+Warning: Access level of 'NestWeb.dotazBinary' changed to 'Partial' in file dotazBinary.aspx.vb (Line 3).
+Updated the attribute 'CodeFileBaseClass' with value 'NestWeb.cBasePage' in the file 'dotazBinary.aspx'.
+Warning: Removed comment lines before designplaceholder declaration from file dotazBinary.aspx.vb.    dotazBinary.aspx.vb (Line 13)
+'Reference' tag with reference to '~/wucZapati.ascx' added to file dotazBinary.aspx.
+'Reference' tag with reference to '~/wucOdpovedi.ascx' added to file dotazBinary.aspx.
+'Reference' tag with reference to '~/result.aspx' added to file dotazBinary.aspx.
+Removed attribute Codebehind from file dotazMultiple.aspx.
+Warning: Access level of 'NestWeb.dotazMultiple' changed to 'Partial' in file dotazMultiple.aspx.vb (Line 3).
+Updated the attribute 'CodeFileBaseClass' with value 'NestWeb.cBasePage' in the file 'dotazMultiple.aspx'.
+Warning: Removed comment lines before designplaceholder declaration from file dotazMultiple.aspx.vb.    dotazMultiple.aspx.vb (Line 14)
+'Reference' tag with reference to '~/wucZapati.ascx' added to file dotazMultiple.aspx.
+'Reference' tag with reference to '~/wucOdpovedi.ascx' added to file dotazMultiple.aspx.
+'Reference' tag with reference to '~/result.aspx' added to file dotazMultiple.aspx.
+Removed attribute Codebehind from file dotazNumeric.aspx.
+Warning: Access level of 'NestWeb.dotazNumeric' changed to 'Partial' in file dotazNumeric.aspx.vb (Line 3).
+Updated the attribute 'CodeFileBaseClass' with value 'NestWeb.cBasePage' in the file 'dotazNumeric.aspx'.
+Warning: Removed comment lines before designplaceholder declaration from file dotazNumeric.aspx.vb.    dotazNumeric.aspx.vb (Line 13)
+'Reference' tag with reference to '~/wucZapati.ascx' added to file dotazNumeric.aspx.
+'Reference' tag with reference to '~/wucOdpovedi.ascx' added to file dotazNumeric.aspx.
+'Reference' tag with reference to '~/result.aspx' added to file dotazNumeric.aspx.
+Removed attribute Codebehind from file dotazSingle.aspx.
+Warning: Access level of 'NestWeb.dotazSingle' changed to 'Partial' in file dotazSingle.aspx.vb (Line 3).
+Updated the attribute 'CodeFileBaseClass' with value 'NestWeb.cBasePage' in the file 'dotazSingle.aspx'.
+Warning: Removed comment lines before designplaceholder declaration from file dotazSingle.aspx.vb.    dotazSingle.aspx.vb (Line 13)
+'Reference' tag with reference to '~/wucZapati.ascx' added to file dotazSingle.aspx.
+'Reference' tag with reference to '~/wucOdpovedi.ascx' added to file dotazSingle.aspx.
+'Reference' tag with reference to '~/result.aspx' added to file dotazSingle.aspx.
+Removed attribute Codebehind from file errorPage.aspx.
+Warning: Access level of 'NestWeb.errorPage' changed to 'Partial' in file errorPage.aspx.vb (Line 3).
+Updated the attribute 'CodeFileBaseClass' with value 'NestWeb.cBasePage' in the file 'errorPage.aspx'.
+Warning: Removed comment lines before designplaceholder declaration from file errorPage.aspx.vb.    errorPage.aspx.vb (Line 13)
+Removed attribute Codebehind from file Global.asax.
+Removed attribute Codebehind from file result.aspx.
+Warning: Access level of 'NestWeb.result' changed to 'Partial' in file result.aspx.vb (Line 3).
+Updated the attribute 'CodeFileBaseClass' with value 'NestWeb.cBasePage' in the file 'result.aspx'.
+Warning: Removed comment lines before designplaceholder declaration from file result.aspx.vb.    result.aspx.vb (Line 13)
+'Reference' tag with reference to '~/wucZapati.ascx' added to file result.aspx.
+Removed attribute Codebehind from file vypis.aspx.
+Warning: Access level of 'NestWeb.vypis' changed to 'Partial' in file vypis.aspx.vb (Line 3).
+Updated the attribute 'CodeFileBaseClass' with value 'NestWeb.cBasePage' in the file 'vypis.aspx'.
+Warning: Removed comment lines before designplaceholder declaration from file vypis.aspx.vb.    vypis.aspx.vb (Line 13)
+Removed attribute TargetSchema from file wucOdpovedi.ascx.
+Removed attribute Codebehind from file wucOdpovedi.ascx.
+Warning: Access level of 'NestWeb.wucOdpovedi' changed to 'Partial' in file wucOdpovedi.ascx.vb (Line 3).
+Warning: Removed comment lines before designplaceholder declaration from file wucOdpovedi.ascx.vb.    wucOdpovedi.ascx.vb (Line 13)
+Removed attribute TargetSchema from file wucZahlavi.ascx.
+Removed attribute Codebehind from file wucZahlavi.ascx.
+Warning: Access level of 'NestWeb.wucZahlavi' changed to 'Partial' in file wucZahlavi.ascx.vb (Line 3).
+Warning: Removed comment lines before designplaceholder declaration from file wucZahlavi.ascx.vb.    wucZahlavi.ascx.vb (Line 13)
+Removed attribute TargetSchema from file wucZapati.ascx.
+Removed attribute Codebehind from file wucZapati.ascx.
+Warning: Access level of 'NestWeb.wucZapati' changed to 'Partial' in file wucZapati.ascx.vb (Line 3).
+Warning: Removed comment lines before designplaceholder declaration from file wucZapati.ascx.vb.    wucZapati.ascx.vb (Line 13)
+Added folder App_Code\Classes.
+Moved file classes\helper.vb to the App_Code\Classes\ directory.
+Reference to code-behind class 'NestWeb.result' has been found in the file 'classes\konzultace.vb' at line '34'. A stub class for 'NestWeb.result' will be generated in 'App_Code\Migrated' folder.
+Moved file classes\konzultace.vb to the App_Code\Classes\ directory.
+Moved file Global.asax.vb to the App_Code\ directory.
+Moved file classes\generalobject.vb to the App_Code\Classes\ directory.
+Moved file classes\generalerror.vb to the App_Code\Classes\ directory.
+Moved file classes\cbaseusercontrol.vb to the App_Code\Classes\ directory.
+Moved file AssemblyInfo.vb to the App_Code\ directory.
+Moved file classes\cbasepage.vb to the App_Code\Classes\ directory.
+Updated the attribute 'Inherits' with value 'NestWeb.Migrated_result' in the file 'result.aspx'.
+Code file 'App_Code\Migrated\Stub_result_aspx_vb.vb' was created and contains an abstract class 'Migrated_result' used as a base class for the class 'NestWeb.result'.    result.aspx.vb
+Warning: Renamed folder Web References\ to App_WebReferences.
+Changed HTML validation schema for all projects to 'Internet Explorer 6.0'.
+Removed file Bin\NestWeb.dll.
+Removed file Bin\NestWeb.pdb.
+Removed file NestWeb.vbproj.
+Removed file NestWeb.vbproj.webinfo.
+Project NestWeb.vbproj has been converted successfully at únor 10 2007, 10:42:48.
