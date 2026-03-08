@@ -1,3 +1,6 @@
 - pamatovat si otevřený projekt na hlavní stránce
 - zobrazit naposledy otevřené projekty
 - text po vybrání je modrý ale když mám na tom kurzor tak šedý takže nevím, že je vybraný
+- Upravit O Aplikaci
+- Loga vypadají jak hovna na hlavní stránce, přidat odkazy na loga na rapl-group.eu a opf.slu.cz, upravit barvu loga opf na zeleno.
+- 
