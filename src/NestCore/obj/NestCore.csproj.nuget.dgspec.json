@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\konta\\Documents\\NESTv2\\src\\NestCore\\NestCore.csproj": {}
+    "C:\\Users\\konta\\Documents\\GitHub\\NESTv2\\src\\NestCore\\NestCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\konta\\Documents\\NESTv2\\src\\NestCore\\NestCore.csproj": {
+    "C:\\Users\\konta\\Documents\\GitHub\\NESTv2\\src\\NestCore\\NestCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\konta\\Documents\\NESTv2\\src\\NestCore\\NestCore.csproj",
+        "projectUniqueName": "C:\\Users\\konta\\Documents\\GitHub\\NESTv2\\src\\NestCore\\NestCore.csproj",
         "projectName": "NestCore",
-        "projectPath": "C:\\Users\\konta\\Documents\\NESTv2\\src\\NestCore\\NestCore.csproj",
+        "projectPath": "C:\\Users\\konta\\Documents\\GitHub\\NESTv2\\src\\NestCore\\NestCore.csproj",
         "packagesPath": "C:\\Users\\konta\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\konta\\Documents\\NESTv2\\src\\NestCore\\obj\\",
+        "outputPath": "C:\\Users\\konta\\Documents\\GitHub\\NESTv2\\src\\NestCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

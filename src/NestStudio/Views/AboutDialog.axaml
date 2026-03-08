@@ -1,0 +1,15 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="NestStudio.Views.AboutDialog"
+        Title="O aplikaci NEST Studio"
+        Width="440" Height="380"
+        WindowStartupLocation="CenterOwner">
+  <StackPanel Margin="28" Spacing="16">
+    <TextBlock Text="NEST Studio" FontSize="20" FontWeight="SemiBold" />
+    <TextBlock Text="Expertní systém pro znalostní báze v NEST formátu." TextWrapping="Wrap" Opacity="0.9" />
+    <TextBlock Text="Aplikaci vytvořil Bc. Antonín Pavlík podle původního programu NEST od Vladimíra Laše ve spolupráci s doc. Ing. Jan Górecki, Ph.D." TextWrapping="Wrap" Margin="0,8,0,0" />
+    <TextBlock Text="Obchodně podnikatelská fakulta Karviná Slezské univerzity v Opavě · RAPL Group" FontWeight="SemiBold" Margin="0,8,0,0" />
+    <TextBlock Text="NEST Studio slouží k vytváření a úpravě znalostních bází (atributy, pravidla, kontexty), spouštění konzultací a zobrazení výsledků inference." TextWrapping="Wrap" Opacity="0.85" Margin="0,12,0,0" />
+    <Button x:Name="OkButton" Content="Zavřít" HorizontalAlignment="Right" Margin="0,20,0,0" Classes="primary" />
+  </StackPanel>
+</Window>

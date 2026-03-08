@@ -1,5 +1,8 @@
+using System.Reflection;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Avalonia.Media.Imaging;
+using Avalonia.Platform.Storage;
 using System.Text;
 using NestCore.Model;
 using NestFormat;
@@ -12,7 +15,6 @@ public partial class WelcomeView : UserControl
     private KnowledgeBase? _loadedKb;
     private string? _loadedKbPath;
 
-    /// <summary>Pro runtime loader / XAML. V kódu používej konstruktor s MainWindow.</summary>
     public WelcomeView()
     {
         InitializeComponent();
@@ -22,9 +24,63 @@ public partial class WelcomeView : UserControl
     {
         _mainWindow = mainWindow;
         InitializeComponent();
+        LoadImages();
+        SetVersionText();
+        CreateProjectButton.Click += OnCreateProject;
         OpenKbButton.Click += OnOpenKb;
         OpenEditorButton.Click += OnOpenEditor;
-        RunConsultationButton.Click += OnRunConsultation;
+        FillProjectButton.Click += OnFillProject;
+        AboutButton.Click += OnAbout;
+        UpdateProjectLoadedState();
+    }
+
+    private void LoadImages()
+    {
+        var baseDir = AppContext.BaseDirectory;
+        TrySetImage(LogoImage, Path.Combine(baseDir, "img", "NEST_STUDIO_FULL.png"));
+        TrySetImage(OpfImage, Path.Combine(baseDir, "img", "opf.png"));
+        TrySetImage(RaplImage, Path.Combine(baseDir, "img", "rapl.png"));
+    }
+
+    private static void TrySetImage(Avalonia.Controls.Image imageControl, string path)
+    {
+        if (File.Exists(path))
+        {
+            try
+            {
+                imageControl.Source = new Bitmap(path);
+            }
+            catch { /* ignore */ }
+        }
+    }
+
+    private void SetVersionText()
+    {
+        var version = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion
+            ?? Assembly.GetExecutingAssembly().GetName().Version?.ToString()
+            ?? "1.0.0";
+        VersionText.Text = "Verze " + version;
+    }
+
+    private void UpdateProjectLoadedState()
+    {
+        var hasProject = _loadedKb != null;
+        ProjectLoadedStack.IsVisible = hasProject;
+        if (hasProject)
+        {
+            var name = _loadedKb!.Global.Description ?? (string.IsNullOrEmpty(_loadedKbPath) ? "Nový projekt" : Path.GetFileName(_loadedKbPath));
+            ProjectNameText.Text = "Projekt: " + name;
+            if (!string.IsNullOrEmpty(_loadedKbPath))
+                ProjectNameText.Text += "\n" + _loadedKbPath;
+        }
+    }
+
+    private void OnCreateProject(object? sender, RoutedEventArgs e)
+    {
+        if (_mainWindow == null) return;
+        var kb = new KnowledgeBase();
+        kb.Global.Description = "Nový projekt";
+        _mainWindow.ShowKbEditor(kb, null);
     }
 
     private void OnOpenEditor(object? sender, RoutedEventArgs e)
@@ -37,13 +93,13 @@ public partial class WelcomeView : UserControl
     {
         var storage = _mainWindow?.StorageProvider;
         if (storage == null) return;
-        var files = await storage.OpenFilePickerAsync(new Avalonia.Platform.Storage.FilePickerOpenOptions
+        var files = await storage.OpenFilePickerAsync(new FilePickerOpenOptions
         {
-            Title = "Vyberte znalostní bázi (base.xml)",
+            Title = "Vyberte projekt (znalostní báze XML)",
             AllowMultiple = false,
             FileTypeFilter = new[]
             {
-                new Avalonia.Platform.Storage.FilePickerFileType("XML") { Patterns = new[] { "*.xml" } }
+                new FilePickerFileType("XML") { Patterns = new[] { "*.xml" } }
             }
         });
         if (files.Count == 0) return;
@@ -54,17 +110,18 @@ public partial class WelcomeView : UserControl
             var reader = new BaseXmlReader();
             _loadedKb = reader.Read(xml);
             _loadedKbPath = path;
-            RunConsultationButton.IsEnabled = true;
-            OpenEditorButton.IsEnabled = true;
+            StatusText.IsVisible = true;
             StatusText.Text = $"Načteno: {_loadedKb.Global.Description ?? path} ({_loadedKb.Attributes.Count} atributů, {_loadedKb.CompositionalRules.Count} pravidel)";
+            UpdateProjectLoadedState();
         }
-        catch (System.Exception ex)
+        catch (Exception ex)
         {
+            StatusText.IsVisible = true;
             StatusText.Text = "Chyba: " + ex.Message;
         }
     }
 
-    private async void OnRunConsultation(object? sender, RoutedEventArgs e)
+    private async void OnFillProject(object? sender, RoutedEventArgs e)
     {
         if (_loadedKb == null || _mainWindow == null) return;
         var dialog = new RunConfigDialog();
@@ -73,10 +130,16 @@ public partial class WelcomeView : UserControl
             _mainWindow.ShowConsultation(_loadedKb, _loadedKbPath, config);
     }
 
-    /// <summary>Načte XML s respektováním BOM a deklarace encoding.</summary>
+    private async void OnAbout(object? sender, RoutedEventArgs e)
+    {
+        if (_mainWindow == null) return;
+        var dialog = new AboutDialog();
+        await dialog.ShowDialog(_mainWindow);
+    }
+
     private static string ReadXmlWithEncoding(string path)
     {
-        var bytes = System.IO.File.ReadAllBytes(path);
+        var bytes = File.ReadAllBytes(path);
         if (bytes.Length == 0)
             throw new InvalidOperationException("Soubor je prázdný.");
 

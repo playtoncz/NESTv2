@@ -15,10 +15,16 @@ public partial class GlobalPropertiesView : UserControl
     public GlobalPropertiesView(Global g)
     {
         InitializeComponent();
-        Build(g);
+        Build(g, null);
     }
 
-    private void Build(Global g)
+    public GlobalPropertiesView(Global g, Action? onDirty)
+    {
+        InitializeComponent();
+        Build(g, onDirty);
+    }
+
+    private void Build(Global g, Action? onDirty)
     {
         Root.Children.Clear();
 
@@ -26,23 +32,23 @@ public partial class GlobalPropertiesView : UserControl
 
         AddRow("Popis", out var descBox);
         descBox.Text = g.Description ?? "";
-        descBox.LostFocus += (_, _) => g.Description = descBox.Text?.Trim();
+        descBox.LostFocus += (_, _) => { g.Description = descBox.Text?.Trim(); onDirty?.Invoke(); };
 
         AddRow("Expert", out var expertBox);
         expertBox.Text = g.Expert ?? "";
-        expertBox.LostFocus += (_, _) => g.Expert = expertBox.Text?.Trim();
+        expertBox.LostFocus += (_, _) => { g.Expert = expertBox.Text?.Trim(); onDirty?.Invoke(); };
 
         AddRow("Znalostní inženýr", out var keBox);
         keBox.Text = g.KnowledgeEngineer ?? "";
-        keBox.LostFocus += (_, _) => g.KnowledgeEngineer = keBox.Text?.Trim();
+        keBox.LostFocus += (_, _) => { g.KnowledgeEngineer = keBox.Text?.Trim(); onDirty?.Invoke(); };
 
         AddRow("Datum", out var dateBox);
         dateBox.Text = g.Date ?? "";
-        dateBox.LostFocus += (_, _) => g.Date = dateBox.Text?.Trim();
+        dateBox.LostFocus += (_, _) => { g.Date = dateBox.Text?.Trim(); onDirty?.Invoke(); };
 
         AddRow("Inference mechanismus", out var infBox);
         infBox.Text = g.InferenceMechanism ?? "standard";
-        infBox.LostFocus += (_, _) => g.InferenceMechanism = infBox.Text?.Trim() ?? "standard";
+        infBox.LostFocus += (_, _) => { g.InferenceMechanism = infBox.Text?.Trim() ?? "standard"; onDirty?.Invoke(); };
 
         AddRow("Rozsah vah (weight_range)", out var wrBox);
         wrBox.Text = g.WeightRange.ToString(System.Globalization.CultureInfo.InvariantCulture);
@@ -50,6 +56,7 @@ public partial class GlobalPropertiesView : UserControl
         {
             if (double.TryParse(wrBox.Text?.Replace(',', '.'), System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out var v))
                 g.WeightRange = v;
+            onDirty?.Invoke();
         };
 
         var defaultWeightCombo = new ComboBox
@@ -63,6 +70,7 @@ public partial class GlobalPropertiesView : UserControl
         {
             if (defaultWeightCombo.SelectedIndex == 0) g.DefaultWeight = DefaultWeightKind.Unknown;
             else g.DefaultWeight = DefaultWeightKind.Irrelevant;
+            onDirty?.Invoke();
         };
         Root.Children.Add(CreateLabelRow("Výchozí váha (default_weight)", defaultWeightCombo));
 
@@ -83,6 +91,7 @@ public partial class GlobalPropertiesView : UserControl
                 4 => GlobalPriorityKind.User,
                 _ => GlobalPriorityKind.First
             };
+            onDirty?.Invoke();
         };
         Root.Children.Add(CreateLabelRow("Globální priorita (global_priority)", priorityCombo));
 
@@ -92,6 +101,7 @@ public partial class GlobalPropertiesView : UserControl
         {
             if (double.TryParse(cgtBox.Text?.Replace(',', '.'), System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out var v))
                 g.ContextGlobalThreshold = v;
+            onDirty?.Invoke();
         };
 
         AddRow("Práh podmínky (condition_global_threshold)", out var condBox);
@@ -100,6 +110,7 @@ public partial class GlobalPropertiesView : UserControl
         {
             if (double.TryParse(condBox.Text?.Replace(',', '.'), System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out var v))
                 g.ConditionGlobalThreshold = v;
+            onDirty?.Invoke();
         };
     }
 

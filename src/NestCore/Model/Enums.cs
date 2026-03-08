@@ -50,7 +50,8 @@ public enum UsageRole
     Alone
 }
 
-/// <summary>Speciální stav odpovědi uživatele (Certainly yes/no, Irrelevant, Unknown, Postpone).</summary>
+/// <summary>Speciální stav odpovědi uživatele. Sémantika vah v rozsahu KB (typicky -3 až 3):
+/// Určitě ano = max váha (3), Určitě ne = min váha (-3), Nerelevantní = 0, Neznámý = celý rozsah (-3;3).</summary>
 public enum AnswerSpecialStatus
 {
     None,

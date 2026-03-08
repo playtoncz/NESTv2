@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1tJfXCXUs4s=",
+  "dgSpecHash": "+YBlbYf+pOA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\konta\\Documents\\NESTv2\\src\\NestStudio\\NestStudio.csproj",
+  "projectFilePath": "C:\\Users\\konta\\Documents\\GitHub\\NESTv2\\src\\NestStudio\\NestStudio.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\konta\\.nuget\\packages\\avalonia\\11.2.0\\avalonia.11.2.0.nupkg.sha512",
     "C:\\Users\\konta\\.nuget\\packages\\avalonia.angle.windows.natives\\2.1.22045.20230930\\avalonia.angle.windows.natives.2.1.22045.20230930.nupkg.sha512",

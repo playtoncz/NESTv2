@@ -21,8 +21,7 @@ public partial class RunConfigDialog : Window
     private void UpdatePathVisibility()
     {
         var useFile = AnsweringModeCombo.SelectedIndex == 1;
-        PathRow.IsVisible = useFile;
-        BrowseAnswersButton.IsVisible = useFile;
+        PathSection.IsVisible = useFile;
     }
 
     private async void OnBrowse(object? sender, RoutedEventArgs e)

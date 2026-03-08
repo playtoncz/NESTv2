@@ -27,6 +27,10 @@
 
 ### NestStudio (UI)
 - [x] Avalonia projekt, liquid glass / Fluent styling, MVVM
+- [x] **Úvodní obrazovka**: logo, „Dobrý den, vítejte v NEST Studio“, Vytvořit nový projekt, Otevřít projekt, Vyplnit projekt, fullscreen, verze, OPF/RAPL, O aplikaci
+- [x] **Projektový workflow**: dirty flag, dotaz „Uložit změny?“ při přepnutí na konzultaci / zpět na welcome
+- [x] **Editor – plná funkčnost ES**: Nové pravidlo (s editací podmínky a závěrů), Nový kontext (s editací podmínky), Nové integritní omezení (s editací podmínky a závěrů); editace stávajících pravidel/kontextů/IO; mazání
+- [x] **Vzhled**: liquid glass / Apple style na úvodní obrazovce a konzistentní styly v aplikaci
 - [x] Consultation/Runner: načtení KB, dotazník, answers XML, inference, zobrazení skóre a pořadí
 - [x] KB Editor: atributy, propozice, pravidla, validace, import/export
 - [x] Graf pravidel
@@ -35,6 +39,7 @@
 - [x] Editor kontextů
 - [x] Konfigurace před spuštěním (režim odpovědí, Reasoning mode, načtení answers ze souboru)
 - [ ] Question/Result UI v plném rozsahu — rozšířeno: stavy odpovědi, Uložit odpovědi, Result tabulka + filtry + How, Store case, Export
+- [ ] **Postupný dotazník / předčasné ukončení**: Otázky zobrazovat podle pravidel (jako v old NestBase: GetQuestionFromBaze, ZdrojDotaz, enmQuestion); případně ukončit konzultaci předčasně, když z pravidel plyne „zdravý“ (např. žádné další příznaky, není bledý, není dušný). V XML Nemoce zatím takové pravidlo není – doplnit nebo řešit v UI.
 - [x] Editor integritních omezení
 
 ### Testy

@@ -4,25 +4,117 @@
              RequestedThemeVariant="Default">
   <Application.Styles>
     <FluentTheme />
+    <!-- Pozadí: jemný gradient (Liquid glass feel) -->
     <Style Selector="Window">
-      <Setter Property="Background" Value="#F0F4F8" />
+      <Setter Property="Background" Value="#F5F7FA" />
     </Style>
-    <Style Selector="Border.panel">
-      <Setter Property="Background" Value="#E8FFFFFF" />
+    <!-- Liquid glass panel – hlavní kontejnery -->
+    <Style Selector="Border.glass-panel">
+      <Setter Property="Background" Value="#F8FAFC" />
+      <Setter Property="CornerRadius" Value="20" />
+      <Setter Property="Padding" Value="20" />
+      <Setter Property="BoxShadow" Value="0 8 32 0 #12000000, 0 0 0 1 #0DFFFFFF" />
+      <Setter Property="BorderBrush" Value="#18FFFFFF" />
+      <Setter Property="BorderThickness" Value="1" />
+    </Style>
+    <!-- Karta jedné otázky (vyplňovací screen) -->
+    <Style Selector="Border.glass-card">
+      <Setter Property="Background" Value="#FCFDFE" />
+      <Setter Property="CornerRadius" Value="16" />
+      <Setter Property="Padding" Value="18,16" />
+      <Setter Property="BoxShadow" Value="0 4 20 0 #0A000000, 0 0 0 1 #0AFFFFFF" />
+      <Setter Property="BorderBrush" Value="#12FFFFFF" />
+      <Setter Property="BorderThickness" Value="1" />
+      <Setter Property="Margin" Value="0,0,0,12" />
+    </Style>
+    <!-- Hlavička konzultace -->
+    <Style Selector="Border.consultation-header">
+      <Setter Property="Background" Value="#F0FFFFFF" />
+      <Setter Property="CornerRadius" Value="14" />
+      <Setter Property="Padding" Value="16,12" />
+      <Setter Property="BoxShadow" Value="0 2 16 0 #0D000000" />
+      <Setter Property="BorderBrush" Value="#10FFFFFF" />
+      <Setter Property="BorderThickness" Value="1" />
+    </Style>
+    <Style Selector="Border.welcome-panel">
+      <Setter Property="Background" Value="#F2FFFFFF" />
+      <Setter Property="CornerRadius" Value="20" />
+      <Setter Property="BoxShadow" Value="0 12 48 0 #15000000, 0 0 0 1 #08FFFFFF" />
+      <Setter Property="BorderBrush" Value="#10000000" />
+      <Setter Property="BorderThickness" Value="1" />
+    </Style>
+    <Style Selector="Border.welcome-panel Button.primary">
       <Setter Property="CornerRadius" Value="12" />
-      <Setter Property="Padding" Value="16" />
-      <Setter Property="BoxShadow" Value="0 4 20 0 #20000000" />
+      <Setter Property="Padding" Value="20,12" />
+      <Setter Property="FontWeight" Value="SemiBold" />
+    </Style>
+    <Style Selector="Border.welcome-panel Button:not(.primary)">
+      <Setter Property="Background" Value="#F8FAFC" />
+      <Setter Property="CornerRadius" Value="12" />
+      <Setter Property="Padding" Value="20,12" />
+      <Setter Property="BorderBrush" Value="#E2E8F0" />
+      <Setter Property="BorderThickness" Value="1" />
     </Style>
     <Style Selector="TextBlock.title">
       <Setter Property="FontSize" Value="22" />
       <Setter Property="FontWeight" Value="SemiBold" />
       <Setter Property="Foreground" Value="#1A1A2E" />
     </Style>
+    <!-- Primary tlačítko – iOS-style (vybraná odpověď) -->
     <Style Selector="Button.primary">
-      <Setter Property="Background" Value="#4361EE" />
+      <Setter Property="Background" Value="#007AFF" />
       <Setter Property="Foreground" Value="White" />
-      <Setter Property="CornerRadius" Value="8" />
+      <Setter Property="CornerRadius" Value="12" />
+      <Setter Property="Padding" Value="20,12" />
+      <Setter Property="FontWeight" Value="SemiBold" />
+    </Style>
+    <!-- Hover u vybraného tlačítka = tmavší modrá, ne šedá (vyšší specificita než FluentTheme) -->
+    <Style Selector="Border.glass-card Button.primary:pointerover">
+      <Setter Property="Background" Value="#0051D5" />
+    </Style>
+    <Style Selector="Border.glass-card Button.primary:pressed">
+      <Setter Property="Background" Value="#004EC4" />
+    </Style>
+    <Style Selector="Button.primary:pointerover">
+      <Setter Property="Background" Value="#0051D5" />
+    </Style>
+    <Style Selector="Button.primary:pressed">
+      <Setter Property="Background" Value="#004EC4" />
+    </Style>
+    <!-- Sekundární tlačítka v dotazníku -->
+    <Style Selector="Border.glass-card Button:not(.primary)">
+      <Setter Property="Background" Value="#F1F5F9" />
+      <Setter Property="Foreground" Value="#334155" />
+      <Setter Property="CornerRadius" Value="10" />
+      <Setter Property="Padding" Value="12,8" />
+      <Setter Property="BorderThickness" Value="0" />
+    </Style>
+    <Style Selector="Border.glass-card Button:not(.primary):pointerover">
+      <Setter Property="Background" Value="#E2E8F0" />
+    </Style>
+    <!-- Sekundární tlačítka a vstupy v dialogu konfigurace (glass-panel) -->
+    <Style Selector="Border.glass-panel Button:not(.primary)">
+      <Setter Property="Background" Value="#F1F5F9" />
+      <Setter Property="Foreground" Value="#334155" />
+      <Setter Property="CornerRadius" Value="10" />
       <Setter Property="Padding" Value="16,10" />
+      <Setter Property="BorderThickness" Value="0" />
+    </Style>
+    <Style Selector="Border.glass-panel Button:not(.primary):pointerover">
+      <Setter Property="Background" Value="#E2E8F0" />
+    </Style>
+    <Style Selector="Border.glass-panel TextBox">
+      <Setter Property="CornerRadius" Value="10" />
+      <Setter Property="Padding" Value="12,10" />
+      <Setter Property="BorderBrush" Value="#E2E8F0" />
+      <Setter Property="BorderThickness" Value="1" />
+    </Style>
+    <!-- Textbox v glass kartách -->
+    <Style Selector="Border.glass-card TextBox">
+      <Setter Property="CornerRadius" Value="10" />
+      <Setter Property="Padding" Value="12,10" />
+      <Setter Property="BorderBrush" Value="#E2E8F0" />
+      <Setter Property="BorderThickness" Value="1" />
     </Style>
   </Application.Styles>
 </Application>

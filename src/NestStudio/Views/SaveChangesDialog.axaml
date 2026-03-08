@@ -1,0 +1,15 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="NestStudio.Views.SaveChangesDialog"
+        Title="Neuložené změny"
+        Width="380" Height="160"
+        WindowStartupLocation="CenterOwner">
+  <StackPanel Margin="24" Spacing="20">
+    <TextBlock Text="Máte neuložené změny. Chcete je uložit?" TextWrapping="Wrap" />
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="12">
+      <Button x:Name="CancelButton" Content="Zrušit" />
+      <Button x:Name="DiscardButton" Content="Neukládat" />
+      <Button x:Name="SaveButton" Content="Uložit" Classes="primary" />
+    </StackPanel>
+  </StackPanel>
+</Window>

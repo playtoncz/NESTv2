@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="windows-1250"?>
+<!DOCTYPE answers SYSTEM "answers.dtd">
+<answers>
+ <case_description>test2_ans</case_description>
+ <attribute>
+  <id>bledost</id>
+  <type>binary</type>
+  <answer>
+   <weight>0,667</weight>
+  </answer>
+ </attribute>
+ <attribute>
+  <id>dychavicnost</id>
+  <type>binary</type>
+  <answer>
+   <weight>0,333</weight>
+  </answer>
+ </attribute>
+ <attribute>
+  <id>teplota</id>
+  <type>numeric</type>
+  <answer>
+   <value>39,000</value>
+  </answer>
+ </attribute>
+ <attribute>
+  <id>priznaky</id>
+  <type>multiple</type>
+  <answer>
+   <value>kasel</value>
+   <weight>1,000</weight>
+  </answer>
+ </attribute>
+</answers>

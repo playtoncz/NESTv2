@@ -1,22 +1,33 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="NestStudio.Views.ConsultationView">
-  <Grid RowDefinitions="Auto,Auto,*" ColumnDefinitions="*">
-    <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="12" Margin="0,0,0,12">
-      <Button x:Name="BackButton" Content="← Zpět" />
-      <TextBlock x:Name="TitleText" Text="Konzultace" VerticalAlignment="Center" FontWeight="SemiBold" />
-    </StackPanel>
-    <ScrollViewer Grid.Row="1" MaxHeight="280" Margin="0,0,0,12">
-      <StackPanel x:Name="QuestionnairePanel" Spacing="8" />
-    </ScrollViewer>
-    <Grid Grid.Row="2" RowDefinitions="Auto,*">
-      <StackPanel Orientation="Horizontal" Spacing="8" Margin="0,0,0,8">
-        <Button x:Name="RunButton" Content="Spustit inference" Classes="primary" />
-        <Button x:Name="ExportResultButton" Content="Export výsledku (XML)" IsEnabled="False" />
+  <Grid RowDefinitions="Auto,*" ColumnDefinitions="*">
+    <Border Grid.Row="0" Grid.ColumnSpan="2" Classes="consultation-header" Margin="0,0,0,16">
+      <StackPanel Orientation="Horizontal" Spacing="16">
+        <Button x:Name="BackButton" Content="← Zpět" />
+        <TextBlock x:Name="TitleText" Text="Konzultace" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="18" />
       </StackPanel>
-      <ScrollViewer Grid.Row="1">
-        <StackPanel x:Name="ResultsPanel" Spacing="4" />
-      </ScrollViewer>
+    </Border>
+    <Grid Grid.Row="1" ColumnDefinitions="1.2*,*" Margin="0,0,0,0">
+      <Border Grid.Column="0" Classes="glass-panel" Padding="20" Margin="0,0,12,0">
+        <Grid RowDefinitions="*,Auto">
+          <ScrollViewer Grid.Row="0" Margin="0,0,4,0" HorizontalScrollBarVisibility="Auto">
+            <StackPanel x:Name="QuestionnairePanel" Spacing="0" Margin="0,0,8,0" />
+          </ScrollViewer>
+          <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="12" Margin="0,16,0,0">
+            <Button x:Name="RunButton" Content="Spustit inference" Classes="primary" />
+            <Button x:Name="ExportResultButton" Content="Export výsledku (XML)" IsEnabled="False" />
+          </StackPanel>
+        </Grid>
+      </Border>
+      <Border Grid.Column="1" Classes="glass-panel" Padding="20" Margin="12,0,0,0">
+        <Grid RowDefinitions="Auto,*">
+          <TextBlock x:Name="ResultsTitle" Text="Výsledky inference" FontWeight="SemiBold" FontSize="18" Margin="0,0,0,12" IsVisible="False" />
+          <ScrollViewer Grid.Row="1">
+            <StackPanel x:Name="ResultsPanel" Spacing="6" />
+          </ScrollViewer>
+        </Grid>
+      </Border>
     </Grid>
   </Grid>
 </UserControl>

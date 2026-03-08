@@ -6,6 +6,7 @@
       <Button x:Name="BackButton" Content="← Zpět" />
       <TextBlock x:Name="TitleText" Text="Editor znalostní báze" VerticalAlignment="Center" FontWeight="SemiBold" />
       <Button x:Name="SaveButton" Content="Uložit XML" Classes="primary" />
+      <Button x:Name="FillProjectButton" Content="Vyplnit projekt" />
       <Button x:Name="ValidateButton" Content="Validace" />
       <Button x:Name="GraphButton" Content="Graf pravidel" />
       <Button x:Name="GlobalPropsButton" Content="Globální vlastnosti" />
@@ -20,11 +21,29 @@
         </StackPanel>
         <ListBox x:Name="AttributesList" Grid.Row="1" SelectionMode="Single" />
         <TextBlock Text="Pravidla" FontWeight="SemiBold" Margin="0,12,0,4" Grid.Row="2" />
-        <ListBox x:Name="RulesList" Grid.Row="3" SelectionMode="Single" />
+        <Grid Grid.Row="3" ColumnDefinitions="*,Auto" Margin="0,0,0,0">
+          <ListBox x:Name="RulesList" Grid.Column="0" SelectionMode="Single" MinHeight="80" />
+          <StackPanel Grid.Column="1" Spacing="4" Margin="4,0,0,0" VerticalAlignment="Top">
+            <Button x:Name="NewRuleButton" Content="Nové pravidlo" Padding="6,2" />
+            <Button x:Name="DeleteRuleButton" Content="Smazat" Padding="6,2" />
+          </StackPanel>
+        </Grid>
         <TextBlock Text="Kontexty" FontWeight="SemiBold" Margin="0,12,0,4" Grid.Row="4" />
-        <ListBox x:Name="ContextsList" Grid.Row="5" SelectionMode="Single" />
+        <Grid Grid.Row="5" ColumnDefinitions="*,Auto">
+          <ListBox x:Name="ContextsList" Grid.Column="0" SelectionMode="Single" MinHeight="60" />
+          <StackPanel Grid.Column="1" Spacing="4" Margin="4,0,0,0" VerticalAlignment="Top">
+            <Button x:Name="NewContextButton" Content="Nový kontext" Padding="6,2" />
+            <Button x:Name="DeleteContextButton" Content="Smazat" Padding="6,2" />
+          </StackPanel>
+        </Grid>
         <TextBlock Text="Integritní omezení" FontWeight="SemiBold" Margin="0,12,0,4" Grid.Row="6" />
-        <ListBox x:Name="IntegrityList" Grid.Row="7" SelectionMode="Single" />
+        <Grid Grid.Row="7" ColumnDefinitions="*,Auto">
+          <ListBox x:Name="IntegrityList" Grid.Column="0" SelectionMode="Single" MinHeight="60" />
+          <StackPanel Grid.Column="1" Spacing="4" Margin="4,0,0,0" VerticalAlignment="Top">
+            <Button x:Name="NewIntegrityButton" Content="Nové IO" Padding="6,2" />
+            <Button x:Name="DeleteIntegrityButton" Content="Smazat" Padding="6,2" />
+          </StackPanel>
+        </Grid>
       </Grid>
       <Border Grid.Column="1" BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="4" Padding="12">
         <ContentControl x:Name="DetailContent" />

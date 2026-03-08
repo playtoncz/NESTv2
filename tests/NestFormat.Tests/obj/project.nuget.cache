@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5RiBR0SOvHs=",
+  "dgSpecHash": "hnOTsLKUahg=",
   "success": true,
-  "projectFilePath": "C:\\Users\\konta\\Documents\\NESTv2\\tests\\NestFormat.Tests\\NestFormat.Tests.csproj",
+  "projectFilePath": "C:\\Users\\konta\\Documents\\GitHub\\NESTv2\\tests\\NestFormat.Tests\\NestFormat.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\konta\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
     "C:\\Users\\konta\\.nuget\\packages\\microsoft.codecoverage\\17.8.0\\microsoft.codecoverage.17.8.0.nupkg.sha512",

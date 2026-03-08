@@ -1,3 +1,3 @@
-Start UI kde bude logo, Dobrý den, vítejte v NEST Studio. Tlačítka: Vytvořit nový projekt, otevřít projekt a pak to začít vyplňovaní nebo jak se tomu nadává. Nahoře nad dobrý den bude logo / zatím placeholder. Bude se to automaticky otevírat ve fullscreen jakoby max res monitoru. Uprostřed bude to menu takové zaoblené jak když otevíráš projekt ve visual studiu prostě něco na ten typ. Když udělám změny budu to moct uložit jako ten projekt a hned z toho projektu budu moct kliknout vyplnit projekt a uloží se mi změny nebo zeptá se mě to jestli chci uložit změny. Jak zapnu ten program tak dole ještě bude verze programu a potom někde nějak designově budou dvě logo SLEZSKÁ UNIVERZITA ve spolupráci s RAPL Group. A potom někde tlačítko o aplikaci že vytvořil Antonín Pavlík podle původního programu ve spoluprací s panem Novákem a ještě další věci co tě napadnou.
-
-Ještě hodně věcí nefunguje zkontrolovat UI
+- pamatovat si otevřený projekt na hlavní stránce
+- zobrazit naposledy otevřené projekty
+- text po vybrání je modrý ale když mám na tom kurzor tak šedý takže nevím, že je vybraný
