@@ -1,7 +1,6 @@
 using System.Reflection;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using Avalonia.Media.Imaging;
 using Avalonia.Platform.Storage;
 using System.Text;
 using NestCore.Model;
@@ -24,7 +23,6 @@ public partial class WelcomeView : UserControl
     {
         _mainWindow = mainWindow;
         InitializeComponent();
-        LoadImages();
         SetVersionText();
         CreateProjectButton.Click += OnCreateProject;
         OpenKbButton.Click += OnOpenKb;
@@ -32,26 +30,6 @@ public partial class WelcomeView : UserControl
         FillProjectButton.Click += OnFillProject;
         AboutButton.Click += OnAbout;
         UpdateProjectLoadedState();
-    }
-
-    private void LoadImages()
-    {
-        var baseDir = AppContext.BaseDirectory;
-        TrySetImage(LogoImage, Path.Combine(baseDir, "img", "NEST_STUDIO_FULL.png"));
-        TrySetImage(OpfImage, Path.Combine(baseDir, "img", "opf.png"));
-        TrySetImage(RaplImage, Path.Combine(baseDir, "img", "rapl.png"));
-    }
-
-    private static void TrySetImage(Avalonia.Controls.Image imageControl, string path)
-    {
-        if (File.Exists(path))
-        {
-            try
-            {
-                imageControl.Source = new Bitmap(path);
-            }
-            catch { /* ignore */ }
-        }
     }
 
     private void SetVersionText()

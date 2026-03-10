@@ -2,14 +2,28 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="NestStudio.Views.AboutDialog"
         Title="O aplikaci NEST Studio"
-        Width="440" Height="380"
+        Width="590" Height="650"
         WindowStartupLocation="CenterOwner">
-  <StackPanel Margin="28" Spacing="16">
-    <TextBlock Text="NEST Studio" FontSize="20" FontWeight="SemiBold" />
-    <TextBlock Text="Expertní systém pro znalostní báze v NEST formátu." TextWrapping="Wrap" Opacity="0.9" />
-    <TextBlock Text="Aplikaci vytvořil Bc. Antonín Pavlík podle původního programu NEST od Vladimíra Laše ve spolupráci s doc. Ing. Jan Górecki, Ph.D." TextWrapping="Wrap" Margin="0,8,0,0" />
-    <TextBlock Text="Obchodně podnikatelská fakulta Karviná Slezské univerzity v Opavě · RAPL Group" FontWeight="SemiBold" Margin="0,8,0,0" />
-    <TextBlock Text="NEST Studio slouží k vytváření a úpravě znalostních bází (atributy, pravidla, kontexty), spouštění konzultací a zobrazení výsledků inference." TextWrapping="Wrap" Opacity="0.85" Margin="0,12,0,0" />
-    <Button x:Name="OkButton" Content="Zavřít" HorizontalAlignment="Right" Margin="0,20,0,0" Classes="primary" />
-  </StackPanel>
+  <ScrollViewer Margin="24" VerticalScrollBarVisibility="Auto">
+    <Border Classes="glass-card" Padding="24">
+      <StackPanel Spacing="12">
+      <TextBlock Text="NEST Studio" FontSize="22" FontWeight="SemiBold" />
+      <TextBlock Text="Moderní prostředí pro návrh a spouštění expertního systému NEST." TextWrapping="Wrap" Opacity="0.9" />
+
+      <TextBlock Text="Expertní systém NEST navazuje na expertní systém SAK (Systém Automatizovaných Konzultací) vyvinutý na VŠE v polovině 80. let." TextWrapping="Wrap" Margin="0,8,0,0" />
+      <TextBlock Text="Dědictví svého předchůdce NEST dále rozvíjí tak, jak si to vyžádala zkušenost s reálnými aplikacemi systému SAK – v reprezentaci znalostí, práci inferenčního mechanismu i ve způsobech provádění konzultace." TextWrapping="Wrap" />
+      <TextBlock Text="Původní implementace postupně přešla od DOSu a jazyka Basic k Windows a vývojovému prostředí Delphi, do které ji předělal Vladimír Laš." TextWrapping="Wrap" />
+      <TextBlock Text="Na tuto tradici navazuje současné NEST Studio, které v roce 2026 přepracoval Bc. Antonín Pavlík – s novým moderním UI a přepisem jádra do platformy .NET společně s doc. Ing. Jan Goreckim" TextWrapping="Wrap" />
+
+      <TextBlock Text="NEST Studio slouží k vytváření a úpravě znalostních bází (atributy, pravidla, kontexty), spouštění konzultací a zobrazení výsledků inference." TextWrapping="Wrap" Opacity="0.85" Margin="0,8,0,0" />
+
+	  <TextBlock Text="Obchodně podnikatelská fakulta Karviná Slezské univerzity v Opavě" HorizontalAlignment="Center" FontWeight="SemiBold" Margin="0,8,0,0" />
+	  <TextBlock Text="RAPL Group" HorizontalAlignment="Center" FontWeight="SemiBold" Margin="0,8,0,0" />
+
+
+
+		  <Button x:Name="OkButton" Content="Zavřít" HorizontalAlignment="Right" Margin="0,20,0,0" Classes="primary" />
+    </StackPanel>
+    </Border>
+  </ScrollViewer>
 </Window>

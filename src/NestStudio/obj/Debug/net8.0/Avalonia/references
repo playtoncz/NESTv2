@@ -13,10 +13,12 @@ C:\Users\konta\.nuget\packages\avalonia.native\11.2.0\lib\net8.0\Avalonia.Native
 C:\Users\konta\.nuget\packages\avalonia\11.2.0\ref\net8.0\Avalonia.OpenGL.dll
 C:\Users\konta\.nuget\packages\avalonia.remote.protocol\11.2.0\lib\net8.0\Avalonia.Remote.Protocol.dll
 C:\Users\konta\.nuget\packages\avalonia.skia\11.2.0\lib\net8.0\Avalonia.Skia.dll
+C:\Users\konta\.nuget\packages\avalonia.svg.skia\11.2.0\lib\net8.0\Avalonia.Svg.Skia.dll
 C:\Users\konta\.nuget\packages\avalonia.themes.fluent\11.2.0\lib\net8.0\Avalonia.Themes.Fluent.dll
 C:\Users\konta\.nuget\packages\avalonia\11.2.0\ref\net8.0\Avalonia.Vulkan.dll
 C:\Users\konta\.nuget\packages\avalonia.win32\11.2.0\lib\net8.0\Avalonia.Win32.dll
 C:\Users\konta\.nuget\packages\avalonia.x11\11.2.0\lib\net8.0\Avalonia.X11.dll
+C:\Users\konta\.nuget\packages\excss\4.2.3\lib\net7.0\ExCSS.dll
 C:\Users\konta\.nuget\packages\harfbuzzsharp\7.3.0.2\lib\net6.0\HarfBuzzSharp.dll
 C:\Users\konta\.nuget\packages\microcom.runtime\0.11.0\lib\net5.0\MicroCom.Runtime.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.24\ref\net8.0\Microsoft.CSharp.dll
@@ -28,7 +30,12 @@ C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.24\ref\net8.0\mscorl
 C:\Users\konta\Documents\GitHub\NESTv2\src\NestCore\obj\Debug\net8.0\ref\NestCore.dll
 C:\Users\konta\Documents\GitHub\NESTv2\src\NestFormat\obj\Debug\net8.0\ref\NestFormat.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.24\ref\net8.0\netstandard.dll
+C:\Users\konta\.nuget\packages\shimskiasharp\2.0.0.2\lib\net8.0\ShimSkiaSharp.dll
 C:\Users\konta\.nuget\packages\skiasharp\2.88.8\lib\net6.0\SkiaSharp.dll
+C:\Users\konta\.nuget\packages\skiasharp.harfbuzz\2.88.8\lib\net6.0\SkiaSharp.HarfBuzz.dll
+C:\Users\konta\.nuget\packages\svg.custom\2.0.0.2\lib\net8.0\Svg.Custom.dll
+C:\Users\konta\.nuget\packages\svg.model\2.0.0.2\lib\net8.0\Svg.Model.dll
+C:\Users\konta\.nuget\packages\svg.skia\2.0.0.2\lib\net8.0\Svg.Skia.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.24\ref\net8.0\System.AppContext.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.24\ref\net8.0\System.Buffers.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.24\ref\net8.0\System.Collections.Concurrent.dll

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="RAPL_GROUP" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 512 518.69">
+  <!-- Generator: Adobe Illustrator 30.2.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 1)  -->
+  <defs>
+    <style>
+      .st0, .st1, .st2 {
+        font-family: SansSerifCollection, 'Sans Serif Collection';
+      }
+
+      .st0, .st1, .st2, .st3 {
+        isolation: isolate;
+      }
+
+      .st0, .st1, .st4 {
+        fill: #1c1c1d;
+      }
+
+      .st0, .st2 {
+        font-size: 156.88px;
+        letter-spacing: .04em;
+      }
+
+      .st1 {
+        font-size: 71.9px;
+        letter-spacing: .07em;
+      }
+
+      .st2 {
+        fill: none;
+        stroke: #1c1c1d;
+        stroke-miterlimit: 10;
+        stroke-width: 3px;
+      }
+    </style>
+  </defs>
+  <g class="st3">
+    <text class="st1" transform="translate(201.67 374.7) scale(1.15 1)"><tspan x="0" y="0">GROUP</tspan></text>
+  </g>
+  <g class="st3">
+    <text class="st0" transform="translate(60.19 277.92) scale(1.15 1)"><tspan x="0" y="0">RAPL</tspan></text>
+    <text class="st2" transform="translate(60.19 277.92) scale(1.15 1)"><tspan x="0" y="0">RAPL</tspan></text>
+  </g>
+  <g id="Logo">
+    <rect class="st4" x="4.47" y="194" width="15.02" height="15.02"/>
+    <rect class="st4" x="4.47" y="169.05" width="15.02" height="15.02"/>
+    <rect class="st4" x="4.47" y="219.07" width="15.02" height="62.61"/>
+    <rect class="st4" x="29.69" y="266.65" width="15.02" height="15.02"/>
+    <rect class="st4" x="29.69" y="219.07" width="15.02" height="15.02"/>
+    <rect class="st4" x="29.69" y="169.05" width="15.02" height="15.02"/>
+    <rect class="st4" x="29.69" y="143.99" width="15.02" height="15.02"/>
+  </g>
+</svg>

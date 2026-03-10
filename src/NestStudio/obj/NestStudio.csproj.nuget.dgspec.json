@@ -198,6 +198,10 @@
               "target": "Package",
               "version": "[11.2.0, )"
             },
+            "Avalonia.Svg.Skia": {
+              "target": "Package",
+              "version": "[11.2.0, )"
+            },
             "Avalonia.Themes.Fluent": {
               "target": "Package",
               "version": "[11.2.0, )"

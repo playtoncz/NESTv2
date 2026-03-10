@@ -65,10 +65,6 @@ C:\Users\konta\Documents\NESTv2\src\NestStudio\bin\Debug\net8.0\runtimes\win-x86
 C:\Users\konta\Documents\NESTv2\src\NestStudio\obj\Debug\net8.0\Avalonia\NestStudio.dll
 C:\Users\konta\Documents\NESTv2\src\NestStudio\obj\Debug\net8.0\Avalonia\NestStudio.pdb
 C:\Users\konta\Documents\NESTv2\src\NestStudio\obj\Debug\net8.0\refint\Avalonia\NestStudio.dll
-c:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\bin\Debug\net8.0\img\NEST_STUDIO_FULL.png
-c:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\bin\Debug\net8.0\img\NEST_STUDIO_NO_TEXT.png
-c:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\bin\Debug\net8.0\img\opf.png
-c:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\bin\Debug\net8.0\img\rapl.png
 c:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\bin\Debug\net8.0\NestStudio.exe
 C:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\bin\Debug\net8.0\NestStudio.deps.json
 C:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\bin\Debug\net8.0\NestStudio.runtimeconfig.json
@@ -136,3 +132,10 @@ c:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\obj\Debug\net8.0\refint\Av
 C:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\obj\Debug\net8.0\NestStudio.csproj.Up2Date
 C:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\obj\Debug\net8.0\NestStudio.genruntimeconfig.cache
 C:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\obj\Debug\net8.0\ref\NestStudio.dll
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\bin\Debug\net8.0\Avalonia.Svg.Skia.dll
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\bin\Debug\net8.0\ExCSS.dll
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\bin\Debug\net8.0\ShimSkiaSharp.dll
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\bin\Debug\net8.0\SkiaSharp.HarfBuzz.dll
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\bin\Debug\net8.0\Svg.Custom.dll
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\bin\Debug\net8.0\Svg.Model.dll
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\bin\Debug\net8.0\Svg.Skia.dll
