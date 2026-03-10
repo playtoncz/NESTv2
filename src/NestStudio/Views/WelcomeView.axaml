@@ -3,7 +3,7 @@
              xmlns:svg="clr-namespace:Avalonia.Svg.Skia;assembly=Avalonia.Svg.Skia"
              x:Class="NestStudio.Views.WelcomeView">
   <Grid RowDefinitions="Auto,*,Auto" Background="#F0F4F8">
-    <!-- Logo nahoře -->
+    <!-- Logo -->
     <Image Grid.Row="0"
            Height="180"
            Margin="0,12,0,8"
@@ -17,11 +17,12 @@
     <Border x:Name="CenterPanel"
             Grid.Row="1"
             Classes="welcome-panel"
-            VerticalAlignment="Center"
+            VerticalAlignment="Stretch"
             HorizontalAlignment="Center"
+            Margin="32,0,32,40"
             Padding="32,28"
-            MinWidth="640"
-            MaxWidth="760">
+            MinWidth="680"
+            MaxWidth="1100">
       <Grid ColumnDefinitions="*,Auto,*">
         <!-- Levý panel: uvítání -->
         <StackPanel Spacing="24"
@@ -111,7 +112,7 @@
       </Grid>
     </Border>
 
-    <!-- Dole: verze, aktualizace a partneři -->
+    <!-- Dole: verze a partneři -->
     <StackPanel Grid.Row="2" Margin="0,16,0,20" Spacing="12">
       <TextBlock x:Name="VersionText"
                  Text=""

@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
@@ -214,6 +215,7 @@ public partial class WelcomeView : UserControl
         if (sender is Button b && b.Tag is string path && !string.IsNullOrWhiteSpace(path))
             await LoadProjectFromPathAsync(path);
     }
+
 
     private string GetCurrentVersionString()
     {

@@ -7,16 +7,16 @@
       "RelativeMoniker": "D:0:0:{08D4554B-400D-DA70-73DD-554B6A8FBAB5}|src\\NestStudio\\NestStudio.csproj|solutionrelative:src\\neststudio\\neststudio.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{08D4554B-400D-DA70-73DD-554B6A8FBAB5}|src\\NestStudio\\NestStudio.csproj|c:\\users\\konta\\documents\\github\\nestv2\\src\\neststudio\\views\\welcomeview.axaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{08D4554B-400D-DA70-73DD-554B6A8FBAB5}|src\\NestStudio\\NestStudio.csproj|solutionrelative:src\\neststudio\\views\\welcomeview.axaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{08D4554B-400D-DA70-73DD-554B6A8FBAB5}|src\\NestStudio\\NestStudio.csproj|c:\\users\\konta\\documents\\github\\nestv2\\src\\neststudio\\neststudio.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
       "RelativeMoniker": "D:0:0:{08D4554B-400D-DA70-73DD-554B6A8FBAB5}|src\\NestStudio\\NestStudio.csproj|solutionrelative:src\\neststudio\\neststudio.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{08D4554B-400D-DA70-73DD-554B6A8FBAB5}|src\\NestStudio\\NestStudio.csproj|c:\\users\\konta\\documents\\github\\nestv2\\src\\neststudio\\views\\aboutdialog.axaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{08D4554B-400D-DA70-73DD-554B6A8FBAB5}|src\\NestStudio\\NestStudio.csproj|solutionrelative:src\\neststudio\\views\\aboutdialog.axaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{08D4554B-400D-DA70-73DD-554B6A8FBAB5}|src\\NestStudio\\NestStudio.csproj|c:\\users\\konta\\documents\\github\\nestv2\\src\\neststudio\\views\\welcomeview.axaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{08D4554B-400D-DA70-73DD-554B6A8FBAB5}|src\\NestStudio\\NestStudio.csproj|solutionrelative:src\\neststudio\\views\\welcomeview.axaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,20 +30,20 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "WelcomeView.axaml",
               "DocumentMoniker": "C:\\Users\\konta\\Documents\\GitHub\\NESTv2\\src\\NestStudio\\Views\\WelcomeView.axaml",
               "RelativeDocumentMoniker": "src\\NestStudio\\Views\\WelcomeView.axaml",
               "ToolTip": "C:\\Users\\konta\\Documents\\GitHub\\NESTv2\\src\\NestStudio\\Views\\WelcomeView.axaml",
               "RelativeToolTip": "src\\NestStudio\\Views\\WelcomeView.axaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA5AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2026-03-10T20:02:59.064Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "AboutDialog.axaml",
               "DocumentMoniker": "C:\\Users\\konta\\Documents\\GitHub\\NESTv2\\src\\NestStudio\\Views\\AboutDialog.axaml",
               "RelativeDocumentMoniker": "src\\NestStudio\\Views\\AboutDialog.axaml",
@@ -51,11 +51,12 @@
               "RelativeToolTip": "src\\NestStudio\\Views\\AboutDialog.axaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-03-09T16:43:27.653Z"
+              "WhenOpened": "2026-03-09T16:43:27.653Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "NestStudio",
               "DocumentMoniker": "C:\\Users\\konta\\Documents\\GitHub\\NESTv2\\src\\NestStudio\\NestStudio.csproj",
               "RelativeDocumentMoniker": "src\\NestStudio\\NestStudio.csproj",
@@ -73,7 +74,7 @@
               "RelativeDocumentMoniker": "src\\NestStudio\\NestStudio.csproj",
               "ToolTip": "C:\\Users\\konta\\Documents\\GitHub\\NESTv2\\src\\NestStudio\\NestStudio.csproj",
               "RelativeToolTip": "src\\NestStudio\\NestStudio.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2026-03-08T19:25:16.248Z",
               "EditorCaption": ""

@@ -7,10 +7,10 @@
     <Nullable>enable</Nullable>
     <ApplicationIcon>favicon (2).ico</ApplicationIcon>
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
-    <Version>1.0.0.160</Version>
-    <AssemblyVersion>1.0.0.160</AssemblyVersion>
-    <FileVersion>1.0.0.160</FileVersion>
-    <InformationalVersion>1.0.0.160</InformationalVersion>
+    <Version>1.0.0.300</Version>
+    <AssemblyVersion>1.0.0.300</AssemblyVersion>
+    <FileVersion>1.0.0.300</FileVersion>
+    <InformationalVersion>1.0.0.300</InformationalVersion>
   </PropertyGroup>
 
   <ItemGroup>

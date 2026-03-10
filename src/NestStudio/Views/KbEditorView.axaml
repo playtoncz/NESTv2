@@ -2,18 +2,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="NestStudio.Views.KbEditorView">
   <Grid RowDefinitions="Auto,*" ColumnDefinitions="*">
-    <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="12" Margin="0,0,0,12">
-      <Button x:Name="BackButton" Content="← Zpět" />
-      <TextBlock x:Name="TitleText" Text="Editor znalostní báze" VerticalAlignment="Center" FontWeight="SemiBold" />
-      <Button x:Name="SaveButton" Content="Uložit XML" Classes="primary" />
-      <Button x:Name="FillProjectButton" Content="Vyplnit projekt" />
-      <Button x:Name="ValidateButton" Content="Validace" />
-      <Button x:Name="GraphButton" Content="Graf pravidel" />
-      <Button x:Name="GlobalPropsButton" Content="Globální vlastnosti" />
-      <Button x:Name="StatisticsButton" Content="Statistiky" />
+    <WrapPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,12">
+      <Button x:Name="BackButton" Content="← Zpět" Margin="0,0,12,0" />
+      <TextBlock x:Name="TitleText" Text="Editor znalostní báze" VerticalAlignment="Center" FontWeight="SemiBold" Margin="0,0,12,0" />
+      <Button x:Name="SaveButton" Content="Uložit XML" Classes="primary" Margin="0,0,8,0" />
+      <Button x:Name="FillProjectButton" Content="Vyplnit projekt" Margin="0,0,8,0" />
+      <Button x:Name="ValidateButton" Content="Validace" Margin="0,0,8,0" />
+      <Button x:Name="GraphButton" Content="Graf pravidel" Margin="0,0,8,0" />
+      <Button x:Name="GlobalPropsButton" Content="Globální vlastnosti" Margin="0,0,8,0" />
+      <Button x:Name="StatisticsButton" Content="Statistiky" Margin="0,0,8,0" />
       <TextBlock x:Name="StatusText" Text="" VerticalAlignment="Center" Opacity="0.8" Margin="8,0,0,0" />
-    </StackPanel>
-    <Grid Grid.Row="1" ColumnDefinitions="280,*" RowDefinitions="*">
+    </WrapPanel>
+    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="0,0,0,-8">
+    <Grid ColumnDefinitions="280,*" RowDefinitions="*" MinWidth="400">
       <Grid Grid.Column="0" RowDefinitions="Auto,130,Auto,*,Auto,90,Auto,80" Margin="0,0,8,0">
         <StackPanel Orientation="Horizontal" Spacing="8">
           <TextBlock Text="Atributy" FontWeight="SemiBold" Margin="0,0,0,4" VerticalAlignment="Center" />
@@ -49,5 +50,6 @@
         <ContentControl x:Name="DetailContent" />
       </Border>
     </Grid>
+    </ScrollViewer>
   </Grid>
 </UserControl>

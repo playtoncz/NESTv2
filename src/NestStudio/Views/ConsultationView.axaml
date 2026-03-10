@@ -3,12 +3,13 @@
              x:Class="NestStudio.Views.ConsultationView">
   <Grid RowDefinitions="Auto,*" ColumnDefinitions="*">
     <Border Grid.Row="0" Grid.ColumnSpan="2" Classes="consultation-header" Margin="0,0,0,16">
-      <StackPanel Orientation="Horizontal" Spacing="16">
-        <Button x:Name="BackButton" Content="← Zpět" />
+      <WrapPanel Orientation="Horizontal" VerticalAlignment="Center">
+        <Button x:Name="BackButton" Content="← Zpět" Margin="0,0,16,0" />
         <TextBlock x:Name="TitleText" Text="Konzultace" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="18" />
-      </StackPanel>
+      </WrapPanel>
     </Border>
-    <Grid Grid.Row="1" ColumnDefinitions="1.2*,*" Margin="0,0,0,0">
+    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="0,0,0,-8">
+    <Grid ColumnDefinitions="1.2*,*" Margin="0,0,0,0" MinWidth="500">
       <Border Grid.Column="0" Classes="glass-panel" Padding="20" Margin="0,0,12,0">
         <Grid RowDefinitions="*,Auto">
           <ScrollViewer Grid.Row="0" Margin="0,0,4,0" HorizontalScrollBarVisibility="Auto">
@@ -29,5 +30,6 @@
         </Grid>
       </Border>
     </Grid>
+    </ScrollViewer>
   </Grid>
 </UserControl>

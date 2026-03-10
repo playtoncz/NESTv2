@@ -13,15 +13,15 @@ internal sealed record UpdateCheckResult(
     string LatestVersion,
     string? ReleasePageUrl,
     string? AssetDownloadUrl,
-    string? AssetFileName);
+    string? AssetFileName,
+    string? ReleaseNotes);
 
 /// <summary>
 /// Kontroluje nejnovější verzi NEST Studio na GitHub Releases a umí stáhnout .exe asset.
 /// </summary>
 internal static class GithubUpdateChecker
 {
-    // TODO: případně uprav podle skutečného umístění repozitáře.
-    private const string RepoOwner = "konta";
+    private const string RepoOwner = "playtoncz";
     private const string RepoName = "NESTv2";
 
     private static readonly HttpClient Http = CreateHttpClient();
@@ -54,6 +54,7 @@ internal static class GithubUpdateChecker
         var root = doc.RootElement;
         var tagName = root.TryGetProperty("tag_name", out var tagEl) ? tagEl.GetString() : null;
         var htmlUrl = root.TryGetProperty("html_url", out var htmlEl) ? htmlEl.GetString() : null;
+        var body = root.TryGetProperty("body", out var bodyEl) ? bodyEl.GetString() : null;
 
         string? assetUrl = null;
         string? assetName = null;
@@ -82,7 +83,8 @@ internal static class GithubUpdateChecker
             latestVer.ToString(),
             htmlUrl,
             assetUrl,
-            assetName);
+            assetName,
+            body);
     }
 
     public static async Task<string?> DownloadAssetAsync(

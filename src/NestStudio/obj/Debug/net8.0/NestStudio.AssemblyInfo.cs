@@ -13,11 +13,11 @@ using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("NestStudio")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.160")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0.160+eccfe54a00c2e8b49f9ec0e2d7105e0f44a854ea")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.300")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0.300+c62e8707d71092809516b28c3686b5979f688ac4")]
 [assembly: System.Reflection.AssemblyProductAttribute("NestStudio")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NestStudio")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.160")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.300")]
 
 // Vygenerované třídou WriteCodeFragment nástroje MSBuild
 

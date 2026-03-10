@@ -5,12 +5,53 @@
         Width="900" Height="650"
         MinWidth="700" MinHeight="500">
   <Border Classes="panel" Margin="24">
-    <Grid RowDefinitions="Auto,*" ColumnDefinitions="*">
-      <StackPanel Grid.Row="0" Margin="0,0,0,16">
+    <Grid RowDefinitions="Auto,*" ColumnDefinitions="*,Auto">
+      <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,0,16">
         <TextBlock Classes="title" Text="NEST Studio" />
         <TextBlock Text="Konzultace / Runner" Opacity="0.7" Margin="0,4,0,0" />
       </StackPanel>
-      <ContentControl x:Name="MainContent" Grid.Row="1" />
+
+      <!-- Panel s informací o nové verzi vpravo od titulku -->
+      <Border x:Name="UpdatePanel"
+              Grid.Row="0"
+              Grid.Column="1"
+              Background="#FFF8E1"
+              BorderBrush="#FFCA28"
+              BorderThickness="1"
+              CornerRadius="8"
+              Padding="10,6"
+              MaxWidth="700"
+              HorizontalAlignment="Right"
+              VerticalAlignment="Top"
+              Margin="16,0,0,0"
+              IsVisible="False">
+        <WrapPanel Orientation="Horizontal" VerticalAlignment="Center">
+          <TextBlock x:Name="UpdateText"
+                     Text="K dispozici je nová verze."
+                     FontSize="12"
+                     Margin="0,0,8,0"
+                     TextWrapping="Wrap" />
+          <Button x:Name="UpdateDownloadButton"
+                  Content="Stáhnout aktualizaci"
+                  Padding="8,2"
+                  FontSize="11"
+                  Margin="0,0,6,0"
+                  Click="OnUpdateDownloadClick" />
+          <Button x:Name="UpdateChangelogButton"
+                  Content="Zobrazit changelog"
+                  Padding="8,2"
+                  FontSize="11"
+                  Click="OnUpdateChangelogClick" />
+        </WrapPanel>
+      </Border>
+
+      <ScrollViewer Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    Margin="0,0,0,-24"
+                    VerticalScrollBarVisibility="Auto"
+                    HorizontalScrollBarVisibility="Disabled">
+        <ContentControl x:Name="MainContent" />
+      </ScrollViewer>
     </Grid>
   </Border>
 </Window>
