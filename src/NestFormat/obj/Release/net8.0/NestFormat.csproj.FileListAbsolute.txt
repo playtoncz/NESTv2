@@ -1,0 +1,16 @@
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestFormat\bin\Release\net8.0\NestFormat.deps.json
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestFormat\bin\Release\net8.0\NestFormat.dll
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestFormat\bin\Release\net8.0\NestFormat.pdb
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestFormat\bin\Release\net8.0\NestCore.dll
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestFormat\bin\Release\net8.0\NestCore.pdb
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestFormat\obj\Release\net8.0\NestFormat.csproj.AssemblyReference.cache
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestFormat\obj\Release\net8.0\NestFormat.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestFormat\obj\Release\net8.0\NestFormat.AssemblyInfoInputs.cache
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestFormat\obj\Release\net8.0\NestFormat.AssemblyInfo.cs
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestFormat\obj\Release\net8.0\NestFormat.csproj.CoreCompileInputs.cache
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestFormat\obj\Release\net8.0\NestFormat.sourcelink.json
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestFormat\obj\Release\net8.0\NestFormat.csproj.Up2Date
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestFormat\obj\Release\net8.0\NestFormat.dll
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestFormat\obj\Release\net8.0\refint\NestFormat.dll
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestFormat\obj\Release\net8.0\NestFormat.pdb
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestFormat\obj\Release\net8.0\ref\NestFormat.dll

@@ -1,0 +1,4 @@
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\bin\Release\net8.0\win-x64\publish\NestStudio.pdb
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\bin\Release\net8.0\win-x64\publish\NestCore.pdb
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\bin\Release\net8.0\win-x64\publish\NestFormat.pdb
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\bin\Release\net8.0\win-x64\publish\NestStudio.exe

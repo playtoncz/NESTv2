@@ -1,9 +1,13 @@
+using System;
 using System.Diagnostics;
+using System.IO;
 using System.Reflection;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
-using System.Text;
 using NestCore.Model;
 using NestFormat;
 
@@ -37,6 +41,7 @@ public partial class WelcomeView : UserControl
         OpenEditorButton.Click += OnOpenEditor;
         FillProjectButton.Click += OnFillProject;
         AboutButton.Click += OnAbout;
+        CheckUpdatesButton.Click += OnCheckUpdates;
         UpdateProjectLoadedState();
         PopulateRecentProjects(recentProjects);
     }
@@ -210,6 +215,82 @@ public partial class WelcomeView : UserControl
             await LoadProjectFromPathAsync(path);
     }
 
+    private string GetCurrentVersionString()
+    {
+        var version = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion
+            ?? Assembly.GetExecutingAssembly().GetName().Version?.ToString()
+            ?? "1.0.0.0";
+        var plusIdx = version.IndexOf('+');
+        if (plusIdx >= 0)
+            version = version[..plusIdx];
+        return version;
+    }
+
+    private async void OnCheckUpdates(object? sender, RoutedEventArgs e)
+    {
+        StatusText.IsVisible = true;
+        StatusText.Text = "Kontroluji aktualizace…";
+
+        try
+        {
+            var currentVersion = GetCurrentVersionString();
+            var result = await GithubUpdateChecker.CheckForUpdateAsync(currentVersion, CancellationToken.None);
+            if (result == null)
+            {
+                StatusText.Text = "Nepodařilo se zjistit nejnovější verzi na GitHubu.";
+                return;
+            }
+
+            if (!result.IsNewer)
+            {
+                StatusText.Text = $"Máte aktuální verzi {result.CurrentVersion}.";
+                return;
+            }
+
+            StatusText.Text = $"K dispozici je nová verze {result.LatestVersion}. Stahuji do složky Stažené soubory…";
+
+            var downloads = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
+            string progressTextPrefix = StatusText.Text;
+            var progress = new Progress<double>(p =>
+            {
+                StatusText.Text = $"{progressTextPrefix} ({Math.Round(p * 100)} %)";
+            });
+
+            if (string.IsNullOrWhiteSpace(result.AssetDownloadUrl))
+            {
+                if (!string.IsNullOrWhiteSpace(result.ReleasePageUrl))
+                {
+                    OpenUrl(result.ReleasePageUrl);
+                    StatusText.Text = "Nová verze je dostupná na GitHubu (otevřený prohlížeč).";
+                }
+                else
+                {
+                    StatusText.Text = "Nová verze je k dispozici, ale nepodařilo se najít odkaz ke stažení.";
+                }
+                return;
+            }
+
+            var savedPath = await GithubUpdateChecker.DownloadAssetAsync(
+                result.AssetDownloadUrl,
+                result.AssetFileName,
+                downloads,
+                progress,
+                CancellationToken.None);
+
+            if (savedPath == null)
+            {
+                StatusText.Text = "Aktualizaci se nepodařilo stáhnout.";
+                return;
+            }
+
+            StatusText.Text = $"Nová verze byla stažena jako: {savedPath}.\nSpusťte ji dvojklikem (případně si ji přesuňte jinam).";
+        }
+        catch (Exception ex)
+        {
+            StatusText.Text = "Chyba při kontrole aktualizací: " + ex.Message;
+        }
+    }
+
     private static string ReadXmlWithEncoding(string path)
     {
         var bytes = File.ReadAllBytes(path);
@@ -226,28 +307,65 @@ public partial class WelcomeView : UserControl
 
         if (encodingByBom != null)
             return encodingByBom.GetString(bytes);
-
-        var utf8 = Encoding.UTF8.GetString(bytes);
-        if (utf8.TrimStart().StartsWith("<?xml", StringComparison.OrdinalIgnoreCase))
+        
+        // Bez BOMu: nejdřív se podívej na deklaraci encoding="..."
+        // Hlavička XML je v ASCII, takže ji můžeme bezpečně přečíst jako ASCII.
+        var headerLength = Math.Min(bytes.Length, 1024);
+        var asciiHeader = Encoding.ASCII.GetString(bytes, 0, headerLength);
+        if (asciiHeader.TrimStart().StartsWith("<?xml", StringComparison.OrdinalIgnoreCase))
         {
-            var encMatch = System.Text.RegularExpressions.Regex.Match(utf8, @"encoding\s*=\s*[""']([^""']+)[""']", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+            var encMatch = System.Text.RegularExpressions.Regex.Match(
+                asciiHeader,
+                @"encoding\s*=\s*[""']([^""']+)[""']",
+                System.Text.RegularExpressions.RegexOptions.IgnoreCase);
             if (encMatch.Success)
             {
+                var encName = encMatch.Groups[1].Value.Trim();
                 try
                 {
-                    var enc = Encoding.GetEncoding(encMatch.Groups[1].Value.Trim());
-                    if (enc != Encoding.UTF8)
-                        return enc.GetString(bytes);
+                    var enc = Encoding.GetEncoding(encName);
+                    var text = enc.GetString(bytes);
+
+                    // Heuristika: pokud z deklarovaného kódování vypadne spousta '�',
+                    // zkusíme ještě UTF-8 a vybereme tu variantu s menším počtem náhradních znaků.
+                    int CountReplacementChars(string s) => s.Count(ch => ch == '�');
+                    var replDeclared = CountReplacementChars(text);
+                    var utf8Text = Encoding.UTF8.GetString(bytes);
+                    var replUtf8 = CountReplacementChars(utf8Text);
+
+                    if (replUtf8 < replDeclared)
+                        return utf8Text;
+                    return text;
                 }
-                catch { }
+                catch
+                {
+                    // neznámé kódování – spadneme na heuristiku níže
+                }
             }
-            return utf8;
         }
 
-        var utf16 = Encoding.Unicode.GetString(bytes);
-        if (utf16.TrimStart().StartsWith("<?xml", StringComparison.OrdinalIgnoreCase))
-            return utf16;
+        // Bez deklarace encoding:
+        // 1) zkus UTF-8
+        // 2) pokud se objeví náhradní znaky '�', zkus Windows-1250 (typické "ANSI" na CZ Windows)
+        string utf8Candidate = Encoding.UTF8.GetString(bytes);
+        int CountRepl(string s) => s.Count(ch => ch == '�');
+        var replUtf8Only = CountRepl(utf8Candidate);
+        if (replUtf8Only == 0)
+            return utf8Candidate;
 
-        return utf8;
+        try
+        {
+            var win1250 = Encoding.GetEncoding(1250);
+            var win1250Text = win1250.GetString(bytes);
+            var repl1250 = CountRepl(win1250Text);
+            if (repl1250 < replUtf8Only)
+                return win1250Text;
+        }
+        catch
+        {
+            // pokud kódování 1250 není k dispozici, ignorujeme a použijeme UTF-8
+        }
+
+        return utf8Candidate;
     }
 }

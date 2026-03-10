@@ -1,0 +1,12 @@
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestCore\bin\Release\net8.0\NestCore.deps.json
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestCore\bin\Release\net8.0\NestCore.dll
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestCore\bin\Release\net8.0\NestCore.pdb
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestCore\obj\Release\net8.0\NestCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestCore\obj\Release\net8.0\NestCore.AssemblyInfoInputs.cache
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestCore\obj\Release\net8.0\NestCore.AssemblyInfo.cs
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestCore\obj\Release\net8.0\NestCore.csproj.CoreCompileInputs.cache
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestCore\obj\Release\net8.0\NestCore.sourcelink.json
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestCore\obj\Release\net8.0\NestCore.dll
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestCore\obj\Release\net8.0\refint\NestCore.dll
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestCore\obj\Release\net8.0\NestCore.pdb
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestCore\obj\Release\net8.0\ref\NestCore.dll

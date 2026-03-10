@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NestCore")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+193ec4f246417dfd95162c8d65fcde0277127b09")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eccfe54a00c2e8b49f9ec0e2d7105e0f44a854ea")]
 [assembly: System.Reflection.AssemblyProductAttribute("NestCore")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NestCore")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
