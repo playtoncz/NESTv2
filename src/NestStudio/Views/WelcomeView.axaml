@@ -19,49 +19,96 @@
             Classes="welcome-panel"
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
-            Padding="48,40"
-            MinWidth="420"
-            MaxWidth="520">
-      <StackPanel Spacing="24">
-        <TextBlock x:Name="WelcomeTitle"
-                   Text="Dobrý den,"
-                   FontSize="22"
-                   FontWeight="SemiBold"
-                   TextAlignment="Center"
-                   TextWrapping="Wrap" />
-        <StackPanel x:Name="MainActionsStack" Spacing="14">
-          <Button x:Name="CreateProjectButton"
-                  Content="Vytvořit nový projekt"
-                  Classes="primary"
-                  HorizontalAlignment="Stretch" />
-          <Button x:Name="OpenKbButton"
-                  Content="Otevřít projekt"
-                  HorizontalAlignment="Stretch" />
+            Padding="32,28"
+            MinWidth="640"
+            MaxWidth="760">
+      <Grid ColumnDefinitions="*,Auto,*">
+        <!-- Levý panel: uvítání -->
+        <StackPanel Spacing="24"
+                    Grid.Column="0"
+                    Margin="0,0,16,0">
+          <TextBlock x:Name="WelcomeTitle"
+                     Text="Dobrý den,"
+                     FontSize="22"
+                     FontWeight="SemiBold"
+                     TextAlignment="Center"
+                     TextWrapping="Wrap" />
+          <StackPanel x:Name="MainActionsStack" Spacing="14">
+            <Button x:Name="CreateProjectButton"
+                    Content="Vytvořit nový projekt"
+                    Classes="primary"
+                    HorizontalAlignment="Stretch" />
+            <Button x:Name="OpenKbButton"
+                    Content="Otevřít projekt"
+                    HorizontalAlignment="Stretch" />
+          </StackPanel>
+          <StackPanel x:Name="ProjectLoadedStack" Spacing="10" IsVisible="False">
+            <StackPanel Spacing="2">
+              <TextBlock Text="Aktuální projekt"
+                         FontSize="13"
+                         FontWeight="SemiBold"
+                         Opacity="0.95" />
+              <Border Background="#F6F8FC"
+                      BorderBrush="#E0E6EE"
+                      BorderThickness="1"
+                      CornerRadius="10"
+                      Padding="10,8">
+                <StackPanel Spacing="2">
+                  <TextBlock x:Name="CurrentProjectNameText"
+                             Text=""
+                             FontWeight="SemiBold"
+                             TextTrimming="CharacterEllipsis" />
+                  <TextBlock x:Name="CurrentProjectPathText"
+                             Text=""
+                             FontSize="11"
+                             Opacity="0.8"
+                             TextTrimming="CharacterEllipsis" />
+                </StackPanel>
+              </Border>
+            </StackPanel>
+            <Button x:Name="FillProjectButton"
+                    Content="Vyplnit projekt"
+                    Classes="primary"
+                    HorizontalAlignment="Stretch" />
+            <Button x:Name="OpenEditorButton"
+                    Content="Otevřít v editoru"
+                    HorizontalAlignment="Stretch" />
+          </StackPanel>
+          <Button x:Name="AboutButton"
+                  Content="O aplikaci"
+                  HorizontalAlignment="Center"
+                  Margin="0,8,0,0" />
         </StackPanel>
-        <StackPanel x:Name="ProjectLoadedStack" Spacing="14" IsVisible="False">
-          <TextBlock x:Name="ProjectNameText"
+
+        <!-- Svislá oddělovací čára -->
+        <Border Grid.Column="1"
+                Width="1"
+                Margin="0,12"
+                Background="#E0E6EE" />
+
+        <!-- Pravý panel: naposledy otevřené projekty -->
+        <StackPanel Grid.Column="2"
+                    Spacing="12"
+                    Margin="16,0,0,0">
+          <TextBlock Text="Naposledy otevřené projekty"
+                     FontSize="14"
+                     FontWeight="SemiBold"
+                     Margin="0,0,0,4" />
+          <StackPanel x:Name="RecentProjectsStack" Spacing="6" />
+          <TextBlock x:Name="NoRecentProjectsText"
+                     Text="Zatím žádné projekty."
+                     Opacity="0.8"
+                     FontSize="12"
+                     IsVisible="False" />
+          <TextBlock x:Name="StatusText"
                      Text=""
+                     Opacity="0.8"
+                     FontSize="11"
                      TextWrapping="Wrap"
-                     Opacity="0.9"
-                     TextAlignment="Center" />
-          <Button x:Name="FillProjectButton"
-                  Content="Vyplnit projekt"
-                  Classes="primary"
-                  HorizontalAlignment="Stretch" />
-          <Button x:Name="OpenEditorButton"
-                  Content="Otevřít v editoru"
-                  HorizontalAlignment="Stretch" />
+                     IsVisible="False"
+                     Margin="0,4,0,0" />
         </StackPanel>
-        <TextBlock x:Name="StatusText"
-                   Text=""
-                   Opacity="0.8"
-                   TextWrapping="Wrap"
-                   IsVisible="False" />
-        <Button x:Name="AboutButton"
-                Content="O aplikaci"
-                HorizontalAlignment="Center"
-                Margin="0,8,0,0" />
-      </StackPanel>
+      </Grid>
     </Border>
 
     <!-- Dole: verze a partneři -->
@@ -74,21 +121,31 @@
       <StackPanel Orientation="Horizontal"
                   HorizontalAlignment="Center"
                   Spacing="40">
-        <Image Height="56" HorizontalAlignment="Center">
-          <Image.Source>
-            <svg:SvgImage Source="avares://NestStudio/img/opf_svg.svg" />
-          </Image.Source>
-        </Image>
+        <Button Background="Transparent"
+                BorderThickness="0"
+                Padding="0"
+                Click="OnOpfLogoClick">
+          <Image Height="56" HorizontalAlignment="Center">
+            <Image.Source>
+              <svg:SvgImage Source="avares://NestStudio/img/opf_svg.svg" />
+            </Image.Source>
+          </Image>
+        </Button>
         <TextBlock Text="ve spolupráci s"
                    VerticalAlignment="Center"
                    Opacity="0.8"
                    FontSize="13"
                    Margin="16,0" />
-        <Image Height="80" HorizontalAlignment="Center">
-          <Image.Source>
-            <svg:SvgImage Source="avares://NestStudio/img/RAPL_Group_logo.svg" />
-          </Image.Source>
-        </Image>
+        <Button Background="Transparent"
+                BorderThickness="0"
+                Padding="0"
+                Click="OnRaplLogoClick">
+          <Image Height="80" HorizontalAlignment="Center">
+            <Image.Source>
+              <svg:SvgImage Source="avares://NestStudio/img/RAPL_Group_logo.svg" />
+            </Image.Source>
+          </Image>
+        </Button>
       </StackPanel>
     </StackPanel>
   </Grid>

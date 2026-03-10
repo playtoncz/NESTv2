@@ -66,7 +66,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.104/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -136,12 +136,12 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.104/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
     "C:\\Users\\konta\\Documents\\GitHub\\NESTv2\\src\\NestStudio\\NestStudio.csproj": {
-      "version": "1.0.0",
+      "version": "1.0.0.130",
       "restore": {
         "projectUniqueName": "C:\\Users\\konta\\Documents\\GitHub\\NESTv2\\src\\NestStudio\\NestStudio.csproj",
         "projectName": "NestStudio",
@@ -223,7 +223,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.104/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,0 +1,1667 @@
+<?xml version="1.0" encoding="windows-1250"?>
+<!DOCTYPE base SYSTEM "base.dtd">
+<base>
+
+<!--******************** Global properties ********************-->
+
+ <global>
+  <description>Role v týmu</description>
+  <expert>Adéla Dulínková</expert>
+  <date>5.2.2007</date>
+  <inference_mechanism>standard</inference_mechanism>
+  <weight_range>3</weight_range>
+  <default_weight>irrelevant</default_weight>
+  <global_priority>first</global_priority>
+  <context_global_threshold>0,000</context_global_threshold>
+  <condition_global_threshold>2,700</condition_global_threshold>
+ </global>
+
+<!--******************** Attributes and propositions ********************-->
+
+ <attributes>
+
+  <attribute>
+   <id>Individualita/kolektivnost</id>
+   <name>Vyhovuje Vám více samostatná práce nebo  práce v týmu?</name>
+   <type>single</type>
+   <propositions>
+    <proposition>
+     <id>Individualita</id>
+     <name>(individualita)</name>
+    </proposition>
+    <proposition>
+     <id>Kolektivnost</id>
+     <name>(kolektivnost)</name>
+    </proposition>
+   </propositions>
+  </attribute>
+
+  <attribute>
+   <id>Inovativnost</id>
+   <name>Stane se Vám někdy, že si představíte, jak by se Váš byt dal  nově uspořádat a zaříídit?</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>Komunikativnost</id>
+   <name>Bojíte se mluvit před společností, protože byste si mohl udělat ostudu?</name>
+   <type>single</type>
+   <propositions>
+    <proposition>
+     <id>Ano, bojím se mluvit.</id>
+     <name>(Ano, bojím se mluvit.)</name>
+    </proposition>
+    <proposition>
+     <id>Ne, nebojím se mluvit</id>
+     <name>(Ne, nebojím se mluvit.)</name>
+    </proposition>
+   </propositions>
+  </attribute>
+
+  <attribute>
+   <id>Kreativita</id>
+   <name>Máte představu o novém typu televizní soutěže?</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>Asertivita</id>
+   <name>Ujmete se prezentace výsledků práce Vašeho týmu a  přesvědčování o jejich správnosti před ostatními?</name>
+   <type>single</type>
+   <propositions>
+    <proposition>
+     <id>Ano, ujmu se prezentace.</id>
+     <name>(Ano, ujmu se prezentace.)</name>
+    </proposition>
+    <proposition>
+     <id>Ne, neujmu se prezentace.</id>
+     <name>(Ne, neujmu se prezentace.)</name>
+    </proposition>
+   </propositions>
+  </attribute>
+
+  <attribute>
+   <id>Flexibilita</id>
+   <name>Máte několik variant jak využít svoji dovolenou?</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>Empatie</id>
+   <name>Půjčíte kolegovi menší finanční obnos, jestliže mu to pár dnů před výplatou nevychází s penězi?</name>
+   <type>single</type>
+   <propositions>
+    <proposition>
+     <id>Ano, půjčím</id>
+     <name>(Ano, půjčím)</name>
+    </proposition>
+    <proposition>
+     <id>Ne, nepůjčím.</id>
+     <name>(Ne, nepůjčím.)</name>
+    </proposition>
+   </propositions>
+  </attribute>
+
+  <attribute>
+   <id>Entuziasmus</id>
+   <name>Stává se Vám, že Vás nějaká nová čínnost chytí tak, že úplně zapomenete na svět kolem?</name>
+   <type>single</type>
+   <propositions>
+    <proposition>
+     <id>Ano, stává se mi to.</id>
+     <name>(Ano, stává se mi to.)</name>
+    </proposition>
+    <proposition>
+     <id>Jen výjimečně.</id>
+     <name>(Jen výjimečně.)</name>
+    </proposition>
+    <proposition>
+     <id>Ne, nestává se mi to.</id>
+     <name>(Ne, nestává se mi to.)</name>
+    </proposition>
+   </propositions>
+  </attribute>
+
+  <attribute>
+   <id>Angažovanost</id>
+   <name>Snažíte se pomoci lidem, kteří potřebují do práce postrčit?</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>Strategie</id>
+   <name>Máte představu, čeho chcete v životě dosáhnout?</name>
+   <type>single</type>
+   <propositions>
+    <proposition>
+     <id>Ano, mám představu.</id>
+     <name>(Ano, mám představu.)</name>
+    </proposition>
+    <proposition>
+     <id>Ne, nemám představu.</id>
+     <name>(Ne, nemám představu.)</name>
+    </proposition>
+   </propositions>
+  </attribute>
+
+  <attribute>
+   <id>Důslednost</id>
+   <name>Měly by zákony platit vždy a za každé situace pro všechny?</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>Praktičnost</id>
+   <name>Hledá se Vám dobře v jízdních řádech?</name>
+   <type>single</type>
+   <propositions>
+    <proposition>
+     <id>Ano, hledá se mi dobře.</id>
+     <name>(Ano, hledá se mi dobře.)</name>
+    </proposition>
+    <proposition>
+     <id>Ne, hledá se mi špatně.</id>
+     <name>(Ne, hledá se mi špatně.)</name>
+    </proposition>
+   </propositions>
+  </attribute>
+
+  <attribute>
+   <id>Detailnost</id>
+   <name>Stává se vám, že Vás detaily pohltí natolik, že na úkol potřebujete více času?</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>Detailnost2</id>
+   <name>Platí o Vás, že od práce neodejdete, pokud není na 100% hotová</name>
+   <type>single</type>
+   <propositions>
+    <proposition>
+     <id>Ano, platí to o mně.</id>
+     <name>(Ano, platí to o mně.)</name>
+    </proposition>
+    <proposition>
+     <id>Ne, neplatí to o mně.</id>
+     <name>(Ne, neplatí to o mně.)</name>
+    </proposition>
+   </propositions>
+  </attribute>
+
+  <attribute>
+   <id>Termínovanost</id>
+   <name>Chodíte na sjednané schůzky včas?</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>MYSLITEL</id>
+   <name>Myslitel</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>KOORDINÁTOR</id>
+   <name>Koordinátor</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>REALIZÁTOR</id>
+   <name>Realizátor</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>KOMPLETOVAČ</id>
+   <name>Kompletovač</name>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>Originální myšlenky</id>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>Povzbuzení týmu</id>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>Vůle</id>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>Pořádnost</id>
+   <type>binary</type>
+  </attribute>
+
+  <attribute>
+   <id>Dominantnost</id>
+   <type>binary</type>
+  </attribute>
+ </attributes>
+
+<!--******************** Contexts ********************-->
+
+ <contexts>
+ </contexts>
+
+<!--******************** Rules ********************-->
+
+ <rules>
+
+<!--******************** Apriori rules ********************-->
+
+  <apriori_rules>
+  </apriori_rules>
+
+<!--******************** Logical rules ********************-->
+
+  <logical_rules>
+  </logical_rules>
+
+<!--******************** Compositional rules ********************-->
+
+  <compositional_rules>
+
+   <compositional_rule>
+    <id>1</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Individualita/kolektivnost</id_attribute>
+      <id_proposition>Individualita</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>0</negation>
+      <weight>3,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOORDINÁTOR</id_attribute>
+      <negation>1</negation>
+      <weight>1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>REALIZÁTOR</id_attribute>
+      <negation>1</negation>
+      <weight>1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>2</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Individualita/kolektivnost</id_attribute>
+      <id_proposition>Kolektivnost</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>1</negation>
+      <weight>2,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOORDINÁTOR</id_attribute>
+      <negation>1</negation>
+      <weight>2,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>REALIZÁTOR</id_attribute>
+      <negation>1</negation>
+      <weight>1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>3</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Inovativnost</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>Kreativita</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>Originální myšlenky</id_attribute>
+      <negation>0</negation>
+      <weight>3,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>4</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Originální myšlenky</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>0</negation>
+      <weight>3,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOORDINÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>0,500</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>REALIZÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>0</negation>
+      <weight>0,750</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>5</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Inovativnost</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>0</negation>
+      <weight>3,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOORDINÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>1,500</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>REALIZÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>0</negation>
+      <weight>0,500</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>6</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Komunikativnost</id_attribute>
+      <id_proposition>Ano, bojím se mluvit.</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>KOORDINÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>2,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>7</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Komunikativnost</id_attribute>
+      <id_proposition>Ne, nebojím se mluvit</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>KOORDINÁTOR</id_attribute>
+      <negation>1</negation>
+      <weight>3,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>8</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Kreativita</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>0</negation>
+      <weight>3,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOORDINÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>REALIZÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>0,500</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>0</negation>
+      <weight>0,250</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>9</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Kreativita</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>1</negation>
+      <weight>3,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>10</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Asertivita</id_attribute>
+      <id_proposition>Ano, ujmu se prezentace.</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>Angažovanost</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>Empatie</id_attribute>
+      <id_proposition>Ano, půjčím</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>Povzbuzení týmu</id_attribute>
+      <negation>0</negation>
+      <weight>3,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>11</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Povzbuzení týmu</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>KOORDINÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>3,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>REALIZÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>0,450</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>1</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>12</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Asertivita</id_attribute>
+      <id_proposition>Ano, ujmu se prezentace.</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOORDINÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>3,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>0</negation>
+      <weight>-1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>REALIZÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>-1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>13</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Asertivita</id_attribute>
+      <id_proposition>Ne, neujmu se prezentace.</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>KOORDINÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>-3,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>14</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Flexibilita</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOORDINÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>3,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>REALIZÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>2,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>15</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Flexibilita</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOORDINÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>-3,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>REALIZÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>-1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>0</negation>
+      <weight>1,800</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>16</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Empatie</id_attribute>
+      <id_proposition>Ano, půjčím</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>0</negation>
+      <weight>1,300</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOORDINÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>2,500</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>0</negation>
+      <weight>0,500</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>REALIZÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>0,500</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>17</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Empatie</id_attribute>
+      <id_proposition>Ne, nepůjčím.</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>KOORDINÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>2,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>18</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Empatie</id_attribute>
+      <id_proposition>Ano, půjčím</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>Originální myšlenky</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>REALIZÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>1,500</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOORDINÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>0</negation>
+      <weight>3,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>19</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Entuziasmus</id_attribute>
+      <id_proposition>Jen výjimečně.</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>1</negation>
+      <weight>2,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>REALIZÁTOR</id_attribute>
+      <negation>1</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>21</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Entuziasmus</id_attribute>
+      <id_proposition>Ne, nestává se mi to.</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>1</negation>
+      <weight>2,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOORDINÁTOR</id_attribute>
+      <negation>1</negation>
+      <weight>1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>REALIZÁTOR</id_attribute>
+      <negation>1</negation>
+      <weight>1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>22</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Angažovanost</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>Povzbuzení týmu</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>23</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Strategie</id_attribute>
+      <id_proposition>Ano, mám představu.</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>REALIZÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOORDINÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>0</negation>
+      <weight>0,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>24</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Strategie</id_attribute>
+      <id_proposition>Ne, nemám představu.</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>0</negation>
+      <weight>-1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOORDINÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>0,500</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>REALIZÁTOR</id_attribute>
+      <negation>1</negation>
+      <weight>3,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>25</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Důslednost</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>REALIZÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>3,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>26</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Praktičnost</id_attribute>
+      <id_proposition>Ano, hledá se mi dobře.</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>REALIZÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>3,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOORDINÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>2,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>27</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Praktičnost</id_attribute>
+      <id_proposition>Ne, hledá se mi špatně.</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>REALIZÁTOR</id_attribute>
+      <negation>1</negation>
+      <weight>2,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>0</negation>
+      <weight>0,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>28</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Detailnost</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>0</negation>
+      <weight>3,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>29</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Detailnost2</id_attribute>
+      <id_proposition>Ano, platí to o mně.</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>0</negation>
+      <weight>3,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>30</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Detailnost2</id_attribute>
+      <id_proposition>Ne, neplatí to o mně.</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>1</negation>
+      <weight>3,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>31</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Termínovanost</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>0</negation>
+      <weight>3,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>REALIZÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>2,500</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOORDINÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>32</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Důslednost</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>Entuziasmus</id_attribute>
+      <id_proposition>Ano, stává se mi to.</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>Strategie</id_attribute>
+      <id_proposition>Ano, mám představu.</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>Vůle</id_attribute>
+      <negation>0</negation>
+      <weight>2,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>33</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Vůle</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>0</negation>
+      <weight>2,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOORDINÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>2,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>REALIZÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>3,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>34</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Asertivita</id_attribute>
+      <id_proposition>Ano, ujmu se prezentace.</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>Flexibilita</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>Empatie</id_attribute>
+      <id_proposition>Ano, půjčím</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>Angažovanost</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>Povzbuzení týmu</id_attribute>
+      <negation>0</negation>
+      <weight>2,800</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>35</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Strategie</id_attribute>
+      <id_proposition>Ne, nemám představu.</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>Praktičnost</id_attribute>
+      <id_proposition>Ne, hledá se mi špatně.</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>0</negation>
+      <weight>-2,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOORDINÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>-2,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>REALIZÁTOR</id_attribute>
+      <negation>1</negation>
+      <weight>3,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>0</negation>
+      <weight>-1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>36</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Empatie</id_attribute>
+      <id_proposition>Ne, nepůjčím.</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>Angažovanost</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>1</negation>
+      <weight>1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOORDINÁTOR</id_attribute>
+      <negation>1</negation>
+      <weight>2,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>REALIZÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>0,500</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>0</negation>
+      <weight>500,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>37</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Detailnost</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>Detailnost2</id_attribute>
+      <id_proposition>Ano, platí to o mně.</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>Termínovanost</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>Pořádnost</id_attribute>
+      <negation>0</negation>
+      <weight>2,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>38</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Pořádnost</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>0</negation>
+      <weight>0,500</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOORDINÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>REALIZÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>0</negation>
+      <weight>3,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>39</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Pořádnost</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>1</negation>
+      <weight>3,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>40</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Kreativita</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>Angažovanost</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>Termínovanost</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>KOORDINÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>2,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>REALIZÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>1</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>41</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Detailnost</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>Detailnost2</id_attribute>
+      <id_proposition>Ano, platí to o mně.</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>Termínovanost</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>0</negation>
+      <weight>3,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>42</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Angažovanost</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>Individualita/kolektivnost</id_attribute>
+      <id_proposition>Kolektivnost</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>Komunikativnost</id_attribute>
+      <id_proposition>Ano, bojím se mluvit.</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>Dominantnost</id_attribute>
+      <negation>0</negation>
+      <weight>2,850</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>43</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Dominantnost</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>0</negation>
+      <weight>-1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOORDINÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>3,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>REALIZÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>2,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>0</negation>
+      <weight>-1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>44</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Dominantnost</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>Povzbuzení týmu</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>0</negation>
+      <weight>-2,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOORDINÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>3,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>REALIZÁTOR</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>KOMPLETOVAČ</id_attribute>
+      <negation>0</negation>
+      <weight>-1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>45</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>Inovativnost</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>Kreativita</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>Entuziasmus</id_attribute>
+      <id_proposition>Ne, nestává se mi to.</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    <conjunction>
+     <literal>
+      <id_attribute>Entuziasmus</id_attribute>
+      <id_proposition>Jen výjimečně.</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>MYSLITEL</id_attribute>
+      <negation>1</negation>
+      <weight>3,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+  </compositional_rules>
+ </rules>
+
+<!--******************** Integrity constraints ********************-->
+
+ <integrity_constraints>
+ </integrity_constraints>
+ <system_info>
+  <nest:options xmlns:nest="http://lisp.vse.cz/NEST">
+   <nest:version>1.4.1</nest:version>
+  </nest:options>
+ </system_info>
+</base>

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NestCore.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4c255b3ced2dd1faff78c5da8bc93c5e0c1aa50c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+193ec4f246417dfd95162c8d65fcde0277127b09")]
 [assembly: System.Reflection.AssemblyProductAttribute("NestCore.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NestCore.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

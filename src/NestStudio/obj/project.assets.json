@@ -1500,7 +1500,7 @@
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "1.0.0.130",
     "restore": {
       "projectUniqueName": "C:\\Users\\konta\\Documents\\GitHub\\NESTv2\\src\\NestStudio\\NestStudio.csproj",
       "projectName": "NestStudio",
@@ -1582,7 +1582,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.104/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
