@@ -5,6 +5,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Documents;
+using Avalonia.Media;
 using NestCore.Model;
 using NestStudio.Views;
 
@@ -162,11 +164,7 @@ public partial class MainWindow : Window
                 WindowStartupLocation = WindowStartupLocation.CenterOwner
             };
 
-            var textBlock = new TextBlock
-            {
-                Text = info.ReleaseNotes,
-                TextWrapping = Avalonia.Media.TextWrapping.Wrap
-            };
+            var contentPanel = MarkdownToPanel(info.ReleaseNotes);
 
             var closeButton = new Button
             {
@@ -177,27 +175,22 @@ public partial class MainWindow : Window
             };
             closeButton.Click += (_, _) => window.Close();
 
-            var contentStack = new StackPanel
+            var scroll = new ScrollViewer { Content = contentPanel, Margin = new Thickness(0, 0, 4, 0) };
+            var grid = new Grid
             {
-                Spacing = 12
+                RowDefinitions = new RowDefinitions("*,Auto"),
+                Children = { scroll, closeButton }
             };
-            contentStack.Children.Add(textBlock);
-            contentStack.Children.Add(closeButton);
+            Grid.SetRow(scroll, 0);
+            Grid.SetRow(closeButton, 1);
 
-            var border = new Border
-            {
-                Padding = new Thickness(16),
-                Classes = { "glass-card" },
-                Child = contentStack
-            };
-
-            var scrollViewer = new ScrollViewer
+            window.Content = new Border
             {
                 Margin = new Thickness(16),
-                Content = border
+                Padding = new Thickness(16),
+                Classes = { "glass-card" },
+                Child = grid
             };
-
-            window.Content = scrollViewer;
             await window.ShowDialog(this);
         }
         else if (!string.IsNullOrWhiteSpace(info.ReleasePageUrl))
@@ -214,6 +207,93 @@ public partial class MainWindow : Window
         }
         catch
         {
+        }
+    }
+
+    /// <summary>Převede jednoduchý Markdown (nadpisy #, ##, ### a **tučný**) na StackPanel s TextBlocky.</summary>
+    private static StackPanel MarkdownToPanel(string markdown)
+    {
+        var panel = new StackPanel { Spacing = 6 };
+        if (string.IsNullOrEmpty(markdown))
+            return panel;
+
+        foreach (var rawLine in markdown.Split('\n'))
+        {
+            var line = rawLine.TrimEnd();
+            if (line.Length == 0)
+            {
+                panel.Children.Add(new TextBlock { Height = 4 });
+                continue;
+            }
+
+            double fontSize = 14;
+            FontWeight fontWeight = FontWeight.Normal;
+            string text = line;
+
+            if (line.StartsWith("### ", StringComparison.Ordinal))
+            {
+                fontSize = 14;
+                fontWeight = FontWeight.SemiBold;
+                text = line[4..];
+            }
+            else if (line.StartsWith("## ", StringComparison.Ordinal))
+            {
+                fontSize = 16;
+                fontWeight = FontWeight.SemiBold;
+                text = line[3..];
+            }
+            else if (line.StartsWith("# ", StringComparison.Ordinal))
+            {
+                fontSize = 18;
+                fontWeight = FontWeight.SemiBold;
+                text = line[2..];
+            }
+
+            var block = new TextBlock
+            {
+                TextWrapping = Avalonia.Media.TextWrapping.Wrap,
+                FontSize = fontSize,
+                FontWeight = fontWeight
+            };
+
+            if (fontWeight != FontWeight.Normal || !text.Contains("**", StringComparison.Ordinal))
+            {
+                block.Text = text;
+            }
+            else
+            {
+                ParseBoldInlines(block, text);
+            }
+
+            panel.Children.Add(block);
+        }
+
+        return panel;
+    }
+
+    private static void ParseBoldInlines(TextBlock block, string text)
+    {
+        block.Inlines ??= new InlineCollection();
+        block.Inlines.Clear();
+        int i = 0;
+        while (i < text.Length)
+        {
+            int start = text.IndexOf("**", i, StringComparison.Ordinal);
+            if (start < 0)
+            {
+                block.Inlines.Add(new Run { Text = text[i..] });
+                break;
+            }
+            if (start > i)
+                block.Inlines.Add(new Run { Text = text[i..start] });
+            int end = text.IndexOf("**", start + 2, StringComparison.Ordinal);
+            if (end < 0)
+            {
+                block.Inlines.Add(new Run { Text = text[start..], FontWeight = FontWeight.Bold });
+                break;
+            }
+            block.Inlines.Add(new Run { Text = text[(start + 2)..end], FontWeight = FontWeight.Bold });
+            i = end + 2;
         }
     }
 }
