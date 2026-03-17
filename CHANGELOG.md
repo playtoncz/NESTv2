@@ -34,9 +34,3 @@
 - **Aktualizace** – Kontrola nových verzí z GitHub Releases s panelem pro stažení
 - **.gitignore** – Přidán pro `.vs/` a build artefakty
 
----
-
-# V 1.0.0.301
-
-### Ostatní
-- **Changelog okno** – Umí číst Markdown
