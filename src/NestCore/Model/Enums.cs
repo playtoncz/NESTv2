@@ -61,3 +61,22 @@ public enum AnswerSpecialStatus
     Unknown,
     PostponeAnswer
 }
+
+/// <summary>Druh pravidla: apriorní (bez podmínek), logické (true/false), kompozicionální (váhy).</summary>
+public enum RuleKind
+{
+    Compositional,
+    Apriori,
+    Logical
+}
+
+/// <summary>Typ neurčitosti použité v inference (standard, logická, neuronová, hybridní, Gödel, součinová).</summary>
+public enum UncertaintyType
+{
+    Standard,
+    Logical,
+    Neural,
+    Hybrid,
+    Godel,
+    Product
+}

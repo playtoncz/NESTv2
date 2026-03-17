@@ -7,7 +7,7 @@
   "targets": {
     ".NETCoreApp,Version=v8.0": {},
     ".NETCoreApp,Version=v8.0/win-x64": {
-      "NestStudio/1.0.0.299": {
+      "NestStudio/1.0.0.400": {
         "dependencies": {
           "Avalonia.Desktop": "11.2.0",
           "Avalonia.Svg.Skia": "11.2.0",
@@ -1058,7 +1058,7 @@
     }
   },
   "libraries": {
-    "NestStudio/1.0.0.299": {
+    "NestStudio/1.0.0.400": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

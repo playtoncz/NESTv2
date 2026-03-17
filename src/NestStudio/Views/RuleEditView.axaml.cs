@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Layout;
 using Avalonia.Media;
@@ -14,6 +17,8 @@ public partial class RuleEditView : UserControl
     private readonly Action? _onDirty;
     private StackPanel? _conditionPanel;
     private StackPanel? _conclusionsPanel;
+    private TextBlock? _summaryBlock;
+    private Border? _conditionCard;
 
     public RuleEditView()
     {
@@ -29,70 +34,171 @@ public partial class RuleEditView : UserControl
         Build();
     }
 
+    private Border MakeSection(string title, StackPanel content)
+    {
+        var card = new Border();
+        card.Classes.Add("editor-section");
+        var inner = new StackPanel { Spacing = 8 };
+        inner.Children.Add(new TextBlock { Text = title, Classes = { "section-title" } });
+        inner.Children.Add(content);
+        card.Child = inner;
+        return card;
+    }
+
+    private static StackPanel MakeField(string label, Control input)
+    {
+        var sp = new StackPanel { Spacing = 2, Margin = new Thickness(0, 0, 0, 4) };
+        sp.Children.Add(new TextBlock { Text = label, Classes = { "field-label" } });
+        sp.Children.Add(input);
+        return sp;
+    }
+
+    private static StackPanel MakeField(string label, out TextBox box)
+    {
+        box = new TextBox();
+        return MakeField(label, box);
+    }
+
     private void Build()
     {
         Root.Children.Clear();
 
-        var idRow = CreateLabelRow("Id", out TextBox idBox);
-        idBox.Text = _rule.Id;
-        idBox.MinWidth = 200;
-        idBox.LostFocus += (_, _) => { _rule.Id = idBox.Text?.Trim() ?? ""; _onDirty?.Invoke(); };
-        Root.Children.Add(idRow);
+        // Summary banner
+        _summaryBlock = new TextBlock
+        {
+            TextWrapping = TextWrapping.Wrap,
+            FontFamily = new FontFamily("Consolas, Courier New, monospace"),
+            FontSize = 13,
+            Foreground = new SolidColorBrush(Color.FromRgb(0x00, 0x7A, 0xFF)),
+            Padding = new Thickness(14, 10),
+            Background = new SolidColorBrush(Color.FromArgb(12, 0, 122, 255))
+        };
+        var summaryBorder = new Border
+        {
+            CornerRadius = new CornerRadius(12),
+            ClipToBounds = true,
+            Margin = new Thickness(0, 0, 0, 16),
+            Child = _summaryBlock
+        };
+        Root.Children.Add(summaryBorder);
 
-        var prioRow = CreateLabelRow("Priorita (volitelné)", out TextBox prioBox);
-        prioBox.Text = _rule.Priority.HasValue ? _rule.Priority.Value.ToString(System.Globalization.CultureInfo.InvariantCulture) : "";
-        prioBox.Watermark = "prázdné = bez priority";
-        prioBox.MinWidth = 120;
+        // --- Metadata section ---
+        var metaContent = new StackPanel { Spacing = 4 };
+
+        var idField = MakeField("ID pravidla", out TextBox idBox);
+        idBox.Text = _rule.Id;
+        idBox.LostFocus += (_, _) => { _rule.Id = idBox.Text?.Trim() ?? ""; Dirty(); };
+        metaContent.Children.Add(idField);
+
+        var kindCombo = new ComboBox
+        {
+            MinWidth = 220,
+            ItemsSource = new[] { "Kompozicionální", "Apriorní (vždy platí)", "Logické (pravda/nepravda)" },
+            SelectedIndex = _rule.Kind switch { RuleKind.Apriori => 1, RuleKind.Logical => 2, _ => 0 }
+        };
+        kindCombo.SelectionChanged += (_, _) =>
+        {
+            _rule.Kind = kindCombo.SelectedIndex switch { 1 => RuleKind.Apriori, 2 => RuleKind.Logical, _ => RuleKind.Compositional };
+            UpdateConditionVisibility();
+            RefreshSummary();
+            Dirty();
+        };
+        metaContent.Children.Add(MakeField("Typ pravidla", kindCombo));
+
+        var commentBox = new TextBox
+        {
+            Text = _rule.Comment ?? "",
+            Watermark = "Komentář k pravidlu",
+            AcceptsReturn = true,
+            MinHeight = 36,
+            TextWrapping = TextWrapping.Wrap
+        };
+        commentBox.LostFocus += (_, _) => { _rule.Comment = string.IsNullOrWhiteSpace(commentBox.Text) ? null : commentBox.Text; Dirty(); };
+        metaContent.Children.Add(MakeField("Komentář", commentBox));
+
+        var metaRow = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 12 };
+        var prioField = MakeField("Priorita", out TextBox prioBox);
+        prioBox.Text = _rule.Priority.HasValue ? _rule.Priority.Value.ToString(CultureInfo.InvariantCulture) : "";
+        prioBox.Watermark = "volitelné";
+        prioBox.Width = 100;
         prioBox.LostFocus += (_, _) =>
         {
             if (string.IsNullOrWhiteSpace(prioBox.Text)) _rule.Priority = null;
-            else if (double.TryParse(prioBox.Text.Replace(',', '.'), System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out var v))
+            else if (double.TryParse(prioBox.Text.Replace(',', '.'), NumberStyles.Any, CultureInfo.InvariantCulture, out var v))
                 _rule.Priority = v;
-            _onDirty?.Invoke();
+            Dirty();
         };
-        Root.Children.Add(prioRow);
+        metaRow.Children.Add(prioField);
 
         var ctxCombo = new ComboBox
         {
-            MinWidth = 200,
-            HorizontalAlignment = HorizontalAlignment.Left,
-            ItemsSource = new[] { "" }.Concat(_kb.Contexts.Select(c => c.Id)).ToList(),
-            SelectedItem = _rule.IdContext ?? ""
+            MinWidth = 160,
+            ItemsSource = new[] { "(žádný)" }.Concat(_kb.Contexts.Select(c => c.Id)).ToList(),
+            SelectedItem = string.IsNullOrEmpty(_rule.IdContext) ? "(žádný)" : _rule.IdContext
         };
         ctxCombo.SelectionChanged += (_, _) =>
         {
-            _rule.IdContext = ctxCombo.SelectedItem as string;
-            if (string.IsNullOrEmpty(_rule.IdContext)) _rule.IdContext = null;
-            _onDirty?.Invoke();
+            var sel = ctxCombo.SelectedItem as string;
+            _rule.IdContext = sel == "(žádný)" ? null : sel;
+            Dirty();
         };
-        Root.Children.Add(CreateLabelRow("Kontext (volitelné)", ctxCombo));
+        metaRow.Children.Add(MakeField("Kontext", ctxCombo));
+        metaContent.Children.Add(metaRow);
 
-        Root.Children.Add(new TextBlock { Text = "Podmínka (OR konjunkcí)", FontWeight = FontWeight.SemiBold, Margin = new(0, 16, 0, 6) });
+        Root.Children.Add(MakeSection("Vlastnosti pravidla", metaContent));
+
+        // --- Condition section ---
+        var condContent = new StackPanel { Spacing = 6 };
         _conditionPanel = new StackPanel { Spacing = 8 };
-        Root.Children.Add(_conditionPanel);
-        var addConjBtn = new Button { Content = "Přidat konjunkci", HorizontalAlignment = HorizontalAlignment.Left };
+        condContent.Children.Add(_conditionPanel);
+        var addConjBtn = new Button { Content = "+ Přidat konjunkci (OR)" };
         addConjBtn.Click += (_, _) =>
         {
             _rule.Condition.Conjunctions.Add(new Conjunction());
             RefreshCondition();
-            _onDirty?.Invoke();
+            Dirty();
         };
-        Root.Children.Add(addConjBtn);
+        condContent.Children.Add(addConjBtn);
+        _conditionCard = MakeSection("Podmínka (OR konjunkcí)", condContent);
+        Root.Children.Add(_conditionCard);
 
-        Root.Children.Add(new TextBlock { Text = "Závěry", FontWeight = FontWeight.SemiBold, Margin = new(0, 16, 0, 6) });
-        _conclusionsPanel = new StackPanel { Spacing = 6 };
-        Root.Children.Add(_conclusionsPanel);
-        var addConcBtn = new Button { Content = "Přidat závěr", HorizontalAlignment = HorizontalAlignment.Left };
+        // --- Conclusions section ---
+        var weightRange = _kb.Global.WeightRange > 0 ? _kb.Global.WeightRange : 1;
+        var conclContent = new StackPanel { Spacing = 6 };
+        _conclusionsPanel = new StackPanel { Spacing = 8 };
+        conclContent.Children.Add(_conclusionsPanel);
+        var addConcBtn = new Button { Content = "+ Přidat závěr" };
         addConcBtn.Click += (_, _) =>
         {
             _rule.Conclusions.Add(new Conclusion());
             RefreshConclusions();
-            _onDirty?.Invoke();
+            Dirty();
         };
-        Root.Children.Add(addConcBtn);
+        conclContent.Children.Add(addConcBtn);
+        Root.Children.Add(MakeSection($"Závěry   (rozsah váhy: −{weightRange:F1} až {weightRange:F1})", conclContent));
 
+        UpdateConditionVisibility();
         RefreshCondition();
         RefreshConclusions();
+        RefreshSummary();
+    }
+
+    private void UpdateConditionVisibility()
+    {
+        if (_conditionCard != null)
+            _conditionCard.IsVisible = _rule.Kind != RuleKind.Apriori;
+    }
+
+    private void RefreshSummary()
+    {
+        if (_summaryBlock != null)
+            _summaryBlock.Text = _rule.ToSummary();
+    }
+
+    private void Dirty()
+    {
+        RefreshSummary();
+        _onDirty?.Invoke();
     }
 
     private void RefreshCondition()
@@ -104,42 +210,48 @@ public partial class RuleEditView : UserControl
         {
             var conj = _rule.Condition.Conjunctions[i];
             var conjIndex = i;
-            var border = new Border
+            var conjCard = new Border
             {
-                BorderBrush = new SolidColorBrush(Color.FromArgb(40, 0, 0, 0)),
-                BorderThickness = new(1),
-                CornerRadius = new(4),
-                Padding = new(8),
-                Margin = new(0, 0, 0, 4),
-                Child = new StackPanel { Spacing = 6 }
+                Background = new SolidColorBrush(Color.FromArgb(20, 0, 122, 255)),
+                CornerRadius = new CornerRadius(12),
+                Padding = new Thickness(12, 10),
+                Margin = new Thickness(0, 0, 0, 4)
             };
-            var conjStack = (StackPanel)border.Child;
+            var conjStack = new StackPanel { Spacing = 6 };
+
             var conjHeader = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 8 };
-            conjHeader.Children.Add(new TextBlock { Text = "Konjunkce " + (i + 1), FontWeight = FontWeight.SemiBold });
-            var removeConjBtn = new Button { Content = "Odebrat konjunkci", Padding = new(6, 2) };
+            conjHeader.Children.Add(new TextBlock
+            {
+                Text = i == 0 ? "Konjunkce 1" : $"Konjunkce {i + 1}  (OR)",
+                FontWeight = FontWeight.SemiBold,
+                FontSize = 13,
+                VerticalAlignment = VerticalAlignment.Center
+            });
+            var removeConjBtn = new Button { Content = "Odebrat", Padding = new Thickness(8, 4) };
             removeConjBtn.Click += (_, _) =>
             {
                 _rule.Condition.Conjunctions.RemoveAt(conjIndex);
                 RefreshCondition();
-                _onDirty?.Invoke();
+                Dirty();
             };
             conjHeader.Children.Add(removeConjBtn);
             conjStack.Children.Add(conjHeader);
+
             foreach (var lit in conj.Literals.ToList())
-            {
-                var litRow = CreateLiteralRow(lit, conj.Literals, attrIds);
-                conjStack.Children.Add(litRow);
-            }
-            var addLitBtn = new Button { Content = "Přidat literál", Padding = new(6, 2), HorizontalAlignment = HorizontalAlignment.Left };
+                conjStack.Children.Add(CreateLiteralRow(lit, conj.Literals, attrIds));
+
+            var addLitBtn = new Button { Content = "+ Přidat literál (AND)", Padding = new Thickness(8, 4) };
             addLitBtn.Click += (_, _) =>
             {
                 conj.Literals.Add(new Literal());
                 RefreshCondition();
-                _onDirty?.Invoke();
+                Dirty();
             };
             conjStack.Children.Add(addLitBtn);
-            _conditionPanel.Children.Add(border);
+            conjCard.Child = conjStack;
+            _conditionPanel.Children.Add(conjCard);
         }
+        RefreshSummary();
     }
 
     private void RefreshConclusions()
@@ -148,10 +260,8 @@ public partial class RuleEditView : UserControl
         _conclusionsPanel.Children.Clear();
         var attrIds = _kb.Attributes.Select(a => a.Id).ToList();
         foreach (var c in _rule.Conclusions)
-        {
-            var row = CreateConclusionRow(c, attrIds);
-            _conclusionsPanel.Children.Add(row);
-        }
+            _conclusionsPanel.Children.Add(CreateConclusionRow(c, attrIds));
+        RefreshSummary();
     }
 
     private StackPanel CreateLiteralRow(Literal lit, List<Literal> list, List<string> attrIds)
@@ -159,62 +269,52 @@ public partial class RuleEditView : UserControl
         var row = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 8 };
         var attrCombo = new ComboBox
         {
-            MinWidth = 140,
+            MinWidth = 130,
             ItemsSource = attrIds,
             SelectedItem = string.IsNullOrEmpty(lit.AttributeId) ? null : (attrIds.Contains(lit.AttributeId) ? lit.AttributeId : null)
         };
-        if (attrCombo.SelectedItem == null && attrIds.Count > 0 && !string.IsNullOrEmpty(lit.AttributeId))
+        if (attrCombo.SelectedItem == null && !string.IsNullOrEmpty(lit.AttributeId))
             attrCombo.SelectedItem = lit.AttributeId;
-        var propCombo = new ComboBox { MinWidth = 120, ItemsSource = GetPropositionIds(lit.AttributeId) };
+        var propCombo = new ComboBox { MinWidth = 110 };
         UpdatePropositionCombo(propCombo, lit.AttributeId, lit.PropositionId);
         attrCombo.SelectionChanged += (_, _) =>
         {
             lit.AttributeId = attrCombo.SelectedItem as string ?? "";
             UpdatePropositionCombo(propCombo, lit.AttributeId, null);
-            propCombo.SelectedItem = null;
             lit.PropositionId = null;
-            _onDirty?.Invoke();
+            Dirty();
         };
-        propCombo.SelectionChanged += (_, _) =>
-        {
-            lit.PropositionId = propCombo.SelectedItem as string;
-            _onDirty?.Invoke();
-        };
-        var negCheck = new CheckBox { Content = "Negace", IsChecked = lit.Negation };
-        negCheck.IsCheckedChanged += (_, _) => { lit.Negation = negCheck.IsChecked == true; _onDirty?.Invoke(); };
+        propCombo.SelectionChanged += (_, _) => { lit.PropositionId = propCombo.SelectedItem as string; Dirty(); };
+        var negCheck = new CheckBox { Content = "Negace", IsChecked = lit.Negation, VerticalAlignment = VerticalAlignment.Center };
+        negCheck.IsCheckedChanged += (_, _) => { lit.Negation = negCheck.IsChecked == true; Dirty(); };
+        row.Children.Add(new TextBlock { Text = "Atribut:", VerticalAlignment = VerticalAlignment.Center, Foreground = new SolidColorBrush(Color.FromRgb(0x64, 0x74, 0x8B)), FontSize = 12 });
         row.Children.Add(attrCombo);
+        row.Children.Add(new TextBlock { Text = "Výrok:", VerticalAlignment = VerticalAlignment.Center, Foreground = new SolidColorBrush(Color.FromRgb(0x64, 0x74, 0x8B)), FontSize = 12 });
         row.Children.Add(propCombo);
         row.Children.Add(negCheck);
-        var removeBtn = new Button { Content = "×", Padding = new(8, 2) };
-        removeBtn.Click += (_, _) =>
-        {
-            list.Remove(lit);
-            RefreshCondition();
-            _onDirty?.Invoke();
-        };
+        var removeBtn = new Button { Content = "×", Padding = new Thickness(8, 4) };
+        removeBtn.Click += (_, _) => { list.Remove(lit); RefreshCondition(); Dirty(); };
         row.Children.Add(removeBtn);
         return row;
     }
 
-    /// <summary>Statická varianta pro použití z ContextEditView a IntegrityConstraintEditView.</summary>
     public static StackPanel CreateLiteralRow(Literal lit, List<Literal> list, List<string> attrIds, KnowledgeBase kb, Action? onDirty, Action refreshCondition)
     {
         var row = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 8 };
         var attrCombo = new ComboBox
         {
-            MinWidth = 140,
+            MinWidth = 130,
             ItemsSource = attrIds,
             SelectedItem = string.IsNullOrEmpty(lit.AttributeId) ? null : (attrIds.Contains(lit.AttributeId) ? lit.AttributeId : null)
         };
-        if (attrCombo.SelectedItem == null && attrIds.Count > 0 && !string.IsNullOrEmpty(lit.AttributeId))
+        if (attrCombo.SelectedItem == null && !string.IsNullOrEmpty(lit.AttributeId))
             attrCombo.SelectedItem = lit.AttributeId;
-        var propCombo = new ComboBox { MinWidth = 120 };
+        var propCombo = new ComboBox { MinWidth = 110 };
         UpdatePropositionComboStatic(kb, propCombo, lit.AttributeId, lit.PropositionId);
         attrCombo.SelectionChanged += (_, _) =>
         {
             lit.AttributeId = attrCombo.SelectedItem as string ?? "";
             UpdatePropositionComboStatic(kb, propCombo, lit.AttributeId, null);
-            propCombo.SelectedItem = null;
             lit.PropositionId = null;
             onDirty?.Invoke();
         };
@@ -224,7 +324,7 @@ public partial class RuleEditView : UserControl
         row.Children.Add(attrCombo);
         row.Children.Add(propCombo);
         row.Children.Add(negCheck);
-        var removeBtn = new Button { Content = "×", Padding = new(8, 2) };
+        var removeBtn = new Button { Content = "×", Padding = new Thickness(8, 4) };
         removeBtn.Click += (_, _) => { list.Remove(lit); refreshCondition(); onDirty?.Invoke(); };
         row.Children.Add(removeBtn);
         return row;
@@ -235,75 +335,47 @@ public partial class RuleEditView : UserControl
         var attr = kb.Attributes.FirstOrDefault(a => a.Id == attributeId);
         var ids = attr?.Propositions.Select(p => p.Id).ToList() ?? new List<string>();
         propCombo.ItemsSource = ids;
-        if (ids.Contains(selectedId ?? ""))
-            propCombo.SelectedItem = selectedId;
-        else
-            propCombo.SelectedItem = null;
+        propCombo.SelectedItem = ids.Contains(selectedId ?? "") ? selectedId : null;
     }
 
     private StackPanel CreateConclusionRow(Conclusion c, List<string> attrIds)
     {
         var row = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 8 };
-        var attrCombo = new ComboBox { MinWidth = 140, ItemsSource = attrIds, SelectedItem = attrIds.Contains(c.AttributeId) ? c.AttributeId : null };
-        var propCombo = new ComboBox { MinWidth = 120, ItemsSource = GetPropositionIds(c.AttributeId) };
+        var attrCombo = new ComboBox { MinWidth = 130, ItemsSource = attrIds, SelectedItem = attrIds.Contains(c.AttributeId) ? c.AttributeId : null };
+        var propCombo = new ComboBox { MinWidth = 110 };
         UpdatePropositionCombo(propCombo, c.AttributeId, c.PropositionId);
         attrCombo.SelectionChanged += (_, _) =>
         {
             c.AttributeId = attrCombo.SelectedItem as string ?? "";
             UpdatePropositionCombo(propCombo, c.AttributeId, null);
-            propCombo.SelectedItem = c.PropositionId;
             c.PropositionId = null;
-            _onDirty?.Invoke();
+            Dirty();
         };
-        propCombo.SelectionChanged += (_, _) => { c.PropositionId = propCombo.SelectedItem as string; _onDirty?.Invoke(); };
-        var negCheck = new CheckBox { Content = "Neg", IsChecked = c.Negation };
-        negCheck.IsCheckedChanged += (_, _) => { c.Negation = negCheck.IsChecked == true; _onDirty?.Invoke(); };
-        var weightBox = new TextBox { Text = c.Weight.ToString("F2", System.Globalization.CultureInfo.InvariantCulture), Width = 60 };
+        propCombo.SelectionChanged += (_, _) => { c.PropositionId = propCombo.SelectedItem as string; Dirty(); };
+        var negCheck = new CheckBox { Content = "Negace", IsChecked = c.Negation, VerticalAlignment = VerticalAlignment.Center };
+        negCheck.IsCheckedChanged += (_, _) => { c.Negation = negCheck.IsChecked == true; Dirty(); };
+        var weightBox = new TextBox { Text = c.Weight.ToString("F3", CultureInfo.InvariantCulture), Width = 70, Watermark = "váha" };
         weightBox.LostFocus += (_, _) =>
         {
-            if (double.TryParse(weightBox.Text?.Replace(',', '.'), System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out var v))
+            if (double.TryParse(weightBox.Text?.Replace(',', '.'), NumberStyles.Any, CultureInfo.InvariantCulture, out var v))
                 c.Weight = v;
-            _onDirty?.Invoke();
+            Dirty();
         };
-        var removeBtn = new Button { Content = "×", Padding = new(8, 2) };
-        removeBtn.Click += (_, _) =>
-        {
-            _rule.Conclusions.Remove(c);
-            RefreshConclusions();
-            _onDirty?.Invoke();
-        };
+        var removeBtn = new Button { Content = "×", Padding = new Thickness(8, 4) };
+        removeBtn.Click += (_, _) => { _rule.Conclusions.Remove(c); RefreshConclusions(); Dirty(); };
+        row.Children.Add(new TextBlock { Text = "Atribut:", VerticalAlignment = VerticalAlignment.Center, Foreground = new SolidColorBrush(Color.FromRgb(0x64, 0x74, 0x8B)), FontSize = 12 });
         row.Children.Add(attrCombo);
+        row.Children.Add(new TextBlock { Text = "Výrok:", VerticalAlignment = VerticalAlignment.Center, Foreground = new SolidColorBrush(Color.FromRgb(0x64, 0x74, 0x8B)), FontSize = 12 });
         row.Children.Add(propCombo);
         row.Children.Add(negCheck);
+        row.Children.Add(new TextBlock { Text = "Váha:", VerticalAlignment = VerticalAlignment.Center, Foreground = new SolidColorBrush(Color.FromRgb(0x64, 0x74, 0x8B)), FontSize = 12 });
         row.Children.Add(weightBox);
         row.Children.Add(removeBtn);
         return row;
     }
 
-    private static List<string> GetPropositionIds(string? attributeId)
-    {
-        return new List<string>(); // filled per KB in UpdatePropositionCombo
-    }
+    private static List<string> GetPropositionIds(string? attributeId) => new();
 
     private void UpdatePropositionCombo(ComboBox propCombo, string? attributeId, string? selectedId)
-    {
-        UpdatePropositionComboStatic(_kb, propCombo, attributeId, selectedId);
-    }
-
-    private static StackPanel CreateLabelRow(string label, out TextBox box)
-    {
-        box = new TextBox();
-        var row = new StackPanel { Orientation = Orientation.Vertical, Spacing = 4 };
-        row.Children.Add(new TextBlock { Text = label, FontWeight = FontWeight.SemiBold });
-        row.Children.Add(box);
-        return row;
-    }
-
-    private static StackPanel CreateLabelRow(string label, Control input)
-    {
-        var row = new StackPanel { Orientation = Orientation.Vertical, Spacing = 4 };
-        row.Children.Add(new TextBlock { Text = label, FontWeight = FontWeight.SemiBold });
-        row.Children.Add(input);
-        return row;
-    }
+        => UpdatePropositionComboStatic(_kb, propCombo, attributeId, selectedId);
 }

@@ -6,10 +6,20 @@ namespace NestCore.Inference;
 /// <summary>Běh inference: načte KB a AnswerSet, vrátí InferenceResult.</summary>
 public sealed class InferenceEngine
 {
-    private readonly UncertaintyStandard _uncertainty = new(0.999);
+    private readonly IUncertainty _uncertainty;
 
     /// <summary>Klíč výroku: (AttributeId, PropositionId nebo null u binary).</summary>
     private sealed record StatementKey(string AttributeId, string? PropositionId);
+
+    public InferenceEngine()
+        : this(new UncertaintyStandard(0.999))
+    {
+    }
+
+    public InferenceEngine(IUncertainty uncertainty)
+    {
+        _uncertainty = uncertainty ?? new UncertaintyStandard(0.999);
+    }
 
     public InferenceResult Run(KnowledgeBase kb, AnswerSet answers)
     {
@@ -37,8 +47,10 @@ public sealed class InferenceEngine
         }
 
         var weightRange = kb.Global.WeightRange;
-        var scaleToInternal = 1.0 / (weightRange > 0 ? weightRange : 1); // starý NEST: internal = value/rozsahVah, tedy [-1, 1]
-        var displayRange = weightRange > 0 && weightRange != 1 ? weightRange : 3; // zobrazení v rozsahu KB; 1 → 3
+        if (weightRange <= 0)
+            weightRange = 1;
+        var scaleToInternal = 1.0 / weightRange; // internal = value/rozsahVah, tedy vždy [-1, 1]
+        var displayRange = weightRange; // zobrazovat v rámci skutečného rozsahu KB
         double ToInternal(double kbWeight)
         {
             var clamped = Math.Max(-weightRange, Math.Min(weightRange, kbWeight));
@@ -309,7 +321,7 @@ public sealed class InferenceEngine
 }
 
 /// <summary>Neurčitost „standard“: CTR, CONJ, DISJ, NEG, NORM, GLOB (skládání příspěvků více pravidel jako ve starém NEST).</summary>
-internal sealed class UncertaintyStandard
+internal sealed class UncertaintyStandard : IUncertainty
 {
     private readonly double _normRange = 0.999; // starý NEST: PocetDesetinnychMist=3 → "0.999"
 

@@ -42,6 +42,7 @@ public partial class KbEditorView : UserControl
         GlobalPropsButton.Click += OnShowGlobalProps;
         StatisticsButton.Click += OnShowStatistics;
         NewAttributeButton.Click += OnNewAttribute;
+        DeleteAttributeButton.Click += OnDeleteAttribute;
         NewRuleButton.Click += OnNewRule;
         NewContextButton.Click += OnNewContext;
         NewIntegrityButton.Click += OnNewIntegrity;
@@ -61,7 +62,16 @@ public partial class KbEditorView : UserControl
         if (_kb == null) return;
         var attrDisplay = _kb.Attributes.Select(a => string.IsNullOrWhiteSpace(a.Name) ? a.Id : $"{a.Name} ({a.Id})").ToList();
         AttributesList.ItemsSource = attrDisplay;
-        RulesList.ItemsSource = _kb.CompositionalRules.Select(r => r.Id).ToList();
+        RulesList.ItemsSource = _kb.CompositionalRules.Select(r =>
+        {
+            var prefix = r.Kind switch
+            {
+                NestCore.Model.RuleKind.Apriori => "[A] ",
+                NestCore.Model.RuleKind.Logical => "[L] ",
+                _ => "[C] "
+            };
+            return prefix + r.Id;
+        }).ToList();
         ContextsList.ItemsSource = _kb.Contexts.Select(c => string.IsNullOrWhiteSpace(c.Comment) ? c.Id : $"{c.Id} — {c.Comment}").ToList();
         IntegrityList.ItemsSource = _kb.IntegrityConstraints.Select(io => string.IsNullOrWhiteSpace(io.Name) ? io.Id : $"{io.Id} — {io.Name}").ToList();
     }
@@ -73,7 +83,7 @@ public partial class KbEditorView : UserControl
         IntegrityList.SelectedIndex = -1;
         var idx = AttributesList.SelectedIndex;
         if (_kb != null && idx >= 0 && idx < _kb.Attributes.Count)
-            DetailContent.Content = new AttributeDetailView(_kb.Attributes[idx]);
+            DetailContent.Content = new AttributeEditView(_kb.Attributes[idx], _kb, () => { SetDirty(); RefreshLists(); });
         else
             DetailContent.Content = null;
     }
@@ -121,7 +131,17 @@ public partial class KbEditorView : UserControl
         RulesList.SelectedIndex = -1;
         ContextsList.SelectedIndex = -1;
         IntegrityList.SelectedIndex = -1;
-        DetailContent.Content = new RulesGraphView(_kb);
+        var graph = new RulesGraphView(_kb);
+        graph.AttributeClicked += attrId =>
+        {
+            var idx = _kb.Attributes.FindIndex(a => a.Id == attrId);
+            if (idx >= 0)
+            {
+                AttributesList.SelectedIndex = idx;
+                DetailContent.Content = new AttributeEditView(_kb.Attributes[idx], _kb, () => { SetDirty(); RefreshLists(); });
+            }
+        };
+        DetailContent.Content = graph;
     }
 
     private void OnShowGlobalProps(object? sender, RoutedEventArgs e)
@@ -165,23 +185,44 @@ public partial class KbEditorView : UserControl
         RefreshLists();
         var idx = _kb.Attributes.Count - 1;
         AttributesList.SelectedIndex = idx;
-        DetailContent.Content = new AttributeDetailView(attr);
+        DetailContent.Content = new AttributeEditView(attr, _kb, () => { SetDirty(); RefreshLists(); });
     }
 
-    private void OnNewRule(object? sender, RoutedEventArgs e)
+    private async void OnDeleteAttribute(object? sender, RoutedEventArgs e)
     {
-        if (_kb == null) return;
+        if (_kb == null || _mainWindow == null || AttributesList.SelectedIndex < 0) return;
+        var idx = AttributesList.SelectedIndex;
+        var attr = _kb.Attributes[idx];
+        var dialog = new ConfirmDialog("Opravdu smazat atribut \"" + attr.Id + "\"?");
+        if (await dialog.ShowDialog<bool>(_mainWindow) != true) return;
+        _kb.Attributes.RemoveAt(idx);
+        SetDirty();
+        RefreshLists();
+        AttributesList.SelectedIndex = -1;
+        DetailContent.Content = null;
+    }
+
+    private async void OnNewRule(object? sender, RoutedEventArgs e)
+    {
+        if (_kb == null || _mainWindow == null) return;
+        var dialog = new NewRuleTypeDialog();
+        var kind = await dialog.ShowDialog<RuleKind?>(_mainWindow);
+        if (!kind.HasValue) return;
         var ruleIds = _kb.CompositionalRules.Select(r => r.Id).ToHashSet();
-        var id = "c1";
+        var prefix = kind.Value switch { RuleKind.Apriori => "a", RuleKind.Logical => "l", _ => "c" };
+        var id = prefix + "1";
         for (var i = 1; ; i++)
         {
-            id = "c" + i;
+            id = prefix + i;
             if (!ruleIds.Contains(id)) break;
         }
         var rule = new CompositionalRule
         {
             Id = id,
-            Condition = new Condition { Conjunctions = new List<Conjunction> { new Conjunction() } },
+            Kind = kind.Value,
+            Condition = kind.Value == RuleKind.Apriori
+                ? new Condition()
+                : new Condition { Conjunctions = new List<Conjunction> { new Conjunction() } },
             Conclusions = new List<Conclusion>()
         };
         _kb.CompositionalRules.Add(rule);

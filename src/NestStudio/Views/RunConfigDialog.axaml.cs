@@ -46,7 +46,17 @@ public partial class RunConfigDialog : Window
         {
             AnsweringMode = AnsweringModeCombo.SelectedIndex == 1 ? AnsweringModeKind.LoadFromFile : AnsweringModeKind.Questionnaire,
             AnswersFilePath = AnsweringModeCombo.SelectedIndex == 1 ? (AnswersPathBox.Text?.Trim() ?? "") : null,
-            ReasoningMode = ReasoningModeCombo.SelectedIndex == 1 ? ReasoningModeKind.WithoutPostpone : ReasoningModeKind.Postpone
+            ReasoningMode = ReasoningModeCombo.SelectedIndex == 1 ? ReasoningModeKind.WithoutPostpone : ReasoningModeKind.Postpone,
+            LayoutMode = LayoutModeCombo.SelectedIndex == 1 ? QuestionLayoutMode.OneByOne : QuestionLayoutMode.AllAtOnce,
+            Uncertainty = UncertaintyCombo.SelectedIndex switch
+            {
+                1 => NestCore.Model.UncertaintyType.Logical,
+                2 => NestCore.Model.UncertaintyType.Neural,
+                3 => NestCore.Model.UncertaintyType.Hybrid,
+                4 => NestCore.Model.UncertaintyType.Godel,
+                5 => NestCore.Model.UncertaintyType.Product,
+                _ => NestCore.Model.UncertaintyType.Standard
+            }
         };
         Close(Result);
     }

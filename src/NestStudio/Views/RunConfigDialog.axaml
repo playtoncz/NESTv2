@@ -21,6 +21,22 @@
           <Button x:Name="BrowseAnswersButton" Grid.Column="1" Content="Procházet…" />
         </Grid>
       </StackPanel>
+      <TextBlock Text="Zobrazení otázek" FontWeight="SemiBold" FontSize="15" Foreground="#334155" Margin="0,4,0,0" />
+      <ComboBox x:Name="LayoutModeCombo" MinWidth="320" CornerRadius="10" Padding="12,10"
+                SelectedIndex="0">
+        <ComboBoxItem Content="Všechny otázky najednou" />
+        <ComboBoxItem Content="Jedna otázka na obrazovce" />
+      </ComboBox>
+      <TextBlock Text="Typ neurčitosti" FontWeight="SemiBold" FontSize="15" Foreground="#334155" Margin="0,4,0,0" />
+      <ComboBox x:Name="UncertaintyCombo" MinWidth="320" CornerRadius="10" Padding="12,10"
+                SelectedIndex="0">
+        <ComboBoxItem Content="Standardní" />
+        <ComboBoxItem Content="Logický" />
+        <ComboBoxItem Content="Neuronový" />
+        <ComboBoxItem Content="Hybridní" />
+        <ComboBoxItem Content="Gödel" />
+        <ComboBoxItem Content="Součinová" />
+      </ComboBox>
       <TextBlock Text="Režim odvozování" FontWeight="SemiBold" FontSize="15" Foreground="#334155" Margin="0,4,0,0" />
       <ComboBox x:Name="ReasoningModeCombo" MinWidth="320" CornerRadius="10" Padding="12,10"
                 SelectedIndex="0">

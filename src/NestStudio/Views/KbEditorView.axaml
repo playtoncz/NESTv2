@@ -2,54 +2,72 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="NestStudio.Views.KbEditorView">
   <Grid RowDefinitions="Auto,*" ColumnDefinitions="*">
-    <WrapPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,12">
-      <Button x:Name="BackButton" Content="← Zpět" Margin="0,0,12,0" />
-      <TextBlock x:Name="TitleText" Text="Editor znalostní báze" VerticalAlignment="Center" FontWeight="SemiBold" Margin="0,0,12,0" />
-      <Button x:Name="SaveButton" Content="Uložit XML" Classes="primary" Margin="0,0,8,0" />
-      <Button x:Name="FillProjectButton" Content="Vyplnit projekt" Margin="0,0,8,0" />
-      <Button x:Name="ValidateButton" Content="Validace" Margin="0,0,8,0" />
-      <Button x:Name="GraphButton" Content="Graf pravidel" Margin="0,0,8,0" />
-      <Button x:Name="GlobalPropsButton" Content="Globální vlastnosti" Margin="0,0,8,0" />
-      <Button x:Name="StatisticsButton" Content="Statistiky" Margin="0,0,8,0" />
-      <TextBlock x:Name="StatusText" Text="" VerticalAlignment="Center" Opacity="0.8" Margin="8,0,0,0" />
-    </WrapPanel>
-    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="0,0,0,-8">
-    <Grid ColumnDefinitions="280,*" RowDefinitions="*" MinWidth="400">
-      <Grid Grid.Column="0" RowDefinitions="Auto,130,Auto,*,Auto,90,Auto,80" Margin="0,0,8,0">
-        <StackPanel Orientation="Horizontal" Spacing="8">
-          <TextBlock Text="Atributy" FontWeight="SemiBold" Margin="0,0,0,4" VerticalAlignment="Center" />
-          <Button x:Name="NewAttributeButton" Content="Nový atribut" Padding="6,2" />
+    <!-- Toolbar -->
+    <Border Grid.Row="0" Classes="editor-toolbar">
+      <Grid ColumnDefinitions="Auto,*,Auto">
+        <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+          <Button x:Name="BackButton" Content="← Zpět" />
+          <TextBlock x:Name="TitleText" Text="Editor znalostní báze" VerticalAlignment="Center"
+                     FontWeight="SemiBold" FontSize="16" Foreground="#1E293B" Margin="8,0,0,0" />
         </StackPanel>
-        <ListBox x:Name="AttributesList" Grid.Row="1" SelectionMode="Single" />
-        <TextBlock Text="Pravidla" FontWeight="SemiBold" Margin="0,12,0,4" Grid.Row="2" />
-        <Grid Grid.Row="3" ColumnDefinitions="*,Auto" Margin="0,0,0,0">
-          <ListBox x:Name="RulesList" Grid.Column="0" SelectionMode="Single" MinHeight="80" />
-          <StackPanel Grid.Column="1" Spacing="4" Margin="4,0,0,0" VerticalAlignment="Top">
-            <Button x:Name="NewRuleButton" Content="Nové pravidlo" Padding="6,2" />
-            <Button x:Name="DeleteRuleButton" Content="Smazat" Padding="6,2" />
-          </StackPanel>
-        </Grid>
-        <TextBlock Text="Kontexty" FontWeight="SemiBold" Margin="0,12,0,4" Grid.Row="4" />
-        <Grid Grid.Row="5" ColumnDefinitions="*,Auto">
-          <ListBox x:Name="ContextsList" Grid.Column="0" SelectionMode="Single" MinHeight="60" />
-          <StackPanel Grid.Column="1" Spacing="4" Margin="4,0,0,0" VerticalAlignment="Top">
-            <Button x:Name="NewContextButton" Content="Nový kontext" Padding="6,2" />
-            <Button x:Name="DeleteContextButton" Content="Smazat" Padding="6,2" />
-          </StackPanel>
-        </Grid>
-        <TextBlock Text="Integritní omezení" FontWeight="SemiBold" Margin="0,12,0,4" Grid.Row="6" />
-        <Grid Grid.Row="7" ColumnDefinitions="*,Auto">
-          <ListBox x:Name="IntegrityList" Grid.Column="0" SelectionMode="Single" MinHeight="60" />
-          <StackPanel Grid.Column="1" Spacing="4" Margin="4,0,0,0" VerticalAlignment="Top">
-            <Button x:Name="NewIntegrityButton" Content="Nové IO" Padding="6,2" />
-            <Button x:Name="DeleteIntegrityButton" Content="Smazat" Padding="6,2" />
-          </StackPanel>
-        </Grid>
+        <WrapPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+          <Button x:Name="SaveButton" Content="Uložit XML" Classes="primary" Margin="0,0,6,0" />
+          <Button x:Name="FillProjectButton" Content="Vyplnit projekt" Margin="0,0,6,0" />
+          <Button x:Name="ValidateButton" Content="Validace" Margin="0,0,6,0" />
+          <Button x:Name="GraphButton" Content="Graf pravidel" Margin="0,0,6,0" />
+          <Button x:Name="GlobalPropsButton" Content="Globální vlastnosti" Margin="0,0,6,0" />
+          <Button x:Name="StatisticsButton" Content="Statistiky" />
+          <TextBlock x:Name="StatusText" Text="" VerticalAlignment="Center" Opacity="0.7"
+                     FontSize="12" Margin="12,0,0,0" Foreground="#64748B" />
+        </WrapPanel>
       </Grid>
-      <Border Grid.Column="1" BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="4" Padding="12">
-        <ContentControl x:Name="DetailContent" />
+    </Border>
+    <!-- Main content -->
+    <Grid Grid.Row="1" ColumnDefinitions="260,*" Margin="0,0,0,0">
+      <!-- Sidebar -->
+      <Border Grid.Column="0" Classes="editor-sidebar" Margin="0,0,10,0">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+          <StackPanel Spacing="0">
+            <!-- Atributy -->
+            <StackPanel Orientation="Horizontal" Spacing="6">
+              <TextBlock Text="ATRIBUTY" Classes="sidebar-heading" VerticalAlignment="Center" />
+              <Button x:Name="NewAttributeButton" Content="+ Nový" FontSize="11" Padding="8,3" />
+              <Button x:Name="DeleteAttributeButton" Content="Smazat" FontSize="11" Padding="8,3" />
+            </StackPanel>
+            <ListBox x:Name="AttributesList" SelectionMode="Single" MinHeight="80" MaxHeight="180" />
+
+            <!-- Pravidla -->
+            <StackPanel Orientation="Horizontal" Spacing="6">
+              <TextBlock Text="PRAVIDLA" Classes="sidebar-heading" VerticalAlignment="Center" />
+              <Button x:Name="NewRuleButton" Content="+ Nové" FontSize="11" Padding="8,3" />
+              <Button x:Name="DeleteRuleButton" Content="Smazat" FontSize="11" Padding="8,3" />
+            </StackPanel>
+            <ListBox x:Name="RulesList" SelectionMode="Single" MinHeight="60" MaxHeight="200" />
+
+            <!-- Kontexty -->
+            <StackPanel Orientation="Horizontal" Spacing="6">
+              <TextBlock Text="KONTEXTY" Classes="sidebar-heading" VerticalAlignment="Center" />
+              <Button x:Name="NewContextButton" Content="+ Nový" FontSize="11" Padding="8,3" />
+              <Button x:Name="DeleteContextButton" Content="Smazat" FontSize="11" Padding="8,3" />
+            </StackPanel>
+            <ListBox x:Name="ContextsList" SelectionMode="Single" MinHeight="40" MaxHeight="100" />
+
+            <!-- Integritní omezení -->
+            <StackPanel Orientation="Horizontal" Spacing="6">
+              <TextBlock Text="INTEGRITNÍ OMEZENÍ" Classes="sidebar-heading" VerticalAlignment="Center" />
+              <Button x:Name="NewIntegrityButton" Content="+ Nové" FontSize="11" Padding="8,3" />
+              <Button x:Name="DeleteIntegrityButton" Content="Smazat" FontSize="11" Padding="8,3" />
+            </StackPanel>
+            <ListBox x:Name="IntegrityList" SelectionMode="Single" MinHeight="40" MaxHeight="100" />
+          </StackPanel>
+        </ScrollViewer>
+      </Border>
+      <!-- Detail -->
+      <Border Grid.Column="1" Classes="editor-detail">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+          <ContentControl x:Name="DetailContent" />
+        </ScrollViewer>
       </Border>
     </Grid>
-    </ScrollViewer>
   </Grid>
 </UserControl>

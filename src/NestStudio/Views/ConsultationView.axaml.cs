@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -27,8 +28,14 @@ public partial class ConsultationView : UserControl
     private readonly Dictionary<string, List<Button>> _binaryStatusButtons = new();
     /// <summary>U multiple atributů: pro každou propozici vlastní váha (attrId -> seznam (checkbox, weightBox)).</summary>
     private readonly Dictionary<string, List<(CheckBox cb, Proposition prop, TextBox weightBox)>> _multipleWeights = new();
+    private readonly List<Control> _questionCards = new();
+    private int _currentQuestionIndex;
     private AnswerSet? _loadedAnswers;
     private InferenceResult? _lastResult;
+    /// <summary>Pro každý vstupní atribut: seznam konjunkcí (z pravidel), ve kterých se vyskytuje.</summary>
+    private readonly Dictionary<string, List<Conjunction>> _attrConjunctions = new();
+    /// <summary>Mapování attrId → card wrapper (pro dynamické zobrazování/skrývání).</summary>
+    private readonly Dictionary<string, Control> _attrCardWrappers = new();
 
     /// <summary>Pro runtime loader / XAML. V kódu používej konstruktor s KB a MainWindow.</summary>
     public ConsultationView()
@@ -97,9 +104,33 @@ public partial class ConsultationView : UserControl
         _binaryUseManualWeight.Clear();
         _binaryStatusButtons.Clear();
         _multipleWeights.Clear();
+        _questionCards.Clear();
+        _attrConjunctions.Clear();
+        _attrCardWrappers.Clear();
+        _currentQuestionIndex = 0;
         var weightRange = _kb.Global.WeightRange;
+        var oneByOne = _runConfig?.LayoutMode == QuestionLayoutMode.OneByOne;
         var inputIds = QuestionAnalyzer.GetInputAttributeIds(_kb);
         var orderedAttrs = QuestionAnalyzer.GetInputAttributesInOrder(_kb);
+
+        foreach (var rule in _kb.CompositionalRules)
+        {
+            if (rule.Kind == RuleKind.Apriori) continue;
+            foreach (var conj in rule.Condition.Conjunctions)
+            {
+                foreach (var lit in conj.Literals)
+                {
+                    if (string.IsNullOrEmpty(lit.AttributeId)) continue;
+                    if (!_attrConjunctions.TryGetValue(lit.AttributeId, out var list))
+                    {
+                        list = new List<Conjunction>();
+                        _attrConjunctions[lit.AttributeId] = list;
+                    }
+                    if (!list.Contains(conj))
+                        list.Add(conj);
+                }
+            }
+        }
         if (orderedAttrs.Count == 0)
         {
             foreach (var attr in _kb.Attributes)
@@ -108,7 +139,6 @@ public partial class ConsultationView : UserControl
                 orderedAttrs.Add(attr);
             }
         }
-        var conditionalBlocks = new List<(Control wrapper, List<string> depAttrIds)>();
         Action? onAnyAnswerChanged = null;
         foreach (var attr in orderedAttrs)
         {
@@ -124,6 +154,17 @@ public partial class ConsultationView : UserControl
                 FontWeight = Avalonia.Media.FontWeight.SemiBold,
                 Margin = new Thickness(0, 0, 0, 2)
             });
+            if (!string.IsNullOrWhiteSpace(attr.Comment))
+            {
+                block.Children.Add(new TextBlock
+                {
+                    Text = attr.Comment,
+                    Opacity = 0.75,
+                    FontSize = 12,
+                    TextWrapping = TextWrapping.Wrap,
+                    Margin = new Thickness(0, 0, 0, 4)
+                });
+            }
 
             var aa = new AttributeAnswer { Id = attr.Id, Type = attr.Type };
             Control input;
@@ -138,7 +179,11 @@ public partial class ConsultationView : UserControl
                     foreach (var p in attr.Propositions)
                     {
                         var label = string.IsNullOrWhiteSpace(p.Name) ? p.Id : p.Name;
-                        var rb = new RadioButton { Content = new TextBlock { Text = label }, GroupName = attr.Id, Tag = p };
+                        var rbContent = new StackPanel { Spacing = 2 };
+                        rbContent.Children.Add(new TextBlock { Text = label });
+                        if (!string.IsNullOrWhiteSpace(p.Comment))
+                            rbContent.Children.Add(new TextBlock { Text = p.Comment, Opacity = 0.65, FontSize = 11 });
+                        var rb = new RadioButton { Content = rbContent, GroupName = attr.Id, Tag = p };
                         singlePanel.Children.Add(rb);
                     }
                     input = singlePanel;
@@ -150,7 +195,11 @@ public partial class ConsultationView : UserControl
                     {
                         var label = string.IsNullOrWhiteSpace(p.Name) ? p.Id : p.Name;
                         var row = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 8 };
-                        var cb = new CheckBox { Content = new TextBlock { Text = label }, Tag = p };
+                        var cbContent = new StackPanel { Spacing = 1 };
+                        cbContent.Children.Add(new TextBlock { Text = label });
+                        if (!string.IsNullOrWhiteSpace(p.Comment))
+                            cbContent.Children.Add(new TextBlock { Text = p.Comment, Opacity = 0.65, FontSize = 11 });
+                        var cb = new CheckBox { Content = cbContent, Tag = p };
                         var weightBox = new TextBox { Width = 56, Watermark = "váha", Tag = p };
                         row.Children.Add(cb);
                         row.Children.Add(new TextBlock { Text = "váha:", VerticalAlignment = Avalonia.Layout.VerticalAlignment.Center, Margin = new(8, 0, 0, 0) });
@@ -169,10 +218,11 @@ public partial class ConsultationView : UserControl
                             row.Children.Add(btn);
                             rowButtons.Add(btn);
                         }
-                        AddRowStatusButton("Určitě ano", AnswerSpecialStatus.CertainlyYes, "3");
-                        AddRowStatusButton("Určitě ne", AnswerSpecialStatus.CertainlyNo, "-3");
+                        var maxW = weightRange > 0 ? weightRange : 1;
+                        AddRowStatusButton("Určitě ano", AnswerSpecialStatus.CertainlyYes, maxW.ToString(System.Globalization.CultureInfo.InvariantCulture));
+                        AddRowStatusButton("Určitě ne", AnswerSpecialStatus.CertainlyNo, (-maxW).ToString(System.Globalization.CultureInfo.InvariantCulture));
                         AddRowStatusButton("Nerelevantní", AnswerSpecialStatus.Irrelevant, "0");
-                        AddRowStatusButton("Neznámá", AnswerSpecialStatus.Unknown, "-3 až 3");
+                        AddRowStatusButton("Neznámá", AnswerSpecialStatus.Unknown, $"-{maxW} až {maxW}");
                         AddRowStatusButton("Odložit", AnswerSpecialStatus.PostponeAnswer, "");
                         multiPanel.Children.Add(row);
                         multiWeights.Add((cb, p, weightBox));
@@ -300,51 +350,234 @@ public partial class ConsultationView : UserControl
             if (attr.Type == AttributeType.Numeric && input is TextBox numTb)
                 numTb.TextChanged += (_, _) => onAnyAnswerChanged?.Invoke();
             _inputs.Add((attr, input, aa));
-            var visibilityDeps = QuestionAnalyzer.GetVisibilityDependencies(_kb, attr.Id);
             var card = new Border();
             card.Classes.Add("glass-card");
             card.Child = block;
-            if (visibilityDeps.Count > 0)
+            if (oneByOne)
             {
-                var wrapper = new StackPanel();
-                wrapper.Children.Add(card);
-                wrapper.IsVisible = false;
-                conditionalBlocks.Add((wrapper, visibilityDeps));
-                QuestionnairePanel.Children.Add(wrapper);
+                card.IsVisible = true;
+                _questionCards.Add(card);
+                _attrCardWrappers[attr.Id] = card;
             }
             else
             {
-                QuestionnairePanel.Children.Add(card);
+                var wrapper = new StackPanel();
+                wrapper.Children.Add(card);
+                _attrCardWrappers[attr.Id] = wrapper;
+                QuestionnairePanel.Children.Add(wrapper);
             }
         }
 
-        bool HasAttributeAnyValue(string attrId)
+        if (!oneByOne)
         {
-            if (_multipleWeights.TryGetValue(attrId, out var list))
-                return list.Any(x => x.cb.IsChecked == true);
-            var inp = _inputs.FirstOrDefault(x => x.attr.Id == attrId);
-            return inp != default && (inp.aa.Answers.Count > 0 || inp.aa.SpecialStatus != AnswerSpecialStatus.None);
+            onAnyAnswerChanged = () => UpdateRelevance(false);
+            UpdateRelevance(false);
         }
-        void UpdateConditionalVisibility()
+        else
         {
-            foreach (var (wrapper, depAttrIds) in conditionalBlocks)
-                wrapper.IsVisible = depAttrIds.Any(HasAttributeAnyValue);
+            onAnyAnswerChanged = () => UpdateRelevance(true);
         }
-        onAnyAnswerChanged = UpdateConditionalVisibility;
-        foreach (var (wrapper, depAttrIds) in conditionalBlocks)
+
+        if (oneByOne)
         {
-            foreach (var depId in depAttrIds)
-            {
-                if (_multipleWeights.TryGetValue(depId, out var list))
+            ShowCurrentQuestion();
+        }
+        else
+        {
+            var saveRow = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 8, Margin = new(0, 16, 0, 0) };
+            var saveBtn = new Button { Content = "Uložit odpovědi (XML)" };
+            saveBtn.Click += (s, e) => SaveAnswersToFile();
+            saveRow.Children.Add(saveBtn);
+            QuestionnairePanel.Children.Add(saveRow);
+        }
+    }
+
+    /// <summary>
+    /// Zjistí, zda je literál v podmínce pravidla určitě nepravdivý na základě aktuálních odpovědí.
+    /// Pokud ano, celá konjunkce (AND) je mrtvá.
+    /// </summary>
+    private bool IsLiteralDefinitelyFalse(Literal lit)
+    {
+        var entry = _inputs.FirstOrDefault(x => x.attr.Id == lit.AttributeId);
+        if (entry == default) return false;
+        var (attr, input, aa) = entry;
+
+        switch (attr.Type)
+        {
+            case AttributeType.Binary:
+                if (!lit.Negation && aa.SpecialStatus == AnswerSpecialStatus.CertainlyNo) return true;
+                if (lit.Negation && aa.SpecialStatus == AnswerSpecialStatus.CertainlyYes) return true;
+                return false;
+
+            case AttributeType.Single:
+                if (input is StackPanel sp)
                 {
-                    foreach (var (cb, _, _) in list)
-                        cb.IsCheckedChanged += (_, _) => UpdateConditionalVisibility();
+                    string? selectedPropId = null;
+                    foreach (var c in sp.Children)
+                        if (c is RadioButton rb && rb.IsChecked == true && rb.Tag is Proposition selProp)
+                        { selectedPropId = selProp.Id; break; }
+
+                    if (selectedPropId == null) return false;
+
+                    if (!string.IsNullOrEmpty(lit.PropositionId))
+                    {
+                        if (!lit.Negation && selectedPropId != lit.PropositionId) return true;
+                        if (lit.Negation && selectedPropId == lit.PropositionId) return true;
+                    }
+                    else
+                    {
+                        if (aa.SpecialStatus == AnswerSpecialStatus.CertainlyNo && !lit.Negation) return true;
+                        if (aa.SpecialStatus == AnswerSpecialStatus.CertainlyYes && lit.Negation) return true;
+                    }
                 }
+                return false;
+
+            case AttributeType.Multiple:
+                if (aa.SpecialStatus == AnswerSpecialStatus.CertainlyNo && !lit.Negation) return true;
+                if (aa.SpecialStatus == AnswerSpecialStatus.CertainlyYes && lit.Negation) return true;
+                return false;
+
+            default:
+                return false;
+        }
+    }
+
+    /// <summary>
+    /// Je konjunkce mrtvá? = existuje alespoň jeden literál, který je určitě nepravdivý.
+    /// </summary>
+    private bool IsConjunctionDead(Conjunction conj)
+    {
+        foreach (var lit in conj.Literals)
+            if (IsLiteralDefinitelyFalse(lit)) return true;
+        return false;
+    }
+
+    /// <summary>
+    /// Atribut je irelevantní, pokud VŠECHNY konjunkce, ve kterých se vyskytuje, jsou mrtvé.
+    /// Atributy, které se nevyskytují v žádné konjunkci, jsou vždy viditelné.
+    /// Atribut, na který uživatel už odpověděl, je VŽDY relevantní (aby mohl odpověď změnit).
+    /// </summary>
+    private bool IsAttributeRelevant(string attrId)
+    {
+        if (HasUserAnswered(attrId))
+            return true;
+        if (!_attrConjunctions.TryGetValue(attrId, out var conjunctions) || conjunctions.Count == 0)
+            return true;
+        foreach (var conj in conjunctions)
+        {
+            if (!IsConjunctionDead(conj))
+                return true;
+        }
+        return false;
+    }
+
+    private bool HasUserAnswered(string attrId)
+    {
+        var entry = _inputs.FirstOrDefault(x => x.attr.Id == attrId);
+        if (entry == default) return false;
+        var (attr, input, aa) = entry;
+
+        if (aa.SpecialStatus != AnswerSpecialStatus.None)
+            return true;
+        if (_binaryUseManualWeight.GetValueOrDefault(attrId))
+            return true;
+
+        switch (attr.Type)
+        {
+            case AttributeType.Single:
+                if (input is StackPanel sp)
+                    foreach (var c in sp.Children)
+                        if (c is RadioButton rb && rb.IsChecked == true) return true;
+                break;
+            case AttributeType.Multiple:
+                if (_multipleWeights.TryGetValue(attrId, out var list))
+                    if (list.Any(x => x.cb.IsChecked == true || !string.IsNullOrWhiteSpace(x.weightBox.Text)))
+                        return true;
+                break;
+            case AttributeType.Numeric:
+                if (input is TextBox tb && !string.IsNullOrWhiteSpace(tb.Text))
+                    return true;
+                break;
+        }
+        return false;
+    }
+
+    private void UpdateRelevance(bool isOneByOne)
+    {
+        foreach (var (attrId, wrapper) in _attrCardWrappers)
+        {
+            var relevant = IsAttributeRelevant(attrId);
+            if (!isOneByOne)
+            {
+                wrapper.IsVisible = relevant;
             }
         }
-        UpdateConditionalVisibility();
 
-        var saveRow = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 8, Margin = new(0, 16, 0, 0) };
+        if (isOneByOne)
+        {
+            var visibleCards = new List<Control>();
+            foreach (var (attr, _, _) in _inputs)
+            {
+                if (!_attrCardWrappers.TryGetValue(attr.Id, out var card)) continue;
+                if (IsAttributeRelevant(attr.Id))
+                    visibleCards.Add(card);
+            }
+            _questionCards.Clear();
+            _questionCards.AddRange(visibleCards);
+            if (_currentQuestionIndex >= _questionCards.Count)
+                _currentQuestionIndex = System.Math.Max(0, _questionCards.Count - 1);
+            ShowCurrentQuestion();
+        }
+    }
+
+    private void ShowCurrentQuestion()
+    {
+        if (_questionCards.Count == 0)
+            return;
+
+        if (_currentQuestionIndex < 0)
+            _currentQuestionIndex = 0;
+        if (_currentQuestionIndex >= _questionCards.Count)
+            _currentQuestionIndex = _questionCards.Count - 1;
+
+        QuestionnairePanel.Children.Clear();
+
+        var card = _questionCards[_currentQuestionIndex];
+        QuestionnairePanel.Children.Add(card);
+
+        var info = new TextBlock
+        {
+            Text = $"Otázka {_currentQuestionIndex + 1} / {_questionCards.Count}",
+            Margin = new Thickness(0, 12, 0, 4),
+            Opacity = 0.8,
+            FontSize = 12
+        };
+        QuestionnairePanel.Children.Add(info);
+
+        var navRow = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 8, Margin = new Thickness(0, 4, 0, 0) };
+        var prevBtn = new Button { Content = "Předchozí", IsEnabled = _currentQuestionIndex > 0 };
+        var nextBtn = new Button { Content = "Další", IsEnabled = _currentQuestionIndex < _questionCards.Count - 1 };
+        prevBtn.Click += (_, _) =>
+        {
+            if (_currentQuestionIndex > 0)
+            {
+                _currentQuestionIndex--;
+                ShowCurrentQuestion();
+            }
+        };
+        nextBtn.Click += (_, _) =>
+        {
+            if (_currentQuestionIndex < _questionCards.Count - 1)
+            {
+                _currentQuestionIndex++;
+                ShowCurrentQuestion();
+            }
+        };
+        navRow.Children.Add(prevBtn);
+        navRow.Children.Add(nextBtn);
+        QuestionnairePanel.Children.Add(navRow);
+
+        var saveRow = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 8, Margin = new Thickness(0, 16, 0, 0) };
         var saveBtn = new Button { Content = "Uložit odpovědi (XML)" };
         saveBtn.Click += (s, e) => SaveAnswersToFile();
         saveRow.Children.Add(saveBtn);
@@ -376,7 +609,10 @@ public partial class ConsultationView : UserControl
     {
         if (_kb == null) return;
         var answers = _loadedAnswers ?? BuildAnswerSet();
-        var engine = new InferenceEngine();
+        var uncType = _runConfig?.Uncertainty
+                      ?? NestCore.Inference.UncertaintyFactory.FromString(_kb.Global.InferenceMechanism);
+        var uncertainty = NestCore.Inference.UncertaintyFactory.Create(uncType);
+        var engine = new InferenceEngine(uncertainty);
         var result = engine.Run(_kb, answers);
         _lastResult = result;
         ShowResults(result);
@@ -392,29 +628,38 @@ public partial class ConsultationView : UserControl
             switch (attr.Type)
             {
                 case AttributeType.Binary:
-                    // Určitě ano = max v rozsahu (3), Určitě ne = min (-3), Nerelevantní = 0, Neznámý = (-3;3) — viz engine
+                    // Určitě ano = max v rozsahu (±weight_range), Určitě ne = min (∓weight_range), Nerelevantní = 0, Neznámý = (-range;range) — viz engine
                     if (_binaryUseManualWeight.GetValueOrDefault(attr.Id) && GetManualWeight(attr.Id) is { } manualW)
                         aa.Answers.Add(new Answer { Value = "yes", Weight = manualW });
                     else if (aa.SpecialStatus == AnswerSpecialStatus.CertainlyYes)
                     {
-                        var maxWeight = _kb.Global.WeightRange > 0 && _kb.Global.WeightRange != 1 ? _kb.Global.WeightRange : 3;
+                        var maxWeight = _kb!.Global.WeightRange > 0 ? _kb.Global.WeightRange : 1;
                         aa.Answers.Add(new Answer { Value = "yes", Weight = maxWeight });
                     }
                     else if (aa.SpecialStatus == AnswerSpecialStatus.CertainlyNo)
                     {
-                        var maxWeight = _kb.Global.WeightRange > 0 && _kb.Global.WeightRange != 1 ? _kb.Global.WeightRange : 3;
+                        var maxWeight = _kb!.Global.WeightRange > 0 ? _kb.Global.WeightRange : 1;
                         aa.Answers.Add(new Answer { Value = "no", Weight = -maxWeight });
                     }
                     break;
                 case AttributeType.Single:
                     if (input is StackPanel sp)
                     {
+                        var maxW = _kb!.Global.WeightRange > 0 ? _kb.Global.WeightRange : 1;
+                        string? selectedPropId = null;
                         foreach (var c in sp.Children)
                         {
-                            if (c is RadioButton rb && rb.IsChecked == true && rb.Tag is Proposition prop)
+                            if (c is RadioButton rb && rb.IsChecked == true && rb.Tag is Proposition selProp)
+                            { selectedPropId = selProp.Id; break; }
+                        }
+                        if (selectedPropId != null)
+                        {
+                            foreach (var p in attr.Propositions)
                             {
-                                aa.Answers.Add(new Answer { Value = prop.Id, Weight = 1.0 });
-                                break;
+                                if (p.Id == selectedPropId)
+                                    aa.Answers.Add(new Answer { Value = p.Id, Weight = maxW });
+                                else
+                                    aa.Answers.Add(new Answer { Value = p.Id, Weight = -maxW });
                             }
                         }
                     }
@@ -490,11 +735,8 @@ public partial class ConsultationView : UserControl
         storeBtn.Click += (s, e) => StoreCase();
         btnRow.Children.Add(storeBtn);
 
-        // Engine vrací váhy ve zobrazovací škále. Záložně: pokud hodnota vypadá jako vnitřní (-1..1), přeškálujeme.
-        var weightRange = _kb?.Global?.WeightRange ?? 3;
-        if (weightRange < 3) weightRange = 3;
-        double Scale(double v) => v * weightRange;
-        double ToDisplayWeight(double w) => (w >= -1.1 && w <= 1.1) ? (w * weightRange) : w;
+        var weightRange = _kb?.Global?.WeightRange ?? 1;
+        if (weightRange <= 0) weightRange = 1;
 
         void RefreshList()
         {
@@ -510,8 +752,8 @@ public partial class ConsultationView : UserControl
                 var name = !string.IsNullOrEmpty(g.DisplayName) ? g.DisplayName : $"{g.AttributeId}({g.PropositionId})";
                 var row = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 12, Margin = new(0, 2, 0, 2) };
                 var nameBlock = new TextBlock { Text = name, MinWidth = 160, TextWrapping = TextWrapping.Wrap };
-                var minD = ToDisplayWeight(g.MinWeight);
-                var maxD = ToDisplayWeight(g.MaxWeight);
+                var minD = g.MinWeight;
+                var maxD = g.MaxWeight;
                 var weightVal = maxD;
                 if (weightVal > 0)
                     nameBlock.Foreground = new SolidColorBrush(Color.FromRgb(0, 128, 0));
@@ -525,7 +767,7 @@ public partial class ConsultationView : UserControl
                 ResultsPanel.Children.Add(row);
                 var contributing = result.FiredRules
                     .SelectMany(fr => fr.AppliedConclusions.Where(ac => ac.AttributeId == g.AttributeId && ac.PropositionId == g.PropositionId)
-                        .Select(ac => $"{fr.RuleId}: +{Scale(ac.WeightChange):F3}"))
+                        .Select(ac => $"{fr.RuleId}: +{(ac.WeightChange * weightRange):F3}"))
                     .ToList();
                 if (contributing.Count > 0)
                 {

@@ -42,6 +42,9 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 [C:/Users/konta/Documents/GitHub/NESTv2/src/NestStudio/Views/AttributeDetailView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[C:/Users/konta/Documents/GitHub/NESTv2/src/NestStudio/Views/AttributeEditView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [C:/Users/konta/Documents/GitHub/NESTv2/src/NestStudio/Views/ConfirmDialog.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
@@ -67,6 +70,9 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [C:/Users/konta/Documents/GitHub/NESTv2/src/NestStudio/Views/NewAttributeTypeDialog.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/konta/Documents/GitHub/NESTv2/src/NestStudio/Views/NewRuleTypeDialog.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [C:/Users/konta/Documents/GitHub/NESTv2/src/NestStudio/Views/RuleDetailView.axaml]

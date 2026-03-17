@@ -50,6 +50,16 @@ public sealed class BaseXmlReader
             foreach (XmlElement ctxEl in ctxNodes)
                 kb.Contexts.Add(ReadContext(ctxEl));
 
+        var aprioriNodes = baseEl.SelectNodes("rules/apriori_rules/apriori_rule");
+        if (aprioriNodes != null)
+            foreach (XmlElement ruleEl in aprioriNodes)
+                kb.CompositionalRules.Add(ReadAprioriRule(ruleEl));
+
+        var logicalNodes = baseEl.SelectNodes("rules/logical_rules/logical_rule");
+        if (logicalNodes != null)
+            foreach (XmlElement ruleEl in logicalNodes)
+                kb.CompositionalRules.Add(ReadLogicalRule(ruleEl));
+
         var ruleNodes = baseEl.SelectNodes("rules/compositional_rules/compositional_rule");
         if (ruleNodes != null)
             foreach (XmlElement ruleEl in ruleNodes)
@@ -112,10 +122,12 @@ public sealed class BaseXmlReader
 
     private static NestCore.Model.Attribute ReadAttribute(XmlElement el)
     {
+        var id = XmlHelper.GetElementText(el, "id") ?? "";
+        var name = XmlHelper.GetElementText(el, "name");
         var a = new NestCore.Model.Attribute
         {
-            Id = XmlHelper.GetElementText(el, "id") ?? "",
-            Name = XmlHelper.GetElementText(el, "name") ?? "",
+            Id = id,
+            Name = string.IsNullOrWhiteSpace(name) ? id : name,
             Comment = XmlHelper.GetElementText(el, "comment")
         };
         var typeStr = XmlHelper.GetElementText(el, "type") ?? "binary";
@@ -167,10 +179,12 @@ public sealed class BaseXmlReader
 
     private static Proposition ReadProposition(XmlElement el)
     {
+        var pid = XmlHelper.GetElementText(el, "id") ?? "";
+        var pname = XmlHelper.GetElementText(el, "name");
         var p = new Proposition
         {
-            Id = XmlHelper.GetElementText(el, "id") ?? "",
-            Name = XmlHelper.GetElementText(el, "name") ?? "",
+            Id = pid,
+            Name = string.IsNullOrWhiteSpace(pname) ? pid : pname,
             Comment = XmlHelper.GetElementText(el, "comment")
         };
         var wfEl = el.SelectSingleNode("weight_function") as XmlElement;
@@ -238,6 +252,42 @@ public sealed class BaseXmlReader
             Negation = string.Equals(XmlHelper.GetElementText(el, "negation"), "1", StringComparison.Ordinal),
             Weight = w
         };
+    }
+
+    private static CompositionalRule ReadAprioriRule(XmlElement el)
+    {
+        var r = new CompositionalRule
+        {
+            Id = XmlHelper.GetElementText(el, "id") ?? "",
+            Kind = RuleKind.Apriori,
+            Priority = ReadOptionalDouble(el, "priority"),
+            Comment = XmlHelper.GetElementText(el, "comment")
+        };
+        var conclNodes = el.SelectNodes("conclusions/conclusion");
+        if (conclNodes != null)
+            foreach (XmlElement cEl in conclNodes)
+                r.Conclusions.Add(ReadConclusion(cEl, 1));
+        return r;
+    }
+
+    private static CompositionalRule ReadLogicalRule(XmlElement el)
+    {
+        var r = new CompositionalRule
+        {
+            Id = XmlHelper.GetElementText(el, "id") ?? "",
+            Kind = RuleKind.Logical,
+            Priority = ReadOptionalDouble(el, "priority"),
+            IdContext = XmlHelper.GetElementText(el, "id_context"),
+            Comment = XmlHelper.GetElementText(el, "comment")
+        };
+        var condEl = el.SelectSingleNode("condition") as XmlElement;
+        if (condEl != null)
+            r.Condition = ReadCondition(condEl);
+        var conclNodes = el.SelectNodes("conclusions/conclusion");
+        if (conclNodes != null)
+            foreach (XmlElement cEl in conclNodes)
+                r.Conclusions.Add(ReadConclusion(cEl, 1));
+        return r;
     }
 
     private static CompositionalRule ReadCompositionalRule(XmlElement el)

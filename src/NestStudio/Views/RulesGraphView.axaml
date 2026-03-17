@@ -1,7 +1,25 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="NestStudio.Views.RulesGraphView">
-  <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-    <Canvas x:Name="GraphCanvas" Background="#FAFAFA" MinWidth="600" MinHeight="500" />
-  </ScrollViewer>
+  <TabControl>
+    <TabItem Header="Strom">
+      <Grid ColumnDefinitions="*,*" Margin="0,8,0,0">
+        <Border Grid.Column="0" Classes="editor-section" Margin="0,0,6,0">
+          <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <TreeView x:Name="RuleTree" />
+          </ScrollViewer>
+        </Border>
+        <Border Grid.Column="1" Classes="editor-section" Margin="6,0,0,0">
+          <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel x:Name="TreeDetailPanel" Spacing="4" />
+          </ScrollViewer>
+        </Border>
+      </Grid>
+    </TabItem>
+    <TabItem Header="Graf">
+      <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <Canvas x:Name="GraphCanvas" Background="#F8FAFC" MinWidth="600" MinHeight="500" />
+      </ScrollViewer>
+    </TabItem>
+  </TabControl>
 </UserControl>

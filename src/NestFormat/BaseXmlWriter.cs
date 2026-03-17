@@ -1,4 +1,5 @@
 using System.Globalization;
+using System.Linq;
 using System.Xml;
 using NestCore.Model;
 
@@ -29,11 +30,15 @@ public sealed class BaseXmlWriter
             w.WriteEndElement();
             w.WriteStartElement("rules");
             w.WriteStartElement("apriori_rules");
+            foreach (var r in kb.CompositionalRules.Where(r => r.Kind == RuleKind.Apriori))
+                WriteAprioriRule(w, r);
             w.WriteEndElement();
             w.WriteStartElement("logical_rules");
+            foreach (var r in kb.CompositionalRules.Where(r => r.Kind == RuleKind.Logical))
+                WriteLogicalRule(w, r);
             w.WriteEndElement();
             w.WriteStartElement("compositional_rules");
-            foreach (var r in kb.CompositionalRules)
+            foreach (var r in kb.CompositionalRules.Where(r => r.Kind == RuleKind.Compositional))
                 WriteCompositionalRule(w, r, (long)kb.Global.WeightRange);
             w.WriteEndElement();
             w.WriteEndElement();
@@ -78,7 +83,7 @@ public sealed class BaseXmlWriter
     {
         w.WriteStartElement("attribute");
         w.WriteElementString("id", a.Id);
-        if (!string.IsNullOrEmpty(a.Name)) w.WriteElementString("name", a.Name);
+        if (!string.IsNullOrEmpty(a.Name) && a.Name != a.Id) w.WriteElementString("name", a.Name);
         w.WriteElementString("type", a.Type switch
         {
             AttributeType.Single => "single",
@@ -114,7 +119,7 @@ public sealed class BaseXmlWriter
     {
         w.WriteStartElement("proposition");
         w.WriteElementString("id", p.Id);
-        if (!string.IsNullOrEmpty(p.Name)) w.WriteElementString("name", p.Name);
+        if (!string.IsNullOrEmpty(p.Name) && p.Name != p.Id) w.WriteElementString("name", p.Name);
         if (p.WeightFunction != null)
         {
             var f = p.WeightFunction;
@@ -167,6 +172,34 @@ public sealed class BaseXmlWriter
         if (!string.IsNullOrEmpty(c.PropositionId)) w.WriteElementString("id_proposition", c.PropositionId);
         w.WriteElementString("negation", c.Negation ? "1" : "0");
         if (writeWeight) w.WriteElementString("weight", c.Weight.ToString("F3", Invariant));
+        w.WriteEndElement();
+    }
+
+    private static void WriteAprioriRule(XmlWriter w, CompositionalRule r)
+    {
+        w.WriteStartElement("apriori_rule");
+        w.WriteElementString("id", r.Id);
+        if (r.Priority.HasValue) w.WriteElementString("priority", r.Priority.Value.ToString(Invariant));
+        w.WriteStartElement("conclusions");
+        foreach (var c in r.Conclusions)
+            WriteConclusion(w, c, true);
+        w.WriteEndElement();
+        if (!string.IsNullOrEmpty(r.Comment)) w.WriteElementString("comment", r.Comment);
+        w.WriteEndElement();
+    }
+
+    private static void WriteLogicalRule(XmlWriter w, CompositionalRule r)
+    {
+        w.WriteStartElement("logical_rule");
+        w.WriteElementString("id", r.Id);
+        if (r.Priority.HasValue) w.WriteElementString("priority", r.Priority.Value.ToString(Invariant));
+        if (!string.IsNullOrEmpty(r.IdContext)) w.WriteElementString("id_context", r.IdContext);
+        WriteCondition(w, r.Condition);
+        w.WriteStartElement("conclusions");
+        foreach (var c in r.Conclusions)
+            WriteConclusion(w, c, false);
+        w.WriteEndElement();
+        if (!string.IsNullOrEmpty(r.Comment)) w.WriteElementString("comment", r.Comment);
         w.WriteEndElement();
     }
 

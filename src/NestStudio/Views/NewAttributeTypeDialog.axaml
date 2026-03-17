@@ -1,20 +1,24 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="NestStudio.Views.NewAttributeTypeDialog"
-        Title="Nový atribut – výběr typu"
-        Width="360" Height="180"
-        WindowStartupLocation="CenterOwner">
-  <StackPanel Margin="24" Spacing="16">
-    <TextBlock Text="Typ atributu:" FontWeight="SemiBold" />
-    <ComboBox x:Name="TypeCombo" MinWidth="200" SelectedIndex="0">
-      <ComboBoxItem Content="Binary (ano/ne)" />
-      <ComboBoxItem Content="Single (jeden výběr)" />
-      <ComboBoxItem Content="Set / Multiple (více výběrů)" />
-      <ComboBoxItem Content="Numeric (číselná hodnota)" />
-    </ComboBox>
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="12" Margin="0,12,0,0">
-      <Button x:Name="CancelButton" Content="Zrušit" />
-      <Button x:Name="OkButton" Content="OK" Classes="primary" />
+        Title="Nový atribut"
+        Width="380" SizeToContent="Height"
+        WindowStartupLocation="CenterOwner"
+        Background="#F5F7FA">
+  <Border Classes="glass-panel" Margin="16" Padding="24">
+    <StackPanel Spacing="16">
+      <TextBlock Text="Typ atributu" FontWeight="SemiBold" FontSize="15" Foreground="#334155" />
+      <ComboBox x:Name="TypeCombo" MinWidth="260" CornerRadius="10" Padding="12,10"
+                BorderBrush="#E2E8F0" BorderThickness="1" SelectedIndex="0">
+        <ComboBoxItem Content="Binární (ano / ne)" />
+        <ComboBoxItem Content="Jednoduchý (jeden výběr, vylučující)" />
+        <ComboBoxItem Content="Množinový (více výběrů, nevylučující)" />
+        <ComboBoxItem Content="Numerický (číselná hodnota)" />
+      </ComboBox>
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10" Margin="0,8,0,0">
+        <Button x:Name="CancelButton" Content="Zrušit" />
+        <Button x:Name="OkButton" Content="Vytvořit" Classes="primary" />
+      </StackPanel>
     </StackPanel>
-  </StackPanel>
+  </Border>
 </Window>
