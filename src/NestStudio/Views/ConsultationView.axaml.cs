@@ -200,7 +200,7 @@ public partial class ConsultationView : UserControl
                         if (!string.IsNullOrWhiteSpace(p.Comment))
                             cbContent.Children.Add(new TextBlock { Text = p.Comment, Opacity = 0.65, FontSize = 11 });
                         var cb = new CheckBox { Content = cbContent, Tag = p };
-                        var weightBox = new TextBox { Width = 56, Watermark = "váha", Tag = p };
+                        var weightBox = new TextBox { Width = 72, Watermark = "váha nebo min;max", Tag = p };
                         row.Children.Add(cb);
                         row.Children.Add(new TextBlock { Text = "váha:", VerticalAlignment = Avalonia.Layout.VerticalAlignment.Center, Margin = new(8, 0, 0, 0) });
                         row.Children.Add(weightBox);
@@ -316,7 +316,7 @@ public partial class ConsultationView : UserControl
                 _binaryStatusButtons[attr.Id] = buttons;
                 var manualPanel = new StackPanel { Orientation = Orientation.Vertical, Spacing = 4, Margin = new(0, 8, 0, 0), IsVisible = false };
                 var manualBtn = new Button { Content = "Zadat váhu ručně", Padding = new(8, 4), HorizontalAlignment = HorizontalAlignment.Left };
-                var weightBox = new TextBox { Watermark = "Váha", Width = 80, HorizontalAlignment = HorizontalAlignment.Left };
+                var weightBox = new TextBox { Watermark = "Váha nebo min;max", Width = 120, HorizontalAlignment = HorizontalAlignment.Left };
                 var rangeHint = new TextBlock
                 {
                     Text = $"Rozsah: -{weightRange:F0} až {weightRange:F0}",
@@ -629,8 +629,15 @@ public partial class ConsultationView : UserControl
             {
                 case AttributeType.Binary:
                     // Určitě ano = max v rozsahu (±weight_range), Určitě ne = min (∓weight_range), Nerelevantní = 0, Neznámý = (-range;range) — viz engine
-                    if (_binaryUseManualWeight.GetValueOrDefault(attr.Id) && GetManualWeight(attr.Id) is { } manualW)
-                        aa.Answers.Add(new Answer { Value = "yes", Weight = manualW });
+                    if (_binaryUseManualWeight.GetValueOrDefault(attr.Id)
+                        && _manualWeightPanels.TryGetValue(attr.Id, out var manualPair)
+                        && WeightInputParser.TryParseWeightOrInterval(manualPair.weightBox?.Text, out var binMin, out var binMax))
+                    {
+                        var ans = new Answer { Value = "yes", Weight = binMax };
+                        if (binMin != binMax)
+                            ans.MinWeight = binMin;
+                        aa.Answers.Add(ans);
+                    }
                     else if (aa.SpecialStatus == AnswerSpecialStatus.CertainlyYes)
                     {
                         var maxWeight = _kb!.Global.WeightRange > 0 ? _kb.Global.WeightRange : 1;
@@ -670,12 +677,12 @@ public partial class ConsultationView : UserControl
                         foreach (var (cb, prop, weightBox) in weightList)
                         {
                             if (cb.IsChecked != true) continue;
-                            var w = 1.0;
-                            var text = weightBox.Text?.Trim().Replace(',', '.');
-                            if (!string.IsNullOrEmpty(text) && double.TryParse(text, System.Globalization.NumberStyles.Any,
-                                    System.Globalization.CultureInfo.InvariantCulture, out var parsed))
-                                w = parsed;
-                            aa.Answers.Add(new Answer { Value = prop.Id, Weight = w });
+                            if (!WeightInputParser.TryParseWeightOrInterval(weightBox.Text, out var mulMin, out var mulMax))
+                                continue;
+                            var ma = new Answer { Value = prop.Id, Weight = mulMax };
+                            if (mulMin != mulMax)
+                                ma.MinWeight = mulMin;
+                            aa.Answers.Add(ma);
                         }
                     }
                     break;
@@ -698,16 +705,6 @@ public partial class ConsultationView : UserControl
                 set.Attributes.Add(aa);
         }
         return set;
-    }
-
-    private double? GetManualWeight(string attrId)
-    {
-        if (!_manualWeightPanels.TryGetValue(attrId, out var pair)) return null;
-        var text = pair.weightBox?.Text?.Trim().Replace(',', '.');
-        if (string.IsNullOrEmpty(text)) return null;
-        if (double.TryParse(text, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out var w))
-            return w;
-        return null;
     }
 
     private void ShowResults(InferenceResult result)

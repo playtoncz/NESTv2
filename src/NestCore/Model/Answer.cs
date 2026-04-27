@@ -4,5 +4,8 @@ namespace NestCore.Model;
 public sealed class Answer
 {
     public string? Value { get; set; }
+    /// <summary>Horní mez váhy v projektové škále (stejně jako dříve jediná váha).</summary>
     public double? Weight { get; set; }
+    /// <summary>Dolní mez váhy při zápisu „min;max“ (volitelné).</summary>
+    public double? MinWeight { get; set; }
 }

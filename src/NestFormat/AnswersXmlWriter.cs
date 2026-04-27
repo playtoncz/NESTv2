@@ -42,6 +42,8 @@ public sealed class AnswersXmlWriter
         {
             w.WriteStartElement("answer");
             if (!string.IsNullOrEmpty(ans.Value)) w.WriteElementString("value", ans.Value);
+            if (ans.MinWeight.HasValue)
+                w.WriteElementString("min_weight", ans.MinWeight.Value.ToString(Invariant));
             if (ans.Weight.HasValue)
                 w.WriteElementString("weight", ans.Weight.Value.ToString(Invariant));
             else

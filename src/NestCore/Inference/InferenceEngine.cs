@@ -74,9 +74,16 @@ public sealed class InferenceEngine
                         interval.Set(-1, 1);
                     else
                     {
-                        var w = GetAnswerWeight(aa, 0);
-                        var internalW = ToInternal(w);
-                        interval.Set(internalW, internalW);
+                        if (aa.Answers.Count > 0 && aa.Answers[0].MinWeight.HasValue && aa.Answers[0].Weight.HasValue)
+                        {
+                            interval.Set(ToInternal(aa.Answers[0].MinWeight!.Value), ToInternal(aa.Answers[0].Weight!.Value));
+                        }
+                        else
+                        {
+                            var w = GetAnswerWeight(aa, 0);
+                            var internalW = ToInternal(w);
+                            interval.Set(internalW, internalW);
+                        }
                     }
                 }
             }
@@ -88,9 +95,9 @@ public sealed class InferenceEngine
                     var key = new StatementKey(attr.Id, ans.Value);
                     if (scores.TryGetValue(key, out var interval))
                     {
-                        var w = ans.Weight ?? 1;
-                        var internalW = ToInternal(w);
-                        interval.Set(internalW, internalW);
+                        var wMax = ans.Weight ?? 1;
+                        var wMin = ans.MinWeight ?? wMax;
+                        interval.Set(ToInternal(wMin), ToInternal(wMax));
                     }
                 }
             }

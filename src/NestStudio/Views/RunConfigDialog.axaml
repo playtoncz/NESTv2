@@ -5,29 +5,29 @@
         Width="440" MinWidth="380" MinHeight="260"
         SizeToContent="Height"
         WindowStartupLocation="CenterOwner"
-        Background="#F5F7FA">
+        Background="{DynamicResource AppWindowBgBrush}">
   <Border Classes="glass-panel" Margin="20" Padding="24">
     <StackPanel Spacing="20">
-      <TextBlock Text="Režim odpovědí" FontWeight="SemiBold" FontSize="15" Foreground="#334155" />
+      <TextBlock Text="Režim odpovědí" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DialogTitleFgBrush}" />
       <ComboBox x:Name="AnsweringModeCombo" MinWidth="320" CornerRadius="10" Padding="12,10"
                 SelectedIndex="0">
         <ComboBoxItem Content="Dotazník (vyplnění v aplikaci)" />
         <ComboBoxItem Content="Načíst odpovědi ze souboru" />
       </ComboBox>
       <StackPanel x:Name="PathSection" IsVisible="False" Spacing="8">
-        <TextBlock Text="Soubor odpovědí (answers XML):" FontWeight="SemiBold" FontSize="13" Foreground="#475569" />
+        <TextBlock Text="Soubor odpovědí (answers XML):" FontWeight="SemiBold" FontSize="13" Foreground="{DynamicResource DialogLabelFgBrush}" />
         <Grid ColumnDefinitions="*,Auto" Margin="0,0,0,0">
           <TextBox x:Name="AnswersPathBox" Grid.Column="0" Watermark="Cesta k answers.xml" Margin="0,0,8,0" />
           <Button x:Name="BrowseAnswersButton" Grid.Column="1" Content="Procházet…" />
         </Grid>
       </StackPanel>
-      <TextBlock Text="Zobrazení otázek" FontWeight="SemiBold" FontSize="15" Foreground="#334155" Margin="0,4,0,0" />
+      <TextBlock Text="Zobrazení otázek" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DialogTitleFgBrush}" Margin="0,4,0,0" />
       <ComboBox x:Name="LayoutModeCombo" MinWidth="320" CornerRadius="10" Padding="12,10"
                 SelectedIndex="0">
         <ComboBoxItem Content="Všechny otázky najednou" />
         <ComboBoxItem Content="Jedna otázka na obrazovce" />
       </ComboBox>
-      <TextBlock Text="Typ neurčitosti" FontWeight="SemiBold" FontSize="15" Foreground="#334155" Margin="0,4,0,0" />
+      <TextBlock Text="Typ neurčitosti" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DialogTitleFgBrush}" Margin="0,4,0,0" />
       <ComboBox x:Name="UncertaintyCombo" MinWidth="320" CornerRadius="10" Padding="12,10"
                 SelectedIndex="0">
         <ComboBoxItem Content="Standardní" />
@@ -37,7 +37,7 @@
         <ComboBoxItem Content="Gödel" />
         <ComboBoxItem Content="Součinová" />
       </ComboBox>
-      <TextBlock Text="Režim odvozování" FontWeight="SemiBold" FontSize="15" Foreground="#334155" Margin="0,4,0,0" />
+      <TextBlock Text="Režim odvozování" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DialogTitleFgBrush}" Margin="0,4,0,0" />
       <ComboBox x:Name="ReasoningModeCombo" MinWidth="320" CornerRadius="10" Padding="12,10"
                 SelectedIndex="0">
         <ComboBoxItem Content="S odložením (Postpone)" />

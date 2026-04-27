@@ -1,10 +1,10 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <Style Selector="Window">
-    <Setter Property="Background" Value="#F0F4F8" />
+    <Setter Property="Background" Value="{DynamicResource MainPanelBgBrush}" />
   </Style>
   <Style Selector="Border.panel">
-    <Setter Property="Background" Value="#E8FFFFFF" />
+    <Setter Property="Background" Value="{DynamicResource GlassPanelBgBrush}" />
     <Setter Property="CornerRadius" Value="12" />
     <Setter Property="Padding" Value="16" />
     <Setter Property="BoxShadow" Value="0 4 20 0 #20000000" />
@@ -12,10 +12,10 @@
   <Style Selector="TextBlock.title">
     <Setter Property="FontSize" Value="22" />
     <Setter Property="FontWeight" Value="SemiBold" />
-    <Setter Property="Foreground" Value="#1A1A2E" />
+    <Setter Property="Foreground" Value="{DynamicResource TitleFgBrush}" />
   </Style>
   <Style Selector="Button.primary">
-    <Setter Property="Background" Value="#4361EE" />
+    <Setter Property="Background" Value="{DynamicResource StylesPrimaryBrush}" />
     <Setter Property="Foreground" Value="White" />
     <Setter Property="CornerRadius" Value="8" />
     <Setter Property="Padding" Value="16,10" />

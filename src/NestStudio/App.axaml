@@ -2,45 +2,152 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="NestStudio.App"
              RequestedThemeVariant="Default">
+
+  <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+          <!-- Okno zcela vzadu bílé; pracovní plocha (glass / welcome / editor) decentní šedá — čitelný kontrast k bílým kartám -->
+          <SolidColorBrush x:Key="AppWindowBgBrush" Color="#FFFFFF"/>
+          <SolidColorBrush x:Key="MainPanelBgBrush" Color="#F2F4F9"/>
+          <SolidColorBrush x:Key="GlassPanelBgBrush" Color="#F2F4F9"/>
+          <SolidColorBrush x:Key="GlassCardBgBrush" Color="#FCFDFE"/>
+          <SolidColorBrush x:Key="GlassBorderLightBrush" Color="#18FFFFFF"/>
+          <SolidColorBrush x:Key="GlassBorderCardBrush" Color="#12FFFFFF"/>
+          <SolidColorBrush x:Key="ConsultationHeaderBgBrush" Color="#F0FFFFFF"/>
+          <SolidColorBrush x:Key="ConsultationHeaderBorderBrush" Color="#10FFFFFF"/>
+          <SolidColorBrush x:Key="WelcomePanelBgBrush" Color="#FFFFFF"/>
+          <SolidColorBrush x:Key="WelcomePanelBorderBrush" Color="#D0D7E3"/>
+          <SolidColorBrush x:Key="WelcomeSecondaryBtnBgBrush" Color="#F8FAFC"/>
+          <SolidColorBrush x:Key="WelcomeSecondaryBtnBorderBrush" Color="#E2E8F0"/>
+          <SolidColorBrush x:Key="TitleFgBrush" Color="#1A1A2E"/>
+          <SolidColorBrush x:Key="SecondaryBtnBgBrush" Color="#F1F5F9"/>
+          <SolidColorBrush x:Key="SecondaryBtnFgBrush" Color="#334155"/>
+          <SolidColorBrush x:Key="SecondaryBtnHoverBrush" Color="#E2E8F0"/>
+          <SolidColorBrush x:Key="TextBoxBorderBrush" Color="#CED6E3"/>
+          <SolidColorBrush x:Key="EditorSidebarBgBrush" Color="#F3F6FA"/>
+          <SolidColorBrush x:Key="EditorSidebarBorderBrush" Color="#D0D7E3"/>
+          <SolidColorBrush x:Key="EditorSidebarSelectedBrush" Color="#E0EDFF"/>
+          <SolidColorBrush x:Key="EditorSidebarHoverBrush" Color="#F0F4F8"/>
+          <SolidColorBrush x:Key="EditorSidebarBtnBgBrush" Color="#F1F5F9"/>
+          <SolidColorBrush x:Key="EditorSidebarBtnFgBrush" Color="#334155"/>
+          <SolidColorBrush x:Key="EditorSidebarBtnHoverBrush" Color="#E2E8F0"/>
+          <SolidColorBrush x:Key="EditorDetailBgBrush" Color="#FFFFFF"/>
+          <SolidColorBrush x:Key="EditorDetailBorderBrush" Color="#D0D7E3"/>
+          <SolidColorBrush x:Key="EditorSectionBgBrush" Color="#EFF3F8"/>
+          <SolidColorBrush x:Key="EditorSectionBorderBrush" Color="#CED6E3"/>
+          <SolidColorBrush x:Key="SectionTitleFgBrush" Color="#334155"/>
+          <SolidColorBrush x:Key="FieldLabelFgBrush" Color="#64748B"/>
+          <SolidColorBrush x:Key="EditorToolbarBgBrush" Color="#FFFFFF"/>
+          <SolidColorBrush x:Key="EditorToolbarBorderBrush" Color="#D0D7E3"/>
+          <SolidColorBrush x:Key="SidebarHeadingFgBrush" Color="#94A3B8"/>
+          <SolidColorBrush x:Key="PrimaryBlueBrush" Color="#007AFF"/>
+          <SolidColorBrush x:Key="PrimaryBlueHoverBrush" Color="#0051D5"/>
+          <SolidColorBrush x:Key="PrimaryBluePressedBrush" Color="#004EC4"/>
+          <SolidColorBrush x:Key="StylesPrimaryBrush" Color="#4361EE"/>
+          <SolidColorBrush x:Key="WelcomeGridBgBrush" Color="#F2F4F9"/>
+          <SolidColorBrush x:Key="GlassPanelBorderBrush" Color="#D8DEE7"/>
+          <SolidColorBrush x:Key="WelcomeCardBgBrush" Color="#F4F6FA"/>
+          <SolidColorBrush x:Key="WelcomeCardBorderBrush" Color="#D0D7E3"/>
+          <SolidColorBrush x:Key="WelcomeDividerBrush" Color="#D0D7E3"/>
+          <SolidColorBrush x:Key="UpdateBannerBgBrush" Color="#FFF8E1"/>
+          <SolidColorBrush x:Key="UpdateBannerBorderBrush" Color="#FFCA28"/>
+          <SolidColorBrush x:Key="DialogTitleFgBrush" Color="#334155"/>
+          <SolidColorBrush x:Key="DialogLabelFgBrush" Color="#475569"/>
+          <SolidColorBrush x:Key="KbEditorTitleFgBrush" Color="#1E293B"/>
+          <SolidColorBrush x:Key="GraphCanvasBgBrush" Color="#F8FAFC"/>
+        </ResourceDictionary>
+
+        <ResourceDictionary x:Key="Dark">
+          <SolidColorBrush x:Key="AppWindowBgBrush" Color="#0F172A"/>
+          <SolidColorBrush x:Key="MainPanelBgBrush" Color="#0F172A"/>
+          <SolidColorBrush x:Key="GlassPanelBgBrush" Color="#1E293B"/>
+          <SolidColorBrush x:Key="GlassPanelBorderBrush" Color="#475569"/>
+          <SolidColorBrush x:Key="GlassCardBgBrush" Color="#1E293B"/>
+          <SolidColorBrush x:Key="GlassBorderLightBrush" Color="#30FFFFFF"/>
+          <SolidColorBrush x:Key="GlassBorderCardBrush" Color="#25FFFFFF"/>
+          <SolidColorBrush x:Key="ConsultationHeaderBgBrush" Color="#33000000"/>
+          <SolidColorBrush x:Key="ConsultationHeaderBorderBrush" Color="#40FFFFFF"/>
+          <SolidColorBrush x:Key="WelcomePanelBgBrush" Color="#33000000"/>
+          <SolidColorBrush x:Key="WelcomePanelBorderBrush" Color="#40FFFFFF"/>
+          <SolidColorBrush x:Key="WelcomeSecondaryBtnBgBrush" Color="#334155"/>
+          <SolidColorBrush x:Key="WelcomeSecondaryBtnBorderBrush" Color="#475569"/>
+          <SolidColorBrush x:Key="TitleFgBrush" Color="#F1F5F9"/>
+          <SolidColorBrush x:Key="SecondaryBtnBgBrush" Color="#334155"/>
+          <SolidColorBrush x:Key="SecondaryBtnFgBrush" Color="#E2E8F0"/>
+          <SolidColorBrush x:Key="SecondaryBtnHoverBrush" Color="#475569"/>
+          <SolidColorBrush x:Key="TextBoxBorderBrush" Color="#475569"/>
+          <SolidColorBrush x:Key="EditorSidebarBgBrush" Color="#1E293B"/>
+          <SolidColorBrush x:Key="EditorSidebarBorderBrush" Color="#30FFFFFF"/>
+          <SolidColorBrush x:Key="EditorSidebarSelectedBrush" Color="#1E3A5F"/>
+          <SolidColorBrush x:Key="EditorSidebarHoverBrush" Color="#334155"/>
+          <SolidColorBrush x:Key="EditorSidebarBtnBgBrush" Color="#334155"/>
+          <SolidColorBrush x:Key="EditorSidebarBtnFgBrush" Color="#E2E8F0"/>
+          <SolidColorBrush x:Key="EditorSidebarBtnHoverBrush" Color="#475569"/>
+          <SolidColorBrush x:Key="EditorDetailBgBrush" Color="#1E293B"/>
+          <SolidColorBrush x:Key="EditorDetailBorderBrush" Color="#30FFFFFF"/>
+          <SolidColorBrush x:Key="EditorSectionBgBrush" Color="#334155"/>
+          <SolidColorBrush x:Key="EditorSectionBorderBrush" Color="#475569"/>
+          <SolidColorBrush x:Key="SectionTitleFgBrush" Color="#E2E8F0"/>
+          <SolidColorBrush x:Key="FieldLabelFgBrush" Color="#94A3B8"/>
+          <SolidColorBrush x:Key="EditorToolbarBgBrush" Color="#33000000"/>
+          <SolidColorBrush x:Key="EditorToolbarBorderBrush" Color="#40FFFFFF"/>
+          <SolidColorBrush x:Key="SidebarHeadingFgBrush" Color="#64748B"/>
+          <SolidColorBrush x:Key="PrimaryBlueBrush" Color="#007AFF"/>
+          <SolidColorBrush x:Key="PrimaryBlueHoverBrush" Color="#0051D5"/>
+          <SolidColorBrush x:Key="PrimaryBluePressedBrush" Color="#004EC4"/>
+          <SolidColorBrush x:Key="StylesPrimaryBrush" Color="#4361EE"/>
+          <SolidColorBrush x:Key="WelcomeGridBgBrush" Color="#0F172A"/>
+          <SolidColorBrush x:Key="WelcomeCardBgBrush" Color="#1E293B"/>
+          <SolidColorBrush x:Key="WelcomeCardBorderBrush" Color="#475569"/>
+          <SolidColorBrush x:Key="WelcomeDividerBrush" Color="#475569"/>
+          <SolidColorBrush x:Key="UpdateBannerBgBrush" Color="#422006"/>
+          <SolidColorBrush x:Key="UpdateBannerBorderBrush" Color="#CA8A04"/>
+          <SolidColorBrush x:Key="DialogTitleFgBrush" Color="#E2E8F0"/>
+          <SolidColorBrush x:Key="DialogLabelFgBrush" Color="#CBD5E1"/>
+          <SolidColorBrush x:Key="KbEditorTitleFgBrush" Color="#F1F5F9"/>
+          <SolidColorBrush x:Key="GraphCanvasBgBrush" Color="#1E293B"/>
+        </ResourceDictionary>
+      </ResourceDictionary.ThemeDictionaries>
+    </ResourceDictionary>
+  </Application.Resources>
+
   <Application.Styles>
     <FluentTheme />
-    <!-- Pozadí: jemný gradient (Liquid glass feel) -->
+    <StyleInclude Source="/Styles.axaml"/>
     <Style Selector="Window">
-      <Setter Property="Background" Value="#F5F7FA" />
+      <Setter Property="Background" Value="{DynamicResource AppWindowBgBrush}" />
     </Style>
-    <!-- Liquid glass panel – hlavní kontejnery -->
     <Style Selector="Border.glass-panel">
-      <Setter Property="Background" Value="#F8FAFC" />
+      <Setter Property="Background" Value="{DynamicResource GlassPanelBgBrush}" />
       <Setter Property="CornerRadius" Value="20" />
       <Setter Property="Padding" Value="20" />
       <Setter Property="BoxShadow" Value="0 8 32 0 #12000000, 0 0 0 1 #0DFFFFFF" />
-      <Setter Property="BorderBrush" Value="#18FFFFFF" />
+      <Setter Property="BorderBrush" Value="{DynamicResource GlassPanelBorderBrush}" />
       <Setter Property="BorderThickness" Value="1" />
     </Style>
-    <!-- Karta jedné otázky (vyplňovací screen) -->
     <Style Selector="Border.glass-card">
-      <Setter Property="Background" Value="#FCFDFE" />
+      <Setter Property="Background" Value="{DynamicResource GlassCardBgBrush}" />
       <Setter Property="CornerRadius" Value="16" />
       <Setter Property="Padding" Value="18,16" />
       <Setter Property="BoxShadow" Value="0 4 20 0 #0A000000, 0 0 0 1 #0AFFFFFF" />
-      <Setter Property="BorderBrush" Value="#12FFFFFF" />
+      <Setter Property="BorderBrush" Value="{DynamicResource GlassBorderCardBrush}" />
       <Setter Property="BorderThickness" Value="1" />
       <Setter Property="Margin" Value="0,0,0,12" />
     </Style>
-    <!-- Hlavička konzultace -->
     <Style Selector="Border.consultation-header">
-      <Setter Property="Background" Value="#F0FFFFFF" />
+      <Setter Property="Background" Value="{DynamicResource ConsultationHeaderBgBrush}" />
       <Setter Property="CornerRadius" Value="14" />
       <Setter Property="Padding" Value="16,12" />
       <Setter Property="BoxShadow" Value="0 2 16 0 #0D000000" />
-      <Setter Property="BorderBrush" Value="#10FFFFFF" />
+      <Setter Property="BorderBrush" Value="{DynamicResource ConsultationHeaderBorderBrush}" />
       <Setter Property="BorderThickness" Value="1" />
     </Style>
     <Style Selector="Border.welcome-panel">
-      <Setter Property="Background" Value="#F2FFFFFF" />
+      <Setter Property="Background" Value="{DynamicResource WelcomePanelBgBrush}" />
       <Setter Property="CornerRadius" Value="20" />
-      <Setter Property="BoxShadow" Value="0 12 48 0 #15000000, 0 0 0 1 #08FFFFFF" />
-      <Setter Property="BorderBrush" Value="#10000000" />
+      <Setter Property="BoxShadow" Value="0 6 24 0 #10000000, 0 0 0 1 #28D0D7E3" />
+      <Setter Property="BorderBrush" Value="{DynamicResource WelcomePanelBorderBrush}" />
       <Setter Property="BorderThickness" Value="1" />
     </Style>
     <Style Selector="Border.welcome-panel Button.primary">
@@ -49,80 +156,100 @@
       <Setter Property="FontWeight" Value="SemiBold" />
     </Style>
     <Style Selector="Border.welcome-panel Button:not(.primary)">
-      <Setter Property="Background" Value="#F8FAFC" />
+      <Setter Property="Background" Value="{DynamicResource WelcomeSecondaryBtnBgBrush}" />
       <Setter Property="CornerRadius" Value="12" />
       <Setter Property="Padding" Value="20,12" />
-      <Setter Property="BorderBrush" Value="#E2E8F0" />
+      <Setter Property="BorderBrush" Value="{DynamicResource WelcomeSecondaryBtnBorderBrush}" />
       <Setter Property="BorderThickness" Value="1" />
+    </Style>
+    <!-- Patička úvodní obrazovky (mimo hlavní kartu) – stejný jemný vzhled jako sekundární tlačítka -->
+    <Style Selector="Button.welcome-updates-btn">
+      <Setter Property="Background" Value="{DynamicResource WelcomeSecondaryBtnBgBrush}" />
+      <Setter Property="Foreground" Value="{DynamicResource SecondaryBtnFgBrush}" />
+      <Setter Property="CornerRadius" Value="12" />
+      <Setter Property="BorderBrush" Value="{DynamicResource WelcomeSecondaryBtnBorderBrush}" />
+      <Setter Property="BorderThickness" Value="1" />
+    </Style>
+    <Style Selector="Button.welcome-updates-btn:pointerover">
+      <Setter Property="Background" Value="{DynamicResource SecondaryBtnHoverBrush}" />
+    </Style>
+    <!-- Zpět / sekundární akce — stejný kulatý jazyk jako zbytek UI -->
+    <Style Selector="Button.toolbar-back-btn">
+      <Setter Property="Background" Value="{DynamicResource SecondaryBtnBgBrush}" />
+      <Setter Property="Foreground" Value="{DynamicResource SecondaryBtnFgBrush}" />
+      <Setter Property="CornerRadius" Value="12" />
+      <Setter Property="Padding" Value="14,10" />
+      <Setter Property="BorderBrush" Value="{DynamicResource TextBoxBorderBrush}" />
+      <Setter Property="BorderThickness" Value="1" />
+      <Setter Property="FontWeight" Value="SemiBold" />
+    </Style>
+    <Style Selector="Button.toolbar-back-btn:pointerover">
+      <Setter Property="Background" Value="{DynamicResource SecondaryBtnHoverBrush}" />
     </Style>
     <Style Selector="TextBlock.title">
       <Setter Property="FontSize" Value="22" />
       <Setter Property="FontWeight" Value="SemiBold" />
-      <Setter Property="Foreground" Value="#1A1A2E" />
+      <Setter Property="Foreground" Value="{DynamicResource TitleFgBrush}" />
     </Style>
-    <!-- Primary tlačítko – iOS-style (vybraná odpověď) -->
     <Style Selector="Button.primary">
-      <Setter Property="Background" Value="#007AFF" />
+      <Setter Property="Background" Value="{DynamicResource PrimaryBlueBrush}" />
       <Setter Property="Foreground" Value="White" />
       <Setter Property="CornerRadius" Value="12" />
       <Setter Property="Padding" Value="20,12" />
       <Setter Property="FontWeight" Value="SemiBold" />
     </Style>
-    <!-- Hover u vybraného tlačítka = tmavší modrá, ne šedá (vyšší specificita než FluentTheme) -->
     <Style Selector="Border.glass-card Button.primary:pointerover">
-      <Setter Property="Background" Value="#0051D5" />
+      <Setter Property="Background" Value="{DynamicResource PrimaryBlueHoverBrush}" />
     </Style>
     <Style Selector="Border.glass-card Button.primary:pressed">
-      <Setter Property="Background" Value="#004EC4" />
+      <Setter Property="Background" Value="{DynamicResource PrimaryBluePressedBrush}" />
     </Style>
     <Style Selector="Button.primary:pointerover">
-      <Setter Property="Background" Value="#0051D5" />
+      <Setter Property="Background" Value="{DynamicResource PrimaryBlueHoverBrush}" />
     </Style>
     <Style Selector="Button.primary:pressed">
-      <Setter Property="Background" Value="#004EC4" />
+      <Setter Property="Background" Value="{DynamicResource PrimaryBluePressedBrush}" />
     </Style>
-    <!-- Sekundární tlačítka v dotazníku -->
     <Style Selector="Border.glass-card Button:not(.primary)">
-      <Setter Property="Background" Value="#F1F5F9" />
-      <Setter Property="Foreground" Value="#334155" />
-      <Setter Property="CornerRadius" Value="10" />
-      <Setter Property="Padding" Value="12,8" />
-      <Setter Property="BorderThickness" Value="0" />
+      <Setter Property="Background" Value="{DynamicResource SecondaryBtnBgBrush}" />
+      <Setter Property="Foreground" Value="{DynamicResource SecondaryBtnFgBrush}" />
+      <Setter Property="CornerRadius" Value="12" />
+      <Setter Property="Padding" Value="14,10" />
+      <Setter Property="BorderBrush" Value="{DynamicResource TextBoxBorderBrush}" />
+      <Setter Property="BorderThickness" Value="1" />
     </Style>
     <Style Selector="Border.glass-card Button:not(.primary):pointerover">
-      <Setter Property="Background" Value="#E2E8F0" />
+      <Setter Property="Background" Value="{DynamicResource SecondaryBtnHoverBrush}" />
     </Style>
-    <!-- Sekundární tlačítka a vstupy v dialogu konfigurace (glass-panel) -->
     <Style Selector="Border.glass-panel Button:not(.primary)">
-      <Setter Property="Background" Value="#F1F5F9" />
-      <Setter Property="Foreground" Value="#334155" />
-      <Setter Property="CornerRadius" Value="10" />
-      <Setter Property="Padding" Value="16,10" />
-      <Setter Property="BorderThickness" Value="0" />
+      <Setter Property="Background" Value="{DynamicResource SecondaryBtnBgBrush}" />
+      <Setter Property="Foreground" Value="{DynamicResource SecondaryBtnFgBrush}" />
+      <Setter Property="CornerRadius" Value="12" />
+      <Setter Property="Padding" Value="14,10" />
+      <Setter Property="BorderBrush" Value="{DynamicResource TextBoxBorderBrush}" />
+      <Setter Property="BorderThickness" Value="1" />
     </Style>
     <Style Selector="Border.glass-panel Button:not(.primary):pointerover">
-      <Setter Property="Background" Value="#E2E8F0" />
+      <Setter Property="Background" Value="{DynamicResource SecondaryBtnHoverBrush}" />
     </Style>
     <Style Selector="Border.glass-panel TextBox">
       <Setter Property="CornerRadius" Value="10" />
       <Setter Property="Padding" Value="12,10" />
-      <Setter Property="BorderBrush" Value="#E2E8F0" />
+      <Setter Property="BorderBrush" Value="{DynamicResource TextBoxBorderBrush}" />
       <Setter Property="BorderThickness" Value="1" />
     </Style>
-    <!-- Textbox v glass kartách -->
     <Style Selector="Border.glass-card TextBox">
       <Setter Property="CornerRadius" Value="10" />
       <Setter Property="Padding" Value="12,10" />
-      <Setter Property="BorderBrush" Value="#E2E8F0" />
+      <Setter Property="BorderBrush" Value="{DynamicResource TextBoxBorderBrush}" />
       <Setter Property="BorderThickness" Value="1" />
     </Style>
-    <!-- Editor sidebar -->
     <Style Selector="Border.editor-sidebar">
-      <Setter Property="Background" Value="#F8FAFC" />
+      <Setter Property="Background" Value="{DynamicResource EditorSidebarBgBrush}" />
       <Setter Property="CornerRadius" Value="20" />
       <Setter Property="Padding" Value="16" />
       <Setter Property="BoxShadow" Value="0 8 32 0 #12000000, 0 0 0 1 #0DFFFFFF" />
-      <Setter Property="BorderBrush" Value="#18FFFFFF" />
+      <Setter Property="BorderBrush" Value="{DynamicResource EditorSidebarBorderBrush}" />
       <Setter Property="BorderThickness" Value="1" />
     </Style>
     <Style Selector="Border.editor-sidebar ListBox">
@@ -137,35 +264,35 @@
       <Setter Property="Margin" Value="0,1" />
     </Style>
     <Style Selector="Border.editor-sidebar ListBoxItem:selected">
-      <Setter Property="Background" Value="#E0EDFF" />
+      <Setter Property="Background" Value="{DynamicResource EditorSidebarSelectedBrush}" />
     </Style>
     <Style Selector="Border.editor-sidebar ListBoxItem:pointerover">
-      <Setter Property="Background" Value="#F0F4F8" />
+      <Setter Property="Background" Value="{DynamicResource EditorSidebarHoverBrush}" />
     </Style>
     <Style Selector="Border.editor-sidebar Button">
-      <Setter Property="Background" Value="#F1F5F9" />
-      <Setter Property="Foreground" Value="#334155" />
-      <Setter Property="CornerRadius" Value="10" />
-      <Setter Property="Padding" Value="10,6" />
-      <Setter Property="BorderThickness" Value="0" />
+      <Setter Property="Background" Value="{DynamicResource EditorSidebarBtnBgBrush}" />
+      <Setter Property="Foreground" Value="{DynamicResource EditorSidebarBtnFgBrush}" />
+      <Setter Property="CornerRadius" Value="12" />
+      <Setter Property="Padding" Value="10,8" />
+      <Setter Property="BorderBrush" Value="{DynamicResource TextBoxBorderBrush}" />
+      <Setter Property="BorderThickness" Value="1" />
       <Setter Property="FontSize" Value="12" />
     </Style>
     <Style Selector="Border.editor-sidebar Button:pointerover">
-      <Setter Property="Background" Value="#E2E8F0" />
+      <Setter Property="Background" Value="{DynamicResource EditorSidebarBtnHoverBrush}" />
     </Style>
-    <!-- Editor detail panel -->
     <Style Selector="Border.editor-detail">
-      <Setter Property="Background" Value="#FCFDFE" />
+      <Setter Property="Background" Value="{DynamicResource EditorDetailBgBrush}" />
       <Setter Property="CornerRadius" Value="20" />
       <Setter Property="Padding" Value="24" />
       <Setter Property="BoxShadow" Value="0 8 32 0 #12000000, 0 0 0 1 #0DFFFFFF" />
-      <Setter Property="BorderBrush" Value="#18FFFFFF" />
+      <Setter Property="BorderBrush" Value="{DynamicResource EditorDetailBorderBrush}" />
       <Setter Property="BorderThickness" Value="1" />
     </Style>
     <Style Selector="Border.editor-detail TextBox">
       <Setter Property="CornerRadius" Value="10" />
       <Setter Property="Padding" Value="12,10" />
-      <Setter Property="BorderBrush" Value="#E2E8F0" />
+      <Setter Property="BorderBrush" Value="{DynamicResource TextBoxBorderBrush}" />
       <Setter Property="BorderThickness" Value="1" />
     </Style>
     <Style Selector="Border.editor-detail ComboBox">
@@ -173,55 +300,63 @@
       <Setter Property="Padding" Value="10,8" />
     </Style>
     <Style Selector="Border.editor-detail Button:not(.primary)">
-      <Setter Property="Background" Value="#F1F5F9" />
-      <Setter Property="Foreground" Value="#334155" />
-      <Setter Property="CornerRadius" Value="10" />
-      <Setter Property="Padding" Value="12,8" />
-      <Setter Property="BorderThickness" Value="0" />
+      <Setter Property="Background" Value="{DynamicResource SecondaryBtnBgBrush}" />
+      <Setter Property="Foreground" Value="{DynamicResource SecondaryBtnFgBrush}" />
+      <Setter Property="CornerRadius" Value="12" />
+      <Setter Property="Padding" Value="12,10" />
+      <Setter Property="BorderBrush" Value="{DynamicResource TextBoxBorderBrush}" />
+      <Setter Property="BorderThickness" Value="1" />
     </Style>
     <Style Selector="Border.editor-detail Button:not(.primary):pointerover">
-      <Setter Property="Background" Value="#E2E8F0" />
+      <Setter Property="Background" Value="{DynamicResource SecondaryBtnHoverBrush}" />
     </Style>
-    <!-- Section card inside editor detail -->
     <Style Selector="Border.editor-section">
-      <Setter Property="Background" Value="#F8FAFC" />
+      <Setter Property="Background" Value="{DynamicResource EditorSectionBgBrush}" />
       <Setter Property="CornerRadius" Value="14" />
       <Setter Property="Padding" Value="16,14" />
       <Setter Property="BoxShadow" Value="0 2 12 0 #08000000" />
-      <Setter Property="BorderBrush" Value="#E8EDF2" />
+      <Setter Property="BorderBrush" Value="{DynamicResource EditorSectionBorderBrush}" />
       <Setter Property="BorderThickness" Value="1" />
       <Setter Property="Margin" Value="0,0,0,12" />
     </Style>
-    <!-- Section heading -->
     <Style Selector="TextBlock.section-title">
       <Setter Property="FontSize" Value="14" />
       <Setter Property="FontWeight" Value="SemiBold" />
-      <Setter Property="Foreground" Value="#334155" />
+      <Setter Property="Foreground" Value="{DynamicResource SectionTitleFgBrush}" />
       <Setter Property="Margin" Value="0,0,0,8" />
     </Style>
-    <!-- Label in form -->
     <Style Selector="TextBlock.field-label">
       <Setter Property="FontSize" Value="12" />
       <Setter Property="FontWeight" Value="Medium" />
-      <Setter Property="Foreground" Value="#64748B" />
+      <Setter Property="Foreground" Value="{DynamicResource FieldLabelFgBrush}" />
       <Setter Property="Margin" Value="0,0,0,4" />
     </Style>
-    <!-- Toolbar header for editor -->
     <Style Selector="Border.editor-toolbar">
-      <Setter Property="Background" Value="#F0FFFFFF" />
+      <Setter Property="Background" Value="{DynamicResource EditorToolbarBgBrush}" />
       <Setter Property="CornerRadius" Value="14" />
       <Setter Property="Padding" Value="16,10" />
       <Setter Property="BoxShadow" Value="0 2 16 0 #0D000000" />
-      <Setter Property="BorderBrush" Value="#10FFFFFF" />
+      <Setter Property="BorderBrush" Value="{DynamicResource EditorToolbarBorderBrush}" />
       <Setter Property="BorderThickness" Value="1" />
       <Setter Property="Margin" Value="0,0,0,12" />
     </Style>
-    <!-- Sidebar section label -->
+    <Style Selector="Border.editor-toolbar Button:not(.primary)">
+      <Setter Property="Background" Value="{DynamicResource SecondaryBtnBgBrush}" />
+      <Setter Property="Foreground" Value="{DynamicResource SecondaryBtnFgBrush}" />
+      <Setter Property="CornerRadius" Value="12" />
+      <Setter Property="Padding" Value="14,10" />
+      <Setter Property="BorderBrush" Value="{DynamicResource TextBoxBorderBrush}" />
+      <Setter Property="BorderThickness" Value="1" />
+      <Setter Property="FontWeight" Value="SemiBold" />
+    </Style>
+    <Style Selector="Border.editor-toolbar Button:not(.primary):pointerover">
+      <Setter Property="Background" Value="{DynamicResource SecondaryBtnHoverBrush}" />
+    </Style>
     <Style Selector="TextBlock.sidebar-heading">
       <Setter Property="FontSize" Value="11" />
       <Setter Property="FontWeight" Value="SemiBold" />
-      <Setter Property="Foreground" Value="#94A3B8" />
-      <Setter Property="Margin" Value="4,12,0,6" />
+      <Setter Property="Foreground" Value="{DynamicResource SidebarHeadingFgBrush}" />
+      <Setter Property="Margin" Value="4,12,0,2" />
     </Style>
   </Application.Styles>
 </Application>

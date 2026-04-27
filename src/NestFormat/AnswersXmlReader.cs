@@ -53,10 +53,14 @@ public sealed class AnswersXmlReader
             {
                 var value = XmlHelper.GetElementText(ansEl, "value");
                 var weightStr = XmlHelper.GetElementText(ansEl, "weight");
+                var minWeightStr = XmlHelper.GetElementText(ansEl, "min_weight");
                 double? weight = null;
+                double? minWeight = null;
                 if (!string.IsNullOrWhiteSpace(weightStr) && !string.Equals(weightStr, "unknown", StringComparison.OrdinalIgnoreCase))
                     weight = XmlHelper.ParseDouble(weightStr);
-                aa.Answers.Add(new Answer { Value = value, Weight = weight });
+                if (!string.IsNullOrWhiteSpace(minWeightStr))
+                    minWeight = XmlHelper.ParseDouble(minWeightStr);
+                aa.Answers.Add(new Answer { Value = value, Weight = weight, MinWeight = minWeight });
             }
 
         return aa;

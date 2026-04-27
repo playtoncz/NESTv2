@@ -4,12 +4,12 @@
         Title="Nové pravidlo"
         Width="400" SizeToContent="Height"
         WindowStartupLocation="CenterOwner"
-        Background="#F5F7FA">
+        Background="{DynamicResource AppWindowBgBrush}">
   <Border Classes="glass-panel" Margin="16" Padding="24">
     <StackPanel Spacing="16">
-      <TextBlock Text="Typ pravidla" FontWeight="SemiBold" FontSize="15" Foreground="#334155" />
+      <TextBlock Text="Typ pravidla" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DialogTitleFgBrush}" />
       <ComboBox x:Name="TypeCombo" MinWidth="280" CornerRadius="10" Padding="12,10"
-                BorderBrush="#E2E8F0" BorderThickness="1" SelectedIndex="0">
+                BorderBrush="{DynamicResource TextBoxBorderBrush}" BorderThickness="1" SelectedIndex="0">
         <ComboBoxItem Content="Kompozicionální (váhy −1 až 1)" />
         <ComboBoxItem Content="Apriorní (vždy platí, bez podmínek)" />
         <ComboBoxItem Content="Logické (pravda / nepravda)" />

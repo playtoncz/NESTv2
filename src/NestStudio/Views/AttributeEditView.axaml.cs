@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Input;
 using Avalonia.Layout;
 using Avalonia.Media;
 using NestCore.Model;
@@ -16,22 +17,30 @@ public partial class AttributeEditView : UserControl
     private readonly NestCore.Model.Attribute _attr;
     private readonly KnowledgeBase _kb;
     private readonly Action _onDirty;
+    /// <summary>Volá se jen při změně Id atributu (sidebar musí přepočíst popisek).</summary>
+    private readonly Action? _syncListLabels;
     private readonly StackPanel _propsPanel;
+    private int _nextTabIndex;
+
+    /// <summary>Stejný model jako editor – pro zamezení zbytečného přerenderu při sync seznamu.</summary>
+    public NestCore.Model.Attribute EditedAttribute => _attr;
 
     public AttributeEditView()
     {
         _attr = new NestCore.Model.Attribute();
         _kb = new KnowledgeBase();
         _onDirty = () => { };
+        _syncListLabels = null;
         _propsPanel = new StackPanel();
         InitializeComponent();
     }
 
-    public AttributeEditView(NestCore.Model.Attribute attr, KnowledgeBase kb, Action onDirty)
+    public AttributeEditView(NestCore.Model.Attribute attr, KnowledgeBase kb, Action onDirty, Action? syncListLabels = null)
     {
         _attr = attr;
         _kb = kb;
         _onDirty = onDirty;
+        _syncListLabels = syncListLabels;
         _propsPanel = new StackPanel { Spacing = 8 };
         InitializeComponent();
         Build();
@@ -59,6 +68,7 @@ public partial class AttributeEditView : UserControl
     private void Build()
     {
         Root.Children.Clear();
+        _nextTabIndex = 0;
 
         // --- Type badge ---
         var typeName = _attr.Type switch
@@ -97,20 +107,38 @@ public partial class AttributeEditView : UserControl
         // --- Basic info section ---
         var basicContent = new StackPanel { Spacing = 4 };
 
-        var idBox = new TextBox { Text = _attr.Id };
-        idBox.LostFocus += (_, _) => { _attr.Id = idBox.Text ?? ""; _onDirty(); };
+        var idBox = WithTabOrder(new TextBox { Text = _attr.Id });
+        string? idBeforeEdit = null;
+        idBox.GotFocus += (_, _) => idBeforeEdit = _attr.Id;
+        idBox.LostFocus += (_, _) =>
+        {
+            var newId = (idBox.Text ?? "").Trim();
+            if (string.IsNullOrEmpty(newId))
+            {
+                idBox.Text = _attr.Id;
+                return;
+            }
+            var oldId = idBeforeEdit ?? _attr.Id;
+            var idChanged = newId != oldId && !string.IsNullOrEmpty(oldId);
+            if (idChanged)
+                KnowledgeBaseReferenceUpdater.RenameAttribute(_kb, oldId, newId);
+            _attr.Id = newId;
+            _onDirty();
+            if (idChanged)
+                _syncListLabels?.Invoke();
+        };
         basicContent.Children.Add(MakeField("ID atributu", idBox));
 
-        var nameBox = new TextBox { Text = _attr.Name };
+        var nameBox = WithTabOrder(new TextBox { Text = _attr.Name });
         nameBox.LostFocus += (_, _) => { _attr.Name = nameBox.Text ?? ""; _onDirty(); };
         basicContent.Children.Add(MakeField("Jméno", nameBox));
 
-        var scopeCombo = new ComboBox
+        var scopeCombo = WithTabOrder(new ComboBox
         {
             ItemsSource = new[] { "Case (případ)", "Environment (prostředí)" },
             SelectedIndex = _attr.Scope == ScopeKind.Environment ? 1 : 0,
             MinWidth = 180
-        };
+        });
         scopeCombo.SelectionChanged += (_, _) =>
         {
             _attr.Scope = scopeCombo.SelectedIndex == 1 ? ScopeKind.Environment : ScopeKind.Case;
@@ -122,14 +150,15 @@ public partial class AttributeEditView : UserControl
 
         // --- Comment section ---
         var commentContent = new StackPanel { Spacing = 4 };
-        var commentBox = new TextBox
+        var commentBox = WithTabOrder(new TextBox
         {
             Text = _attr.Comment ?? "",
             Watermark = "Komentář k atributu (např. Jak moc má pacient rýmu)",
             AcceptsReturn = true,
+            AcceptsTab = false,
             MinHeight = 48,
             TextWrapping = TextWrapping.Wrap
-        };
+        });
         commentBox.LostFocus += (_, _) => { _attr.Comment = string.IsNullOrWhiteSpace(commentBox.Text) ? null : commentBox.Text; _onDirty(); };
         commentContent.Children.Add(commentBox);
         Root.Children.Add(MakeSection("Komentář", commentContent));
@@ -141,7 +170,7 @@ public partial class AttributeEditView : UserControl
             RefreshPropositions();
             propsContent.Children.Add(_propsPanel);
 
-            var addPropBtn = new Button { Content = "+ Nový výrok" };
+            var addPropBtn = WithTabOrder(new Button { Content = "+ Nový výrok" });
             addPropBtn.Click += (_, _) =>
             {
                 var ids = _attr.Propositions.Select(p => p.Id).ToHashSet();
@@ -161,8 +190,8 @@ public partial class AttributeEditView : UserControl
             _attr.LegalValues ??= new LegalValues();
             var lv = _attr.LegalValues;
             var lvContent = new StackPanel { Spacing = 4 };
-            var loBox = new TextBox { Text = lv.LowerBound?.ToString("F1", CultureInfo.InvariantCulture) ?? "", Watermark = "Dolní mez", Width = 100 };
-            var hiBox = new TextBox { Text = lv.UpperBound?.ToString("F1", CultureInfo.InvariantCulture) ?? "", Watermark = "Horní mez", Width = 100 };
+            var loBox = WithTabOrder(new TextBox { Text = lv.LowerBound?.ToString("F1", CultureInfo.InvariantCulture) ?? "", Watermark = "Dolní mez", Width = 100 });
+            var hiBox = WithTabOrder(new TextBox { Text = lv.UpperBound?.ToString("F1", CultureInfo.InvariantCulture) ?? "", Watermark = "Horní mez", Width = 100 });
             loBox.LostFocus += (_, _) =>
             {
                 lv.LowerBound = double.TryParse(loBox.Text?.Replace(',', '.'), NumberStyles.Any, CultureInfo.InvariantCulture, out var v) ? v : null;
@@ -199,21 +228,37 @@ public partial class AttributeEditView : UserControl
             var sp = new StackPanel { Spacing = 6 };
 
             var topRow = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 8 };
-            var idBox = new TextBox { Text = prop.Id, Watermark = "ID", Width = 120 };
-            idBox.LostFocus += (_, _) => { prop.Id = idBox.Text ?? ""; _onDirty(); };
-            var nameBox = new TextBox { Text = prop.Name, Watermark = "Jméno", MinWidth = 140 };
+            var idBox = WithTabOrder(new TextBox { Text = prop.Id, Watermark = "ID", Width = 120 });
+            string? prevPropId = null;
+            idBox.GotFocus += (_, _) => prevPropId = prop.Id;
+            idBox.LostFocus += (_, _) =>
+            {
+                var nid = (idBox.Text ?? "").Trim();
+                if (string.IsNullOrEmpty(nid))
+                {
+                    idBox.Text = prop.Id;
+                    return;
+                }
+                var oid = prevPropId ?? prop.Id;
+                if (nid != oid && !string.IsNullOrEmpty(oid))
+                    KnowledgeBaseReferenceUpdater.RenameProposition(_kb, _attr.Id, oid, nid);
+                prop.Id = nid;
+                _onDirty();
+            };
+            var nameBox = WithTabOrder(new TextBox { Text = prop.Name, Watermark = "Jméno", MinWidth = 140 });
             nameBox.LostFocus += (_, _) => { prop.Name = nameBox.Text ?? ""; _onDirty(); };
             topRow.Children.Add(MakeField("ID", idBox));
             topRow.Children.Add(MakeField("Jméno", nameBox));
             sp.Children.Add(topRow);
 
-            var commentBox = new TextBox
+            var commentBox = WithTabOrder(new TextBox
             {
                 Text = prop.Comment ?? "",
                 Watermark = "Komentář výroku (např. Pacient má velkou rýmu)",
                 MinWidth = 260,
-                TextWrapping = TextWrapping.Wrap
-            };
+                TextWrapping = TextWrapping.Wrap,
+                AcceptsTab = false
+            });
             commentBox.LostFocus += (_, _) => { prop.Comment = string.IsNullOrWhiteSpace(commentBox.Text) ? null : commentBox.Text; _onDirty(); };
             sp.Children.Add(MakeField("Komentář", commentBox));
 
@@ -229,7 +274,7 @@ public partial class AttributeEditView : UserControl
                 sp.Children.Add(fuzzyRow);
             }
 
-            var delBtn = new Button { Content = "Smazat výrok", Padding = new Thickness(8, 4), HorizontalAlignment = HorizontalAlignment.Left };
+            var delBtn = WithTabOrder(new Button { Content = "Smazat výrok", Padding = new Thickness(8, 4), HorizontalAlignment = HorizontalAlignment.Left });
             delBtn.Click += (_, _) =>
             {
                 _attr.Propositions.RemoveAt(idx);
@@ -243,14 +288,20 @@ public partial class AttributeEditView : UserControl
         }
     }
 
-    private static TextBox MakeNumBox(double initial, Action<double> onChanged)
+    private TextBox MakeNumBox(double initial, Action<double> onChanged)
     {
-        var tb = new TextBox { Text = initial.ToString("F1", CultureInfo.InvariantCulture), Width = 70 };
+        var tb = WithTabOrder(new TextBox { Text = initial.ToString("F1", CultureInfo.InvariantCulture), Width = 70 });
         tb.LostFocus += (_, _) =>
         {
             if (double.TryParse(tb.Text?.Replace(',', '.'), NumberStyles.Any, CultureInfo.InvariantCulture, out var v))
                 onChanged(v);
         };
         return tb;
+    }
+
+    private T WithTabOrder<T>(T control) where T : Control
+    {
+        control.TabIndex = _nextTabIndex++;
+        return control;
     }
 }

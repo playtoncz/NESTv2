@@ -1,7 +1,8 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:input="using:Avalonia.Input"
              x:Class="NestStudio.Views.AttributeEditView">
-  <ScrollViewer>
-    <StackPanel x:Name="Root" Spacing="8" Margin="4" />
+  <ScrollViewer input:KeyboardNavigation.TabNavigation="Continue">
+    <StackPanel x:Name="Root" Spacing="8" Margin="4" input:KeyboardNavigation.TabNavigation="Continue" />
   </ScrollViewer>
 </UserControl>

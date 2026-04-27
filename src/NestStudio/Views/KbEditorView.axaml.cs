@@ -13,6 +13,8 @@ public partial class KbEditorView : UserControl
     private string? _basePath;
     private readonly MainWindow? _mainWindow;
     private bool _isDirty;
+    /// <summary>Při přenačtení ItemsSource nesmí SelectionChanged vyprázdnit detail (rozbitý focus).</summary>
+    private bool _suppressDetailFromSelection;
 
     /// <summary>Příznak neuložených změn. MainWindow ho čte před přepnutím na jiné view.</summary>
     public bool IsDirty => _isDirty;
@@ -60,36 +62,78 @@ public partial class KbEditorView : UserControl
     private void RefreshLists()
     {
         if (_kb == null) return;
+        var selAttr = AttributesList.SelectedIndex;
+        var selRule = RulesList.SelectedIndex;
+        var selCtx = ContextsList.SelectedIndex;
+        var selInt = IntegrityList.SelectedIndex;
+
         var attrDisplay = _kb.Attributes.Select(a => string.IsNullOrWhiteSpace(a.Name) ? a.Id : $"{a.Name} ({a.Id})").ToList();
-        AttributesList.ItemsSource = attrDisplay;
-        RulesList.ItemsSource = _kb.CompositionalRules.Select(r =>
+        _suppressDetailFromSelection = true;
+        try
         {
-            var prefix = r.Kind switch
+            AttributesList.ItemsSource = attrDisplay;
+            RulesList.ItemsSource = _kb.CompositionalRules.Select(r =>
             {
-                NestCore.Model.RuleKind.Apriori => "[A] ",
-                NestCore.Model.RuleKind.Logical => "[L] ",
-                _ => "[C] "
-            };
-            return prefix + r.Id;
-        }).ToList();
-        ContextsList.ItemsSource = _kb.Contexts.Select(c => string.IsNullOrWhiteSpace(c.Comment) ? c.Id : $"{c.Id} — {c.Comment}").ToList();
-        IntegrityList.ItemsSource = _kb.IntegrityConstraints.Select(io => string.IsNullOrWhiteSpace(io.Name) ? io.Id : $"{io.Id} — {io.Name}").ToList();
+                var prefix = r.Kind switch
+                {
+                    NestCore.Model.RuleKind.Apriori => "[A] ",
+                    NestCore.Model.RuleKind.Logical => "[L] ",
+                    _ => "[C] "
+                };
+                return prefix + r.Id;
+            }).ToList();
+            ContextsList.ItemsSource = _kb.Contexts.Select(c => string.IsNullOrWhiteSpace(c.Comment) ? c.Id : $"{c.Id} — {c.Comment}").ToList();
+            IntegrityList.ItemsSource = _kb.IntegrityConstraints.Select(io => string.IsNullOrWhiteSpace(io.Name) ? io.Id : $"{io.Id} — {io.Name}").ToList();
+
+            if (selAttr >= 0 && selAttr < _kb.Attributes.Count)
+                AttributesList.SelectedIndex = selAttr;
+            else
+                AttributesList.SelectedIndex = -1;
+
+            if (selRule >= 0 && selRule < _kb.CompositionalRules.Count)
+                RulesList.SelectedIndex = selRule;
+            else
+                RulesList.SelectedIndex = -1;
+
+            if (selCtx >= 0 && selCtx < _kb.Contexts.Count)
+                ContextsList.SelectedIndex = selCtx;
+            else
+                ContextsList.SelectedIndex = -1;
+
+            if (selInt >= 0 && selInt < _kb.IntegrityConstraints.Count)
+                IntegrityList.SelectedIndex = selInt;
+            else
+                IntegrityList.SelectedIndex = -1;
+        }
+        finally
+        {
+            _suppressDetailFromSelection = false;
+        }
     }
 
     private void OnAttributeSelected(object? sender, SelectionChangedEventArgs e)
     {
+        if (_suppressDetailFromSelection) return;
+
         RulesList.SelectedIndex = -1;
         ContextsList.SelectedIndex = -1;
         IntegrityList.SelectedIndex = -1;
         var idx = AttributesList.SelectedIndex;
         if (_kb != null && idx >= 0 && idx < _kb.Attributes.Count)
-            DetailContent.Content = new AttributeEditView(_kb.Attributes[idx], _kb, () => { SetDirty(); RefreshLists(); });
+        {
+            var attr = _kb.Attributes[idx];
+            if (DetailContent.Content is AttributeEditView ev && ReferenceEquals(ev.EditedAttribute, attr))
+                return;
+            DetailContent.Content = new AttributeEditView(attr, _kb, SetDirty, RefreshLists);
+        }
         else
             DetailContent.Content = null;
     }
 
     private void OnRuleSelected(object? sender, SelectionChangedEventArgs e)
     {
+        if (_suppressDetailFromSelection) return;
+
         AttributesList.SelectedIndex = -1;
         ContextsList.SelectedIndex = -1;
         IntegrityList.SelectedIndex = -1;
@@ -102,6 +146,8 @@ public partial class KbEditorView : UserControl
 
     private void OnContextSelected(object? sender, SelectionChangedEventArgs e)
     {
+        if (_suppressDetailFromSelection) return;
+
         AttributesList.SelectedIndex = -1;
         RulesList.SelectedIndex = -1;
         IntegrityList.SelectedIndex = -1;
@@ -114,6 +160,8 @@ public partial class KbEditorView : UserControl
 
     private void OnIntegritySelected(object? sender, SelectionChangedEventArgs e)
     {
+        if (_suppressDetailFromSelection) return;
+
         AttributesList.SelectedIndex = -1;
         RulesList.SelectedIndex = -1;
         ContextsList.SelectedIndex = -1;
@@ -138,7 +186,7 @@ public partial class KbEditorView : UserControl
             if (idx >= 0)
             {
                 AttributesList.SelectedIndex = idx;
-                DetailContent.Content = new AttributeEditView(_kb.Attributes[idx], _kb, () => { SetDirty(); RefreshLists(); });
+                DetailContent.Content = new AttributeEditView(_kb.Attributes[idx], _kb, SetDirty, RefreshLists);
             }
         };
         DetailContent.Content = graph;
@@ -185,7 +233,7 @@ public partial class KbEditorView : UserControl
         RefreshLists();
         var idx = _kb.Attributes.Count - 1;
         AttributesList.SelectedIndex = idx;
-        DetailContent.Content = new AttributeEditView(attr, _kb, () => { SetDirty(); RefreshLists(); });
+        DetailContent.Content = new AttributeEditView(attr, _kb, SetDirty, RefreshLists);
     }
 
     private async void OnDeleteAttribute(object? sender, RoutedEventArgs e)
@@ -318,25 +366,22 @@ public partial class KbEditorView : UserControl
         _isDirty = true;
     }
 
+    /// <summary>Označí editor jako čistý — používá se po volbě „Neukládat“, aby se dotaz neopakoval.</summary>
+    internal void MarkClean()
+    {
+        _isDirty = false;
+    }
+
     /// <summary>Uloží projekt. Pokud není cesta, otevře SaveFilePicker. Vrací true pokud bylo uloženo.</summary>
     internal async Task<bool> TrySaveAsync()
     {
         if (_kb == null) return false;
         if (string.IsNullOrEmpty(_basePath))
         {
-            var storage = _mainWindow?.StorageProvider;
-            if (storage == null) return false;
-            var file = await storage.SaveFilePickerAsync(new Avalonia.Platform.Storage.FilePickerSaveOptions
-            {
-                Title = "Uložit znalostní bázi",
-                DefaultExtension = "xml",
-                FileTypeChoices = new[]
-                {
-                    new Avalonia.Platform.Storage.FilePickerFileType("XML") { Patterns = new[] { "*.xml" } }
-                }
-            });
-            if (file == null) return false;
-            _basePath = file.Path.LocalPath;
+            if (_mainWindow == null) return false;
+            var path = await new SaveKbAsDialog().ShowDialog<string?>(_mainWindow);
+            if (string.IsNullOrWhiteSpace(path)) return false;
+            _basePath = path;
         }
         try
         {
@@ -356,11 +401,10 @@ public partial class KbEditorView : UserControl
         }
     }
 
-    private async void OnBack(object? sender, RoutedEventArgs e)
+    private void OnBack(object? sender, RoutedEventArgs e)
     {
-        if (_mainWindow == null) return;
-        if (await _mainWindow.ConfirmSaveBeforeLeaveAsync(this))
-            _mainWindow.ShowWelcome();
+        // ShowWelcome si dotaz na uložení vyřídí sám — nezdvojujeme.
+        _mainWindow?.ShowWelcome();
     }
 
     private async void OnSave(object? sender, RoutedEventArgs e)

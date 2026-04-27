@@ -1,14 +1,18 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="NestStudio.Views.KbEditorView">
+             xmlns:input="using:Avalonia.Input"
+             x:Class="NestStudio.Views.KbEditorView"
+             HorizontalAlignment="Stretch"
+             VerticalAlignment="Stretch"
+             Background="{DynamicResource WelcomeGridBgBrush}">
   <Grid RowDefinitions="Auto,*" ColumnDefinitions="*">
     <!-- Toolbar -->
     <Border Grid.Row="0" Classes="editor-toolbar">
       <Grid ColumnDefinitions="Auto,*,Auto">
         <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
-          <Button x:Name="BackButton" Content="← Zpět" />
+          <Button x:Name="BackButton" Content="← Zpět" Classes="toolbar-back-btn" />
           <TextBlock x:Name="TitleText" Text="Editor znalostní báze" VerticalAlignment="Center"
-                     FontWeight="SemiBold" FontSize="16" Foreground="#1E293B" Margin="8,0,0,0" />
+                     FontWeight="SemiBold" FontSize="16" Foreground="{DynamicResource KbEditorTitleFgBrush}" Margin="8,0,0,0" />
         </StackPanel>
         <WrapPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
           <Button x:Name="SaveButton" Content="Uložit XML" Classes="primary" Margin="0,0,6,0" />
@@ -18,43 +22,50 @@
           <Button x:Name="GlobalPropsButton" Content="Globální vlastnosti" Margin="0,0,6,0" />
           <Button x:Name="StatisticsButton" Content="Statistiky" />
           <TextBlock x:Name="StatusText" Text="" VerticalAlignment="Center" Opacity="0.7"
-                     FontSize="12" Margin="12,0,0,0" Foreground="#64748B" />
+                     FontSize="12" Margin="12,0,0,0" Foreground="{DynamicResource FieldLabelFgBrush}" />
         </WrapPanel>
       </Grid>
     </Border>
-    <!-- Main content -->
-    <Grid Grid.Row="1" ColumnDefinitions="260,*" Margin="0,0,0,0">
+    <!-- Main content: oba sloupce stejná výška k dolnímu okraji -->
+    <Grid Grid.Row="1" ColumnDefinitions="260,*" Margin="0,0,0,12">
       <!-- Sidebar -->
-      <Border Grid.Column="0" Classes="editor-sidebar" Margin="0,0,10,0">
-        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-          <StackPanel Spacing="0">
+      <Border Grid.Column="0"
+              Classes="editor-sidebar"
+              Margin="0,0,10,0"
+              VerticalAlignment="Stretch">
+        <ScrollViewer VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled"
+                      VerticalAlignment="Stretch"
+                      HorizontalAlignment="Stretch"
+                      input:KeyboardNavigation.TabNavigation="Continue">
+          <StackPanel Spacing="2">
             <!-- Atributy -->
-            <StackPanel Orientation="Horizontal" Spacing="6">
-              <TextBlock Text="ATRIBUTY" Classes="sidebar-heading" VerticalAlignment="Center" />
+            <TextBlock Text="ATRIBUTY" Classes="sidebar-heading" />
+            <StackPanel Orientation="Horizontal" Spacing="6" Margin="0,0,0,4">
               <Button x:Name="NewAttributeButton" Content="+ Nový" FontSize="11" Padding="8,3" />
               <Button x:Name="DeleteAttributeButton" Content="Smazat" FontSize="11" Padding="8,3" />
             </StackPanel>
             <ListBox x:Name="AttributesList" SelectionMode="Single" MinHeight="80" MaxHeight="180" />
 
             <!-- Pravidla -->
-            <StackPanel Orientation="Horizontal" Spacing="6">
-              <TextBlock Text="PRAVIDLA" Classes="sidebar-heading" VerticalAlignment="Center" />
+            <TextBlock Text="PRAVIDLA" Classes="sidebar-heading" />
+            <StackPanel Orientation="Horizontal" Spacing="6" Margin="0,0,0,4">
               <Button x:Name="NewRuleButton" Content="+ Nové" FontSize="11" Padding="8,3" />
               <Button x:Name="DeleteRuleButton" Content="Smazat" FontSize="11" Padding="8,3" />
             </StackPanel>
             <ListBox x:Name="RulesList" SelectionMode="Single" MinHeight="60" MaxHeight="200" />
 
             <!-- Kontexty -->
-            <StackPanel Orientation="Horizontal" Spacing="6">
-              <TextBlock Text="KONTEXTY" Classes="sidebar-heading" VerticalAlignment="Center" />
+            <TextBlock Text="KONTEXTY" Classes="sidebar-heading" />
+            <StackPanel Orientation="Horizontal" Spacing="6" Margin="0,0,0,4">
               <Button x:Name="NewContextButton" Content="+ Nový" FontSize="11" Padding="8,3" />
               <Button x:Name="DeleteContextButton" Content="Smazat" FontSize="11" Padding="8,3" />
             </StackPanel>
             <ListBox x:Name="ContextsList" SelectionMode="Single" MinHeight="40" MaxHeight="100" />
 
             <!-- Integritní omezení -->
-            <StackPanel Orientation="Horizontal" Spacing="6">
-              <TextBlock Text="INTEGRITNÍ OMEZENÍ" Classes="sidebar-heading" VerticalAlignment="Center" />
+            <TextBlock Text="INTEGRITNÍ OMEZENÍ" Classes="sidebar-heading" />
+            <StackPanel Orientation="Horizontal" Spacing="6" Margin="0,0,0,4">
               <Button x:Name="NewIntegrityButton" Content="+ Nové" FontSize="11" Padding="8,3" />
               <Button x:Name="DeleteIntegrityButton" Content="Smazat" FontSize="11" Padding="8,3" />
             </StackPanel>
@@ -63,8 +74,14 @@
         </ScrollViewer>
       </Border>
       <!-- Detail -->
-      <Border Grid.Column="1" Classes="editor-detail">
-        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+      <Border Grid.Column="1"
+              Classes="editor-detail"
+              VerticalAlignment="Stretch">
+        <ScrollViewer VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled"
+                      VerticalAlignment="Stretch"
+                      HorizontalAlignment="Stretch"
+                      input:KeyboardNavigation.TabNavigation="Continue">
           <ContentControl x:Name="DetailContent" />
         </ScrollViewer>
       </Border>

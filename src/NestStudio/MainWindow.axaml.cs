@@ -68,7 +68,11 @@ public partial class MainWindow : Window
         var dialog = new SaveChangesDialog();
         var result = await dialog.ShowDialog<SaveChangesResult?>(this);
         if (result == SaveChangesResult.Cancel) return false;
-        if (result == SaveChangesResult.Discard) return true;
+        if (result == SaveChangesResult.Discard)
+        {
+            editor.MarkClean();
+            return true;
+        }
         return await editor.TrySaveAsync();
     }
 

@@ -1,0 +1,63 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="NestStudio.Views.SaveKbAsDialog"
+        Title="Uložit znalostní bázi"
+        Width="520"
+        SizeToContent="Height"
+        MinHeight="260"
+        WindowStartupLocation="CenterOwner"
+        Background="{DynamicResource AppWindowBgBrush}">
+  <Border Classes="glass-panel" Margin="16" Padding="24">
+    <StackPanel Spacing="14">
+      <TextBlock Text="Uložit znalostní bázi"
+                 FontWeight="SemiBold"
+                 FontSize="15"
+                 Foreground="{DynamicResource DialogTitleFgBrush}" />
+      <TextBlock Text="Zadejte cestu k souboru nebo použijte Procházet. Formát je XML; přípona .nkb odpovídá exportu ze starého NEST."
+                 TextWrapping="Wrap"
+                 FontSize="12"
+                 Opacity="0.9"
+                 Foreground="{DynamicResource DialogLabelFgBrush}" />
+
+      <StackPanel Spacing="6">
+        <TextBlock Text="Cesta k souboru" Classes="field-label" />
+        <Grid ColumnDefinitions="*,Auto">
+          <TextBox x:Name="PathTextBox"
+                   Grid.Column="0"
+                   MinHeight="40"
+                   CornerRadius="10"
+                   Padding="12,10"
+                   BorderBrush="{DynamicResource TextBoxBorderBrush}"
+                   BorderThickness="1"
+                   Watermark="např. C:\Projekty\moje_baze.xml" />
+          <Button x:Name="BrowseButton"
+                  Grid.Column="1"
+                  Content="Procházet…"
+                  Margin="10,0,0,0" />
+        </Grid>
+      </StackPanel>
+
+      <StackPanel Spacing="6">
+        <TextBlock Text="Typ souboru" Classes="field-label" />
+        <ComboBox x:Name="FormatCombo"
+                  SelectedIndex="0"
+                  MinWidth="280"
+                  CornerRadius="10"
+                  Padding="12,10"
+                  BorderBrush="{DynamicResource TextBoxBorderBrush}"
+                  BorderThickness="1">
+          <ComboBoxItem Content="XML (*.xml)" />
+          <ComboBoxItem Content="NKB – starý NEST (*.nkb)" />
+        </ComboBox>
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal"
+                  HorizontalAlignment="Right"
+                  Spacing="10"
+                  Margin="0,8,0,0">
+        <Button x:Name="CancelButton" Content="Zrušit" />
+        <Button x:Name="OkButton" Content="Uložit" Classes="primary" />
+      </StackPanel>
+    </StackPanel>
+  </Border>
+</Window>

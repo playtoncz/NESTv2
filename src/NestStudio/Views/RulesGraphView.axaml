@@ -18,7 +18,7 @@
     </TabItem>
     <TabItem Header="Graf">
       <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-        <Canvas x:Name="GraphCanvas" Background="#F8FAFC" MinWidth="600" MinHeight="500" />
+        <Canvas x:Name="GraphCanvas" Background="{DynamicResource GraphCanvasBgBrush}" MinWidth="600" MinHeight="500" />
       </ScrollViewer>
     </TabItem>
   </TabControl>

@@ -142,11 +142,11 @@ public partial class WelcomeView : UserControl
         if (storage == null) return;
         var files = await storage.OpenFilePickerAsync(new FilePickerOpenOptions
         {
-            Title = "Vyberte projekt (znalostní báze XML)",
+            Title = "Vyberte projekt (znalostní báze)",
             AllowMultiple = false,
             FileTypeFilter = new[]
             {
-                new FilePickerFileType("XML") { Patterns = new[] { "*.xml" } }
+                new FilePickerFileType("XML / NKB (znalostní báze)") { Patterns = new[] { "*.xml", "*.nkb" } }
             }
         });
         if (files.Count == 0) return;

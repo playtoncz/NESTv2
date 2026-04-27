@@ -2,14 +2,24 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="NestStudio.Views.SaveChangesDialog"
         Title="Neuložené změny"
-        Width="380" Height="160"
-        WindowStartupLocation="CenterOwner">
-  <StackPanel Margin="24" Spacing="20">
-    <TextBlock Text="Máte neuložené změny. Chcete je uložit?" TextWrapping="Wrap" />
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="12">
-      <Button x:Name="CancelButton" Content="Zrušit" />
-      <Button x:Name="DiscardButton" Content="Neukládat" />
-      <Button x:Name="SaveButton" Content="Uložit" Classes="primary" />
+        Width="420"
+        SizeToContent="Height"
+        WindowStartupLocation="CenterOwner"
+        Background="{DynamicResource AppWindowBgBrush}">
+  <Border Classes="glass-panel" Margin="16" Padding="24">
+    <StackPanel Spacing="18">
+      <TextBlock Text="Neuložené změny"
+                 FontWeight="SemiBold"
+                 FontSize="15"
+                 Foreground="{DynamicResource DialogTitleFgBrush}" />
+      <TextBlock Text="Máte neuložené změny. Chcete je před odchodem uložit?"
+                 TextWrapping="Wrap"
+                 Foreground="{DynamicResource DialogLabelFgBrush}" />
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
+        <Button x:Name="CancelButton" Content="Zrušit" />
+        <Button x:Name="DiscardButton" Content="Neukládat" />
+        <Button x:Name="SaveButton" Content="Uložit" Classes="primary" />
+      </StackPanel>
     </StackPanel>
-  </StackPanel>
+  </Border>
 </Window>

@@ -10,7 +10,6 @@ internal sealed class App : Application
     public override void Initialize()
     {
         base.Initialize();
-        Styles.Add(new FluentTheme());
     }
 
     public override void OnFrameworkInitializationCompleted()

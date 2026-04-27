@@ -2,21 +2,21 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="NestStudio.MainWindow"
         Title="NEST Studio"
-        Width="900" Height="650"
-        MinWidth="700" MinHeight="500">
-  <Border Classes="panel" Margin="24">
+        Width="1100" Height="900"
+        MinWidth="900" MinHeight="600">
+  <Border Classes="panel" Margin="16" Padding="12">
     <Grid RowDefinitions="Auto,*" ColumnDefinitions="*,Auto">
-      <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,0,16">
+      <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,0,8">
         <TextBlock Classes="title" Text="NEST Studio" />
-        <TextBlock Text="Konzultace / Runner" Opacity="0.7" Margin="0,4,0,0" />
+        <TextBlock Text="Konzultace / Runner" Opacity="0.7" Margin="0,2,0,0" />
       </StackPanel>
 
       <!-- Panel s informací o nové verzi vpravo od titulku -->
       <Border x:Name="UpdatePanel"
               Grid.Row="0"
               Grid.Column="1"
-              Background="#FFF8E1"
-              BorderBrush="#FFCA28"
+              Background="{DynamicResource UpdateBannerBgBrush}"
+              BorderBrush="{DynamicResource UpdateBannerBorderBrush}"
               BorderThickness="1"
               CornerRadius="8"
               Padding="10,6"
@@ -45,13 +45,12 @@
         </WrapPanel>
       </Border>
 
-      <ScrollViewer Grid.Row="1"
-                    Grid.ColumnSpan="2"
-                    Margin="0,0,0,-24"
-                    VerticalScrollBarVisibility="Auto"
-                    HorizontalScrollBarVisibility="Disabled">
-        <ContentControl x:Name="MainContent" />
-      </ScrollViewer>
+      <ContentControl x:Name="MainContent"
+                      Grid.Row="1"
+                      Grid.ColumnSpan="2"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"
+                      Background="{DynamicResource GlassPanelBgBrush}" />
     </Grid>
   </Border>
 </Window>
