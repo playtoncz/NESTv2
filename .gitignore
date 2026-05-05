@@ -18,6 +18,9 @@ x86/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
+[Bb]uild/
+[Dd]ist/
+[Pp]ublish/
 
 # .NET
 project.lock.json
