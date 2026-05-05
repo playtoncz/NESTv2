@@ -16,7 +16,7 @@
         </StackPanel>
         <WrapPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
           <Button x:Name="SaveButton" Content="Uložit XML" Classes="primary" Margin="0,0,6,0" />
-          <Button x:Name="FillProjectButton" Content="Vyplnit projekt" Margin="0,0,6,0" />
+          <Button x:Name="FillProjectButton" Content="Konzultace projektu" Margin="0,0,6,0" />
           <Button x:Name="ValidateButton" Content="Validace" Margin="0,0,6,0" />
           <Button x:Name="GraphButton" Content="Graf pravidel" Margin="0,0,6,0" />
           <Button x:Name="GlobalPropsButton" Content="Globální vlastnosti" Margin="0,0,6,0" />

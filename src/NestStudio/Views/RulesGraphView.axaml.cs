@@ -14,9 +14,9 @@ namespace NestStudio.Views;
 
 public partial class RulesGraphView : UserControl
 {
-    private const double NodeW = 120;
-    private const double NodeH = 44;
-    private const double LayerGap = 100;
+    private const double NodeW = 160;
+    private const double NodeH = 56;
+    private const double LayerGap = 110;
     private const double NodeGap = 20;
     private const double MX = 40;
     private const double MY = 40;
@@ -240,17 +240,17 @@ public partial class RulesGraphView : UserControl
 
         var layers = new List<List<string>>
         {
-            questionIds.OrderBy(id => id).ToList(),
+            goalIds.OrderBy(id => id).ToList(),
             intermediateIds.OrderBy(id => id).ToList(),
-            goalIds.OrderBy(id => id).ToList()
+            questionIds.OrderBy(id => id).ToList()
         };
         var layerColors = new[]
         {
-            Color.FromRgb(0x42, 0xA5, 0xF5),
+            Color.FromRgb(0x66, 0xBB, 0x6A),
             Color.FromRgb(0xFF, 0xCA, 0x28),
-            Color.FromRgb(0x66, 0xBB, 0x6A)
+            Color.FromRgb(0x42, 0xA5, 0xF5)
         };
-        var layerNames = new[] { "Vstupy (otázky)", "Meziuzly", "Cíle" };
+        var layerNames = new[] { "Cíle", "Meziuzly", "Vstupy (otázky)" };
 
         var positions = new Dictionary<string, (double X, double Y)>();
         double maxWidth = 0;
@@ -292,8 +292,12 @@ public partial class RulesGraphView : UserControl
         {
             if (string.IsNullOrEmpty(from)) continue;
             if (!positions.TryGetValue(from, out var p1) || !positions.TryGetValue(to, out var p2)) continue;
-            var x1 = p1.X + NodeW / 2; var y1 = p1.Y + NodeH;
-            var x2 = p2.X + NodeW / 2; var y2 = p2.Y;
+            var x1 = p1.X + NodeW / 2;
+            var x2 = p2.X + NodeW / 2;
+            // Držíme tok vizuálně shora dolů bez ohledu na směr rule hrany.
+            var fromAbove = p1.Y <= p2.Y;
+            var y1 = fromAbove ? p1.Y + NodeH : p1.Y;
+            var y2 = fromAbove ? p2.Y : p2.Y + NodeH;
             var edgeColor = kind switch
             {
                 RuleKind.Apriori => Color.FromRgb(0xFF, 0x98, 0x00),
@@ -328,12 +332,16 @@ public partial class RulesGraphView : UserControl
                     BorderThickness = new Thickness(2),
                     CornerRadius = new CornerRadius(8),
                     Width = NodeW, Height = NodeH,
+                    Padding = new Thickness(6, 4),
                     Cursor = new Cursor(StandardCursorType.Hand),
                     Tag = id,
                     Child = new TextBlock
                     {
-                        Text = label.Length > 14 ? label[..12] + "\u2026" : label,
-                        FontSize = 11,
+                        Text = label,
+                        FontSize = 12,
+                        MaxLines = 2,
+                        TextTrimming = TextTrimming.CharacterEllipsis,
+                        Padding = new Thickness(6, 2),
                         HorizontalAlignment = HorizontalAlignment.Center,
                         VerticalAlignment = VerticalAlignment.Center,
                         TextAlignment = TextAlignment.Center,

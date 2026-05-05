@@ -49,7 +49,8 @@ public sealed class CompositionalRule
             sb.Append(c.AttributeId);
             if (!string.IsNullOrEmpty(c.PropositionId))
                 sb.Append('[').Append(c.PropositionId).Append(']');
-            sb.Append('@').Append(c.Weight.ToString("F3", System.Globalization.CultureInfo.InvariantCulture));
+            var weightForSummary = c.Negation && c.Weight > 0 ? -c.Weight : c.Weight;
+            sb.Append('@').Append(weightForSummary.ToString("F3", System.Globalization.CultureInfo.InvariantCulture));
         }
         return sb.ToString();
     }

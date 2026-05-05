@@ -76,7 +76,7 @@
                   </Border>
                 </StackPanel>
                 <Button x:Name="FillProjectButton"
-                        Content="Vyplnit projekt"
+                        Content="Konzultace projektu"
                         Classes="primary"
                         HorizontalAlignment="Stretch" />
                 <Button x:Name="OpenEditorButton"

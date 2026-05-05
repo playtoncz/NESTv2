@@ -33,7 +33,8 @@ public partial class RunConfigDialog : Window
             AllowMultiple = false,
             FileTypeFilter = new[]
             {
-                new FilePickerFileType("XML") { Patterns = new[] { "*.xml" } }
+                new FilePickerFileType("XML") { Patterns = new[] { "*.xml" } },
+                new FilePickerFileType("Všechny soubory") { Patterns = new[] { "*" } }
             }
         });
         if (files.Count > 0)

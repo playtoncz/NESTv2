@@ -1,0 +1,22 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="NestStudio.Views.HowGraphView">
+  <Grid RowDefinitions="Auto,*" Margin="0,4,0,0">
+    <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,0,0,8">
+      <Button x:Name="BackButton" Content="← Zpět na výsledky" Classes="toolbar-back-btn" />
+      <TextBlock x:Name="TitleText" FontWeight="SemiBold" VerticalAlignment="Center" />
+    </StackPanel>
+    <TabControl Grid.Row="1">
+      <TabItem Header="Graf">
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+          <Canvas x:Name="GraphCanvas" MinWidth="600" MinHeight="420" Background="{DynamicResource GraphCanvasBgBrush}" />
+        </ScrollViewer>
+      </TabItem>
+      <TabItem Header="Strom">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+          <TreeView x:Name="HowTree" />
+        </ScrollViewer>
+      </TabItem>
+    </TabControl>
+  </Grid>
+</UserControl>

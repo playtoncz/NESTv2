@@ -23,7 +23,7 @@
           <SolidColorBrush x:Key="TitleFgBrush" Color="#1A1A2E"/>
           <SolidColorBrush x:Key="SecondaryBtnBgBrush" Color="#F1F5F9"/>
           <SolidColorBrush x:Key="SecondaryBtnFgBrush" Color="#334155"/>
-          <SolidColorBrush x:Key="SecondaryBtnHoverBrush" Color="#E2E8F0"/>
+          <SolidColorBrush x:Key="SecondaryBtnHoverBrush" Color="#007AFF"/>
           <SolidColorBrush x:Key="TextBoxBorderBrush" Color="#CED6E3"/>
           <SolidColorBrush x:Key="EditorSidebarBgBrush" Color="#F3F6FA"/>
           <SolidColorBrush x:Key="EditorSidebarBorderBrush" Color="#D0D7E3"/>
@@ -75,7 +75,7 @@
           <SolidColorBrush x:Key="TitleFgBrush" Color="#F1F5F9"/>
           <SolidColorBrush x:Key="SecondaryBtnBgBrush" Color="#334155"/>
           <SolidColorBrush x:Key="SecondaryBtnFgBrush" Color="#E2E8F0"/>
-          <SolidColorBrush x:Key="SecondaryBtnHoverBrush" Color="#475569"/>
+          <SolidColorBrush x:Key="SecondaryBtnHoverBrush" Color="#007AFF"/>
           <SolidColorBrush x:Key="TextBoxBorderBrush" Color="#475569"/>
           <SolidColorBrush x:Key="EditorSidebarBgBrush" Color="#1E293B"/>
           <SolidColorBrush x:Key="EditorSidebarBorderBrush" Color="#30FFFFFF"/>
@@ -172,6 +172,7 @@
     </Style>
     <Style Selector="Button.welcome-updates-btn:pointerover">
       <Setter Property="Background" Value="{DynamicResource SecondaryBtnHoverBrush}" />
+      <Setter Property="Foreground" Value="White" />
     </Style>
     <!-- Zpět / sekundární akce — stejný kulatý jazyk jako zbytek UI -->
     <Style Selector="Button.toolbar-back-btn">
@@ -185,6 +186,7 @@
     </Style>
     <Style Selector="Button.toolbar-back-btn:pointerover">
       <Setter Property="Background" Value="{DynamicResource SecondaryBtnHoverBrush}" />
+      <Setter Property="Foreground" Value="White" />
     </Style>
     <Style Selector="TextBlock.title">
       <Setter Property="FontSize" Value="22" />
@@ -220,6 +222,7 @@
     </Style>
     <Style Selector="Border.glass-card Button:not(.primary):pointerover">
       <Setter Property="Background" Value="{DynamicResource SecondaryBtnHoverBrush}" />
+      <Setter Property="Foreground" Value="White" />
     </Style>
     <Style Selector="Border.glass-panel Button:not(.primary)">
       <Setter Property="Background" Value="{DynamicResource SecondaryBtnBgBrush}" />
@@ -231,6 +234,7 @@
     </Style>
     <Style Selector="Border.glass-panel Button:not(.primary):pointerover">
       <Setter Property="Background" Value="{DynamicResource SecondaryBtnHoverBrush}" />
+      <Setter Property="Foreground" Value="White" />
     </Style>
     <Style Selector="Border.glass-panel TextBox">
       <Setter Property="CornerRadius" Value="10" />
@@ -309,6 +313,7 @@
     </Style>
     <Style Selector="Border.editor-detail Button:not(.primary):pointerover">
       <Setter Property="Background" Value="{DynamicResource SecondaryBtnHoverBrush}" />
+      <Setter Property="Foreground" Value="White" />
     </Style>
     <Style Selector="Border.editor-section">
       <Setter Property="Background" Value="{DynamicResource EditorSectionBgBrush}" />
@@ -351,6 +356,7 @@
     </Style>
     <Style Selector="Border.editor-toolbar Button:not(.primary):pointerover">
       <Setter Property="Background" Value="{DynamicResource SecondaryBtnHoverBrush}" />
+      <Setter Property="Foreground" Value="White" />
     </Style>
     <Style Selector="TextBlock.sidebar-heading">
       <Setter Property="FontSize" Value="11" />

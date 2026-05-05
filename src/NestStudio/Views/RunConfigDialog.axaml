@@ -33,9 +33,11 @@
         <ComboBoxItem Content="Standardní" />
         <ComboBoxItem Content="Logický" />
         <ComboBoxItem Content="Neuronový" />
+        <!--
         <ComboBoxItem Content="Hybridní" />
         <ComboBoxItem Content="Gödel" />
         <ComboBoxItem Content="Součinová" />
+        -->
       </ComboBox>
       <TextBlock Text="Režim odvozování" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DialogTitleFgBrush}" Margin="0,4,0,0" />
       <ComboBox x:Name="ReasoningModeCombo" MinWidth="320" CornerRadius="10" Padding="12,10"

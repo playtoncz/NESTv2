@@ -115,9 +115,17 @@ public partial class KbEditorView : UserControl
     {
         if (_suppressDetailFromSelection) return;
 
-        RulesList.SelectedIndex = -1;
-        ContextsList.SelectedIndex = -1;
-        IntegrityList.SelectedIndex = -1;
+        _suppressDetailFromSelection = true;
+        try
+        {
+            RulesList.SelectedIndex = -1;
+            ContextsList.SelectedIndex = -1;
+            IntegrityList.SelectedIndex = -1;
+        }
+        finally
+        {
+            _suppressDetailFromSelection = false;
+        }
         var idx = AttributesList.SelectedIndex;
         if (_kb != null && idx >= 0 && idx < _kb.Attributes.Count)
         {
@@ -134,9 +142,17 @@ public partial class KbEditorView : UserControl
     {
         if (_suppressDetailFromSelection) return;
 
-        AttributesList.SelectedIndex = -1;
-        ContextsList.SelectedIndex = -1;
-        IntegrityList.SelectedIndex = -1;
+        _suppressDetailFromSelection = true;
+        try
+        {
+            AttributesList.SelectedIndex = -1;
+            ContextsList.SelectedIndex = -1;
+            IntegrityList.SelectedIndex = -1;
+        }
+        finally
+        {
+            _suppressDetailFromSelection = false;
+        }
         var idx = RulesList.SelectedIndex;
         if (_kb != null && idx >= 0 && idx < _kb.CompositionalRules.Count)
             DetailContent.Content = new RuleEditView(_kb.CompositionalRules[idx], _kb, SetDirty);
@@ -148,9 +164,17 @@ public partial class KbEditorView : UserControl
     {
         if (_suppressDetailFromSelection) return;
 
-        AttributesList.SelectedIndex = -1;
-        RulesList.SelectedIndex = -1;
-        IntegrityList.SelectedIndex = -1;
+        _suppressDetailFromSelection = true;
+        try
+        {
+            AttributesList.SelectedIndex = -1;
+            RulesList.SelectedIndex = -1;
+            IntegrityList.SelectedIndex = -1;
+        }
+        finally
+        {
+            _suppressDetailFromSelection = false;
+        }
         var idx = ContextsList.SelectedIndex;
         if (_kb != null && idx >= 0 && idx < _kb.Contexts.Count)
             DetailContent.Content = new ContextEditView(_kb.Contexts[idx], _kb, SetDirty);
@@ -162,9 +186,17 @@ public partial class KbEditorView : UserControl
     {
         if (_suppressDetailFromSelection) return;
 
-        AttributesList.SelectedIndex = -1;
-        RulesList.SelectedIndex = -1;
-        ContextsList.SelectedIndex = -1;
+        _suppressDetailFromSelection = true;
+        try
+        {
+            AttributesList.SelectedIndex = -1;
+            RulesList.SelectedIndex = -1;
+            ContextsList.SelectedIndex = -1;
+        }
+        finally
+        {
+            _suppressDetailFromSelection = false;
+        }
         var idx = IntegrityList.SelectedIndex;
         if (_kb != null && idx >= 0 && idx < _kb.IntegrityConstraints.Count)
             DetailContent.Content = new IntegrityConstraintEditView(_kb.IntegrityConstraints[idx], _kb, SetDirty);

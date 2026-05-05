@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NestCore")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dced16494c99324e3a1575ae145219806db92e07")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8945a464cb3f338105489f17d178f9aafc1ed270")]
 [assembly: System.Reflection.AssemblyProductAttribute("NestCore")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NestCore")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -215,7 +215,6 @@ C:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\bin\Release\net8.0\win-x64
 C:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\bin\Release\net8.0\win-x64\hostfxr.dll
 C:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\bin\Release\net8.0\win-x64\hostpolicy.dll
 C:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\bin\Release\net8.0\win-x64\mscordaccore.dll
-C:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\bin\Release\net8.0\win-x64\mscordaccore_amd64_amd64_8.0.2526.11203.dll
 C:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\bin\Release\net8.0\win-x64\mscordbi.dll
 C:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\bin\Release\net8.0\win-x64\mscorrc.dll
 C:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\bin\Release\net8.0\win-x64\msquic.dll
@@ -237,3 +236,4 @@ C:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\obj\Release\net8.0\win-x64
 C:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\obj\Release\net8.0\win-x64\NestStudio.csproj.Up2Date
 C:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\obj\Release\net8.0\win-x64\NestStudio.genruntimeconfig.cache
 C:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\obj\Release\net8.0\win-x64\ref\NestStudio.dll
+C:\Users\konta\Documents\GitHub\NESTv2\src\NestStudio\bin\Release\net8.0\win-x64\mscordaccore_amd64_amd64_8.0.2626.16921.dll
