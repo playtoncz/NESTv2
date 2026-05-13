@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1250"?>
+<!DOCTYPE answers SYSTEM "answers.dtd">
+<answers>
+ <case_description>ak nylon</case_description>
+ <attribute>
+  <id>tlusté prsty</id>
+  <type>binary</type>
+  <answer>
+   <weight>1,000</weight>
+  </answer>
+ </attribute>
+ <attribute>
+  <id>dlouhé nehty</id>
+  <type>binary</type>
+  <answer>
+   <weight>1,000</weight>
+  </answer>
+ </attribute>
+ <attribute>
+  <id>místo pro hraní</id>
+  <type>multiple</type>
+  <answer>
+   <value>doma</value>
+   <weight>0,800</weight>
+  </answer>
+  <answer>
+   <value>koncertní pódia</value>
+   <weight>0,200</weight>
+  </answer>
+  <answer>
+   <value>táborák</value>
+   <weight>-1,000</weight>
+  </answer>
+ </attribute>
+</answers>

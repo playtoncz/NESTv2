@@ -79,7 +79,7 @@ public partial class ConsultationView : UserControl
                 BuildQuestionnaire();
                 return;
             }
-            var xml = File.ReadAllText(path);
+            var xml = XmlFileEncoding.ReadAllText(path);
             var reader = new AnswersXmlReader();
             _loadedAnswers = reader.Read(xml);
             QuestionnairePanel.Children.Clear();
@@ -119,7 +119,8 @@ public partial class ConsultationView : UserControl
             if (!string.IsNullOrWhiteSpace(attr.Comment))
                 block.Children.Add(new TextBlock { Text = attr.Comment, Opacity = 0.75, FontSize = 12, TextWrapping = TextWrapping.Wrap });
 
-            var loadedAttr = _loadedAnswers.Attributes.FirstOrDefault(a => a.Id == attr.Id);
+            var loadedAttr = _loadedAnswers.Attributes.FirstOrDefault(a =>
+                AnswerAttributeIdMatching.AnswerIdMatchesKbAttribute(a.Id, attr));
             if (loadedAttr == null)
             {
                 block.Children.Add(new TextBlock

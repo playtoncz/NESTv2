@@ -61,7 +61,7 @@ public sealed class InferenceEngine
         // 2) Aplikovat odpovědi na skóre (všechny váhy převést na vnitřní škálu [-0.99, 0.99])
         foreach (var aa in answers.Attributes)
         {
-            var attr = kb.Attributes.FirstOrDefault(a => a.Id == aa.Id);
+            var attr = AnswerAttributeIdMatching.FindKbAttributeForAnswer(kb.Attributes, aa.Id);
             if (attr == null) continue;
 
             if (attr.Type == AttributeType.Binary)

@@ -2,7 +2,6 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Avalonia;
@@ -174,7 +173,7 @@ public partial class WelcomeView : UserControl
     {
         try
         {
-            var xml = ReadXmlWithEncoding(path);
+            var xml = XmlFileEncoding.ReadAllText(path);
             var reader = new BaseXmlReader();
             _loadedKb = reader.Read(xml);
             _loadedKbPath = path;
@@ -291,83 +290,5 @@ public partial class WelcomeView : UserControl
         {
             StatusText.Text = "Chyba při kontrole aktualizací: " + ex.Message;
         }
-    }
-
-    private static string ReadXmlWithEncoding(string path)
-    {
-        var bytes = File.ReadAllBytes(path);
-        if (bytes.Length == 0)
-            throw new InvalidOperationException("Soubor je prázdný.");
-
-        Encoding? encodingByBom = null;
-        if (bytes.Length >= 2 && bytes[0] == 0xFF && bytes[1] == 0xFE)
-            encodingByBom = Encoding.Unicode;
-        else if (bytes.Length >= 2 && bytes[0] == 0xFE && bytes[1] == 0xFF)
-            encodingByBom = Encoding.BigEndianUnicode;
-        else if (bytes.Length >= 3 && bytes[0] == 0xEF && bytes[1] == 0xBB && bytes[2] == 0xBF)
-            encodingByBom = Encoding.UTF8;
-
-        if (encodingByBom != null)
-            return encodingByBom.GetString(bytes);
-        
-        // Bez BOMu: nejdřív se podívej na deklaraci encoding="..."
-        // Hlavička XML je v ASCII, takže ji můžeme bezpečně přečíst jako ASCII.
-        var headerLength = Math.Min(bytes.Length, 1024);
-        var asciiHeader = Encoding.ASCII.GetString(bytes, 0, headerLength);
-        if (asciiHeader.TrimStart().StartsWith("<?xml", StringComparison.OrdinalIgnoreCase))
-        {
-            var encMatch = System.Text.RegularExpressions.Regex.Match(
-                asciiHeader,
-                @"encoding\s*=\s*[""']([^""']+)[""']",
-                System.Text.RegularExpressions.RegexOptions.IgnoreCase);
-            if (encMatch.Success)
-            {
-                var encName = encMatch.Groups[1].Value.Trim();
-                try
-                {
-                    var enc = Encoding.GetEncoding(encName);
-                    var text = enc.GetString(bytes);
-
-                    // Heuristika: pokud z deklarovaného kódování vypadne spousta '�',
-                    // zkusíme ještě UTF-8 a vybereme tu variantu s menším počtem náhradních znaků.
-                    int CountReplacementChars(string s) => s.Count(ch => ch == '�');
-                    var replDeclared = CountReplacementChars(text);
-                    var utf8Text = Encoding.UTF8.GetString(bytes);
-                    var replUtf8 = CountReplacementChars(utf8Text);
-
-                    if (replUtf8 < replDeclared)
-                        return utf8Text;
-                    return text;
-                }
-                catch
-                {
-                    // neznámé kódování – spadneme na heuristiku níže
-                }
-            }
-        }
-
-        // Bez deklarace encoding:
-        // 1) zkus UTF-8
-        // 2) pokud se objeví náhradní znaky '�', zkus Windows-1250 (typické "ANSI" na CZ Windows)
-        string utf8Candidate = Encoding.UTF8.GetString(bytes);
-        int CountRepl(string s) => s.Count(ch => ch == '�');
-        var replUtf8Only = CountRepl(utf8Candidate);
-        if (replUtf8Only == 0)
-            return utf8Candidate;
-
-        try
-        {
-            var win1250 = Encoding.GetEncoding(1250);
-            var win1250Text = win1250.GetString(bytes);
-            var repl1250 = CountRepl(win1250Text);
-            if (repl1250 < replUtf8Only)
-                return win1250Text;
-        }
-        catch
-        {
-            // pokud kódování 1250 není k dispozici, ignorujeme a použijeme UTF-8
-        }
-
-        return utf8Candidate;
     }
 }

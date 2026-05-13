@@ -617,7 +617,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "NestCore": "1.0.0"
+          "NestCore": "1.0.0",
+          "System.Text.Encoding.CodePages": "8.0.0"
         },
         "compile": {
           "bin/placeholder/NestFormat.dll": {}
@@ -1150,7 +1151,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "NestCore": "1.0.0"
+          "NestCore": "1.0.0",
+          "System.Text.Encoding.CodePages": "8.0.0"
         },
         "compile": {
           "bin/placeholder/NestFormat.dll": {}
@@ -2156,7 +2158,7 @@
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
-    "version": "1.0.0.600",
+    "version": "1.0.0.601",
     "restore": {
       "projectUniqueName": "C:\\Users\\konta\\Documents\\GitHub\\NESTv2\\src\\NestStudio\\NestStudio.csproj",
       "projectName": "NestStudio",

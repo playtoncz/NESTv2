@@ -22,6 +22,16 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\NestCore\NestCore.csproj" />
+    <ProjectReference Include="..\..\src\NestFormat\NestFormat.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\kytara-all-levels.xml" Link="TestData\kytara-all-levels.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\kytara-nylon-konzult.txt" Link="TestData\kytara-nylon-konzult.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -204,3 +204,7 @@ C:\Users\konta\Documents\GitHub\NESTv2\tests\NestCore.Tests\obj\Debug\net8.0\ref
 C:\Users\konta\Documents\GitHub\NESTv2\tests\NestCore.Tests\obj\Debug\net8.0\NestCore.Tests.pdb
 C:\Users\konta\Documents\GitHub\NESTv2\tests\NestCore.Tests\obj\Debug\net8.0\NestCore.Tests.genruntimeconfig.cache
 C:\Users\konta\Documents\GitHub\NESTv2\tests\NestCore.Tests\obj\Debug\net8.0\ref\NestCore.Tests.dll
+C:\Users\konta\Documents\GitHub\NESTv2\tests\NestCore.Tests\bin\Debug\net8.0\NestFormat.dll
+C:\Users\konta\Documents\GitHub\NESTv2\tests\NestCore.Tests\bin\Debug\net8.0\NestFormat.pdb
+C:\Users\konta\Documents\GitHub\NESTv2\tests\NestCore.Tests\bin\Debug\net8.0\TestData\kytara-all-levels.xml
+C:\Users\konta\Documents\GitHub\NESTv2\tests\NestCore.Tests\bin\Debug\net8.0\TestData\kytara-nylon-konzult.txt

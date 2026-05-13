@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="windows-1250"?>
+<!DOCTYPE base SYSTEM "base.dtd">
+<base>
+
+<!--******************** Global properties ********************-->
+
+ <global>
+  <description>Výběr vhodného typu kytary</description>
+  <expert>Jan Górecki</expert>
+  <knowledge_engineer>Jan Górecki</knowledge_engineer>
+  <date>29.3.2011</date>
+  <inference_mechanism>standard</inference_mechanism>
+  <weight_range>1</weight_range>
+  <default_weight>irrelevant</default_weight>
+  <global_priority>first</global_priority>
+  <context_global_threshold>0,000</context_global_threshold>
+  <condition_global_threshold>0,900</condition_global_threshold>
+ </global>
+
+<!--******************** Attributes and propositions ********************-->
+
+ <attributes>
+
+  <attribute>
+   <id>kytara</id>
+   <type>multiple</type>
+   <comment>Typ kytary</comment>
+   <propositions>
+    <proposition>
+     <id>akustická nylon</id>
+     <name>kytara(akustická nylon)</name>
+     <comment>Klasiká akustická kytara s nylonovými strunami</comment>
+    </proposition>
+    <proposition>
+     <id>akustická kov</id>
+     <name>kytara(akustická kov)</name>
+     <comment>Westernová akustická kytara s kovovými strunami</comment>
+    </proposition>
+    <proposition>
+     <id>elektrická kov</id>
+     <name>kytara(elektrická kov)</name>
+     <comment>Elektrická akustická kytara s kovovými strunami</comment>
+    </proposition>
+    <proposition>
+     <id>elektroakustická kov</id>
+     <name>kytara(elektroakustická kov)</name>
+     <comment>Hybridní elektro-akustická kytara s kovovými strunami</comment>
+    </proposition>
+   </propositions>
+  </attribute>
+
+  <attribute>
+   <id>hlasitost</id>
+   <type>binary</type>
+   <comment>Je nutná velká hlasitost produkce?</comment>
+  </attribute>
+
+  <attribute>
+   <id>elektřina</id>
+   <type>binary</type>
+   <comment>Je k dispozici elektřina?</comment>
+  </attribute>
+
+  <attribute>
+   <id>rozpětí strun</id>
+   <type>binary</type>
+   <comment>Je nutné větší rozpětí mezi strunami?</comment>
+  </attribute>
+
+  <attribute>
+   <id>intimita</id>
+   <type>binary</type>
+   <comment>Preferujeme intimnější projev</comment>
+  </attribute>
+
+  <attribute>
+   <id>zvukové možnosti</id>
+   <type>binary</type>
+   <comment>Požadujeme větší zvukové možnosti?</comment>
+  </attribute>
+
+  <attribute>
+   <id>tlusté prsty</id>
+   <name>tlustoprst</name>
+   <type>binary</type>
+   <comment>Máte tlusté prsty?</comment>
+  </attribute>
+
+  <attribute>
+   <id>typ strun - kov</id>
+   <type>binary</type>
+   <comment>Spíše kovové struny(1)? (nebo nylon -1)</comment>
+  </attribute>
+
+  <attribute>
+   <id>univerzálnost</id>
+   <type>binary</type>
+   <comment>Má kytara spíše univerzální použítí (1) nebo se hodí spíše jen "na něco"?</comment>
+  </attribute>
+
+  <attribute>
+   <id>styl hudby</id>
+   <type>multiple</type>
+   <comment>Jaký styl hudby budete hrát (preferujete)?</comment>
+   <propositions>
+    <proposition>
+     <id>country</id>
+     <name>styl hudby(country)</name>
+    </proposition>
+    <proposition>
+     <id>jazz</id>
+     <name>styl hudby(jazz)</name>
+    </proposition>
+    <proposition>
+     <id>klasická (vážná) hudba</id>
+     <name>styl hudby(klasická (vážná) hudba)</name>
+    </proposition>
+    <proposition>
+     <id>rock/metal</id>
+     <name>styl hudby(rock/metal)</name>
+    </proposition>
+    <proposition>
+     <id>pop</id>
+     <name>styl hudby(pop)</name>
+    </proposition>
+   </propositions>
+  </attribute>
+
+  <attribute>
+   <id>dlouhé nehty</id>
+   <type>binary</type>
+   <comment>Jste ochoten udržovat si dlouhé nehty na pravé ruce?</comment>
+  </attribute>
+
+  <attribute>
+   <id>místo pro hraní</id>
+   <type>multiple</type>
+   <comment>V jakých místech chcete hrát?</comment>
+   <propositions>
+    <proposition>
+     <id>koncertní pódia</id>
+     <name>místo pro hraní(koncertní pódia)</name>
+    </proposition>
+    <proposition>
+     <id>doma</id>
+     <name>místo pro hraní(doma)</name>
+    </proposition>
+    <proposition>
+     <id>táborák</id>
+     <name>místo pro hraní(táborák)</name>
+    </proposition>
+   </propositions>
+  </attribute>
+ </attributes>
+
+<!--******************** Contexts ********************-->
+
+ <contexts>
+ </contexts>
+
+<!--******************** Rules ********************-->
+
+ <rules>
+
+<!--******************** Apriori rules ********************-->
+
+  <apriori_rules>
+  </apriori_rules>
+
+<!--******************** Logical rules ********************-->
+
+  <logical_rules>
+  </logical_rules>
+
+<!--******************** Compositional rules ********************-->
+
+  <compositional_rules>
+
+   <compositional_rule>
+    <id>c1</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>elektřina</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>kytara</id_attribute>
+      <id_proposition>elektrická kov</id_proposition>
+      <negation>1</negation>
+      <weight>1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>kytara</id_attribute>
+      <id_proposition>elektroakustická kov</id_proposition>
+      <negation>1</negation>
+      <weight>0,200</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c2</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>hlasitost</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>kytara</id_attribute>
+      <id_proposition>elektrická kov</id_proposition>
+      <negation>0</negation>
+      <weight>0,800</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>kytara</id_attribute>
+      <id_proposition>elektroakustická kov</id_proposition>
+      <negation>0</negation>
+      <weight>0,500</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c3</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>typ strun - kov</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>kytara</id_attribute>
+      <id_proposition>akustická nylon</id_proposition>
+      <negation>1</negation>
+      <weight>0,500</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>kytara</id_attribute>
+      <id_proposition>akustická kov</id_proposition>
+      <negation>0</negation>
+      <weight>0,250</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>kytara</id_attribute>
+      <id_proposition>elektrická kov</id_proposition>
+      <negation>0</negation>
+      <weight>0,250</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>kytara</id_attribute>
+      <id_proposition>elektroakustická kov</id_proposition>
+      <negation>0</negation>
+      <weight>0,250</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c4</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>typ strun - kov</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>kytara</id_attribute>
+      <id_proposition>akustická nylon</id_proposition>
+      <negation>0</negation>
+      <weight>0,500</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>kytara</id_attribute>
+      <id_proposition>akustická kov</id_proposition>
+      <negation>1</negation>
+      <weight>0,250</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>kytara</id_attribute>
+      <id_proposition>elektrická kov</id_proposition>
+      <negation>1</negation>
+      <weight>0,250</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>kytara</id_attribute>
+      <id_proposition>elektroakustická kov</id_proposition>
+      <negation>1</negation>
+      <weight>0,250</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c5</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>rozpětí strun</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>kytara</id_attribute>
+      <id_proposition>akustická nylon</id_proposition>
+      <negation>0</negation>
+      <weight>0,500</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>kytara</id_attribute>
+      <id_proposition>akustická kov</id_proposition>
+      <negation>1</negation>
+      <weight>0,500</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>kytara</id_attribute>
+      <id_proposition>elektrická kov</id_proposition>
+      <negation>1</negation>
+      <weight>0,500</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>kytara</id_attribute>
+      <id_proposition>elektroakustická kov</id_proposition>
+      <negation>1</negation>
+      <weight>0,500</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c6</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>intimita</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>kytara</id_attribute>
+      <id_proposition>akustická nylon</id_proposition>
+      <negation>0</negation>
+      <weight>0,700</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>kytara</id_attribute>
+      <id_proposition>akustická kov</id_proposition>
+      <negation>0</negation>
+      <weight>0,300</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>kytara</id_attribute>
+      <id_proposition>elektrická kov</id_proposition>
+      <negation>1</negation>
+      <weight>0,500</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c7</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>zvukové možnosti</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>kytara</id_attribute>
+      <id_proposition>elektrická kov</id_proposition>
+      <negation>0</negation>
+      <weight>0,500</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>kytara</id_attribute>
+      <id_proposition>akustická kov</id_proposition>
+      <negation>1</negation>
+      <weight>0,500</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>kytara</id_attribute>
+      <id_proposition>akustická nylon</id_proposition>
+      <negation>1</negation>
+      <weight>0,500</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>c8</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>univerzálnost</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>kytara</id_attribute>
+      <id_proposition>elektroakustická kov</id_proposition>
+      <negation>0</negation>
+      <weight>0,800</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>kytara</id_attribute>
+      <id_proposition>elektrická kov</id_proposition>
+      <negation>1</negation>
+      <weight>0,300</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>kytara</id_attribute>
+      <id_proposition>akustická kov</id_proposition>
+      <negation>1</negation>
+      <weight>0,300</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>kytara</id_attribute>
+      <id_proposition>akustická nylon</id_proposition>
+      <negation>1</negation>
+      <weight>0,300</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>d1</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>tlusté prsty</id_attribute>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>rozpětí strun</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>d2</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>dlouhé nehty</id_attribute>
+      <negation>1</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>typ strun - kov</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>d3</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>místo pro hraní</id_attribute>
+      <id_proposition>koncertní pódia</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>hlasitost</id_attribute>
+      <negation>0</negation>
+      <weight>0,800</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>elektřina</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>zvukové možnosti</id_attribute>
+      <negation>0</negation>
+      <weight>0,800</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>intimita</id_attribute>
+      <negation>1</negation>
+      <weight>0,300</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>d4</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>místo pro hraní</id_attribute>
+      <id_proposition>doma</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>elektřina</id_attribute>
+      <negation>0</negation>
+      <weight>1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>intimita</id_attribute>
+      <negation>0</negation>
+      <weight>0,500</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>d5</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>místo pro hraní</id_attribute>
+      <id_proposition>táborák</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>hlasitost</id_attribute>
+      <negation>1</negation>
+      <weight>0,300</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>elektřina</id_attribute>
+      <negation>1</negation>
+      <weight>1,000</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>intimita</id_attribute>
+      <negation>0</negation>
+      <weight>0,300</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>zvukové možnosti</id_attribute>
+      <negation>1</negation>
+      <weight>0,500</weight>
+     </conclusion>
+     <conclusion>
+      <id_attribute>typ strun - kov</id_attribute>
+      <negation>0</negation>
+      <weight>0,300</weight>
+     </conclusion>
+    </conclusions>
+   </compositional_rule>
+
+   <compositional_rule>
+    <id>d6</id>
+    <condition>
+    <conjunction>
+     <literal>
+      <id_attribute>místo pro hraní</id_attribute>
+      <id_proposition>koncertní pódia</id_proposition>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>místo pro hraní</id_attribute>
+      <id_proposition>doma</id_proposition>
+      <negation>0</negation>
+     </literal>
+     <literal>
+      <id_attribute>místo pro hraní</id_attribute>
+      <id_proposition>táborák</id_proposition>
+      <negation>0</negation>
+     </literal>
+    </conjunction>
+    </condition>
+    <conclusions>
+     <conclusion>
+      <id_attribute>univerzálnost</id_attribute>
+      <negation>0</negation>
+      <weight>0,500</weight>
+     </conclusion>
+    </conclusions>
+    <comment>Univerzální kytara</comment>
+   </compositional_rule>
+  </compositional_rules>
+ </rules>
+
+<!--******************** Integrity constraints ********************-->
+
+ <integrity_constraints>
+ </integrity_constraints>
+ <system_info>
+  <nest:options xmlns:nest="http://lisp.vse.cz/NEST">
+   <nest:version>2.0.4</nest:version>
+  </nest:options>
+ </system_info>
+</base>

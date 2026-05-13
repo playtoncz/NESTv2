@@ -26,7 +26,7 @@ internal static class ConsoleRunner
             return 1;
         }
 
-        var baseXml = File.ReadAllText(basePath);
+        var baseXml = XmlFileEncoding.ReadAllText(basePath);
         var reader = new BaseXmlReader();
         var kb = reader.Read(baseXml);
 
@@ -38,7 +38,7 @@ internal static class ConsoleRunner
         if (!string.IsNullOrEmpty(answersPath) && File.Exists(answersPath))
         {
             var answersReader = new AnswersXmlReader();
-            answers = answersReader.Read(File.ReadAllText(answersPath));
+            answers = answersReader.Read(XmlFileEncoding.ReadAllText(answersPath));
             Console.WriteLine($"Načteny odpovědi: {answersPath}");
         }
         else
