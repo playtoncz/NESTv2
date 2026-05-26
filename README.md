@@ -161,7 +161,7 @@ Vyžaduje viditelné zobrazení loga nebo textu "Powered by RAPL Group" v hlavn�
     <img src="img/rapl.png" alt="RAPL Group" width="140" />
   </a>
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://www.osu.cz/prf/">
+  <a href="https://opf.slu.cz">
     <img src="img/opf.png" alt="OPF SU" width="140" />
   </a>
 </p>
