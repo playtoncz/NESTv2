@@ -5,7 +5,7 @@
 <h3 align="center">Expertní systém nové generace pro tvorbu a vyhodnocování znalostních bází</h3>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-1.0.0.400-blue" alt="Version" />
+  <img src="https://img.shields.io/badge/version-1.0.0.601-blue" alt="Version" />
   <img src="https://img.shields.io/badge/.NET-8.0-purple" alt=".NET 8" />
   <img src="https://img.shields.io/badge/UI-Avalonia%2011-green" alt="Avalonia 11" />
   <img src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey" alt="Platform" />
