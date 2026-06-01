@@ -148,12 +148,6 @@ Znalostní báze je uložena v XML formátu s následující strukturou:
 </base>
 ```
 
-## Licence
-
-Tento projekt je licencován pod vlastní licencí **NEST Studio License** – viz [LICENSE.md](LICENSE.md).
-
-Vyžaduje viditelné zobrazení loga nebo textu "Powered by RAPL Group" v hlavním rozhraní.
-
 ## Autoři
 
 <p align="center">
